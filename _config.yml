@@ -10,10 +10,10 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : 山荣
-tagline: Site Tagline
-author :
+tagline: 
+author :山荣
   name : Zhou Rongyu
-  email : zuroyu@gmail.com
+  email : i@imim.me
   github : zhourongyu
   twitter : zhourongyu 
   feedburner : feedname
