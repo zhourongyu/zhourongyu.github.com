@@ -1,0 +1,777 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="别怕，我不是什么好人！" />
+
+
+
+  <meta name="keywords" content="山荣, Hexo, 互联网, bloger" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="擦擦擦擦" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'always'
+  };
+</script>
+
+
+
+
+  <title> 擦擦擦擦 </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">擦擦擦擦</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/01/30/Jinja2与Flask的HTML自动转义/">
+                Jinja2与Flask的HTML自动转义
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-01-30
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/01/30/Jinja2与Flask的HTML自动转义/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/30/Jinja2与Flask的HTML自动转义/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>今天写一个页面的时候发现代码竟然原封不动的出现了，怀疑是Jinja的自动转义。结果发现Jinja2的Escaping是自动关闭的，下面是Jinja官方文档中描述的，默认自动转义是关闭的，可以手动转义或者开启自动转义。</p>
+<blockquote>
+<p>HTML Escaping</p>
+<p>When generating HTML from templates, there’s always a risk that a<br>variable will include characters that affect the resulting HTML. There<br>are two approaches: manually escaping each variable or automatically<br>escaping everything by default.</p>
+<p>Jinja supports both, but what is used depends on the application<br>configuration. The default configuaration is no automatic escaping for<br>various reasons:</p>
+<p>escaping everything except of safe values will also mean that Jinja is<br>escaping variables known to not include HTML such as numbers which is<br>a huge performance hit. The information about the safety of a variable<br>is very fragile. It could happen that by coercing safe and unsafe<br>values the return value is double escaped HTML.</p>
+</blockquote>
+<p>转而搜索发现是Flask的原因，Flask的自动转义是默认开启的，如需要关闭需要以下操作（来自官方文档）：</p>
+<p>自动转义就是自动帮你将特殊的字符替换成转义符号。HTML（或者XML， XHTML）的特殊字符有 &amp;, &gt;, &lt;, “, ‘ 。因为这些字符在文档中有它自己特殊的含义，所以如果你想在文章中使用这些符号，必须将它替换成转义符号。如果不这样做，不仅用户使用不了这些符号，还会导致安全问题。(更多 :ref:<code>xss</code>)</p>
+<p>但是有时候你需要在模版中禁用自动转义。如果你想直接将HTML插入页面，比如将markdown语言转换成HTML，那么你就需要这样做了。</p>
+<p>有3种方法可以关闭自动转义：</p>
+<ul>
+<li>在Python文件中进行转义。先在 :class:<code>~flask.Markup</code> 对象中进行转义，然后将它传送给模版。一般推荐使用这个方式。</li>
+<li>在模版文件中进行转义。通过 |safe 过滤器来表示字符串是安全的()</li>
+<li>暂时禁用全局的自动转义功能。  </li>
+</ul>
+<p>要想在模版中禁用全局自动转义功能，可以用  语句块:<br>    {\% codeblock lang:python \%}<br>    {\% autoescaping false \%}<br>    autoescaping is disableed here<br>    {\% endautoescape \%}<br>    {\% endcodeblock \%}</p>
+<p>在这么做的时候，要语句块中使用到的变量非常小心。</p>
+<p>自动开始转义也是不错的，这方面的安全就可以少考虑了，关闭也很简单。我直接使用第二种方式，在需要禁止转义的部分加上safe标记，很方便。其他的两种目前还没用上~</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/01/29/呼吸防护标准/">
+                呼吸防护标准
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-01-29
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/life/">life</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/01/29/呼吸防护标准/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/29/呼吸防护标准/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>北京近短时间空气实属差到极点，已经到了无法忍受的状态。能看见满大街各式各样的口罩出现，有医用的，有装饰的~孰不知他们都是带的完全没有防护效果，甚至还对呼吸造成了阻碍，只有保温和防风的功能。有人说医院那个不错，医院那个蓝色的口罩的防护标准只限于空气中的细菌防护。</p>
+<p>懂一些的朋友都知道要买N95。PS:这不是诺基亚手机。N95是美国CDC下属的职业安全与健康研究所(NIOSH)制定的标准，不是特定的产品名称。针对不适合油性的颗粒过滤效率达到95%，并且通过NIOSH审查的产品就可以称为“N95型口罩”。</p>
+<p>3M是安全防护产品的全球顶尖品牌，当然防护口罩的种类也是非常多。普通人刚开始有可能接受不了这种造型~ 因为这类型的口罩只有在美国各类病毒片里面才能看见，例如《生化危机》。所以带这个出门回头率还是很高的，在我看来造型还是很酷的！最主要的是它管用。<br>因为种类繁多， 8210、8821、8511、8599、9322、9332… 很多人确实也不知道怎么选，当然一般后面会标注该产品的防护类别。例如 8210(带呼吸阀/防PM2.5/工业级防粉尘 /防流感/防二手烟)</p>
+<p>关于防护标准也分FFP标准和N标准，下面是收集来的资料以供参考：</p>
+<p>各国防尘口罩的国家标准不同，对比起来各有侧重。在防病毒方面，我国疾控中心在流行病职业暴露工作人员防护级别二级中要求，口罩过滤标准要达到FFP2或N95标准。鉴于国内现在对FFP标准尚认识不足，现对二者做简要的对比：</p>
+<p>(1)、FFP标准：即呼吸防护的欧洲标准。以下是标准的具体参数：<br>CE149：2001测试：测试机型：TS18130<br>测试物质：NaCl&amp;DOP     粒径：0.3μm        测试流速：95L/Min</p>
+<p><table border="1"></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td><em>等级</em></td></p>
+<p><td><em>Penetration 渗透率</em></td></p>
+<p><td><em>捕集率</em></td></p>
+<p><td><em>Resistant 阻抗</em></td><br></p>
+<p><tr><td> FFP1 </td><td>20%</td><td> 80% </td><td>21mm H2O</td></tr></p>
+<p><tr><td> FFP2 </td><td>6%</td><td> &gt;94% </td><td>24mm H2O</td></tr></p>
+<p><tr><td> FFP3 </td><td>1%</td><td> &gt;99% </td><td>30mm H2O</td></tr><br><br><br>(2)、N标准：是呼吸防护的美国标准。以下是标准的具体参数：<br>NIOSH标准， 测试机型：TS18130<br>测试物质：NaCl   粒径：0.3μm 测试流速：85L/Min</p>
+<p><table border="1"></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td><em>等级</em></td></p>
+<p><td><em>Penetration 渗透率</em></td></p>
+<p><td><em>捕集率</em></td></p>
+<p><td><em>Resistant 阻抗</em></td><br></p>
+<p><tr><td> N95 </td><td>5%</td><td> ≥95% </td><td>35mm H2O</td></tr></p>
+<p><tr><td> N99 </td><td>1%</td><td> ≥99% </td><td>35mm H2O</td></tr></p>
+<p><tr><td> N100 </td><td>0.03%</td><td> ≥99.97% </td><td>35mm H2O</td></tr><br><br><br>备注：NaCl： 氯化钠（食盐）；DOP：石蜡油</p>
+<p>两者的测试使用的是一样的机器，使用NaCl做测试用的污染物，混合DOP代表可以防护油性的粉尘。FFP2标准中，口罩对灰尘的捕集率为大于等于94％，小于N95捕集率一个百分点，然而测试时每分钟通过的气流量是不同的，欧标为95升/分钟，美标为85升/分钟。同时，阻抗值高低代表着使用口罩时，口罩对呼吸的阻碍程度，值越大则呼吸越受阻碍，二者的舒适程度不同。</p>
+<p>在口罩的选购上可以参考下这个标准，至于我们有必要使用FFP3和N100这么好的吗？ 这个问题请参考自己的经济能力。 就像“我们需要喝进口牛奶吗”这个问题一样，当然没有唯一答案，问题是国内的牛奶你还敢喝吗~ 有人说何必讲究这么多呢，在北京这么多年，喝三鹿这么多年不照样活的好好的吗。 随你呢，各人有各人的活法… 自求多福吧。</p>
+<p>有人说这样太矫情，要知道这个年代不是你身体好就能活的好。随便给你来一下，能让你至少少活十年或者痛苦十年。</p>
+<p>最后个人推荐一下：经济能力好的朋友推荐买FFP3标准，防护能力好，功能全面。 性价比高的比如8210，便宜好用。还有8210v，这是带呼吸阀的，口罩对呼吸的阻碍还是很大的，“N95″口罩密闭较严，透气性差，心肺负担很大。戴上后会有胸闷、不舒服的感觉，老人、孩子、孕妇，以及已经患有呼吸道疾病的患者应减少佩戴时间。呼吸阀除了让呼吸更顺畅并且较适合带眼镜的朋友，因为没有呼吸阀呼气中的水蒸气可能会使眼镜模糊，所以带眼镜的朋友尤其是骑行的朋友优先考虑此类型。有人推荐8233佩戴很舒适~ 仅供参考 o(︶︿︶)o</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/01/26/web.py与Flask/">
+                web.py与Flask
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-01-26
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/01/26/web.py与Flask/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/26/web.py与Flask/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>web.py是极为精简的一个框架，用来入门很不错。Tornado都思想是从web.py衍生出来的。<br>Flask是新生的框架，采用了装饰器模式来配置URL，代码也很精简，而且内置了Jinja2与werkzuug。<br>作为Python界较流行的几大框架之二，网上都口水战到处都是。</p>
+<p>最近自己的一个小项目在开始使用了web.py。后来转到了Flask。原因? Flask更方便，例如session，实时的Debug。都把py与Flask分为面向对象和面向过程，因为一个是route到类，一个是route到函数～ 其实都一样，只是代码的编程习惯，如果现在还有人说面向对象一定必面向过程好，那我建议多去看几本书吧。</p>
+<p>要说py与Flask哪个好，我也是菜鸟，我只能说在目前的项目里Flask比较适合～ 并且在遇到问题检索信息的时候Flask较为丰富（纯属个人感觉）<br>关于route到class和def上的区别， py的方式能更方便的管理URLs ，而route到def的好处就是方便检查，修改，并且需要移动的时候直接整块拖走就OK。  总之一句：罗卜白菜，各有所爱。</p>
+<p>PS：别以为Flask是一个微框架，配合上众多的extension可以折腾成Django一样，如果觉得太重了，再换回来，伸缩性很好</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/01/14/西安西安/">
+                西安西安
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-01-14
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/photo/">photo</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/01/14/西安西安/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/14/西安西安/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>夜已深，不想在碰电脑，试着用ipad来完成。<br>从西安回来十多天了，选择在这个不合时宜的时间去西安也是随意之旅，恰好有便宜机票。<br>中学历史学的并不好，西安给我的印象除了古都就剩下兵马俑，当然还有西岳华山。<br>这次西安的行程很随意，完全随心情。<br>说不合时宜是有依据的，元旦温度很低，零下十度左右，导致很多地方也没开发，例如华山著名的鹞子翻身与长空栈道。也是最遗憾的地方！好在顶着寒风硬是看完了日出。体会了僵硬的状态。<br><img src="http://zryblog.qiniudn.com/2014/07/1366326586.jpg" alt="华山"></p>
+<p>站在城墙上还是有古都的感觉，加上冬天天气一般，人烟稀少。在寒风中漫步在城墙上有种风萧萧兮易水寒，壮士一去兮不复返的感觉〜偶尔身边会冲出几辆自行车，有赶时间回去还车的〜超时要加钱了〜<br><img src="http://zryblog.qiniudn.com/2014/07/3739295031.jpg" alt="城楼"><br><img src="http://zryblog.qiniudn.com/2014/07/3824602309.jpg" alt="城墙"><br>站在城墙上我想起电视剧中那些攻城用的云梯，在现场看来得非常高，光爬这么高且陡得梯子也非一般人敢为。何况搬运的人有多苦。<br><img src="http://zryblog.qiniudn.com/2014/07/114151958.jpg" alt="城墙Style"><br><img src="http://zryblog.qiniudn.com/2014/07/4159531252.jpg" alt="cao"><br>到哪都有潮流，看我们的城墙Style！模特都是好基友Cao来担任。</p>
+<p>城墙很长13km左右。步行可以费很长时间，我们就等到了夕阳，只可惜现在城墙周围楼高房大，不然可以看到很美的落日景象<br><img src="http://zryblog.qiniudn.com/2014/07/2791369512.jpg" alt="落日"><br>城墙的夜景也相当漂亮，可惜再最后走的时候才发现，大包小包的没法拍了。<br>不论是兵马俑还是博物馆都是去学知识的，如果历史课都是这样现场来讲，相信所有人都能学的倍儿棒。</p>
+<p>来西安不吃小吃是不可能的，不过现在全国小吃一条街都类似，什么都有。既然在西安那就多吃羊肉泡馍，BiangBIang面，肉夹馍等类似食物，在我看来不太符合我的口味习惯，因为每天都在愁吃什么〜我还是更偏向北方的面食。<br>重点提下羊肉泡馍，真的要自己撕，不熟练的我们撕了二十分钟有，手指都疼了一天。。。吃个泡馍不容易</p>
+<p>关于华山也要说几句，华山在大家眼里是险字，实际上只是坡度稍大一些，对于其他山来说确实较险，不过也没有危险。真正的险也许是那条古老的真正的智取华山路线，景点内开放的那条是假的〜<br>华山的观景台在东峰，也许是因为高度不够，位置并不是太好，有山峦挡住了地平线，不不算最好的看日出位置，相比泰山、峨眉还是有点差距的。不过也是另一种感觉。<br><img src="http://zryblog.qiniudn.com/2014/07/539457072.jpg" alt="华山之巅"><br>最后可以看看冻僵硬后还没完全恢复的我。此时已经接近中午了，地处南峰，华山之巅。身后这块石头上面应该就是华山的最高点了。<br>一个身穿一件T恤、一件卫衣加一件普通防风帽衫在夜爬之后扛着脚架，背着相机顶着零下十多度寒风等日出的不要命的孩子</p>
+<p>好了，用pad打这么多字，手都酸了。下次还是电脑吧…………</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/01/09/ipad批量删除相片/">
+                ipad批量删除相片
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-01-09
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/01/09/ipad批量删除相片/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/09/ipad批量删除相片/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>用过Camera Kit的朋友应该深有体会…<br>PS:Camera Kit是应用于ipad1-ipad3上的，ipad4接口换成了Lightning to SD Card Reader。两件拆开卖了～更贵，而且没有原来方便（个人认为）</p>
+<p>每次旅游回来回有很多照片，导入ipad后至少都有上百张。但是导入后想再删除这些那就累死了，因为只能一张一张删，最近才知道原来ipad有多选的操作。。<br>在Photo （照片）App中进入待删除的相簿（不是进入单张照片，而是进入到缩略图模式）——点右上角的Edit（编辑）—— 用两只手指轻点并停留在要删除的第一张照片上，继续保持双指，扫过需要删除的照片。 这个时候你可以看到手指扫过的照片已经被选定。重复操作直到需要删除的照片被全部选定，点删除即可。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+  </div>
+
+  
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
+          <p class="site-author-name">山荣</p>
+        </div>
+        <p class="site-description motion-element">别怕，我不是什么好人！</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://imim.me" target="_blank">About</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">山荣</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hexoxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

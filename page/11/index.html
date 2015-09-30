@@ -1,0 +1,767 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="别怕，我不是什么好人！" />
+
+
+
+  <meta name="keywords" content="山荣, Hexo, 互联网, bloger" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="擦擦擦擦" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'always'
+  };
+</script>
+
+
+
+
+  <title> 擦擦擦擦 </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">擦擦擦擦</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/">
+                Mac OS X系统下刷新DNS缓存的方法
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-12-14
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/14/Mac OS X系统下刷新DNS缓存的方法/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>在Lion(10.7)之前，刷新DNS缓存的方法是：</p>
+<p>互联网上搜索 Mac OS X 系统下刷新 DNS 缓存的方法，绝大部分网站都说是在终端中执行下面这个命令：</p>
+<pre><code><span class="title">sudo</span> dscacheutil -flushcache
+</code></pre><p>但其实上面的命令仅针对 Mac OS X 10.5 和 10.6 有效，在 Lion 和 Mountain Lion 中都是错误的，正确的应该是：</p>
+<pre><code><span class="title">sudo</span> killall -HUP mDNSResponder
+</code></pre>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/12/13/世界上最好的VPS：Linode/">
+                世界上最好的VPS：Linode
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-12-13
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/12/13/世界上最好的VPS：Linode/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/13/世界上最好的VPS：Linode/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>这名字听起来很像一篇软文~</p>
+<p>玩过VPS的人应该没人不知道Linode，虽然不一定都用过。网上搜出来的各种推崇文章也是一片一片的。</p>
+<p>说世界上最好的VPS过于夸张，不过的确是一个很不错的VPS。最主要的是国内的VPS服务商非常不靠谱，实在没有让人放心的商家，就算购买大部分人都只敢使用月付的方式，因为商家携款跑路或者突然倒闭的事情屡不见鲜。比如前段时间刚倒下的风云VPS。在A大刚创立vpswind的时候口碑还是很不错的，现在突然这样，难免不让人伤心，身边有不少朋友刚买完一年的。不到半个月收到这样的通知。</p>
+<p>至于国外的VPS服务商基本都很不错，甚至有很便宜VPS商家，例如 @mr.asong 童鞋给我推荐的123systems 。活动中买的$10 / 年 。 一样比国内靠谱很多，既然要在国内买，那就买大公司的吧，起码有保障，例如阿里云。虽然有很多负面的消息，但至少还能过得去。</p>
+<p>看一个VPS好不好，不要去看那些网络上的推荐介绍，要去多看看那些使用者的感受，至少我看到linode使用了两三年的朋友都还一直在推荐。Linode 甚至还有个 iPhone 应用，可以用来平时的简易管理。海外VPS的好不好更关键在于速度如何，Linode后推出的Tokyo机房更是吸引了所有的国内用户~ 导致有段时间Tokyo机房速度变的很不稳定~ 不过最近似乎又好了，从我这里（北京网通），ping的速度70-100ms左右，网络不畅时也有过150ms ，对于国外主机这个速度已经很不错了，当然无法和国内的10ms相比。 不过在我的使用过程中没有感到任何延迟（SSH的使用中），并且在公司的网络不太好的情况下。</p>
+<p>总结下Linode的优点吧：</p>
+<p> 有东京机房，国内速度很快<br> Linode客服有闻名于世的分钟级别响应<br> Linode公司成立十年左右，在2010年员工却只有19人，收入有千万，实力可见。<br>强大的管理后台（自己研发的）及无缝升级功能<br>至于什么性能啊，硬件啊我就不说了，亲自体会既可。在价格上来说，因为是自己玩，对我而言有点贵。而对于团队来说又算很低廉的VPS了。和国内比的话也算价格很便宜了，比如阿里云的最低配2M带宽的价格年付也在1100+。</p>
+<p>国内主机不是太了解，我比较推荐的是教主（张沈鹏）和阿里云的。<br>教主的42qu.vps 和阿里云我都试用过，速度很快~ 关于国内主机与国外区别，除了备案和翻墙两点，其他的上网自己看看喽</p>
+<p>对于个人 VPS 消费者，通过 referal 的获益降低成本是个很好的模式。现在主机商基本都采取这种模式，能更好的增加客户粘性，留住客户也。如果有你看了我的文章觉得还不错，恰好你又要购买 Linode 的 VPS，可以使用我的Refer代码注册，据说过几个月我可以得到一点好处。</p>
+<p>referral code: 61a5ad13d85fd7bbdc45694855796d19bf515a7c</p>
+<p>或者你可以点击这个链接注册： <a href="http://www.linode.com/?r=61a5ad13d85fd7bbdc45694855796d19bf515a7c" target="_blank" rel="external">Linode</a></p>
+<p>42qu.vps链接：<a href="http://vps.42qu.com/by/10006783" target="_blank" rel="external">vps</a></p>
+<p>阿里云9.5折购买链接：<a href="http://www.aliyun.com/cps/rebate?from_uid=ziCugoEImGY=" target="_blank" rel="external">aliyun</a></p>
+<p>PS： linode的注册就是购买，只有购买的产品才算注册成功。 当然，还需要你有一张VISA或者Mastercart 信用卡一张~ 年付9折，两年付85折，个人觉得年付还是比较实惠。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/12/06/WordPress的邮件发送问题/">
+                WordPress的邮件发送问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-12-06
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/12/06/WordPress的邮件发送问题/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/06/WordPress的邮件发送问题/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>在刚把博客搬到Linode的时候自己也遇上了WordPress的邮件发送问题，查了下资料，发现大部分人都遇上了这个问题，因为与自己的主机商有关系。解决方案有多种不同的版本。</p>
+<p>主要原因有：<br>1.主机不支持mai()函数<br>2.PHP的fsockopen()被禁用<br>因为不支持mail()函数，一般都使用给WordPress装对应的smtp插件（eg: wp-mail-smtp插件）来实现邮件发送功能，从而又遇上了fsockopen的问题。<br>使用wp-mail-smtp发送测试邮件给出的错误提示为: SMTP -&gt; ERROR: Failed to connect to server:()<br>一般搜到的方案都是这样：</p>
+<p>找到wp-includes/class.smtp.php，用pfsockopen()函数直接替换掉 fsockopen() :<br>$this-&gt;smtp_conn = @fsockopen&nbsp;&nbsp; —&gt; $this-&gt;smtp_conn = @pfsockopen<br>不知道是不是版本问题（或者大家都是copy的？），我使用的是最新版本3.4.2，在wp-includes中并没有发现名为class.smtp.php的文件，正确的文件名为class-smtp.php。并且发现在此目录下所有class.xxx.php的格式都变为class-xxx.php，不知网络上class.xxx.php是哪个版本中的。</p>
+<p>在class-smtp.php中改用pfsockopen()方法后也并没有好用。通过phpinfo()上检查了一番，发现不只fsockopen()被禁用，连pfsockopen()也一起禁用了。<br>正确的解决办法：</p>
+<p>在服务器安装的php目录下找到php.ini文件，如果你是lnmp安装的，那么应该在/usr/local/php/etc/下，<br>查找allow_url_fopen</p>
+<pre><code><span class="setting">allow_url_fopen = <span class="value"><span class="keyword">On</span></span></span>
+</code></pre><p>配置是指允许访问网络文件，如果是Off，请改为On<br>接着找disable_functions</p>
+<pre><code>disable_functions = passthru,<span class="keyword">exec</span>,<span class="keyword">system</span>,<span class="keyword">chroot</span>,scandir,chgrp,<span class="keyword">chown</span>,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,<span class="keyword">readlink</span>,<span class="keyword">symlink</span>,popepassthru,stream_socket_server,fsocket,fsockopent_status,pfsockopen,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,<span class="keyword">readlink</span>,<span class="keyword">symlink</span>,popepassthru,stream_socket_server,fsocket,fsockopen
+</code></pre><p>里面都是被禁用的方法，从中可以发现含有pfsockopen与fsockopen，想解禁哪一个就看你自己了。因为前面已经改用pfsockopen()了，所以我解禁了它。改完后重启php服务再到phpinfo()中去看如果被禁函数里没有了pfsockopen那么说明成功了。然后再去测试SMTP插件，显示成功！</p>
+<p>另外看到有人提示还可以使用stream_socket_client方法来替代，但是stream_socket_client参数是不同的，需要做如下修改：</p>
+<p>修改前：</p>
+<pre><code><span class="variable">$fp</span> = fsockopen(<span class="variable">$host</span>, <span class="number">80</span>, <span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="number">30</span>);
+</code></pre><p>修改后</p>
+<pre><code><span class="variable">$fp</span> = stream_socket_client(<span class="variable">$host</span>.<span class="string">"80"</span>, <span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="number">30</span>);
+</code></pre><p>我没有测试这个方案，但发现是有问题的，我的参数格式为:</p>
+<pre><code><span class="variable">$this</span>-&gt;smtp_conn = <span class="variable">@pfsockopen</span>(<span class="variable">$host</span>, <span class="variable">$port</span>, <span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="variable">$tval</span>);
+</code></pre><p>和所示的不同。所以如何改就不得而知了~欢迎大家给出最新的方案。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/12/01/Lightroom与Aperture的选择/">
+                Lightroom与Aperture的选择
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-12-01
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/photo/">photo</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/12/01/Lightroom与Aperture的选择/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/01/Lightroom与Aperture的选择/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>LR（Lightroom）是Adobe旗下为专业摄影师提供的一款管理与编辑照片的软件，而AP（Aperture）则是苹果提供的类似功能软件。</p>
+<p>两款软件功能很类似。其实还有一款常用的软件，那就是大家熟知的Photoshop。对于我这种后期小白的人基本不用Photoshop，大部分摄影师也不是很精通photoshop。使用LR的人居多，因为它含有WIN/MAC版本～而AP只是针对MAC。</p>
+<p>AP在Apple Store中售价518 和 PS同等价位，LR比较贵，貌似是$149 。</p>
+<p>两款软件我都试用了，许多人挺犹豫该用哪一款，我也是。因为LR 与AP两者相互是完全封闭的。如果是WIN用户那果断使用LR了～</p>
+<p>Aperture 是 Apple 自家的软件，自然用着很舒服，它与iPhoto图库是打通的，可以通用图库（这点非常棒），在Aperture里进行的修改 iPhoto 里马上就可以查看。并且引入了版本的概念，极大的节省了空间。如果不满足iPhoto的必然要用AP替代它。</p>
+<p>Lightroom 的降噪算法之类尤为著名。它是为专业摄影师的后期处理设计的，后期处理能力整体都强过 Aperture。而 Aperture 的后期处理功能（尽管也挺强大了）更像是对舒适的照片管理做扩展。不过LR在MAC下使用没有AP舒适～貌似Adobe的软件都是这样。最近的PS6貌似帅了不少～</p>
+<p>LR因为用的人多，平台广，所以有很多好的preset可以使用，这样又极大的方便了像我这样的后期小白。</p>
+<p>总的来说AP是管理重于编辑，不过是限于MAC平台。 LR重于照片调较功能，当然只是相对的，LR的管理也是不错的。</p>
+<p>对于我来说目前是使用AP比较多，用来管理，偶尔需要又较大校正的照片会转到LR下面。如果两者能相同就好了～</p>
+<p>有一个概念：好的照片是不需要修改的。 我表示大部分同意，因为拍照是一瞬间的事情，很多时候无法去做好前期的准备，后期通过稍微的调整还是有一定的必要。 不要去指望用这样软件去把照片改成明星一样，这不是特效软件～ 特效请用PS，哈哈</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/11/24/下午的夕阳/">
+                下午的夕阳
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-11-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/photo/">photo</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/11/24/下午的夕阳/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/11/24/下午的夕阳/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>不知不觉夕阳已经提前到下午三点开始了？<br>三点半的北京，太阳已经渐渐的落了下去。时间过的好快！晚上就要来了～</p>
+<p>顺便发泄一下心情，本来最近心情还是不错的，可惜被某些东西打碎了，心情就想这夕阳一样，黯然神伤。注定如此，呜呼哀哉！</p>
+<p>多情应笑我，早生华发，<br>人生如梦，一尊还酹江月！</p>
+<p>也许时间再长一些就好了……</p>
+<p><img src="http://zryblog.qiniudn.com/2014/07/2899257033.jpg" alt="夕阳"></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+  </div>
+
+  
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/page/10/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/12/">&raquo;</a>
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
+          <p class="site-author-name">山荣</p>
+        </div>
+        <p class="site-description motion-element">别怕，我不是什么好人！</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://imim.me" target="_blank">About</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">山荣</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hexoxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

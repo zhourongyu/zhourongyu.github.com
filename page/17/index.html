@@ -1,0 +1,827 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+    <meta name="description" content="别怕，我不是什么好人！" />
+
+
+
+  <meta name="keywords" content="山荣, Hexo, 互联网, bloger" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="擦擦擦擦" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'always'
+  };
+</script>
+
+
+
+
+  <title> 擦擦擦擦 </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">擦擦擦擦</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/02/17/Curl提示SSL certificate错误/">
+                Curl提示SSL certificate错误
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-02-17
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/02/17/Curl提示SSL certificate错误/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/17/Curl提示SSL certificate错误/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>在安装RVM时候报错了，curl通过https下载的时候出错。</p>
+<p>错误描述:</p>
+<blockquote>
+<p>Downloading RVM from wayneeseguin branch stable</p>
+<p>curl: (60) SSL certificate problem, verify that the CA cert is OK.<br>Details:  error:14090086:SSL<br>routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed  More<br>details here: <a href="http://curl.haxx.se/docs/sslcerts.html" target="_blank" rel="external">http://curl.haxx.se/docs/sslcerts.html</a></p>
+<p>curl performs SSL certificate verification by default, using a<br>&quot;bundle&quot;  of Certificate Authority (CA) public keys (CA<br>certs). The default  bundle is named curl-ca-bundle.crt; you can<br>specify an alternate file  using the —cacert option.  If this HTTPS<br>server uses a certificate signed by a CA represented in  the bundle,<br>the certificate verification probably failed due to a  problem with<br>the certificate (it might be expired, or the name might  not match the<br>domain name in the URL).  If you’d like to turn off curl’s<br>verification of the certificate, use  the -k (or —insecure) option.</p>
+<p>Could not download<br>‘<a href="https://github.com/wayneeseguin/rvm/tarball/stable" target="_blank" rel="external">https://github.com/wayneeseguin/rvm/tarball/stable</a>‘.    Make sure<br>your certificates are up to date as described above.    To continue in<br>insecure mode run ‘echo insecure &gt;&gt; ~/.curlrc’.</p>
+</blockquote>
+<p>经过原因查找，在验证证书的时候出现问题，是本地ssl判别证书太旧，导致报ssl证书错误</p>
+<p>下载新的ssl本地判别文件</p>
+<pre><code><span class="prompt">&gt;&gt;</span> wget <span class="symbol">http:</span>/<span class="regexp">/curl.haxx.se/ca</span><span class="regexp">/cacert.pem</span>
+</code></pre><p>并更名为ca-bundle.crt放置到默认目录</p>
+<pre><code><span class="prompt">&gt;&gt;</span> mv cacert.pem ca-bundle.crt  | mv ca-bundle.crt /etc/pki/tls/certs/
+</code></pre><p>或者curl  —cacert cacert.pem 方式指定调用</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/02/11/python实现文件共享/">
+                python实现文件共享
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-02-11
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/02/11/python实现文件共享/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/11/python实现文件共享/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>文件共享的方案有很多，FTP，windows共享</p>
+<p>在python里非常简单</p>
+<p>使用python内置的SimpleHTTPServer</p>
+<pre><code>Rony-MBP:~ zuroyu$ python -m SimpleHTTPServer
+
+Serving HTTP <span class="function_start"><span class="keyword">on</span></span> <span class="number">0.0</span>.0.0 port <span class="number">8000</span> ...
+</code></pre><p>如上提示则表示启动成功</p>
+<p>通过ip地址来访问，例如：192.168.1.11：8000</p>
+<p>SimpleHTTPServer可以自定端口</p>
+<p>使用python -m SimpleHTTPServer xxxx</p>
+<p>xxxx为自定义端口，不加则默认为8000，也可以使用80端口，这样访问就不需要输入端口号了。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/02/09/The Zen of Python/">
+                The Zen of Python
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-02-09
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/02/09/The Zen of Python/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/09/The Zen of Python/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>从《Programming Python》中有一段有意思的内容，在Python中使用import  this可以看到Python哲学</p>
+<pre><code>&gt;&gt;&gt; import this
+The Zen <span class="keyword">of</span> Python, <span class="keyword">by</span> Tim Peters
+
+Beautiful <span class="keyword">is</span> better than ugly.
+<span class="keyword">Explicit</span> <span class="keyword">is</span> better than implicit.
+Simple <span class="keyword">is</span> better than complex.
+Complex <span class="keyword">is</span> better than complicated.
+Flat <span class="keyword">is</span> better than nested.
+Sparse <span class="keyword">is</span> better than dense.
+Readability counts.
+Special cases aren<span class="comment">'t special enough to break the rules.</span>
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+<span class="keyword">In</span> the face <span class="keyword">of</span> ambiguity, refuse the temptation <span class="keyword">to</span> guess.
+There should be one-- <span class="keyword">and</span> preferably only one --obvious way <span class="keyword">to</span> <span class="keyword">do</span> it.
+Although that way may <span class="keyword">not</span> be obvious at first unless you<span class="comment">'re Dutch.</span>
+Now <span class="keyword">is</span> better than never.
+Although never <span class="keyword">is</span> often better than *right* now.
+<span class="keyword">If</span> the implementation <span class="keyword">is</span> hard <span class="keyword">to</span> explain, it<span class="comment">'s a bad idea.</span>
+<span class="keyword">If</span> the implementation <span class="keyword">is</span> easy <span class="keyword">to</span> explain, it may be a good idea.
+Namespaces are one honking great idea -- <span class="keyword">let</span><span class="comment">'s do more of those!</span>
+</code></pre><p>给出对应的中文翻译，还是挺给力的～</p>
+<h2 id="Python之禅">Python之禅</h2><p>美比丑好<br>直言不讳比心照不宣好<br>简单比复杂好<br>复杂比难以理解好</p>
+<p>平面的比嵌套的好<br>错落有致比密密匝匝的好<br>可读性很重要</p>
+<p>虽然实用比纯粹更重要<br>但特殊情况不能特殊到打破规律<br>永远别让错误悄悄地溜走<br>除非是你故意的<br>碰到模棱两可的地方，绝对不要去作猜测<br>什么事情都应该有一个，而且最好只有一个显而易见的解决办法<br>虽然刚开始的时候，这个办法可能不是那么的显而易见，但谁叫你不是荷兰人<br>有些事情不理不睬可能会比过一会解决要好<br>但最好是现在就解决</p>
+<p>如果一个想法实现起来很困难，那它本身就不是一个好想法<br>如果一个想法实现起来很容易，那它或许就是一个好想法<br>命名空间是一个很了不起的想法,让我们多多使用吧</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/01/13/MBP的启动速度改进方案/">
+                MBP的启动速度改进方案
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-01-13
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/01/13/MBP的启动速度改进方案/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/13/MBP的启动速度改进方案/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>今天自己的MBP启动速度很慢呢，最初的时候30+秒，如今已经到1分钟了。</p>
+<p>有几种可以提升下速度的方案:<br>1.最直接的方案，更换SSD，效果一流，速度在10-15秒左右，当然价格比较昂贵。</p>
+<p>2.修复磁盘权限，这个方法较实用，效果也还比较明显</p>
+<p>3.重置 PRAM 和 NVRAM </p>
+<p>因为没舍得整块换SSD,而好的支架也不好买，所以1方案还不在考虑范围内。<br>用了2，3测试后，现在到45秒左右，效果还算满意。<br>有遇到相似问题的朋友不妨试一下这个方法,这个操作基本是无伤害的，详情可以查看官方介绍：何时需要重置 PRAM 和 NVRAM</p>
+<p>重置 PRAM 和 NVRAM</p>
+<p>关闭电脑。<br>在键盘上找到以下按键：Command、Option、P 和 R。您需要在步骤 4 中同时按下这些键。<br>启动电脑。<br>按住 Command-Option-P-R 键。必须在出现灰屏前按下此组合键。<br>按住上述键，直到电脑重新启动，您会再次听到启动声。<br>松开这些键。</p>
+<p>另附上一些的常用提速技巧</p>
+<p>MAC OS在每次启动都会为桌面文件做索引，所以尽量少在桌面上放文件，可放置快速链接</p>
+<p>在User&amp;Groups 里面把Login items筛选一下</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2012/01/10/No module named yum/">
+                No module named yum
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-01-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/01/10/No module named yum/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/10/No module named yum/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>今早运行Yum报错：</p>
+<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># yum</span>
+
+There was a problem importing one <span class="keyword">of</span> the Python modules
+required <span class="keyword">to</span> run yum. The error leading <span class="keyword">to</span> <span class="keyword">this</span> problem <span class="attribute">was</span>:
+
+   No <span class="built_in">module</span> named yum
+
+Please install a package which provides <span class="keyword">this</span> <span class="built_in">module</span>, <span class="keyword">or</span>
+verify <span class="literal">that</span> the <span class="built_in">module</span> <span class="keyword">is</span> installed correctly.
+
+It<span class="string">'s possible that the above module doesn'</span>t match the
+current version <span class="keyword">of</span> Python, which <span class="attribute">is</span>:
+<span class="number">2.7</span>.<span class="number">2</span> (<span class="keyword">default</span>, Dec  <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
+[GCC <span class="number">4.1</span>.<span class="number">2</span> <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.<span class="number">2</span>-<span class="number">51</span>)]
+
+If you cannot solve <span class="keyword">this</span> problem yourself, please go <span class="keyword">to</span>
+the yum faq <span class="attribute">at</span>:
+  <span class="attribute">http</span>:<span class="pi">//wiki.linux.duke.edu/YumFaq</span>
+</code></pre><p>错误原因：错误信息描述为 yum 所依赖的python 不相符</p>
+<p>查看yum版本</p>
+<pre><code>[root@Rony ~]# rpm -qa | grep yum
+yum-<span class="number">3.2.22-37</span>.el5.centos
+yum-metadata-parser-<span class="number">1.1.2-3</span>.el5.centos
+yum-fastestmirror-<span class="number">1.1.16-16</span>.el5.centos
+</code></pre><p>查看python版本</p>
+<pre><code><span class="comment">[root@Rony ~]</span># whereis python
+
+python: /usr/bin/python2.4 /usr/bin/python /usr/lib/python2.4 /usr/local/python2.7 /usr/share/<span class="keyword">man</span>/man1/python.1.gz
+</code></pre><p>装了两个版本python，因为上次的更新版本到python2.7</p>
+<p>执行python，默认使用的是2.7.2的版本</p>
+<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># python</span>
+Python <span class="number">2.7</span>.2 (<span class="reserved">default</span>, Dec <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
+
+[GCC <span class="number">4.1</span>.2 <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.2-<span class="number">51</span>)] <span class="literal">on</span> linux2
+Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.
+&gt;&gt;&gt;
+</code></pre><p>yum调用了高版本的python，而yum使用的是python2.4。</p>
+<p>查找yum文件,并编辑此py文件</p>
+<pre><code>[root<span class="keyword">@Rony</span> ~]# which yum
+/usr/bin/yum
+[root<span class="keyword">@develop</span> local]# vi /usr/bin/yum
+
+将
+<span class="shebang">#!/usr/bin/python</span>
+改为:
+<span class="shebang">#!/usr/bin/python2.4</span>
+</code></pre><p>然后保存OK.</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+  </div>
+
+  
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/page/16/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/18/">&raquo;</a>
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
+          <p class="site-author-name">山荣</p>
+        </div>
+        <p class="site-description motion-element">别怕，我不是什么好人！</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://imim.me" target="_blank">About</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">山荣</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hexoxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

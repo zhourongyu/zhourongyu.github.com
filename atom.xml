@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  
+  <title><![CDATA[擦擦擦擦]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://xxxx.ooo//"/>
+  <updated>2015-09-26T05:45:47.000Z</updated>
+  <id>http://xxxx.ooo//</id>
+  
+  <author>
+    <name><![CDATA[山荣]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[iPhone 6s 上手体验]]></title>
+    <link href="http://xxxx.ooo/2015/09/26/iPhone-6s-%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/"/>
+    <id>http://xxxx.ooo/2015/09/26/iPhone-6s-上手体验/</id>
+    <published>2015-09-26T03:23:30.000Z</published>
+    <updated>2015-09-26T05:45:47.000Z</updated>
+    <content type="html"><![CDATA[<p>今年的抢购比往年似乎容易些，但问题还是不少，例如重复支付、无法支付的问题。在多次支付失败的情况下，尝试预约到店成功，随后再使用分期支付成功~<br>共抢获 2 台，一台漂亮的深空灰，一台脑残粉玫瑰金  </p>
+<p><code>其他颜色请不要购买，树立「正确」的审美观人人有责！不做脑残粉，请选择深空灰</code><br>我本想选择优雅，但被迫成为脑残粉~  </p>
+<p>记得去年预约到店取货那天排队就排了一个多小时， 这次又抱着排大队的准备杀过去了，结果十分钟后手机到手。 一是这次苹果的准备比上次做的还要好，分流都分为几段，门口/一层/二层（三里屯店），并动用了大量的员工在帮忙预约客户。二可能是因为毕竟是 S 代升级，买的人没那么多  </p>
+<p>特意问了下店员今天人貌似很少，回答说大部分预约都在下午~<br>预约处摆满了各版本的iPhone，今年的包装盒设计不同，各颜色的iPhone对应的画面不同~  </p>
+<p><img src="http://7lrvut.com1.z0.glb.clouddn.com/2015/09/25100001.jpg" alt="店内预约"></p>
+<p>在线订单的寄送也很准时，为了迎合线下的开售，在线订单之前一直显示为准备发货，在24号终于变为已发货，25日上午十点多就已经送到了，到手时间几乎和预约到店时间一致~  </p>
+<p>回来拍了张对比图：<br><img src="http://7lrvut.com1.z0.glb.clouddn.com/2015/09/25100002.jpg" alt="深空灰 VS 玫瑰金"></p>
+<h3 id="导购意见">导购意见</h3><ul>
+<li>6s 比 6 略重，略厚，略宽（此为优点，握持感更好，妈妈再也不用担心我手机滑落了）</li>
+<li>玫瑰金比我想象的更加「粉嫩」，男性慎买，只有在夜晚或强光下和香槟金看着差不多~</li>
+<li>3D Touch 没什么大卵用（目前看来是这样）， 但反馈很细腻，很好玩~ 咯噔噔~</li>
+<li>后置摄像头的提升目测效果不明显，前置的提升较大，还会有屏幕的补光，更方便姑娘们自拍了</li>
+<li>LIVE Photo 仅限玩一玩，目前还没玩出彩</li>
+<li>不知道是不是 A9 和 2G 内存的原因，速度的提升有点明显</li>
+<li>Touch ID 二代嗷嗷的棒，秒识别，快到解锁的时候几乎看不到锁屏页面了~  </li>
+</ul>
+<p>众多更新，让我惊喜的只有Touch ID 。在 Apple 推出 Touch ID 之后各大厂商都相继有了各自的产品，但是识别速度和Apple相差不是一个等级。随后一两年，各大厂商的性能已经追上来了。二代一出，感觉又秒杀其他厂商了~ 大致可以推算出 Apple 的技术水平还是要领先行业1-2年（股票是不是还可以继续持有~）。  </p>
+<p>综上所述， 购买建议为：仅不建议 6 代用户升级！<br>等 3D Touch 玩法成熟，估计 7 代也该出了~</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>今年的抢购比往年似乎容易些，但问题还是不少，例如重复支付、无法支付的问题。在多次支付失败的情况下，尝试预约到店成功，随后再使用分期支付成功~<br>共抢获 2 台，一台漂亮的深空灰，一台脑残粉玫瑰金  </p>
+<p><code>其他颜色请不要购买，树立「正确」的审美观人人]]>
+    </summary>
+    
+      <category term="apple" scheme="http://xxxx.ooo/tags/apple/"/>
+    
+      <category term="iphone" scheme="http://xxxx.ooo/tags/iphone/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[一个MySQL 查询优化器的疑问]]></title>
+    <link href="http://xxxx.ooo/2015/07/16/%E4%B8%80%E4%B8%AAMySQL%20%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E7%96%91%E9%97%AE/"/>
+    <id>http://xxxx.ooo/2015/07/16/一个MySQL 查询优化器的疑问/</id>
+    <published>2015-07-16T05:49:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
+<pre><code>id bigint
+name <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">200</span>)</span></span>
+create_time <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>
+<span class="comment">//索引</span>
+KEY `IDX_CREATED` (`create_time`),
+</code></pre><p>数据约500多万，现在引出发现的问题，一条sql语句效率非常的低：</p>
+<pre><code><span class="operator"><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time <span class="keyword">limit</span> <span class="number">1000</span>;</span>
+</code></pre><p>本机测试200s，执行计划：</p>
+<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time limit 1000;
+
++----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
+|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type  </span>|<span class="string"> possible_keys </span>|<span class="string"> key           </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows </span>|<span class="string"> Extra       </span>|
++----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
+|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> index </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">   63    </span>|<span class="string"> NULL </span>|<span class="string"> 1000 </span>|<span class="string"> Using where </span>|
++----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
+1 row in set (0.00 sec)
+</code></pre><p>如果去掉 limit :</p>
+<pre><code><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time
+</code></pre><p>执行时间5s，执行计划：</p>
+<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time
+
++----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
+|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type </span>|<span class="string"> possible_keys </span>|<span class="string"> key  </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows    </span>|<span class="string"> Extra                       </span>|
++----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
+|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> ALL  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string"> NULL </span>|<span class="string">   NULL  </span>|<span class="string"> NULL </span>|<span class="string"> 4858500 </span>|<span class="string"> Using where; Using filesort </span>|
++----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
+1 row in set (0.00 sec)    
+</code></pre><p>一个 index 查询竟然比 ALL&amp;filesort 查询慢这么多？ 用profiles看下详细信息</p>
+<pre><code>mysql&gt; show profiles;
++----------+--------------+------------------------------------------------------------------------------------------------------------+
+|<span class="string"> Query_ID </span>|<span class="string"> Duration     </span>|<span class="string"> Query                                                                                                      </span>|
++----------+--------------+------------------------------------------------------------------------------------------------------------+
+|<span class="string">        1 </span>|<span class="string">   0.00179100 </span>|<span class="string"> explain select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000  </span>|
+|<span class="string">        2 </span>|<span class="string"> 195.10171300 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000          </span>|
+|<span class="string">        3 </span>|<span class="string">   5.28713500 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at                     </span>|
++----------+--------------+------------------------------------------------------------------------------------------------------------+
+2 rows in set, 1 warning (0.00 sec)
+
+mysql&gt; show profile for query 2;
++----------------------+------------+
+|<span class="string"> Status               </span>|<span class="string"> Duration   </span>|
++----------------------+------------+
+|<span class="string"> starting             </span>|<span class="string">   0.000050 </span>|
+|<span class="string"> checking permissions </span>|<span class="string">   0.000006 </span>|
+|<span class="string"> Opening tables       </span>|<span class="string">   0.000013 </span>|
+|<span class="string"> init                 </span>|<span class="string">   0.000017 </span>|
+|<span class="string"> System lock          </span>|<span class="string">   0.000005 </span>|
+|<span class="string"> optimizing           </span>|<span class="string">   0.000006 </span>|
+|<span class="string"> statistics           </span>|<span class="string">   0.000018 </span>|
+|<span class="string"> preparing            </span>|<span class="string">   0.000011 </span>|
+|<span class="string"> Sorting result       </span>|<span class="string">   0.000002 </span>|
+|<span class="string"> executing            </span>|<span class="string">   0.000002 </span>|
+|<span class="string"> Sending data         </span>|<span class="string"> 195.101362 </span>|
+|<span class="string"> end                  </span>|<span class="string">   0.000011 </span>|
+|<span class="string"> query end            </span>|<span class="string">   0.000009 </span>|
+|<span class="string"> closing tables       </span>|<span class="string">   0.000012 </span>|
+|<span class="string"> freeing items        </span>|<span class="string">   0.000158 </span>|
+|<span class="string"> logging slow query   </span>|<span class="string">   0.000006 </span>|
+|<span class="string"> cleaning up          </span>|<span class="string">   0.000025 </span>|
++----------------------+------------+
+17 rows in set, 1 warning (0.00 sec)    
+
+mysql&gt; show profile for query 3;
++----------------------+----------+
+|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
++----------------------+----------+
+|<span class="string"> starting             </span>|<span class="string"> 0.000063 </span>|
+|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
+|<span class="string"> Opening tables       </span>|<span class="string"> 0.000029 </span>|
+|<span class="string"> init                 </span>|<span class="string"> 0.000024 </span>|
+|<span class="string"> System lock          </span>|<span class="string"> 0.000730 </span>|
+|<span class="string"> optimizing           </span>|<span class="string"> 0.000014 </span>|
+|<span class="string"> statistics           </span>|<span class="string"> 0.000021 </span>|
+|<span class="string"> preparing            </span>|<span class="string"> 0.000010 </span>|
+|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
+|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
+|<span class="string"> Sending data         </span>|<span class="string"> 0.000006 </span>|
+|<span class="string"> Creating sort index  </span>|<span class="string"> 5.286166 </span>|
+|<span class="string"> end                  </span>|<span class="string"> 0.000012 </span>|
+|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
+|<span class="string"> closing tables       </span>|<span class="string"> 0.000011 </span>|
+|<span class="string"> freeing items        </span>|<span class="string"> 0.000016 </span>|
+|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
++----------------------+----------+
+17 rows in set, 1 warning (0.00 sec)
+</code></pre><p>查询1 基本所有的耗时都在 Sending Data 时期，查询3 的耗时在创建排序索引的时期，也就是 filesort 的耗时了，Sending Data是什么鬼玩意！</p>
+<blockquote>
+<p>Sending data</p>
+<p>The thread is reading and processing rows for a SELECT statement, and sending data to the client. Because operations occurring during this this state tend to perform large amounts of disk access (reads), it is often the longest-running state over the lifetime of a given query.</p>
+</blockquote>
+<p>官方对这个状态解释的是处理查询的数据及返回给客户端，根据查询3能排除返回客户端耗时的原因。<br><code>问题很早就看出来了，create_time是varchar类型，但sql对比的是一个int类型，解决方案就是改为Int/Bigint类型。</code><br>但是慢的原因还未知，随后又增加了其他的测试，例如把name换成主键id，速度立马变成不到5秒</p>
+<pre><code>+----------------------+----------+
+|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
++----------------------+----------+
+|<span class="string"> starting             </span>|<span class="string"> 0.000061 </span>|
+|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
+|<span class="string"> Opening tables       </span>|<span class="string"> 0.000014 </span>|
+|<span class="string"> init                 </span>|<span class="string"> 0.000019 </span>|
+|<span class="string"> System lock          </span>|<span class="string"> 0.000006 </span>|
+|<span class="string"> optimizing           </span>|<span class="string"> 0.000006 </span>|
+|<span class="string"> statistics           </span>|<span class="string"> 0.000018 </span>|
+|<span class="string"> preparing            </span>|<span class="string"> 0.000013 </span>|
+|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
+|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
+|<span class="string"> Sending data         </span>|<span class="string"> 4.531929 </span>|
+|<span class="string"> end                  </span>|<span class="string"> 0.000009 </span>|
+|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
+|<span class="string"> closing tables       </span>|<span class="string"> 0.000010 </span>|
+|<span class="string"> freeing items        </span>|<span class="string"> 0.000041 </span>|
+|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
++----------------------+----------+
+16 rows in set, 1 warning (0.00 sec)
+</code></pre><p>可以看到Sending data时间大大降低，是因为<code>id</code>是索引字段？那么我给<code>name</code>也增加一个索引…<br>结果竟然依旧是200多s，这就奇怪了，难道是因为name的长度太大？ 再新增一个sex char(2)，并建好索引，<br>结果依旧一样！</p>
+<pre><code><span class="header">mysql&gt; show profiles;
++----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
+<span class="header">| Query_ID | Duration     | Query                                                                                                      |
++----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
+|        1 |   0.00179100 | explain  select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at limit 1000 |
+|        2 | 195.10171300 | select name, created_</span>at from user where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000          |
+|        3 |   5.28713500 | select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at                     |
+|        4 |   4.53215900 | select id, created_</span>at from user  where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000           |
+<span class="header">|        5 | 209.23518600 | select sex, created_at from user  where created_at &gt; 1434115807296 order by created_at limit 1000          |
++----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
+</code></pre><p>谁来救救我！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
+<pre><code>id bigint
+name <span class="function"><span class="title">varchar</span><span class="params"]]>
+    </summary>
+    
+      <category term="mysql" scheme="http://xxxx.ooo/tags/mysql/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Scala 之 JavaConverters 与 JavaConversions]]></title>
+    <link href="http://xxxx.ooo/2015/03/15/Scala%20%E4%B9%8B%20JavaConverters%20%E4%B8%8E%20JavaConversions/"/>
+    <id>http://xxxx.ooo/2015/03/15/Scala 之 JavaConverters 与 JavaConversions/</id>
+    <published>2015-03-14T23:58:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>在实际使用中经常遇见Scala &lt;=&gt; Java之间的转换。例如要调用某个第三方包的方法需要一个Java的Map，那么可能用到Scala提供的JavaConverters或JavaConversions工具包<br>案例：</p>
+<pre><code><span class="comment">//待转换的Map</span>
+scala&gt; val m = <span class="function"><span class="title">Map</span><span class="params">(<span class="number">1</span>-&gt;<span class="number">2</span>)</span></span>
+m: scala<span class="class">.collection</span><span class="class">.immutable</span><span class="class">.Map</span>[Int,Int] = <span class="function"><span class="title">Map</span><span class="params">(<span class="number">1</span> -&gt; <span class="number">2</span>)</span></span>
+</code></pre><p>JavaConversions示例：</p>
+<pre><code><span class="keyword">import</span> collection.JavaConversions._
+scala&gt; <span class="variable"><span class="keyword">val</span> conversionsMap</span> = mapAsJavaMap(m).asInstanceOf[java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>]]
+conversionsMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
+</code></pre><p>JavaConversters示例：</p>
+<pre><code><span class="keyword">import</span> scala.collection.JavaConverters._
+scala&gt; <span class="variable"><span class="keyword">val</span> convertersMap</span> = m.asJava
+convertersMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
+</code></pre><p>俩者都转换成功，看似一模一样的效果，为什么共同存在？</p>
+<pre><code>scala&gt; conversionsMap.<span class="function"><span class="title">put</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>
+java<span class="class">.lang</span><span class="class">.UnsupportedOperationException</span>
+  at java<span class="class">.util</span><span class="class">.AbstractMap</span><span class="class">.put</span>(AbstractMap<span class="class">.java</span>:<span class="number">203</span>)
+  ... <span class="number">33</span> elided      
+
+  scala&gt; convertersMap.<span class="function"><span class="title">put</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>
+  java<span class="class">.lang</span><span class="class">.UnsupportedOperationException</span>
+  at java<span class="class">.util</span><span class="class">.AbstractMap</span><span class="class">.put</span>(AbstractMap<span class="class">.java</span>:<span class="number">203</span>)
+  ... <span class="number">33</span> elided 
+</code></pre><p>转换成功后的Map竟然是不可修改的，这好像不符合我的需求，猜测是因为m是immutable类型的原因，那么继续：</p>
+<pre><code><span class="comment">//先转换成mutable</span>
+<span class="variable"><span class="keyword">val</span> m2</span> = collection.mutable.Map(m.toSeq: _*)
+scala&gt; m2.+(<span class="number">3</span>-&gt;<span class="number">4</span>)
+res4: scala.collection.mutable.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = Map(<span class="number">1</span> -&gt; <span class="number">2</span>, <span class="number">3</span> -&gt; <span class="number">4</span>)
+  <span class="comment">//好，现在m2可以修改了</span>
+
+  scala&gt; <span class="variable"><span class="keyword">val</span> conversionsMap</span> = mapAsJavaMap(m2).asInstanceOf[java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>]]
+conversionsMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
+scala&gt; conversionsMap.put(<span class="number">3</span>,<span class="number">4</span>)
+java.lang.UnsupportedOperationException
+  at java.util.AbstractMap.put(AbstractMap.java:<span class="number">203</span>)
+  ... <span class="number">33</span> elided
+  <span class="comment">//conversionsMap依旧不能修改，囧</span>
+
+scala&gt; <span class="variable"><span class="keyword">val</span> convertersMap</span> = m2.asJava
+convertersMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
+scala&gt; convertersMap.put(<span class="number">3</span>,<span class="number">4</span>)
+res5: <span class="typename">Int</span> = <span class="number">0</span>
+scala&gt; convertersMap
+res6: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>, <span class="number">3</span>=<span class="number">4</span>}
+<span class="comment">//convertersMap 可以修改</span>
+</code></pre><p>那么JavaConversions需要转换出可修改的Map该如何操作，搜索一番得到答案，JavaConversions提供的是Java集合之间的隐式转换，如果想让JavaConversions产出可变的Map应该如下操作：</p>
+<pre><code><span class="comment">//JavaConversions直接隐式的转换了</span>
+<span class="variable"><span class="keyword">val</span> conversionsMap2</span>: java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>] = m2
+scala&gt; conversionsMap2.put(<span class="number">3</span>,<span class="number">4</span>)
+res7: <span class="typename">Int</span> = <span class="number">0</span>
+scala&gt; conversionsMap2
+res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>, <span class="number">3</span>=<span class="number">4</span>}
+</code></pre><p>JavaConversions出现在V2.8版本，JavaConverters出现于V2.8.1，相比JavaConversions更新，并且显示的转换更易于理解，推荐使用JavaConverters</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在实际使用中经常遇见Scala &lt;=&gt; Java之间的转换。例如要调用某个第三方包的方法需要一个Java的Map，那么可能用到Scala提供的JavaConverters或JavaConversions工具包<br>案例：</p>
+<pre><code><spa]]>
+    </summary>
+    
+      <category term="scala" scheme="http://xxxx.ooo/tags/scala/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[2014年读过的那些书]]></title>
+    <link href="http://xxxx.ooo/2014/12/31/2014%E5%B9%B4%E8%AF%BB%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E4%B9%A6/"/>
+    <id>http://xxxx.ooo/2014/12/31/2014年读过的那些书/</id>
+    <published>2014-12-31T08:00:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="小说">小说</h3><p>《地球大炮》<br>《殷商玛雅征服史》<br>《时间之墟》<br>《王小波全集》（1-3）  </p>
+<h3 id="计算机">计算机</h3><p>《高性能Linux服务器构建实战》<br>《快学Scala》  </p>
+<h3 id="历史">历史</h3><p>《费马大定理》<br>《战争就是这么回事》（1-3）  </p>
+<h3 id="其他">其他</h3><p>《集装箱改变世界》<br>《时间的形状》<br>《牌局心理学》<br>《男人除了性还在想什么？》  </p>
+<hr>
+<p>很明显14年读书少了，太多的东西让人分心，又到了反思的时刻了。<br>因为14年入市，还看了一些投资相关的书，结论就是：都是放屁。总结起来就一句话：投资有风险，入市需谨慎。大部分讲的都是鸡蛋要分开放的各种道理，这类书还是少看为秒。</p>
+<p>《集装箱改变世界》 这本书挺有意思，看书名完全没什么感觉，看后发现津津有味，似乎看到了世界变化的原理，明白一些世界定律，比如：技术往往不太重要，重要的是如何应用。算是个人年度推荐的唯一书籍了。</p>
+<p>随着信息获取的方式增长，原来看纸质书，后来基本看电子书，现在电子书都缩减了，各种短篇微博&amp;微信都能合集出书，似乎书的价值在越来越低，甚至都不用看书了，微信公众号，微博，社交平台…各种的信息占据了很大一部分时间。如果不使用这些，会丢失很多实时信息，似乎与当前社会有点脱节，很out。如何在这里面来快速获取有效信息越来越重要。 </p>
+<p>新的一年要好好规划，新年快乐！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="小说">小说</h3><p>《地球大炮》<br>《殷商玛雅征服史》<br>《时间之墟》<br>《王小波全集》（1-3）  </p>
+<h3 id="计算机">计算机</h3><p>《高性能Linux服务器构建实战》<br>《快学Scala》  </p>
+<h3 i]]>
+    </summary>
+    
+      <category term="读书" scheme="http://xxxx.ooo/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[HOW-TO-CLEAN-HHKB?!]]></title>
+    <link href="http://xxxx.ooo/2014/12/30/HOW-TO-CLEAN-HHKB/"/>
+    <id>http://xxxx.ooo/2014/12/30/HOW-TO-CLEAN-HHKB/</id>
+    <published>2014-12-30T07:55:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>小h陪我俩年多了，饱经沧桑与折磨，却依然不离不弃~ 看着身边不少朋友都加入了hhkb阵营，倍感欣慰…hahaha<br>因为是白色版本，易脏，非常不易洗，在2014过去之前给它好好洗个澡吧，这也是它的第二个「澡」</p>
+<ol>
+<li><p>拔键帽，试用过市面上常用的几种拔键器，貌似不太好拔，原因不明。换成原厂的拔键器后则轻松很多，如图：<br><img src="http://zryblog.qiniudn.com/2014/12/1358260270.jpg" alt="hhkb-clean-1.jpg"><br>不要看这个键盘挺干净，其实是洗完后拍的，忘记把它的脏样子留下来了~<br>拆卸的时候注意下每排键帽的高度不同，别到装得时候开始惆怅了。拆卸空格键的时候要小心下面的那颗弹簧，很容易飞出去~</p>
+</li>
+<li><p>拆下的键帽可机洗，可手洗，第一次我试用机洗「扔洗衣机」，效果非常好~ 但总觉得会对键帽造成一定磨损，这次索性就手洗了，目测效果比机洗差一个等级。键帽的材质是pbt，不易出油，但不清楚洗涤液对它的腐蚀性如何。<br>底座的清洗方式只能动用小刷子和Cyber Clean了，效果也不错。<br>洗完拍个全家福，预祝2015年「阖家欢乐」：<br><img src="http://zryblog.qiniudn.com/2014/12/2623668468.jpg" alt="hhkb-clean-2.jpg"></p>
+</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>小h陪我俩年多了，饱经沧桑与折磨，却依然不离不弃~ 看着身边不少朋友都加入了hhkb阵营，倍感欣慰…hahaha<br>因为是白色版本，易脏，非常不易洗，在2014过去之前给它好好洗个澡吧，这也是它的第二个「澡」</p>
+<ol>
+<li><p>拔键帽，试用过市面上常用的几]]>
+    </summary>
+    
+      <category term="hhkb" scheme="http://xxxx.ooo/tags/hhkb/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[实用的Git高级用法 (一)]]></title>
+    <link href="http://xxxx.ooo/2014/12/16/%E5%AE%9E%E7%94%A8%E7%9A%84Git%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%20(%E4%B8%80)/"/>
+    <id>http://xxxx.ooo/2014/12/16/实用的Git高级用法 (一)/</id>
+    <published>2014-12-16T07:31:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>本文大部分内容翻译自一篇Git好文（<a href="http://code.tutsplus.com/tutorials/git-tips-from-the-pros--net-29799" target="_blank" rel="external">原文地址</a>），经过我拙劣的英文加上自定义的删减与修改~ 也作为Git系列的开头篇</p>
+<h3 id="Interactive_stage">Interactive stage</h3><p>你也许经常会遇到在对一个文件的多次不同的修改，并且在提交的时候常犹豫哪一段修改是需要commit，这时你可以使用：  </p>
+<pre><code>git<span class="instruction"> add/commit </span>-p &lt;FILE&gt;
+</code></pre><p>加上 <code>-p</code> 参数之后，git会一块一块的显示出差异，确认当前块是否需要暂存。这样你可以提交文件中的部分修改，还可以使用 <code>-i</code> 参数，更为详细的交互式界面。</p>
+<blockquote>
+<p>ps: 使用交互式的提交不仅能让Commit更加的准确，还可以对代码进行一次很好的review，是值得养成的一个好习惯</p>
+</blockquote>
+<h3 id="Checkout_Your_Last_Branch">Checkout Your Last Branch</h3><p>当你正忙碌的工作在当前分支下，此时有紧急需求需要对之前的主分支做一些修改，<br>这时候常用的操作流：</p>
+<pre><code>git stash
+git checkout develop
+<span class="comment">//修改提交后 ...commit..push..</span>
+git checkout xxx
+git stash <span class="keyword">pop</span>
+</code></pre><p>你可能觉得这样很繁琐乏味，你需要这样的操作：</p>
+<pre><code>git checkout -
+<span class="comment">//切换到develop分支 ...commit...push</span>
+git checkout -
+</code></pre><p>这样可以快速切换分支，只能切换到当前分支的上一级母分支，和*NIX的 <code>cd -</code> 类似。 </p>
+<h3 id="Show_Which_Branches_are_Merged_(or_not)">Show Which Branches are Merged (or not)</h3><p>工作中经常同时工作于多个分支之上，一个项目的feature分支会非常的多，可以通过 <code>branch --list/-l</code> 看到，常遇到情况是，当想清理分支的时候心理还带着一丝犹豫，担心这个分支是否合并到主分支过，或者经常忘记哪些分支合并过，哪些没有。一般情况下都去查看pr记录，或者检查commit信息。<br>那你可能需要是以下的操作：</p>
+<pre><code><span class="title">git</span> branch --<span class="built_in">no</span>-merged
+</code></pre><p>可以查看有哪些分支还没有合并到当前的分支， 当然也可以查看哪些已经合并过：</p>
+<pre><code>git branch <span class="comment">--merged</span>
+</code></pre><p>并且还可以配合一些简单的UNIX工具来执行迅速的删除操作，像这样：</p>
+<pre><code>git branch --merged <span class="string">| xargs git branch -d</span>
+</code></pre><h3 id="Grab_a_File_from_Another_Branch_without_Switching_Branches">Grab a File from Another Branch without Switching Branches</h3><p>当你在做一些类似重构的工作时，你可能需要从多个分支中取出不同的几个修改纳入到当前的分支来。<br>如果没有下面的提示，你可能进行的操作是：  </p>
+<pre><code><span class="keyword">while</span>(<span class="constant">true</span>){
+  stash 当前修改
+  切换分支
+  找出修改的部分，<span class="keyword">copy</span>到临时文件
+  checkout -
+  粘贴到该修改的地方
+}
+</code></pre><p>或者你可以进行简单的文件迁移工作：</p>
+<pre><code>git checkout &lt;BRANCH&gt; -- path/to/file<span class="class">.rb</span>
+eg: 
+#把tmp分支的 <span class="class">.gitignore</span> 修改迁移到本分支
+git checkout tmp -- ./.gitignore
+</code></pre><p>注意，这里是整个文件的覆盖，并不是合并。</p>
+<h3 id="Git_Branches_Sorted_by_Last_Commit">Git Branches Sorted by Last Commit</h3><p>你应该已经看到了本地的一大堆杂乱的分支，并且使用之前的 <code>--merged</code> 清理过其中一些分支了，那对于剩下的分支，该如何确定哪些是有用的，哪些是过时的呢？</p>
+<p><code>for-each-ref</code> 命令会输出每个分支列表，并且显示最后一次的提交信息。重要的是，我们还可以对列表进行日期的排序，以下命令会显示整个分支列表以及最后一次提交信息和提交者，并且按日期降序排序。</p>
+<pre><code>//这是原版
+git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
+//原版并没有输出commit时的message，以下是我个人使用的改良版
+git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) <span class="string">"%(subject)"</span> [%(committername)]'
+</code></pre><p>建议给它取一个别名，方便日后使用。</p>
+<pre><code>git config --<span class="keyword">global</span> <span class="keyword">alias</span>.latest <span class="string">"for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) "</span><span class="variable">%(</span>subject)<span class="string">" [%(committername)]'"</span>
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<p>本文大部分内容翻译自一篇Git好文（<a href="http://code.tutsplus.com/tutorials/git-tips-from-the-pros--net-29799" target="_blank" rel="external">原文地址</a>）]]>
+    </summary>
+    
+      <category term="git" scheme="http://xxxx.ooo/tags/git/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Comparator vs Comparable]]></title>
+    <link href="http://xxxx.ooo/2014/12/03/Comparator%20vs%20Comparable/"/>
+    <id>http://xxxx.ooo/2014/12/03/Comparator vs Comparable/</id>
+    <published>2014-12-03T09:16:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>Java中对对象的集合或数组进行排序时通常有两种方式：Comparator &amp;&amp; Comparable。</p>
+<p>Comparable要求使用对象实现其compareTo方法来实现自定义的排序方式。<br>但在使用的场景中，往往在设计时并没有考虑到比较问题从而没有实现Comparable，这时候再去改造对象本身或许不太合适。</p>
+<p>Comparator更加的灵活，采用的是策略模式，在不改变对象本身的情况下来改变对象的行为<br>举例说明：</p>
+<pre><code><span class="keyword">class</span> <span class="title">User</span> {
+    <span class="comment">//年龄</span>
+    <span class="keyword">private</span> Integer age;
+    <span class="comment">//身高</span>
+    <span class="keyword">private</span> Integer height;
+    <span class="comment">//姓名</span>
+    <span class="keyword">private</span> String name;
+
+    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> age;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span>(<span class="params">Integer age</span>) </span>{
+        <span class="keyword">this</span>.age = age;
+    }
+
+    <span class="function"><span class="keyword">public</span> Integer <span class="title">getHeight</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> height;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span>(<span class="params">Integer height</span>) </span>{
+        <span class="keyword">this</span>.height = height;
+    }
+
+    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> name;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span>(<span class="params">String name</span>) </span>{
+        <span class="keyword">this</span>.name = name;
+    }
+}
+</code></pre><p>现在需要给所有的User对象按年龄从小到大排序，如果年龄相同则按身高由高到低来排序。<br>以下是Comparable方式，通过改造User对象来实现自定义compileTo方法：</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">User</span>&gt;</span>{
+    <span class="comment">//年龄</span>
+    <span class="keyword">private</span> Integer age;
+    <span class="comment">//身高</span>
+    <span class="keyword">private</span> Integer height;
+    <span class="comment">//姓名</span>
+    <span class="keyword">private</span> String name;
+
+    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> age;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>{
+        <span class="keyword">this</span>.age = age;
+    }
+
+    <span class="function"><span class="keyword">public</span> Integer <span class="title">getHeight</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> height;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(Integer height)</span> </span>{
+        <span class="keyword">this</span>.height = height;
+    }
+
+    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> name;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>{
+        <span class="keyword">this</span>.name = name;
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(User u)</span> </span>{
+        <span class="keyword">int</span> flag = <span class="keyword">this</span>.age.compareTo(u.getAge());
+        <span class="keyword">if</span> (flag == <span class="number">0</span> ) {
+            <span class="keyword">return</span> (<span class="keyword">this</span>.height.compareTo(u.getHeight())) * -<span class="number">1</span>;
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> flag;
+        }
+    }
+}
+</code></pre><p>以下是Comparator的实现方法及测试类：</p>
+<pre><code>public class Test {
+    public static void main<span class="params">(String[] args)</span> {
+
+        User user1 = new User<span class="params">()</span>;
+        user1.setAge<span class="params">(<span class="number">20</span>)</span>;
+        user1.setHeight<span class="params">(<span class="number">180</span>)</span>;
+        user1.setName<span class="params">(<span class="string">"张三"</span>)</span>;
+        User user2 = new User<span class="params">()</span>;
+        user2.setAge<span class="params">(<span class="number">20</span>)</span>;
+        user2.setHeight<span class="params">(<span class="number">176</span>)</span>;
+        user2.setName<span class="params">(<span class="string">"李四"</span>)</span>;
+        User user3 = new User<span class="params">()</span>;
+        user3.setAge<span class="params">(<span class="number">25</span>)</span>;
+        user3.setHeight<span class="params">(<span class="number">155</span>)</span>;
+        user3.setName<span class="params">(<span class="string">"王二"</span>)</span>;
+        User user4 = new User<span class="params">()</span>;
+        user4.setAge<span class="params">(<span class="number">23</span>)</span>;
+        user4.setHeight<span class="params">(<span class="number">155</span>)</span>;
+        user4.setName<span class="params">(<span class="string">"麻子"</span>)</span>;
+        List&lt;User&gt; userList = new ArrayList&lt;User&gt;<span class="params">()</span>;
+        userList.add<span class="params">(user1)</span>;
+        userList.add<span class="params">(user2)</span>;
+        userList.add<span class="params">(user3)</span>;
+        userList.add<span class="params">(user4)</span>;
+
+        <span class="comment">//使用Comparator实现排序</span>
+        Collections.sort<span class="params">(userList, new Comparator&lt;User&gt;<span class="params">()</span> {
+            @Override
+            public int compare<span class="params">(User u1, User u2)</span> {
+                int flag = u1.getAge<span class="params">()</span>.compareTo<span class="params">(u2.getAge<span class="params">()</span>)</span>;
+                if <span class="params">(flag == <span class="number">0</span>)</span> {
+                    //身高降序
+                    return <span class="params">(u1.getHeight<span class="params">()</span>.compareTo<span class="params">(u2.getHeight<span class="params">()</span>)</span>)</span> * -<span class="number">1</span>;
+                } else {
+                    return flag;
+                }
+            }
+
+        })</span>;
+
+        <span class="comment">//如果使用Comparable方式，可直接使用以下方式排序即可</span>
+        Collections.sort<span class="params">(userList)</span>;
+
+        <span class="keyword">for</span> <span class="params">(User u : userList)</span> {
+            System.out.println<span class="params">(<span class="string">"姓名："</span>+u.getName<span class="params">()</span>+<span class="string">"，年龄："</span>+u.getAge<span class="params">()</span>+<span class="string">"，身高："</span>+u.getHeight<span class="params">()</span>)</span>;
+        }
+
+    }
+
+}
+</code></pre><p>结果:</p>
+<pre><code>姓名：张三，年龄：20，身高：180
+姓名：李四，年龄：20，身高：176
+姓名：麻子，年龄：23，身高：155
+姓名：王二，年龄：25，身高：155
+</code></pre><p>达到的效果一致，但是，这并没有结束。<br>在Java规范里，倡导保证equals和compareTo的行为一致，这样可以避免出现一些奇奇怪怪的问题。大致意思就是如果user1.compareTo(user2) == 0 的话，user1.equals(user2) == 1<br>既然重载了equals，那意味着hashcode也得重载了~ 你懂的</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Java中对对象的集合或数组进行排序时通常有两种方式：Comparator &amp;&amp; Comparable。</p>
+<p>Comparable要求使用对象实现其compareTo方法来实现自定义的排序方式。<br>但在使用的场景中，往往在设计时并没有考虑到比较]]>
+    </summary>
+    
+      <category term="java" scheme="http://xxxx.ooo/tags/java/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[从清迈到Pai]]></title>
+    <link href="http://xxxx.ooo/2014/10/09/%E4%BB%8E%E6%B8%85%E8%BF%88%E5%88%B0Pai/"/>
+    <id>http://xxxx.ooo/2014/10/09/从清迈到Pai/</id>
+    <published>2014-10-09T05:54:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>大部分去了清迈的年轻人都会去Pai，这是一个充满着小清新的小镇，城区也非常之小。<br>总距离130km左右，中途包含30km的107国道，近100km的1095国道，注意：这100km基本上全是山路，一千多个弯道和众多的180°急弯。</p>
+<p>查过攻略的都知道，去Pai一般是乘坐mini bus，150-200B/人。价钱不贵，重点是因为山路太崎岖，坐车非常难受，亲眼目睹不少从车上下来的人直接在那呕吐…</p>
+<p>因为我是骑摩托去的，所以免去了晕车的痛苦，途中也相当的刺激和兴奋，也是第一次骑这么远而险的路。背着满满的行李还带个妹纸，所幸车技还不错，安全抵达，抵达后没几个小时发现后轮胎被扎破，很长一颗钉子，也算运气好了，如果是山路中这样估计就要磨死人了。<br><img src="http://zryblog.qiniudn.com/2014/10/1445932254.jpg" alt="IMG_6553.jpg"><br>和自己的小摩托合影，自行前往的好处除了舒服，另外就是自由，一路上绝美的风景可以细心玩耍。<br><img src="http://zryblog.qiniudn.com/2014/10/2861347370.jpg" alt="IMG_6537.jpg"><br><img src="http://zryblog.qiniudn.com/2014/10/102413973.jpg" alt="IMG_6543.jpg"></p>
+<p>总体时间上来说也并不比bus慢多少，正常的mini bus时间约在三个半小时，我们总时长四个多小时，包含中途休息拍照片时间~<br>强烈建议有「能力」的童鞋一定要骑行前往。</p>
+<p>关于Pai的景点网上一查便知，我强烈推荐的是「云来观景台」，仅此一个，在Pai两天时间，我一共去了四次，当然很大原因是想拍几张大片，在上面可以看到整个Pai县，因为面朝东边，也是绝佳的日出观赏点，因为期间除了下雨就是起雾，四次登顶全部无功而返，这是此行最大的遗憾（谁让自己要在雨季前往呢~）<br><img src="http://zryblog.qiniudn.com/2014/10/3664778267.jpg" alt="IMG_6921.jpg"><br>这是在清晨的雾气散过之后，终于拍到了几张照片。云来门票20铢，相当于人民币四元左右，还有免费续杯的茶水，据管理员说这是乌龙茶~ 不论是清晨或是傍晚，坐在这里品着茶水，看着大朵大朵的云彩流动，可以忘却一切烦恼。</p>
+<p>管理员是一位中国老大爷，山地村人。山地村村民是国民党时期逃过去的同胞，直到今天很多人的普通话已经很生疏了，虽然发音很标准，但语句已然不太通顺~<br><img src="http://zryblog.qiniudn.com/2014/10/4093868853.jpg" alt="IMG_6668.jpg"><br><img src="http://zryblog.qiniudn.com/2014/10/411237937.jpg" alt="IMG_6849.jpg"><br><img src="http://zryblog.qiniudn.com/2014/10/1054641612.jpg" alt="IMG_6796.jpg"></p>
+<p>在这个充满文艺气息的小镇非常容易出片…也难怪众多Chinese girl特别的喜欢这里。<br><img src="http://zryblog.qiniudn.com/2014/10/4011071210.jpg" alt="IMG_6831.jpg"><br>在我房间阳台拍的外景，这样的环境国内不过K应该住不到吧~ 这里只需不到200~</p>
+<p>Pai县的夜市很简单但东西也比较全，晚上夜市小街上做Message(马杀鸡)，顺便和服务员聊天，“泰国在两年前并不是很多人来，至《泰囧》之后，大批的中国人到来~”。 据这几天观察大约有80%以上的游客是中国人。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>大部分去了清迈的年轻人都会去Pai，这是一个充满着小清新的小镇，城区也非常之小。<br>总距离130km左右，中途包含30km的107国道，近100km的1095国道，注意：这100km基本上全是山路，一千多个弯道和众多的180°急弯。</p>
+<p>查过攻略的都知道，去P]]>
+    </summary>
+    
+      <category term="pai" scheme="http://xxxx.ooo/tags/pai/"/>
+    
+      <category term="泰国" scheme="http://xxxx.ooo/tags/%E6%B3%B0%E5%9B%BD/"/>
+    
+      <category term="photo" scheme="http://xxxx.ooo/categories/photo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[红海滩与河蟹]]></title>
+    <link href="http://xxxx.ooo/2014/09/14/%E7%BA%A2%E6%B5%B7%E6%BB%A9%E4%B8%8E%E6%B2%B3%E8%9F%B9/"/>
+    <id>http://xxxx.ooo/2014/09/14/红海滩与河蟹/</id>
+    <published>2014-09-13T18:34:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>“来来，站好”<br>”俩人贴近一点…”<br>“表情别那么僵…”<br>“好，注意姿势，颔首挺胸”<br>“对，保持微笑，3..2..1….完工”<br>“Perfect，这俩真可爱”<br>说完赶紧跑<br><img src="http://zryblog.qiniudn.com/2014/09/3644812911.jpg" alt="IMG\_6264.jpg"></p>
+<p>照片摄于「红海滩」，是盘锦少数几个具有可玩性的地方之一~ 面积非常大，前半段两侧都是大片大片的芦苇荡子，让我想起了白洋淀。</p>
+<p>穿过近10km路，随后进入眼帘的是大片的红色，满屏幕的红色~。<br><img src="http://zryblog.qiniudn.com/2014/09/3180593440.jpg" alt="IMG\_6236.jpg"></p>
+<p>虽然很美，但并不太好下手拍摄，没有高点，网上图片大部分都是航拍的~要是有座山丘就好了。旁边有座大船，其实是个饭馆~<br><img src="http://zryblog.qiniudn.com/2014/09/2691167702.jpg" alt="IMG\_6268.jpg"></p>
+<p>滩内是一大片湿地，滩内的红色也是一种碱蓬草，每年九/十月份的时候颜色最深，呈红紫色。也是最漂亮的时候。除了这些草，里面爬满了螃蟹，也是盘锦另一大特色「盘锦河蟹」。</p>
+<p>河蟹虽小，五脏俱全~ 二两多算是比较大的蟹了。肉自然没有海蟹那么多，不过小的优势在于比较入味，还是非常好吃，价格大约在80~100/kg。感谢当地朋友的盛情款待，让我们吃了一顿免费的螃蟹~~~</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>“来来，站好”<br>”俩人贴近一点…”<br>“表情别那么僵…”<br>“好，注意姿势，颔首挺胸”<br>“对，保持微笑，3..2..1….完工”<br>“Perfect，这俩真可爱”<br>说完赶紧跑<br><img src="http://zryblog.qiniud]]>
+    </summary>
+    
+      <category term="河蟹" scheme="http://xxxx.ooo/tags/%E6%B2%B3%E8%9F%B9/"/>
+    
+      <category term="盘锦" scheme="http://xxxx.ooo/tags/%E7%9B%98%E9%94%A6/"/>
+    
+      <category term="红海滩" scheme="http://xxxx.ooo/tags/%E7%BA%A2%E6%B5%B7%E6%BB%A9/"/>
+    
+      <category term="photo" scheme="http://xxxx.ooo/categories/photo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[jvm的时区问题]]></title>
+    <link href="http://xxxx.ooo/2014/09/02/jvm%E7%9A%84%E6%97%B6%E5%8C%BA%E9%97%AE%E9%A2%98/"/>
+    <id>http://xxxx.ooo/2014/09/02/jvm的时区问题/</id>
+    <published>2014-09-02T07:30:00.000Z</published>
+    <updated>2015-07-19T13:00:49.000Z</updated>
+    <content type="html"><![CDATA[<p>最近发现在一台开发机上java程序启动后时间不对，比系统时间慢八小时，检查系统时间却发现是正确的…</p>
+<p>有俩种解决方案，方案一:</p>
+<pre><code><span class="comment">//程序内设置TimeZone</span>
+<span class="keyword">import</span> java.text.SimpleDateFormat;
+<span class="keyword">import</span> java.util.Date;
+<span class="keyword">import</span> java.util.TimeZone;
+<span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>{
+    public static <span class="keyword">void</span> main(<span class="built_in">String</span>[] args){
+        SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);
+        TimeZone tz = TimeZone.getTimeZone(<span class="string">"Asia/Shanghai"</span>);
+        df.setTimeZone(tz);
+        System.out.println(df.format(<span class="keyword">new</span> <span class="built_in">Date</span>()));
+        System.out.println(<span class="keyword">new</span> <span class="built_in">Date</span>().toString());
+    }
+}
+</code></pre><p>result：</p>
+<pre><code>2014<span class="tag">-09-02</span> 23<span class="pseudo">:03</span><span class="pseudo">:25</span>
+<span class="tag">Tue</span> <span class="tag">Sep</span> 02 15<span class="pseudo">:03</span><span class="pseudo">:25</span> <span class="tag">UTC</span> 2014
+</code></pre><p>方案二：</p>
+<pre><code>在程序的启动脚本里加上时区参数
+<span class="deletion">-Duser.timezone=Asia/Shanghai</span>
+</code></pre><p>打印结果可以看出是时区不正确，jvm获取到的时区为UTC，而正确的时间应为CST（北京时间），方案二显然更加灵活但也治标不治本。<br>接下来检查当前系统属性</p>
+<pre><code><span class="comment">//遍历当前系统属性</span>
+<span class="keyword">final</span> Properties p = System.getProperties();
+<span class="keyword">final</span> Enumeration e = p.keys();
+<span class="keyword">while</span> (e.hasMoreElements()) {
+    <span class="keyword">final</span> <span class="keyword">String</span> prt = (<span class="keyword">String</span>) e.nextElement();
+    <span class="keyword">final</span> <span class="keyword">String</span> prtvalue = System.getProperty(prt);
+    System.out.<span class="built_in">println</span>(prt + <span class="string">":"</span> + prtvalue);
+}
+</code></pre><p>可以发现如下参数：</p>
+<pre><code>...
+java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.vendor</span>:Oracle Corporation
+os<span class="class">.name</span>:Linux
+sun<span class="class">.jnu</span><span class="class">.encoding</span>:UTF-<span class="number">8</span>
+java<span class="class">.library</span><span class="class">.path</span>:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java<span class="class">.specification</span><span class="class">.name</span>:Java Platform API Specification
+java<span class="class">.class</span><span class="class">.version</span>:<span class="number">51.0</span>
+sun<span class="class">.management</span><span class="class">.compiler</span>:HotSpot <span class="number">64</span>-Bit Tiered Compilers
+os<span class="class">.version</span>:<span class="number">3.11</span>.<span class="number">0</span>-<span class="number">15</span>-generic
+user<span class="class">.home</span>:/root
+user<span class="class">.timezone</span>:Etc/UTC
+java<span class="class">.awt</span><span class="class">.printerjob</span>:sun<span class="class">.print</span><span class="class">.PSPrinterJob</span>
+file<span class="class">.encoding</span>:UTF-<span class="number">8</span>
+java<span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
+java<span class="class">.class</span><span class="class">.path</span>:/home/app/jdk1.<span class="number">7.0</span>_67/lib:.
+user<span class="class">.name</span>:root
+java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
+sun<span class="class">.java</span><span class="class">.command</span>:Test
+java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</span>_67/jre
+...
+</code></pre><p>本地使用的jdk环境是64-Bit jdk7U67，系统环境64Bit Ubuntu 12.04。<br><strong><em>终极方案</em></strong>：修改系统的时区为「Asia/Shanghai」。</p>
+<pre><code>cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai /</span>etc<span class="regexp">/localtime</span>
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近发现在一台开发机上java程序启动后时间不对，比系统时间慢八小时，检查系统时间却发现是正确的…</p>
+<p>有俩种解决方案，方案一:</p>
+<pre><code><span class="comment">//程序内设置TimeZone</span>
+<span c]]>
+    </summary>
+    
+      <category term="java" scheme="http://xxxx.ooo/tags/java/"/>
+    
+      <category term="jvm" scheme="http://xxxx.ooo/tags/jvm/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
+  
+</feed>
