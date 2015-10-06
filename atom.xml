@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2015-09-26T05:45:47.000Z</updated>
+  <updated>2015-10-06T14:07:39.000Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[草原天路]]></title>
+    <link href="http://xxxx.ooo/2015/10/06/%E8%8D%89%E5%8E%9F%E5%A4%A9%E8%B7%AF/"/>
+    <id>http://xxxx.ooo/2015/10/06/草原天路/</id>
+    <published>2015-10-06T14:01:30.000Z</published>
+    <updated>2015-10-06T14:07:39.000Z</updated>
+    <content type="html"><![CDATA[<h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成景区收费了，真是坑爹。</p>
+<h4 id="北京自驾游方案">北京自驾游方案</h4><p><code>不建议大早上从北京出发，因为节假日八达岭太堵，预计中午才能到，开一上午车已经很累了，况且到达天路还要继续堵（人多）</code><br>建议方案：下午从北京出发到崇礼/张北住宿，第二天一早出发。我俩次都是住在崇礼，从桦皮岭进入天路自东向西游玩，这样人相对少很多，悠然自得。</p>
+<p>住宿可以选择张北县城内或者沿途的农家乐，因为景区化的原因，沿途当地人自办的农家乐都被勒令拆除，日后大概只有正规运营的场所了<br>另一个方案是露营，沿途不少适合的点，这次我背着帐篷准备来尝试一下，夜间非常冷，一定要做好防寒措施。 六七月应该好很多</p>
+<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612276.jpg" alt="随处可见的风车"></p>
+<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612174.jpg" alt="满屏幕都是风车"></p>
+<p>一个好的天气很重要，虽然在北京这很难得~<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612371.jpg" alt="草原上休息的马儿们"></p>
+<p>在草原上住的好处就是可以看看日落/日出/星星，玩摄影的自然不能错过。但是夜间太冷，加上当日月亮非常的亮，导致本次星星没拍上~ 囧！<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612650.jpg" alt="日落夕阳"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成]]>
+    </summary>
+    
+      <category term="京郊" scheme="http://xxxx.ooo/tags/%E4%BA%AC%E9%83%8A/"/>
+    
+      <category term="摄影" scheme="http://xxxx.ooo/tags/%E6%91%84%E5%BD%B1/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[iPhone 6s 上手体验]]></title>
@@ -589,81 +615,6 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
       <category term="红海滩" scheme="http://xxxx.ooo/tags/%E7%BA%A2%E6%B5%B7%E6%BB%A9/"/>
     
       <category term="photo" scheme="http://xxxx.ooo/categories/photo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[jvm的时区问题]]></title>
-    <link href="http://xxxx.ooo/2014/09/02/jvm%E7%9A%84%E6%97%B6%E5%8C%BA%E9%97%AE%E9%A2%98/"/>
-    <id>http://xxxx.ooo/2014/09/02/jvm的时区问题/</id>
-    <published>2014-09-02T07:30:00.000Z</published>
-    <updated>2015-07-19T13:00:49.000Z</updated>
-    <content type="html"><![CDATA[<p>最近发现在一台开发机上java程序启动后时间不对，比系统时间慢八小时，检查系统时间却发现是正确的…</p>
-<p>有俩种解决方案，方案一:</p>
-<pre><code><span class="comment">//程序内设置TimeZone</span>
-<span class="keyword">import</span> java.text.SimpleDateFormat;
-<span class="keyword">import</span> java.util.Date;
-<span class="keyword">import</span> java.util.TimeZone;
-<span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>{
-    public static <span class="keyword">void</span> main(<span class="built_in">String</span>[] args){
-        SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);
-        TimeZone tz = TimeZone.getTimeZone(<span class="string">"Asia/Shanghai"</span>);
-        df.setTimeZone(tz);
-        System.out.println(df.format(<span class="keyword">new</span> <span class="built_in">Date</span>()));
-        System.out.println(<span class="keyword">new</span> <span class="built_in">Date</span>().toString());
-    }
-}
-</code></pre><p>result：</p>
-<pre><code>2014<span class="tag">-09-02</span> 23<span class="pseudo">:03</span><span class="pseudo">:25</span>
-<span class="tag">Tue</span> <span class="tag">Sep</span> 02 15<span class="pseudo">:03</span><span class="pseudo">:25</span> <span class="tag">UTC</span> 2014
-</code></pre><p>方案二：</p>
-<pre><code>在程序的启动脚本里加上时区参数
-<span class="deletion">-Duser.timezone=Asia/Shanghai</span>
-</code></pre><p>打印结果可以看出是时区不正确，jvm获取到的时区为UTC，而正确的时间应为CST（北京时间），方案二显然更加灵活但也治标不治本。<br>接下来检查当前系统属性</p>
-<pre><code><span class="comment">//遍历当前系统属性</span>
-<span class="keyword">final</span> Properties p = System.getProperties();
-<span class="keyword">final</span> Enumeration e = p.keys();
-<span class="keyword">while</span> (e.hasMoreElements()) {
-    <span class="keyword">final</span> <span class="keyword">String</span> prt = (<span class="keyword">String</span>) e.nextElement();
-    <span class="keyword">final</span> <span class="keyword">String</span> prtvalue = System.getProperty(prt);
-    System.out.<span class="built_in">println</span>(prt + <span class="string">":"</span> + prtvalue);
-}
-</code></pre><p>可以发现如下参数：</p>
-<pre><code>...
-java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.vendor</span>:Oracle Corporation
-os<span class="class">.name</span>:Linux
-sun<span class="class">.jnu</span><span class="class">.encoding</span>:UTF-<span class="number">8</span>
-java<span class="class">.library</span><span class="class">.path</span>:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
-java<span class="class">.specification</span><span class="class">.name</span>:Java Platform API Specification
-java<span class="class">.class</span><span class="class">.version</span>:<span class="number">51.0</span>
-sun<span class="class">.management</span><span class="class">.compiler</span>:HotSpot <span class="number">64</span>-Bit Tiered Compilers
-os<span class="class">.version</span>:<span class="number">3.11</span>.<span class="number">0</span>-<span class="number">15</span>-generic
-user<span class="class">.home</span>:/root
-user<span class="class">.timezone</span>:Etc/UTC
-java<span class="class">.awt</span><span class="class">.printerjob</span>:sun<span class="class">.print</span><span class="class">.PSPrinterJob</span>
-file<span class="class">.encoding</span>:UTF-<span class="number">8</span>
-java<span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
-java<span class="class">.class</span><span class="class">.path</span>:/home/app/jdk1.<span class="number">7.0</span>_67/lib:.
-user<span class="class">.name</span>:root
-java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
-sun<span class="class">.java</span><span class="class">.command</span>:Test
-java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</span>_67/jre
-...
-</code></pre><p>本地使用的jdk环境是64-Bit jdk7U67，系统环境64Bit Ubuntu 12.04。<br><strong><em>终极方案</em></strong>：修改系统的时区为「Asia/Shanghai」。</p>
-<pre><code>cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai /</span>etc<span class="regexp">/localtime</span>
-</code></pre>]]></content>
-    <summary type="html">
-    <![CDATA[<p>最近发现在一台开发机上java程序启动后时间不对，比系统时间慢八小时，检查系统时间却发现是正确的…</p>
-<p>有俩种解决方案，方案一:</p>
-<pre><code><span class="comment">//程序内设置TimeZone</span>
-<span c]]>
-    </summary>
-    
-      <category term="java" scheme="http://xxxx.ooo/tags/java/"/>
-    
-      <category term="jvm" scheme="http://xxxx.ooo/tags/jvm/"/>
-    
-      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
     
   </entry>
   

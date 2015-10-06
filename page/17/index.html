@@ -144,6 +144,111 @@
           
           
             
+              <a class="post-title-link" href="/2012/02/19/CentOS下安装Git/">
+                CentOS下安装Git
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-02-19
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/02/19/CentOS下安装Git/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/19/CentOS下安装Git/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>CentOS中yum里没有Git，需要手动安装。</p>
+<p>首先需要安装git的依赖包</p>
+<pre><code>&gt; yum <span class="keyword">install</span> curl
+&gt; yum <span class="keyword">install</span> curl-devel
+&gt; yum <span class="keyword">install</span> zlib-devel
+&gt; yum <span class="keyword">install</span> openssl-devel
+&gt; yum <span class="keyword">install</span> perl
+&gt; yum <span class="keyword">install</span> cpio
+&gt; yum <span class="keyword">install</span> expat-devel
+&gt; yum <span class="keyword">install</span> gettext-devel
+</code></pre><p>下载最新的git包</p>
+<pre><code><span class="blockquote">&gt; wget http://www.codemonkey.org.uk/projects/git-snapshots/git/git-latest.tar.gz</span>
+<span class="blockquote">&gt; tar xzvf git-latest.tar.gz</span>
+<span class="blockquote">&gt; cd git-xxxx-xx-xx</span>
+<span class="blockquote">&gt; autoconf</span>
+<span class="blockquote">&gt; ./configure</span>
+<span class="blockquote">&gt; make | make install</span>
+</code></pre><p>验证是否安装成功：检查安装的版本</p>
+<pre><code>&gt; git <span class="comment">--version</span>
+</code></pre><p>———————————— 12-18日更新 ——————————</p>
+<p>经朋友提示，在检查完以上依赖包后，还有可能出现一种错误，如下所示：</p>
+<pre><code>/usr/bin/perl Makefile.<span class="keyword">PL</span> PREFIX='/usr/<span class="keyword">local</span>' INSTALL_BASE='' --localedir='/usr/<span class="keyword">local</span>/share/locale'
+ Can't locate ExtUtils/MakeMaker.pm <span class="keyword">in</span> @INC (@INC contains: /usr/<span class="keyword">local</span>/lib/perl5 /usr/<span class="keyword">local</span>/share/perl5 /usr/lib/perl5/vendor_perl /usr/share/perl5/vendor_perl /usr/lib/perl5 /usr/share/perl5 .) at Makefile.<span class="keyword">PL</span> <span class="keyword">line</span> 3.
+ BEGIN failed--compilation aborted at Makefile.<span class="keyword">PL</span> <span class="keyword">line</span> 3.
+ make[1]: *** [perl.mak] <span class="keyword">Error</span> 2
+ make: *** [perl/perl.mak] <span class="keyword">Error</span> 2
+</code></pre><p>提示是perl的问题，使用yum search perl-devel查出一些包。</p>
+<pre><code>&gt; yum <span class="keyword">install</span> perl-devel.i686
+</code></pre><p>继续make | make install。 成功！</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2012/02/17/Curl提示SSL certificate错误/">
                 Curl提示SSL certificate错误
               </a>
@@ -500,130 +605,6 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2012/01/10/No module named yum/">
-                No module named yum
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2012-01-10
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/tech/">tech</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/01/10/No module named yum/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/10/No module named yum/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>今早运行Yum报错：</p>
-<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># yum</span>
-
-There was a problem importing one <span class="keyword">of</span> the Python modules
-required <span class="keyword">to</span> run yum. The error leading <span class="keyword">to</span> <span class="keyword">this</span> problem <span class="attribute">was</span>:
-
-   No <span class="built_in">module</span> named yum
-
-Please install a package which provides <span class="keyword">this</span> <span class="built_in">module</span>, <span class="keyword">or</span>
-verify <span class="literal">that</span> the <span class="built_in">module</span> <span class="keyword">is</span> installed correctly.
-
-It<span class="string">'s possible that the above module doesn'</span>t match the
-current version <span class="keyword">of</span> Python, which <span class="attribute">is</span>:
-<span class="number">2.7</span>.<span class="number">2</span> (<span class="keyword">default</span>, Dec  <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
-[GCC <span class="number">4.1</span>.<span class="number">2</span> <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.<span class="number">2</span>-<span class="number">51</span>)]
-
-If you cannot solve <span class="keyword">this</span> problem yourself, please go <span class="keyword">to</span>
-the yum faq <span class="attribute">at</span>:
-  <span class="attribute">http</span>:<span class="pi">//wiki.linux.duke.edu/YumFaq</span>
-</code></pre><p>错误原因：错误信息描述为 yum 所依赖的python 不相符</p>
-<p>查看yum版本</p>
-<pre><code>[root@Rony ~]# rpm -qa | grep yum
-yum-<span class="number">3.2.22-37</span>.el5.centos
-yum-metadata-parser-<span class="number">1.1.2-3</span>.el5.centos
-yum-fastestmirror-<span class="number">1.1.16-16</span>.el5.centos
-</code></pre><p>查看python版本</p>
-<pre><code><span class="comment">[root@Rony ~]</span># whereis python
-
-python: /usr/bin/python2.4 /usr/bin/python /usr/lib/python2.4 /usr/local/python2.7 /usr/share/<span class="keyword">man</span>/man1/python.1.gz
-</code></pre><p>装了两个版本python，因为上次的更新版本到python2.7</p>
-<p>执行python，默认使用的是2.7.2的版本</p>
-<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># python</span>
-Python <span class="number">2.7</span>.2 (<span class="reserved">default</span>, Dec <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
-
-[GCC <span class="number">4.1</span>.2 <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.2-<span class="number">51</span>)] <span class="literal">on</span> linux2
-Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.
-&gt;&gt;&gt;
-</code></pre><p>yum调用了高版本的python，而yum使用的是python2.4。</p>
-<p>查找yum文件,并编辑此py文件</p>
-<pre><code>[root<span class="keyword">@Rony</span> ~]# which yum
-/usr/bin/yum
-[root<span class="keyword">@develop</span> local]# vi /usr/bin/yum
-
-将
-<span class="shebang">#!/usr/bin/python</span>
-改为:
-<span class="shebang">#!/usr/bin/python2.4</span>
-</code></pre><p>然后保存OK.</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -662,7 +643,7 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

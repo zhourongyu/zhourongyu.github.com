@@ -144,6 +144,135 @@
           
           
             
+              <a class="post-title-link" href="/2014/09/02/jvm的时区问题/">
+                jvm的时区问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2014-09-02
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/09/02/jvm的时区问题/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/02/jvm的时区问题/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最近发现在一台开发机上java程序启动后时间不对，比系统时间慢八小时，检查系统时间却发现是正确的…</p>
+<p>有俩种解决方案，方案一:</p>
+<pre><code><span class="comment">//程序内设置TimeZone</span>
+<span class="keyword">import</span> java.text.SimpleDateFormat;
+<span class="keyword">import</span> java.util.Date;
+<span class="keyword">import</span> java.util.TimeZone;
+<span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>{
+    public static <span class="keyword">void</span> main(<span class="built_in">String</span>[] args){
+        SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);
+        TimeZone tz = TimeZone.getTimeZone(<span class="string">"Asia/Shanghai"</span>);
+        df.setTimeZone(tz);
+        System.out.println(df.format(<span class="keyword">new</span> <span class="built_in">Date</span>()));
+        System.out.println(<span class="keyword">new</span> <span class="built_in">Date</span>().toString());
+    }
+}
+</code></pre><p>result：</p>
+<pre><code>2014<span class="tag">-09-02</span> 23<span class="pseudo">:03</span><span class="pseudo">:25</span>
+<span class="tag">Tue</span> <span class="tag">Sep</span> 02 15<span class="pseudo">:03</span><span class="pseudo">:25</span> <span class="tag">UTC</span> 2014
+</code></pre><p>方案二：</p>
+<pre><code>在程序的启动脚本里加上时区参数
+<span class="deletion">-Duser.timezone=Asia/Shanghai</span>
+</code></pre><p>打印结果可以看出是时区不正确，jvm获取到的时区为UTC，而正确的时间应为CST（北京时间），方案二显然更加灵活但也治标不治本。<br>接下来检查当前系统属性</p>
+<pre><code><span class="comment">//遍历当前系统属性</span>
+<span class="keyword">final</span> Properties p = System.getProperties();
+<span class="keyword">final</span> Enumeration e = p.keys();
+<span class="keyword">while</span> (e.hasMoreElements()) {
+    <span class="keyword">final</span> <span class="keyword">String</span> prt = (<span class="keyword">String</span>) e.nextElement();
+    <span class="keyword">final</span> <span class="keyword">String</span> prtvalue = System.getProperty(prt);
+    System.out.<span class="built_in">println</span>(prt + <span class="string">":"</span> + prtvalue);
+}
+</code></pre><p>可以发现如下参数：</p>
+<pre><code>...
+java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.vendor</span>:Oracle Corporation
+os<span class="class">.name</span>:Linux
+sun<span class="class">.jnu</span><span class="class">.encoding</span>:UTF-<span class="number">8</span>
+java<span class="class">.library</span><span class="class">.path</span>:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java<span class="class">.specification</span><span class="class">.name</span>:Java Platform API Specification
+java<span class="class">.class</span><span class="class">.version</span>:<span class="number">51.0</span>
+sun<span class="class">.management</span><span class="class">.compiler</span>:HotSpot <span class="number">64</span>-Bit Tiered Compilers
+os<span class="class">.version</span>:<span class="number">3.11</span>.<span class="number">0</span>-<span class="number">15</span>-generic
+user<span class="class">.home</span>:/root
+user<span class="class">.timezone</span>:Etc/UTC
+java<span class="class">.awt</span><span class="class">.printerjob</span>:sun<span class="class">.print</span><span class="class">.PSPrinterJob</span>
+file<span class="class">.encoding</span>:UTF-<span class="number">8</span>
+java<span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
+java<span class="class">.class</span><span class="class">.path</span>:/home/app/jdk1.<span class="number">7.0</span>_67/lib:.
+user<span class="class">.name</span>:root
+java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
+sun<span class="class">.java</span><span class="class">.command</span>:Test
+java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</span>_67/jre
+...
+</code></pre><p>本地使用的jdk环境是64-Bit jdk7U67，系统环境64Bit Ubuntu 12.04。<br><strong><em>终极方案</em></strong>：修改系统的时区为「Asia/Shanghai」。</p>
+<pre><code>cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai /</span>etc<span class="regexp">/localtime</span>
+</code></pre>
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2014/08/16/为毛怪萨利文拍写真/">
                 为毛怪萨利文拍写真
               </a>
@@ -507,88 +636,6 @@ configure <span class="attribute">arguments</span>: --user=www --group=www --pre
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/05/05/五月飞雪长白山/">
-                五月飞雪长白山
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-05-05
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/photo/">photo</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/05/05/五月飞雪长白山/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/05/05/五月飞雪长白山/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>长白山大约有半年时间处于冰雪期，这次五一来这里也算赶上了末班车。据当地居民了解，前几天刚好下了大雪，虽然劳累一天奔波在路上，但因为第一天天气特别好，并且天气预报明日有雨，随即放弃吃饭休息，直奔景区（14：30停止进山）。</p>
-<p>长白山景区分西坡/南坡/北坡三大块，北坡最早开发，设施也很齐全。第一天我们去的是西坡，这边人比较少，为了省时间直奔天池。山顶白茫茫的雪，天池也处于大冰块状态，上面浮着大片雪花。<br><a href="http://zryblog.qiniudn.com/2014/07/3514330239.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/3514330239.jpg" alt="1234.jpg"></a></p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/1466751501.jpg" alt="IMG\_4468.jpg"></p>
-<p>西坡景点比较少，但可以看到天池全景。第二日我们再去往北坡，遗憾的是从五一开始门票只限当日进山了，只能再多花125门票！<br>而北坡最坑爹的是不只需要买门票和摆渡车，上天池需要另付一趟越野车费。以至于我们放弃再登顶，去长白山瀑布/地下森林等景点游玩了<br><img src="http://zryblog.qiniudn.com/2014/07/775729599.jpg" alt="IMG\_4502.jpg"></p>
-<p>总体来说天池确实很有特色，至于其他的什么大峡谷/森林都不太值得一去。<br>这次由于是自驾游，悠闲随意，让我们惊喜的是整个旅途非常顺畅，甚至高速上没见到几辆车，完全没有国内假期旅游的景象，也许我们真选对了地方，如果每次都这样那就太好了。</p>
-<p>因为自驾的原因，路途中遇见美丽的地方都会下来游玩一下。印象深刻的除了沈吉/抚长高速上那些个性特色的服务站，还有整个途中大片的白桦林，在景区附近的省道/国道/小道路边全是。加上经常一俩车都看不到，感觉像是来到了国外，令人心旷神怡。</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -627,7 +674,7 @@ configure <span class="attribute">arguments</span>: --user=www --group=www --pre
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

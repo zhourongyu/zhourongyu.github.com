@@ -144,6 +144,89 @@
           
           
             
+              <a class="post-title-link" href="/2014/12/30/HOW-TO-CLEAN-HHKB/">
+                HOW-TO-CLEAN-HHKB?!
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2014-12-30
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/life/">life</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/12/30/HOW-TO-CLEAN-HHKB/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/30/HOW-TO-CLEAN-HHKB/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>小h陪我俩年多了，饱经沧桑与折磨，却依然不离不弃~ 看着身边不少朋友都加入了hhkb阵营，倍感欣慰…hahaha<br>因为是白色版本，易脏，非常不易洗，在2014过去之前给它好好洗个澡吧，这也是它的第二个「澡」</p>
+<ol>
+<li><p>拔键帽，试用过市面上常用的几种拔键器，貌似不太好拔，原因不明。换成原厂的拔键器后则轻松很多，如图：<br><img src="http://zryblog.qiniudn.com/2014/12/1358260270.jpg" alt="hhkb-clean-1.jpg"><br>不要看这个键盘挺干净，其实是洗完后拍的，忘记把它的脏样子留下来了~<br>拆卸的时候注意下每排键帽的高度不同，别到装得时候开始惆怅了。拆卸空格键的时候要小心下面的那颗弹簧，很容易飞出去~</p>
+</li>
+<li><p>拆下的键帽可机洗，可手洗，第一次我试用机洗「扔洗衣机」，效果非常好~ 但总觉得会对键帽造成一定磨损，这次索性就手洗了，目测效果比机洗差一个等级。键帽的材质是pbt，不易出油，但不清楚洗涤液对它的腐蚀性如何。<br>底座的清洗方式只能动用小刷子和Cyber Clean了，效果也不错。<br>洗完拍个全家福，预祝2015年「阖家欢乐」：<br><img src="http://zryblog.qiniudn.com/2014/12/2623668468.jpg" alt="hhkb-clean-2.jpg"></p>
+</li>
+</ol>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2014/12/16/实用的Git高级用法 (一)/">
                 实用的Git高级用法 (一)
               </a>
@@ -632,135 +715,6 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/09/02/jvm的时区问题/">
-                jvm的时区问题
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-09-02
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/tech/">tech</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/09/02/jvm的时区问题/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/09/02/jvm的时区问题/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>最近发现在一台开发机上java程序启动后时间不对，比系统时间慢八小时，检查系统时间却发现是正确的…</p>
-<p>有俩种解决方案，方案一:</p>
-<pre><code><span class="comment">//程序内设置TimeZone</span>
-<span class="keyword">import</span> java.text.SimpleDateFormat;
-<span class="keyword">import</span> java.util.Date;
-<span class="keyword">import</span> java.util.TimeZone;
-<span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>{
-    public static <span class="keyword">void</span> main(<span class="built_in">String</span>[] args){
-        SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);
-        TimeZone tz = TimeZone.getTimeZone(<span class="string">"Asia/Shanghai"</span>);
-        df.setTimeZone(tz);
-        System.out.println(df.format(<span class="keyword">new</span> <span class="built_in">Date</span>()));
-        System.out.println(<span class="keyword">new</span> <span class="built_in">Date</span>().toString());
-    }
-}
-</code></pre><p>result：</p>
-<pre><code>2014<span class="tag">-09-02</span> 23<span class="pseudo">:03</span><span class="pseudo">:25</span>
-<span class="tag">Tue</span> <span class="tag">Sep</span> 02 15<span class="pseudo">:03</span><span class="pseudo">:25</span> <span class="tag">UTC</span> 2014
-</code></pre><p>方案二：</p>
-<pre><code>在程序的启动脚本里加上时区参数
-<span class="deletion">-Duser.timezone=Asia/Shanghai</span>
-</code></pre><p>打印结果可以看出是时区不正确，jvm获取到的时区为UTC，而正确的时间应为CST（北京时间），方案二显然更加灵活但也治标不治本。<br>接下来检查当前系统属性</p>
-<pre><code><span class="comment">//遍历当前系统属性</span>
-<span class="keyword">final</span> Properties p = System.getProperties();
-<span class="keyword">final</span> Enumeration e = p.keys();
-<span class="keyword">while</span> (e.hasMoreElements()) {
-    <span class="keyword">final</span> <span class="keyword">String</span> prt = (<span class="keyword">String</span>) e.nextElement();
-    <span class="keyword">final</span> <span class="keyword">String</span> prtvalue = System.getProperty(prt);
-    System.out.<span class="built_in">println</span>(prt + <span class="string">":"</span> + prtvalue);
-}
-</code></pre><p>可以发现如下参数：</p>
-<pre><code>...
-java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.vendor</span>:Oracle Corporation
-os<span class="class">.name</span>:Linux
-sun<span class="class">.jnu</span><span class="class">.encoding</span>:UTF-<span class="number">8</span>
-java<span class="class">.library</span><span class="class">.path</span>:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
-java<span class="class">.specification</span><span class="class">.name</span>:Java Platform API Specification
-java<span class="class">.class</span><span class="class">.version</span>:<span class="number">51.0</span>
-sun<span class="class">.management</span><span class="class">.compiler</span>:HotSpot <span class="number">64</span>-Bit Tiered Compilers
-os<span class="class">.version</span>:<span class="number">3.11</span>.<span class="number">0</span>-<span class="number">15</span>-generic
-user<span class="class">.home</span>:/root
-user<span class="class">.timezone</span>:Etc/UTC
-java<span class="class">.awt</span><span class="class">.printerjob</span>:sun<span class="class">.print</span><span class="class">.PSPrinterJob</span>
-file<span class="class">.encoding</span>:UTF-<span class="number">8</span>
-java<span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
-java<span class="class">.class</span><span class="class">.path</span>:/home/app/jdk1.<span class="number">7.0</span>_67/lib:.
-user<span class="class">.name</span>:root
-java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
-sun<span class="class">.java</span><span class="class">.command</span>:Test
-java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</span>_67/jre
-...
-</code></pre><p>本地使用的jdk环境是64-Bit jdk7U67，系统环境64Bit Ubuntu 12.04。<br><strong><em>终极方案</em></strong>：修改系统的时区为「Asia/Shanghai」。</p>
-<pre><code>cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai /</span>etc<span class="regexp">/localtime</span>
-</code></pre>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -799,7 +753,7 @@ java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</sp
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

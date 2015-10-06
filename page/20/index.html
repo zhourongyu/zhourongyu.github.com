@@ -144,6 +144,94 @@
           
           
             
+              <a class="post-title-link" href="/2011/06/09/Diskpart做U启/">
+                Diskpart做U启
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2011-06-09
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2011/06/09/Diskpart做U启/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/09/Diskpart做U启/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>还记得为了能够迅速稳定安装XP的时代么，做PE，GHOST等，当时还乐在其中，非常有成就感，知道NT 6.0以后，似乎一切变得简单了，因为有DISKPART。</p>
+<p>从Windows NT开始，Windows已经彻底从曾经的MS-DOS中分离出来了，但是直到现在，仍然有很多人在使用MS-DOS下的FDISKS工具来对磁盘进行分区，接下来，我就介绍一下Windows NT的磁盘分区工具DISKPART。</p>
+<p>DISKPART 可以做的事情太多了，下面只是对一个U盘做了U启方便了日后为自己或他人安装WIN　NT6.0以上都系统（vista，win７）。</p>
+<p>在命令提示符下输入diskpart即可启动，注意：你必须拥有管理员权限。<br>接下来的例子中，我对一个新的U盘做U启，将其格式化成NTFS格式。</p>
+<pre><code>list disk
+<span class="operator"><span class="keyword">select</span> disk <span class="number">1</span>　（注意看disk大小，千万不要选中自己电脑的硬盘，一般从０开始）
+<span class="keyword">create</span> <span class="keyword">partition</span> <span class="keyword">primary</span>
+<span class="keyword">select</span> <span class="keyword">partition</span> <span class="number">1</span>
+<span class="keyword">format</span> fs=ntfs <span class="keyword">quick</span>
+active
+exit</span>
+</code></pre><p>够简单了吧，不必再去网上找各种制作U盘启动都工具了！</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2011/03/30/入手MacBook Pro 723/">
                 入手MacBook Pro 723
               </a>
@@ -482,7 +570,7 @@ ex.printStackTrace<span class="params">()</span>;
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

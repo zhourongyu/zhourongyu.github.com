@@ -144,6 +144,95 @@
           
           
             
+              <a class="post-title-link" href="/2013/11/27/Nginx反向代理获取真实IP/">
+                Nginx反向代理获取真实IP
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-11-27
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/11/27/Nginx反向代理获取真实IP/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/27/Nginx反向代理获取真实IP/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>今天面试官的一个问题让我有点疑惑：如何配置 Nginx 能让程序在后台获取真实的用户IP，当时我没理解这个问题意思，获取请求IP不是很简单的事情么？例如：request.getRemoteAddr()</p>
+<p>回来查询了资料. 此问题是指使用了 Nginx 反向代理获取不到真实用户的 IP ，当使用了反向代理后 getRemoteAddr() 返回的是反向服务器的 IP。</p>
+<p>什么是反向代理，曾经写了一个聊天小应用并部署再服务器上，端口为8888，本地访问也就是127.0.0.1:8888</p>
+<p>我想让 t.imim.me 访问到我的这个应用上（应用已撤除），配置如下</p>
+<p><img src="http://zryblog.qiniudn.com/2014/07/617923233.jpg" alt="t.imim.me">  </p>
+<pre><code>proxy_pass <span class="string">http:</span><span class="comment">//chat</span>
+</code></pre><p>这就是反向代理，将来自这个域名的请求转发到了一个名为 chat 的 upstream，也是真实的应用地址（127.0.0.1:8888）</p>
+<p>再看这两行配置:</p>
+<pre><code>proxy_<span class="built_in">set</span>_header X-real-ip <span class="variable">$remote_addr</span>
+proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;
+</code></pre><p>配置 X-real-ip 就可以在 web 服务器端通过 request.getAttribute(“X-real-ip”) 获得用户的真实 ip。</p>
+<p>X-Forwarded-For 是一个 proxy 转发记录,每次经过转发都会有记录，以 client,proxy1,proxy2 格式保存。如果没有2配置的话，后端通过 request.getAttribute(“X-Forwarded-For”) 获取值为Null。</p>
+<p>当一个应用经过 N(N&gt;1) 次 Nginx 转发时，X-real-ip 中保存的是 N-1 的服务器地址，也就是说当第二次代理的时候 X-real-ip 的值为第一台 Nginx 服务器 IP，X-Forwarded-For 的值则变为”用户真实 IP , 第一台 Nginx 服务器 IP”</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2013/11/10/三清山之行/">
                 三清山之行
               </a>
@@ -483,89 +572,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/09/11/苹果还是那个苹果/">
-                苹果还是那个苹果
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2013-09-11
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/life/">life</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/09/11/苹果还是那个苹果/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/09/11/苹果还是那个苹果/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>昨晚本来想熬夜看直播，不料年事已高，卧床至12点左右竟然睡着了…早上起床发现电脑电都放完了。只能看看各大媒体的总结了，让人欣慰的是在没有乔布斯的这段日子，苹果还是那个苹果，也许创新能力下降，但思想犹存。</p>
-<p>一，全球第一款使用x64的手机。在我看来最大的亮点是苹果明智的选择了X64，而不是像Android阵营那样都四核八核的往上堆，让人看起来很牛逼的样子。说起64位又让我想起了Windows，不知道现在有多少朋友还在害怕64位的系统，在Windows刚出现x64的时候问题太多了，各种系统问题，软件兼容问题。为了兼容C盘下一直存在(x86)和(x64)两个目录，这真让人恶心。当苹果的OSX要转x64的时候不少人也担心像Windows那样出现问题，但是直到现在我一点感觉都没有，甚至认为这转了不和没转一样吗？装软件用软件从来没变化……真是人比人气死人。</p>
-<p>今天一台双核电脑给大部分人用都可以完全胜任，一个手机有必要牛逼到八核的概念吗，还是说这个八核完全是炒作（确实是给人装逼用的）。硬件的升级涉又及到耗电，内存等各方面的优化，耗时费力，不是一味的堆配置就是牛逼。</p>
-<p>二，Touch ID （指纹识别），看起来不像Siri那样鸡肋，这个名称取的很大，应该不单单只是个指纹识别。可以通过指纹验证购买APP有点意思，我认为未来指纹支付的模式更优于NFC。现在NFC大热，各大商家都在玩NFC的时候，Apple依旧有自己的思想（好像一直都不看好NFC）。至于实际使用还有待实测，指纹技术应该够成熟了，只是Home区域很小，只能覆盖部分指纹，加上单手操作，识别率有待考察。这个看样子又会引起一堆争议，just like siri……</p>
-<p>三，5c颜色很亮，合适青春活力资金不太宽裕的学生/小青年，切记不要买国行，一定要港行~<br>5s值得吐槽的也是颜色。 白依旧靓丽，所谓的空间灰不知道什么概念（貌似是比5要浅），希望比5的要好。金色嘛，做好了是高贵色，做不好就是暴发户手机。我喜爱的高贵黑色再也找不到了…</p>
-<p>另外一件有意思的事是：Tim Cook的几次访华没白来，中国第一全球同步发售iPhone，香港都不在第一批国家内，香港会不会过来抢大陆”水”货（估计够呛）。今天国内的发布会要出TD-LTE的5s了。这个才是我最想看到的！</p>
-<p>关于屏幕一直都徘徊，iPhone 5的4寸屏幕已经是我的操作极限（右手单卧拇指点击左上角按钮）。大屏始终有更好的视觉体验，但也带来了更大的消耗，从体积，视觉，操作来说对目前的屏幕还是满意的，但还是希望Apple出个大屏的，毕竟还是有不小的市场。一直认为一个男人拿着五六寸手机，还是那种超薄的感觉非常”娘”（例如Note系列），裤兜还不好塞，塞包里更娘。五寸已经够勉强了，使用Sony那非人类的6.5寸手机绝非普通人。。。</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -604,7 +610,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
