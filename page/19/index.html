@@ -38,7 +38,7 @@
   var CONFIG = {
     scheme: '',
     analytics: {
-      google: ''
+      google: 'UA-68669626-1'
     },
     sidebar: 'always'
   };
@@ -132,6 +132,98 @@
         <div id="content" class="content">
           
   <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2011/12/05/CentOS安装Python/">
+                CentOS安装Python
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2011-12-05
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2011/12/05/CentOS安装Python/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2011/12/05/CentOS安装Python/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>centos5.6自带的是python2.4，版本太老。</p>
+<p>如果需要使用高版本的python 则需要自己 编译并安装</p>
+<p>编译python 前需要先安装 编译环境</p>
+<p>使用  yum install gcc gcc-c++ autoconf automake 来安装编译环境</p>
+<p>使用wget下载python</p>
+<pre><code>wget http:<span class="comment">//www.python.org/ftp/python/2.7.2/Python-2.7.2.tgz</span>
+
+tar xzf Python-<span class="number">2.7</span>.<span class="number">2</span><span class="class">.tgz</span>
+cd Python-<span class="number">2.7</span>.<span class="number">2</span>
+</code></pre><p>编译安装python</p>
+<pre><code>./configure --prefix=/usr/local/python2.7
+<span class="built_in">make</span>
+<span class="built_in">make</span> install
+</code></pre><p>创建一个python2.7的链接</p>
+<pre><code>ln -sf <span class="regexp">/usr/</span>local<span class="regexp">/python2.7/</span>bin<span class="regexp">/python2.7 /u</span>sr<span class="regexp">/bin/</span>python（可以取名python2.<span class="number">7</span>，这样方便安装多个版本）
+</code></pre><p>and 直接运行OK</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
     
       
 
@@ -480,83 +572,6 @@ git init
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2011/06/09/Mac下常用软件/">
-                Mac下常用软件
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2011-06-09
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/life/">life</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/06/09/Mac下常用软件/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/09/Mac下常用软件/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>Internet:<br>Safari;(mac有支付宝证书）<br>Firefox;<br>Camino;<br>通信：<br>QQ for MAC;<br>Microsoft Messnger;（可视频）<br>输入法：<br>FIT;<br>邮件：<br>Thunderbird;<br>办公：<br>iwork;<br>office for mac;<br>下载：<br>Folx;<br>easymule;<br>影音：<br>itunes;<br>MPlayerX;<br>清理：<br>CleanMyMac;<br>AppZapper;</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -595,7 +610,7 @@ git init
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">98</span>
+              <span class="site-state-item-count">99</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -609,7 +624,7 @@ git init
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">105</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -755,6 +770,8 @@ git init
 
   
   
+  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
+
 
 </body>
 </html>

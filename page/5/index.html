@@ -38,7 +38,7 @@
   var CONFIG = {
     scheme: '',
     analytics: {
-      google: ''
+      google: 'UA-68669626-1'
     },
     sidebar: 'always'
   };
@@ -132,6 +132,118 @@
         <div id="content" class="content">
           
   <div id="posts" class="posts-expand">
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/03/28/性能测试神器Gatling/">
+                性能测试神器Gatling
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2014-03-28
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/03/28/性能测试神器Gatling/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/28/性能测试神器Gatling/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><a href="http://gatling-tool.org/" target="_blank" rel="external">Gatling</a>是一款开源的基于Scala开发的高性能服务器性能测试工具：<a href="https://github.com/excilys/gatling/wiki/Downloads" target="_blank" rel="external">下载地址</a></p>
+<p>Gatling有两个主线版本，一个是最新版本1.5.4;一个是Gatling 2,最新版本是2.0.0-M3a。Gatling 2使用了JDK7进行编译，使用的Scala版本是2.10，它对Gatling的API进行了一些重构和重新设计,目前还处于开发阶段。</p>
+<p>Gatling的目录结构: </p>
+<ul>
+<li>bin目录下有2个脚本，gatling和recorder， gatling用来运行测试， recorder用来启动录制脚本的UI的（不推荐使用），</li>
+<li>conf目录是关于Gatling自身的一些配置。</li>
+<li>lib目录是Gatling自身依赖的库文件。</li>
+<li>results目录用来存放测试报告的。</li>
+<li>user-files目录是用来存放测试脚本的。</li>
+</ul>
+<p>user-files下有basic/advanced目录中提供了几个性能测试脚本的示例。下面是一个我自己写的Gatling 2测试案例：</p>
+<pre><code>val httpProtocol = http
+    .<span class="function"><span class="title">baseURL</span><span class="params">(<span class="string">"http://zhourongyu.me"</span>)</span></span>
+    .<span class="function"><span class="title">acceptCharsetHeader</span><span class="params">(<span class="string">"utf-8;q=0.7,*;q=0.7"</span>)</span></span>
+    .<span class="function"><span class="title">acceptHeader</span><span class="params">(<span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"</span>)</span></span>
+    .<span class="function"><span class="title">acceptEncodingHeader</span><span class="params">(<span class="string">"gzip, deflate"</span>)</span></span>
+    .<span class="function"><span class="title">acceptLanguageHeader</span><span class="params">(<span class="string">"en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4"</span>)</span></span>
+    <span class="class">.disableFollowRedirect</span>
+val <span class="tag">header</span> = Map(
+    <span class="string">"Keep-Alive"</span> -&gt; <span class="string">"115"</span>,
+    <span class="string">"Content-Type"</span> -&gt; <span class="string">"application/json; charset=UTF-8"</span>)
+</code></pre><p>在这个类中定义了一个httpConf,定义了请求头的一些基本信息</p>
+<pre><code>val scn = <span class="function"><span class="title">scenario</span><span class="params">(<span class="string">"home page"</span>)</span></span>
+            .<span class="function"><span class="title">exec</span><span class="params">( http(<span class="string">"request_1"</span>)</span></span>
+                .<span class="function"><span class="title">get</span><span class="params">(<span class="string">"/"</span>)</span></span>
+                .<span class="function"><span class="title">headers</span><span class="params">(header)</span></span>)
+            .<span class="function"><span class="title">pause</span><span class="params">(<span class="number">4</span>, <span class="number">5</span>)</span></span>
+            .<span class="function"><span class="title">exec</span><span class="params">( http(<span class="string">"search "</span>)</span></span>
+                .<span class="function"><span class="title">post</span><span class="params">(<span class="string">"/search"</span>)</span></span>
+                  .<span class="function"><span class="title">param</span><span class="params">(<span class="string">"access_token"</span>, <span class="string">"cZtWF314n9cdmY5HVLhspO"</span>)</span></span>
+                            .<span class="function"><span class="title">param</span><span class="params">(<span class="string">"title"</span>,<span class="string">"gatling"</span>)</span></span>
+                  .<span class="function"><span class="title">check</span><span class="params">(status.is(<span class="number">200</span>)</span></span>))
+</code></pre><p>定义了一个测试场景，用户先访问Github首页，检查http返回状态码是否为200，然后暂停一段时间后再执行一个查询操作，查询关键字是test，检查http返回状态码是否为200</p>
+<pre><code><span class="function"><span class="title">setUp</span><span class="params">(scn.inject(ramp(<span class="number">100</span> users)</span></span> over (<span class="number">10</span> seconds)))
+    .<span class="function"><span class="title">protocols</span><span class="params">(httpProtocol)</span></span>
+</code></pre><p>指定100个用户模拟该测试场景。100个用户以每秒10个递增，持续10秒。<br>注：<br>一个Gatling测试脚本就是一个scala的类，该类必须继承Simulation类。<br>Gatling提供了非常完善的DSL：<a href="http://gatling-tool.org/cheat-sheet/" target="_blank" rel="external">API查询</a> || <a href="https://github.com/excilys/gatling/wiki" target="_blank" rel="external">WIKI</a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
     
       
 
@@ -460,91 +572,6 @@ eg：opition + v 然后输入韵母 o --&gt; ǒ
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2014/01/23/OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案/">
-                OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-01-23
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/tech/">tech</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/01/23/OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/23/OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>最近时常发生睡眠后唤醒无声音，开始以为是耳机问题~<br>经尝试发现确实是系统问题，Apple也确认了这个问题，目前共有三套解决方案</p>
-<ul>
-<li>坐等系统更新</li>
-<li>重启，麻烦的手段</li>
-<li>重载驱动</li>
-</ul>
-<p>当然方案三最靠谱，重载驱动命令：</p>
-<pre><code>sudo kextunload <span class="regexp">/System/</span>Library<span class="regexp">/Extensions/</span>AppleHDA.kext
-sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/Extensions/</span>AppleHDA.kext
-</code></pre>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -583,7 +610,7 @@ sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/E
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">98</span>
+              <span class="site-state-item-count">99</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -597,7 +624,7 @@ sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/E
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">105</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -743,6 +770,8 @@ sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/E
 
   
   
+  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
+
 
 </body>
 </html>
