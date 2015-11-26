@@ -144,92 +144,6 @@
           
           
             
-              <a class="post-title-link" href="/2012/01/13/MBP的启动速度改进方案/">
-                MBP的启动速度改进方案
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2012-01-13
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/tech/">tech</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/01/13/MBP的启动速度改进方案/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/13/MBP的启动速度改进方案/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>今天自己的MBP启动速度很慢呢，最初的时候30+秒，如今已经到1分钟了。</p>
-<p>有几种可以提升下速度的方案:<br>1.最直接的方案，更换SSD，效果一流，速度在10-15秒左右，当然价格比较昂贵。</p>
-<p>2.修复磁盘权限，这个方法较实用，效果也还比较明显</p>
-<p>3.重置 PRAM 和 NVRAM </p>
-<p>因为没舍得整块换SSD,而好的支架也不好买，所以1方案还不在考虑范围内。<br>用了2，3测试后，现在到45秒左右，效果还算满意。<br>有遇到相似问题的朋友不妨试一下这个方法,这个操作基本是无伤害的，详情可以查看官方介绍：何时需要重置 PRAM 和 NVRAM</p>
-<p>重置 PRAM 和 NVRAM</p>
-<p>关闭电脑。<br>在键盘上找到以下按键：Command、Option、P 和 R。您需要在步骤 4 中同时按下这些键。<br>启动电脑。<br>按住 Command-Option-P-R 键。必须在出现灰屏前按下此组合键。<br>按住上述键，直到电脑重新启动，您会再次听到启动声。<br>松开这些键。</p>
-<p>另附上一些的常用提速技巧</p>
-<p>MAC OS在每次启动都会为桌面文件做索引，所以尽量少在桌面上放文件，可放置快速链接</p>
-<p>在User&amp;Groups 里面把Login items筛选一下</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
               <a class="post-title-link" href="/2012/01/10/No module named yum/">
                 No module named yum
               </a>
@@ -630,6 +544,98 @@ Swap: 786416 36 786380
 
 
     
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2011/12/05/CentOS安装Python/">
+                CentOS安装Python
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2011-12-05
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2011/12/05/CentOS安装Python/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2011/12/05/CentOS安装Python/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>centos5.6自带的是python2.4，版本太老。</p>
+<p>如果需要使用高版本的python 则需要自己 编译并安装</p>
+<p>编译python 前需要先安装 编译环境</p>
+<p>使用  yum install gcc gcc-c++ autoconf automake 来安装编译环境</p>
+<p>使用wget下载python</p>
+<pre><code>wget http:<span class="comment">//www.python.org/ftp/python/2.7.2/Python-2.7.2.tgz</span>
+
+tar xzf Python-<span class="number">2.7</span>.<span class="number">2</span><span class="class">.tgz</span>
+cd Python-<span class="number">2.7</span>.<span class="number">2</span>
+</code></pre><p>编译安装python</p>
+<pre><code>./configure --prefix=/usr/local/python2.7
+<span class="built_in">make</span>
+<span class="built_in">make</span> install
+</code></pre><p>创建一个python2.7的链接</p>
+<pre><code>ln -sf <span class="regexp">/usr/</span>local<span class="regexp">/python2.7/</span>bin<span class="regexp">/python2.7 /u</span>sr<span class="regexp">/bin/</span>python（可以取名python2.<span class="number">7</span>，这样方便安装多个版本）
+</code></pre><p>and 直接运行OK</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
   </div>
 
   
@@ -668,7 +674,7 @@ Swap: 786416 36 786380
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -682,7 +688,7 @@ Swap: 786416 36 786380
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">105</span>
+              <span class="site-state-item-count">104</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

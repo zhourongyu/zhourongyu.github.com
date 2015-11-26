@@ -2,11 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://xxxx.ooo/2015/11/26/parallels_desktop_%E9%BB%91%E4%BA%94%E8%B4%AD%E7%BD%AE%E6%8C%87%E5%8D%97/</loc>
-    <lastmod>2015-11-26T05:22:11.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://xxxx.ooo/2015/10/06/%E8%8D%89%E5%8E%9F%E5%A4%A9%E8%B7%AF/</loc>
     <lastmod>2015-10-06T15:45:07.000Z</lastmod>
   </url>
@@ -32,7 +27,12 @@
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/%E9%95%BF%E7%99%BD%E5%B1%B1/index.html</loc>
+    <loc>http://xxxx.ooo/%E9%95%BF%E6%9B%9D%E5%85%89/index.html</loc>
+    <lastmod>2015-07-19T13:00:49.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xxxx.ooo/2013/09/11/%E8%8B%B9%E6%9E%9C%E8%BF%98%E6%98%AF%E9%82%A3%E4%B8%AA%E8%8B%B9%E6%9E%9C/</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
   
@@ -217,11 +217,6 @@
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/2013/07/04/%E9%9B%A8%E5%90%8E%E7%9A%84%E6%95%85%E5%AE%AB/</loc>
-    <lastmod>2015-07-19T13:00:49.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://xxxx.ooo/2013/03/16/mysql5.6%E7%BB%BF%E8%89%B2%E5%AE%89%E8%A3%85%E7%9A%841067%E9%94%99%E8%AF%AF/</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
@@ -242,7 +237,7 @@
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/2013/01/14/%E8%A5%BF%E5%AE%89%E8%A5%BF%E5%AE%89/</loc>
+    <loc>http://xxxx.ooo/2013/07/04/%E9%9B%A8%E5%90%8E%E7%9A%84%E6%95%85%E5%AE%AB/</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
   
@@ -392,7 +387,7 @@
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/2013/06/18/%E8%A1%8C%E4%B9%8B%E5%A4%A9%E6%B4%A5/</loc>
+    <loc>http://xxxx.ooo/2013/01/14/%E8%A5%BF%E5%AE%89%E8%A5%BF%E5%AE%89/</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
   
@@ -522,12 +517,12 @@
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/2013/09/03/%E9%AA%91%E8%BD%A6%E7%9A%84%E8%B7%AF%E4%B8%8A%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    <loc>http://xxxx.ooo/%E9%95%BF%E7%99%BD%E5%B1%B1/index.html</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/%E9%95%BF%E6%9B%9D%E5%85%89/index.html</loc>
+    <loc>http://xxxx.ooo/2013/09/03/%E9%AA%91%E8%BD%A6%E7%9A%84%E8%B7%AF%E4%B8%8A%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
   
@@ -812,7 +807,7 @@
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/2012/09/10/10%E4%B8%AA%E7%A3%A8%E7%BB%83%E6%91%84%E5%BD%B1%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8A%9F%E8%AF%BE/</loc>
+    <loc>http://xxxx.ooo/2013/06/18/%E8%A1%8C%E4%B9%8B%E5%A4%A9%E6%B4%A5/</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
   
@@ -1022,7 +1017,7 @@
   </url>
   
   <url>
-    <loc>http://xxxx.ooo/2013/09/11/%E8%8B%B9%E6%9E%9C%E8%BF%98%E6%98%AF%E9%82%A3%E4%B8%AA%E8%8B%B9%E6%9E%9C/</loc>
+    <loc>http://xxxx.ooo/2012/09/10/10%E4%B8%AA%E7%A3%A8%E7%BB%83%E6%91%84%E5%BD%B1%E6%8A%80%E6%9C%AF%E7%9A%84%E5%8A%9F%E8%AF%BE/</loc>
     <lastmod>2015-07-19T13:00:49.000Z</lastmod>
   </url>
   

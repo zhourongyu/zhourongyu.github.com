@@ -144,91 +144,6 @@
           
           
             
-              <a class="post-title-link" href="/2014/01/23/OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案/">
-                OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2014-01-23
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/tech/">tech</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2014/01/23/OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/23/OSX Mavericks(10.9) 睡眠后唤醒无声音的解决方案/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>最近时常发生睡眠后唤醒无声音，开始以为是耳机问题~<br>经尝试发现确实是系统问题，Apple也确认了这个问题，目前共有三套解决方案</p>
-<ul>
-<li>坐等系统更新</li>
-<li>重启，麻烦的手段</li>
-<li>重载驱动</li>
-</ul>
-<p>当然方案三最靠谱，重载驱动命令：</p>
-<pre><code>sudo kextunload <span class="regexp">/System/</span>Library<span class="regexp">/Extensions/</span>AppleHDA.kext
-sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/Extensions/</span>AppleHDA.kext
-</code></pre>
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
               <a class="post-title-link" href="/2014/01/22/Sublime Text的常用技巧/">
                 Sublime Text的常用技巧
               </a>
@@ -544,6 +459,87 @@ sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/E
 
 
     
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2013/12/10/由Wordpress迁移至Typecho/">
+                由Wordpress迁移至Typecho
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-12-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/12/10/由Wordpress迁移至Typecho/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/10/由Wordpress迁移至Typecho/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h4 id="Typecho">Typecho</h4><p>关注Typecho是在去年，在用了这么久得Wordpress后感觉累了，写文章得不方便+巨多得插件管理等，确实略显庞大。<br>Typecho是一个轻量级得php程序，在我关注得时候就想试试，但一看已经两年没有更新了～ 当时Sunny说快要有新版本了，所以一直关注中…<br>前不久0.9的测试版发布，憋到现在正式版终于出山了，立即切换了过来。<br>再关注得期间也想尝试Jekyll/Octopress ，但因为是Ruby得东西，实在有点不适应，所以放弃。</p>
+<h4 id="Markdown">Markdown</h4><p>这几个项目有共同得特色，就是支持Markdown语法，极大得简化了写作得「成本」，Wordpress一直让我诟病的就是写文章时候得麻烦，网页基本无法写东西（排版太难）…在本地使用Live Writer是公认最为合适得写作方案，但对于图片等文件得支持又要麻烦些。<br>如果博客连基本得写作都不能让人舒心，就算做得功能再全，效果再好那也不能得到写作者得青睐。只可能会更吸引一些好奇得读者。</p>
+<p>而Markdown得出现就是为了不再忧虑排版，专注写作，学习成本也极低。</p>
+<h4 id="写作">写作</h4><p>目前真正最省心高效得方法应该是Github+Jekyll.连服务器都不用管，只用专心写作，重要得是完全免费……<br>大部分人做事都是由繁入简的，刚开始玩博客你会想尽办法尝试新得东西，进入无限得折腾，当时间长了以后部分人开始放弃写博客了，因为没有折腾得动力/兴趣了，他们喜欢得是这个过程，而不是写作。而另外一些对写作有一定得热爱的人开始由繁入简，换简单得模板，用简介得写作方案。</p>
+<p>下一步要进行得是内容得转移，这是一个大工程，估计又要折腾不少时间。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
   </div>
 
   
@@ -582,7 +578,7 @@ sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/E
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">98</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -596,7 +592,7 @@ sudo kextload <span class="regexp">/System/</span>Library<span class="regexp">/E
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">105</span>
+              <span class="site-state-item-count">104</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
