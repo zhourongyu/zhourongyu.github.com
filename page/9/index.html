@@ -144,6 +144,97 @@
           
           
             
+              <a class="post-title-link" href="/2013/07/04/雨后的故宫/">
+                雨后的故宫
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-07-04
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/photo/">photo</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/07/04/雨后的故宫/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/04/雨后的故宫/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>北京经过几天的雨水，这礼拜的天空异常的好，所以我这两天都背着相机，想找时间去拍几张片子。</p>
+<p>昨天下班太晚出门都要天黑了，没得逞。今天下午突然的大雨差点让我以为又泡汤了，幸好雨过天晴，竟然太阳也出来了，下班已经七点了，远地方是去不了了，想了一下决定去景山，因为雨后的天空必然会很美，但要找制高点也不是很好找，市内也就景山还行了。</p>
+<p>到景山已经快八点了，景山顶上各种长枪短炮，好不热闹…… 差点连位置都没有，可惜人懒了点没背脚架。最后只能找缝隙拍了几张…</p>
+<p>有几点遗憾:</p>
+<ul>
+<li><p>没背脚架，天色以暗，为了保证清晰度只能使用高iso，导致噪点还是不少。</p>
+</li>
+<li><p>广角不太够，这火烧云的全貌没有得以展现，效果差不少</p>
+</li>
+<li><p>去的时间还是晚了些，听闻前不久还有彩虹…</p>
+</li>
+</ul>
+<p>最后只能换几个位置拍了几张，拼了幅全景（点击看大图）……</p>
+<p><a href="http://zryblog.qiniudn.com/2014/07/2802488854.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/2802488854.jpg" alt="gugong"></a></p>
+<p>昨天没得逞，只好在路上把看了无数遍的坟包给拍了！！！<br><img src="http://zryblog.qiniudn.com/2014/07/2758677482.jpg" alt="IMG_1224"></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2013/06/18/行之天津/">
                 行之天津
               </a>
@@ -473,108 +564,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/03/16/mysql5.6绿色安装的1067错误/">
-                mysql5.6绿色安装的1067错误
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2013-03-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/tech/">tech</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/03/16/mysql5.6绿色安装的1067错误/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/16/mysql5.6绿色安装的1067错误/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>近两年没用mysql了，最新需要为新项目配一套全新的开发环境。<br>使用了最新的mysql5.6。根目录带的是一个my-default.ini文件。复制出一份my.ini。添加以下配置</p>
-<pre><code>[mysqld]
-basedir=<span class="constant">D</span><span class="symbol">:/MYSQL</span>
-datadir=<span class="constant">D</span><span class="symbol">:/MYSQL/data</span>
-default-character-set=utf8
-</code></pre><p>然后安装服务</p>
-<pre><code><span class="comment">mysqld</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">install</span> <span class="comment">mysql</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">defaults</span><span class="literal">-</span><span class="comment">file=d:\mysql\my</span><span class="string">.</span><span class="comment">ini</span>
-</code></pre><p>再启动服务的时候报1067错误：</p>
-<pre><code><span class="variable">A</span> system error has occurred.
-<span class="variable">System</span> error <span class="number">1067</span> has occurred.
-<span class="variable">The</span> process terminated unexpectedly.
-</code></pre><p>这个错误一般是配置文件错误，仔细检查了编。仍没发现错误所在，上网搜索，大部分指出是basedir与datadir的配置问题，经过多次尝试还是没有解决。</p>
-<p>最后再data目录下的xxx.err文件里发现了问题…</p>
-<pre><code>2013<span class="tag">-03-12</span> 11<span class="pseudo">:14</span><span class="pseudo">:42</span> 8040 <span class="attr_selector">[ERROR]</span> <span class="rule"><span class="attribute">D</span>:<span class="value">\mysql\bin\mysqld: unknown variable <span class="string">'default-character-set=utf8'</span></span></span>
-</code></pre><p>找了下官方文档，发现原来5.5之后的版本配置属性有所改变。</p>
-<pre><code>default-<span class="property">character</span>-<span class="keyword">set</span>   <span class="comment">--&gt;   character_set_server</span>
-</code></pre><p>变量名修改之后重新注册服务，启动…… OK！</p>
-<p>正确配置:</p>
-<pre><code>[mysqld]
-basedir=<span class="constant">D</span><span class="symbol">:/MYSQL</span>
-datadir=<span class="constant">D</span><span class="symbol">:/MYSQL/data</span>
-character_set_server = utf8
-[client]
-default-character-set=utf8
-<span class="constant">PS</span>：[client]里的属性名没有改变
-</code></pre><p>由此可见… 不要遇上什么问题就立马上网找，一是网上的信息比较老且重复内容太多。还是先自己仔细检查的比较好 。 阿弥陀佛</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -613,7 +602,7 @@ default-character-set=utf8
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">98</span>
+              <span class="site-state-item-count">99</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -627,7 +616,7 @@ default-character-set=utf8
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">106</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
