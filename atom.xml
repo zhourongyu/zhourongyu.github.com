@@ -122,7 +122,7 @@
     <link href="http://xxxx.ooo/2015/07/16/%E4%B8%80%E4%B8%AAMySQL%20%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E7%96%91%E9%97%AE/"/>
     <id>http://xxxx.ooo/2015/07/16/一个MySQL 查询优化器的疑问/</id>
     <published>2015-07-16T05:49:00.000Z</published>
-    <updated>2015-11-30T09:31:14.000Z</updated>
+    <updated>2015-11-30T09:31:33.000Z</updated>
     <content type="html"><![CDATA[<p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
 <pre><code>id bigint
 name <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">200</span>)</span></span>
