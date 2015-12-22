@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/14/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/09/08/京郊爬山之凤凰岭/">
+              <a class="post-title-link" href="/2012/09/08/京郊爬山之凤凰岭/" itemprop="url">
                 京郊爬山之凤凰岭
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-09-08
+          發表於
+          <time itemprop="dateCreated" datetime="2012-09-08T19:18:00+08:00" content="2012-09-08">
+            2012-09-08
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/09/08/京郊爬山之凤凰岭/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/09/08/京郊爬山之凤凰岭/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/09/08/京郊爬山之凤凰岭/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/09/08/京郊爬山之凤凰岭/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,16 +224,16 @@
 
       
         
-          <p>爬山，徒步 都是我的最爱…<br>去了趟凤凰岭，比起香山来 要强很多倍，可玩性也大很多。只是路途较远。</p>
+          <span itemprop="articleBody"><p>爬山，徒步 都是我的最爱…<br>去了趟凤凰岭，比起香山来 要强很多倍，可玩性也大很多。只是路途较远。</p>
 <p>出发地点: 4号线到西苑站下车，沿同庆路走到346始发站。<br>346直达凤凰岭，时间大约一小时二十分钟。十分钟一趟车。</p>
 <p>凤凰岭分南，中，北三条线，北线最长，难度也稍微大点，而且北线的风景更好，所以一般会走北线，时间多也可以北线上然后游中线。<br>南线有挺多野果，不过现在貌似也不是季节～</p>
 <p><img src="http://zryblog.qiniudn.com/2014/07/2498930445.jpg" alt="3089187869417258849.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/665548179.jpg" alt="3104387518159532479.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/1284022840.jpg" alt="6597873509655973266.jpg"></p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -208,23 +242,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/08/30/单反手动拍摄技巧/">
+              <a class="post-title-link" href="/2012/08/30/单反手动拍摄技巧/" itemprop="url">
                 单反手动拍摄技巧
               </a>
             
@@ -234,14 +268,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-08-30
+          發表於
+          <time itemprop="dateCreated" datetime="2012-08-30T23:02:00+08:00" content="2012-08-30">
+            2012-08-30
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -253,15 +294,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/08/30/单反手动拍摄技巧/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/30/单反手动拍摄技巧/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/08/30/单反手动拍摄技巧/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/30/单反手动拍摄技巧/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -270,17 +311,17 @@
 
       
         
-          <p>1、拍静止的小东西的特写，如花、鸟、虫：<br>用Av档，光圈最好在f5.6或以下，焦距最好50以上，尽量在1m以内拍摄，使背景虚化！<br>光线好的话，iso100，光线不好的话，iso最好400以内。<br>2、拍人：<br>基本都是使用较大的光圈（f5.6以内）、50mm以上的焦距，拍摄距离视全身、半身、大头照而定，使背景虚化，使用Av档！<br>光线好，iso100，光线不好，iso400以内。<br>运动中的人使用追拍，体现运动感（详见下面的运动物体的拍摄）！<br>3、拍景：<br>Av档，使用适当的光圈，f8以上吧，焦距随便，但是，一般广角端都有畸变，酌情使用。<br>4、拍夜景：<br>上 三脚架，Av档，自定义白平衡或白炽灯，f8以上的光圈，小光圈可以使灯光出星光的效果，使用反光板预升功能，减少按快门后，反光板抬起引起的机震；并用 背带上的那个方盖子，盖住取景器，以免杂光从后面进入影响画质；iso200以内，尽量使曝光时间加长，这样可以使一些无意走过的人从画面消失，不留下痕 迹，净化场景！<br>例如拍一个广场，人来人往，可以使用很小的光圈f20左右，iso100，这样，曝光时间就会很长，那么，走动的人影，不会留在照片上！广场将会很干净！<br>5、拍烟花：<br>使用快门线，B快门，可以拍出多烟花重叠的效果！<br>6、拍运行的东西：<br>光线好的情况：Av档，光圈大小酌情处理；使用f8以上的光圈得到大景深效果，使用小光圈得到浅景深的效果；<br>想拍很有动感的效果，可以使用Tv档，快门1/30左右，对焦按快门的同时，镜头以合适的速度追着对象移动，会出很动感的效果！<br>光线不好的情况：只能酌情处理了，再加上使用追拍！<br>7、拍流水或喷泉：<br>使用Tv档，1/50左右的快门速度，可以拍出缎子的效果，如果使用太快的快门，喷泉拍出来就都是不连续的水滴了！<br>8、夜间人像留影：<br>上三脚架，调节白平衡，自动或自定义白平衡；iso100-400；Av档，光圈f8左右，使用慢速同步闪光，后帘闪光模式；此时，闪光灯会闪两次，按下快门闪一次，曝光结束前会再闪一次，所以在闪两次前，人不要离开。<br>这样拍出来可以使人物清晰，背景霓虹也很漂亮，不至于背景曝光不足而过暗。</p>
+          <span itemprop="articleBody"><p>1、拍静止的小东西的特写，如花、鸟、虫：<br>用Av档，光圈最好在f5.6或以下，焦距最好50以上，尽量在1m以内拍摄，使背景虚化！<br>光线好的话，iso100，光线不好的话，iso最好400以内。<br>2、拍人：<br>基本都是使用较大的光圈（f5.6以内）、50mm以上的焦距，拍摄距离视全身、半身、大头照而定，使背景虚化，使用Av档！<br>光线好，iso100，光线不好，iso400以内。<br>运动中的人使用追拍，体现运动感（详见下面的运动物体的拍摄）！<br>3、拍景：<br>Av档，使用适当的光圈，f8以上吧，焦距随便，但是，一般广角端都有畸变，酌情使用。<br>4、拍夜景：<br>上 三脚架，Av档，自定义白平衡或白炽灯，f8以上的光圈，小光圈可以使灯光出星光的效果，使用反光板预升功能，减少按快门后，反光板抬起引起的机震；并用 背带上的那个方盖子，盖住取景器，以免杂光从后面进入影响画质；iso200以内，尽量使曝光时间加长，这样可以使一些无意走过的人从画面消失，不留下痕 迹，净化场景！<br>例如拍一个广场，人来人往，可以使用很小的光圈f20左右，iso100，这样，曝光时间就会很长，那么，走动的人影，不会留在照片上！广场将会很干净！<br>5、拍烟花：<br>使用快门线，B快门，可以拍出多烟花重叠的效果！<br>6、拍运行的东西：<br>光线好的情况：Av档，光圈大小酌情处理；使用f8以上的光圈得到大景深效果，使用小光圈得到浅景深的效果；<br>想拍很有动感的效果，可以使用Tv档，快门1/30左右，对焦按快门的同时，镜头以合适的速度追着对象移动，会出很动感的效果！<br>光线不好的情况：只能酌情处理了，再加上使用追拍！<br>7、拍流水或喷泉：<br>使用Tv档，1/50左右的快门速度，可以拍出缎子的效果，如果使用太快的快门，喷泉拍出来就都是不连续的水滴了！<br>8、夜间人像留影：<br>上三脚架，调节白平衡，自动或自定义白平衡；iso100-400；Av档，光圈f8左右，使用慢速同步闪光，后帘闪光模式；此时，闪光灯会闪两次，按下快门闪一次，曝光结束前会再闪一次，所以在闪两次前，人不要离开。<br>这样拍出来可以使人物清晰，背景霓虹也很漂亮，不至于背景曝光不足而过暗。</p>
 <p>Av光圈优先技巧:<br>1.不管拍啥.除非要保持安全快门，不然别开最大光圈拍。<br>2.拍风景请尽量使用F8~F11的光圈。<br>3.拍人物及静物特写可使用最大光圈缩1~2级之光圈。<br>4.安全快门请尽量控制在焦距倒数以上.广角端快门也要在1/30秒以上比较保险.若快门不足请提高光圈或ISO。</p>
 <p>测光方式：<br>1.测光不要对着天空，不要对着最暗的地方.要去抓中间值。<br>2.依照你拍的题材，善用测光模式(权衡测光.点测光.中央重点测光…)。<br>3.若遇到测光抓不准的时候，请用AE lock 对身边灰色的东西曝光锁定后再来拍摄。<br>4.尽量别对白色或黑色物体测光，不然就请记得黑要减EV、白要加EV。</p>
 <p>EV 即曝光补偿<br>曝光补偿也是一种曝光控制方式，一般常见在±2-3EV左右，如果环境光源偏暗，即可增加曝光值(如调整为+1EV、+2EV)以突显画面的清晰度。<br>小型数码相机大多通过菜单来调节曝光补偿<br>数 码相机在拍摄的过程中，如果按下半截快门，液晶屏上就会显示和最终效果图差不多的图片，对焦，曝光一切启动。这个时候的曝光，正是最终图片的曝光度。图片 如果明显偏亮或偏暗，说明相机的自动测光准确度有较大偏差，要强制进行曝光补偿，不过有的时候，拍摄时显示的亮度与实际拍摄结果有一定出入。数码相机可以 在拍摄后立即浏览画面，此时，可以更加准确地看到拍摄出来的画面的明暗程度，不会再有出入。如果拍摄结果明显偏亮或偏暗，则要重新拍摄，强制进行曝光补 偿。<br>拍摄环境比较昏暗，需要增加亮度，而闪光灯无法起作用时，可对曝光进行补偿，适当增加曝光量。进行曝光补偿的时候，如果照片过暗，要增加EV 值，EV值每增加1.0，相当于摄入的光线量增加一倍，如果照片过亮，要减小EV值，EV值每减小1.0，相当于摄入的光线量减小一倍。按照不同相机的补 偿间隔可以以 1/2（0.5）或1/3（0.3）的单位来调节。<br>被拍摄的白色物体在照片里看起来是灰色或不够白的时候，要增加曝光量，简单的说 就是“越白越加”，这似乎与曝光的基本原则和习惯是背道而驰的，其实不然，这是因为相机的测光往往以中心的主体为偏重，白色的主体会让相机误以为很环境很 明亮，因而曝光不足，这也是多数初学者易犯的通病。<br>由于相机的快门时间或光圈大小是有限的，因此并非总是能达到2EV的调整范围，因此曝光补偿也不是万能的，在过于暗的环境下仍然可能曝光不足，此时要考虑配合闪光灯或增加相机的ISO感光灵敏度来提高画面亮度。<br>一 般的说，景物亮度对比越小，曝光越准确，反之则偏差加大。相机的档次有高有低，档次高的，测光就比较准确，低的则偏差也会加大。如果是传统相机，胶卷的宽 容度是比较大的，曝光的偏差在一定范围内不会有大问题，但是数码相机的CCD宽容度就比较小，轻微的曝光偏差都可能影响整体的效果。<br>总而言之，曝光补偿的调节是经验加上对颜色的敏锐度所决定的，用户一定要多比较不同曝光补偿下的图片质量，清晰度、还原度和噪点的大小，才能拍出最好的图片。</p>
 <p>注：<br>佳能说明书上的光圈是指F数值，光圈越大，景深越大。<br>一般人们所说的光圈是指光圈孔径，和F数值成反比，光圈（孔径）越大，景深越小。<br>Av—光圈优先自动曝光。<br>Tv—快门优先自动曝光<br>AE-自动曝光<br>AF-自动对焦<br>AF-S—和SAF应该一样，是单次自动对焦。相对的是连续自动对焦。<br>MAF-监控AF，这个模式可以缩短对焦所需的时间。相机在快门按钮按下一半之前就会调整焦点，让您以调整好的焦点进行构图。将快门按钮按下一半，而且af 锁定完成时，焦点会被锁定。<br>EV-曝光值，通常在进行曝光补偿时会用到这个术语。<br>ISO-感光度，感光度每差一档，相当于光圈或者快门相应的一档曝光值。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -289,23 +330,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/08/18/腕表知识普及/">
+              <a class="post-title-link" href="/2012/08/18/腕表知识普及/" itemprop="url">
                 腕表知识普及
               </a>
             
@@ -315,14 +356,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-08-18
+          發表於
+          <time itemprop="dateCreated" datetime="2012-08-18T14:04:00+08:00" content="2012-08-18">
+            2012-08-18
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -334,15 +382,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/08/18/腕表知识普及/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/18/腕表知识普及/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/08/18/腕表知识普及/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/18/腕表知识普及/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -351,7 +399,7 @@
 
       
         
-          <p>俗话说：穷玩车富玩表<br>学生时代的最爱：卡西欧，运动风，较时尚 价格一般在1k左右，当时觉得好贵，好不容易拥有一块高兴了一个月~ 不过质量真的很不错，至今5年了还正常转动~<br>真正对手表有兴趣是在自己拥有一块TAG HEUER的机械表的时候，顺便了解了一下关于手表的相关知识，我个人称它为奢侈的知识。</p>
+          <span itemprop="articleBody"><p>俗话说：穷玩车富玩表<br>学生时代的最爱：卡西欧，运动风，较时尚 价格一般在1k左右，当时觉得好贵，好不容易拥有一块高兴了一个月~ 不过质量真的很不错，至今5年了还正常转动~<br>真正对手表有兴趣是在自己拥有一块TAG HEUER的机械表的时候，顺便了解了一下关于手表的相关知识，我个人称它为奢侈的知识。</p>
 <p>腕 表 排 名 </p>
 <p>　　1.特级表：<br>以制作复杂功能表见长，打磨考究，充份显示表厂的技术实力，品牌含金量极高，产量有限，价位多为十万元以上。<br>百达翡丽Patek Philippe<br>爱彼Audemars Piguet<br>江诗丹顿Vacheron Constantin<br>朗格A.LANGE&amp;SOHNE<br>宝玑Breguet<br>豪爵ROGER DUBIUS<br>帕玛强尼PARMIGIANI<br>宝珀Blancpain (复杂款，普通款为一类一)<br>积家Jaeger-LeCoultre<br>雅典Ulysse Nardin (复杂款，普通款为一类一)<br>弗兰克·穆勒FRANCK MULLER<br>格拉苏蒂Glashütte Original (GUB39自动机芯及女表为一类一)<br>芝柏IRARD-PERREGAUX(复杂款，普通款为一类一)</p>
 <p>　　2.一类一等：<br>适合中国高薪层身份的经典表。<br>劳力士Rolex<br>万国IWC International Watch Co.<br>芝柏GIRARD-PERREGAUX<br>卡地亚Cartier<br>萧邦Chopard<br>伯爵PIAGET<br>积家Jaeger-Le Coulter</p>
@@ -371,12 +419,12 @@
 <p>　二.尚不为国内甚至国际表友熟悉的品牌，宣传相对低调，集中于某个小圈子。<br>如：GRAHAM；URBAN JUERGENSEN；KURTH(德国家族制表师傅，用库存老机芯限量产表)；HARWOOD(发明自动转子表老品牌)，BOVET播威。有的机芯来源不详，质量难评。</p>
 <p>三.时装首饰文具类品牌表：<br>不以钟表制造见长，多请人代工，质量参差不齐。如登喜路；万宝龙；BUCHRER宝齐莱(表店名)；HARRY WINSTON；TIFFANY蒂凡尼；路易威登；香奈尔；GUCCI古驰；ESPRIT等。<br>这类表在国内迷惑性极大，有人认为笔好衣服好表就一定好，虽然有的牌子表做工上乘，机芯也好，但我的观点是：作为一个懂表的人不会去买非专业表品牌。就象我戴劳力士表，如果帽子也戴劳力士厂纪念品我会觉得很傻一样。我认为全身上下穿戴一个牌子的人不是员工就是没品。</p>
 <p>四.多如牛毛的石英表品牌，除几个有影响的外都未列出。通常ETA芯的档次高于日本芯的。都属五六类水准。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -385,23 +433,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/08/15/MYSQL 调优和使用必读/">
+              <a class="post-title-link" href="/2012/08/15/MYSQL 调优和使用必读/" itemprop="url">
                 MYSQL 调优和使用必读
               </a>
             
@@ -411,14 +459,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-08-15
+          發表於
+          <time itemprop="dateCreated" datetime="2012-08-15T13:17:00+08:00" content="2012-08-15">
+            2012-08-15
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -430,15 +485,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/08/15/MYSQL 调优和使用必读/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/15/MYSQL 调优和使用必读/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/08/15/MYSQL 调优和使用必读/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/15/MYSQL 调优和使用必读/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -447,7 +502,7 @@
 
       
         
-          <p>来自：<a href="http://blog.eood.cn/mysql" target="_blank" rel="external">Bruce Dou</a>的一篇好文</p>
+          <span itemprop="articleBody"><p>来自：<a href="http://blog.eood.cn/mysql" target="_blank" rel="external">Bruce Dou</a>的一篇好文</p>
 <p>MYSQL 应该是最流行了 WEB 后端数据库。WEB 开发语言最近发展很快，PHP， Ruby, Python, Java 各有特点，虽然 NOSQL 最近越來越多的被提到，但是相信大部分架构师还是会选择 MYSQL 来做数据存储。</p>
 <p>MYSQL 如此方便和稳定，以至于我们在开发 WEB 程序的时候很少想到它。即使想到优化也是程序级别的，比如，不要写过于消耗资源的 SQL 语句。但是除此之外，在整个系统上仍然有很多可以优化的地方。</p>
 <ol>
@@ -604,12 +659,12 @@ chown <span class="string">mysql:</span>mysql mysql
 <li>结束</li>
 </ol>
 <p>你会发现优化后，数据库的性能提高几倍到几百倍。所以 MYSQL 基本还是可以适用大部分场景的应用的。优化现有系统的成本比系统重构或者迁移到 NOSQL 低很多。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -618,23 +673,23 @@ chown <span class="string">mysql:</span>mysql mysql
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/08/14/显卡天梯/">
+              <a class="post-title-link" href="/2012/08/14/显卡天梯/" itemprop="url">
                 显卡天梯
               </a>
             
@@ -644,14 +699,21 @@ chown <span class="string">mysql:</span>mysql mysql
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-08-14
+          發表於
+          <time itemprop="dateCreated" datetime="2012-08-14T02:02:00+08:00" content="2012-08-14">
+            2012-08-14
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -663,15 +725,15 @@ chown <span class="string">mysql:</span>mysql mysql
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/08/14/显卡天梯/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/14/显卡天梯/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/08/14/显卡天梯/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/14/显卡天梯/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -680,15 +742,15 @@ chown <span class="string">mysql:</span>mysql mysql
 
       
         
-          <p>天梯，原意是登天的阶梯，后被隐申用于积分系统或排名系统之意。比较知名的是暴雪Battle.net的排名 系统即被译为天梯系统。现在提到天梯，更多的是对显卡和处理器的性能排名，尤其以显卡天梯最为知名。天梯图是以公版显卡及默认频率的性能来排名次的，对 GPU核心或显存超频版的显卡不在此列。<br><img src="http://zryblog.qiniudn.com/2014/07/3800302754.jpg" alt="bjb.jpg"><br>很多网友看到笔记本电脑的显卡数字一头雾水，看着数字很大，却不知真正的性能基本取决于第二位数字的大小。对笔记本显卡的性能非常疑惑，特别是一些出现频率不多的显卡，往往很多人就被导购所谓的什么2G显存之类的忽悠了。这里推荐一个很好用的东西：笔记本显卡天梯图。其实太平洋电脑网很早前就有台式机的天梯图了，之 后有人就按这个做了个笔记本的。最新版笔记本显卡天梯图为：</p>
+          <span itemprop="articleBody"><p>天梯，原意是登天的阶梯，后被隐申用于积分系统或排名系统之意。比较知名的是暴雪Battle.net的排名 系统即被译为天梯系统。现在提到天梯，更多的是对显卡和处理器的性能排名，尤其以显卡天梯最为知名。天梯图是以公版显卡及默认频率的性能来排名次的，对 GPU核心或显存超频版的显卡不在此列。<br><img src="http://zryblog.qiniudn.com/2014/07/3800302754.jpg" alt="bjb.jpg"><br>很多网友看到笔记本电脑的显卡数字一头雾水，看着数字很大，却不知真正的性能基本取决于第二位数字的大小。对笔记本显卡的性能非常疑惑，特别是一些出现频率不多的显卡，往往很多人就被导购所谓的什么2G显存之类的忽悠了。这里推荐一个很好用的东西：笔记本显卡天梯图。其实太平洋电脑网很早前就有台式机的天梯图了，之 后有人就按这个做了个笔记本的。最新版笔记本显卡天梯图为：</p>
 <p>可以很明确的看到各个显卡的性能对比，比如7470M其实是跟610M一样的初级显卡。至少拿这个出去不会被人轻易忽悠了。另外这个图的左边还可以看到某 款移动显卡性能相对应的台式机显卡。基本上笔记本里非常NB非常高端的GTX580M也就有台式机中端显卡GTX460的水平，而主流的显卡一般也就在 GT430-HD6670之间。这样一看就很容易理解一般所谓的“娱乐笔记本”很少使用1920X1080的分辨率了：一来高清屏要贵一些；再一个如果用 高清屏的话，很多本来可以跑的游戏就跑不了了。所以想玩爽游戏的有条件还是上台式机吧。另外，图中比较有价值的几点包括：G610M略好于 GT520M，IVB集成的HD4000与GT520M性能持平，GT630M略好于GT540M等。</p>
 <p>附带一张台式机显卡天梯:<br><img src="http://zryblog.qiniudn.com/2014/07/2336526796.jpg" alt="ts.jpg"></p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -697,24 +759,24 @@ chown <span class="string">mysql:</span>mysql mysql
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/13/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/15/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -726,18 +788,18 @@ chown <span class="string">mysql:</span>mysql mysql
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -759,12 +821,12 @@ chown <span class="string">mysql:</span>mysql mysql
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -774,49 +836,52 @@ chown <span class="string">mysql:</span>mysql mysql
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -831,9 +896,8 @@ chown <span class="string">mysql:</span>mysql mysql
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -842,38 +906,8 @@ chown <span class="string">mysql:</span>mysql mysql
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -890,14 +924,57 @@ chown <span class="string">mysql:</span>mysql mysql
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

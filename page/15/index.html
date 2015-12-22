@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/15/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/07/15/Sublime 常用快捷键（OS X）/">
+              <a class="post-title-link" href="/2012/07/15/Sublime 常用快捷键（OS X）/" itemprop="url">
                 Sublime 常用快捷键（OS X）
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-07-15
+          發表於
+          <time itemprop="dateCreated" datetime="2012-07-15T13:54:00+08:00" content="2012-07-15">
+            2012-07-15
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/07/15/Sublime 常用快捷键（OS X）/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/15/Sublime 常用快捷键（OS X）/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/07/15/Sublime 常用快捷键（OS X）/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/15/Sublime 常用快捷键（OS X）/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,13 +224,13 @@
 
       
         
-          <p>打开/前往<br>⌘T      前往文件<br>⌘⌃P      前往项目<br>⌘R      前往 method<br>⌘⇧P      命令提示<br>⌃G      前往行<br>⌃ `      python 控制台<br>编辑<br>⌘L      选择行 (重复按下将下一行加入选择)<br>⌘D      选择词 (重复按下时多重选择相同的词进行多重编辑)<br>⌃⇧M      选择括号内的内容<br>⌘⇧↩      在当前行前插入新行<br>⌘↩      在当前行后插入新行<br>⌃⇧K      删除行<br>⌘KK      从光标处删除至行尾<br>⌘K⌫      从光标处删除至行首<br>⌘⇧D      复制(多)行<br>⌘J      合并(多)行<br>⌘KU      改为大写<br>⌘KL      改为小写<br>⌘ /      注释<br>⌘⌥ /      块注释<br>⌘Y      恢复或重复<br>⌘⇧V      粘贴并自动缩进<br>⌃ space      自动完成(重复按下选择下一个提示)<br>⌃M      跳转至对应的括号<br>XML/HTML<br>⌘⇧A      选择标签内的内容<br>⌘⌥ .      闭合当前标签<br>查找/替换<br>⌘F      查找<br>⌘⌥F      替换<br>⌘⌥G      查找下一个符合当前所选的内容<br>⌘⌃G      查找所有符合当前所选的内容进行多重编辑<br>⌘⇧F      在所有打开的文件中进行查找<br>拆分窗口/标签页<br>⌘⌥1      单列<br>⌘⌥2      双列<br>⌘⌥5      网格 (4组)<br>⌃[1,2,3,4]      焦点移动至相应组<br>⌃⇧[1,2,3,4]      将当前文件移动至相应组<br>⌘[1,2,3…]      选择相应标签页<br>书签<br>⌘F2      添加/去除书签<br>F2      下一个书签<br>⇧F2      前一个书签<br>⌘⇧F2      清除书签<br>标记<br>⌘K space      设置标记<br>⌘KW      从光标位置删除至标记<br>⌘KA      从光标位置选择至标记<br>⌘KG      清除标记</p>
-
+          <span itemprop="articleBody"><p>打开/前往<br>⌘T      前往文件<br>⌘⌃P      前往项目<br>⌘R      前往 method<br>⌘⇧P      命令提示<br>⌃G      前往行<br>⌃ `      python 控制台<br>编辑<br>⌘L      选择行 (重复按下将下一行加入选择)<br>⌘D      选择词 (重复按下时多重选择相同的词进行多重编辑)<br>⌃⇧M      选择括号内的内容<br>⌘⇧↩      在当前行前插入新行<br>⌘↩      在当前行后插入新行<br>⌃⇧K      删除行<br>⌘KK      从光标处删除至行尾<br>⌘K⌫      从光标处删除至行首<br>⌘⇧D      复制(多)行<br>⌘J      合并(多)行<br>⌘KU      改为大写<br>⌘KL      改为小写<br>⌘ /      注释<br>⌘⌥ /      块注释<br>⌘Y      恢复或重复<br>⌘⇧V      粘贴并自动缩进<br>⌃ space      自动完成(重复按下选择下一个提示)<br>⌃M      跳转至对应的括号<br>XML/HTML<br>⌘⇧A      选择标签内的内容<br>⌘⌥ .      闭合当前标签<br>查找/替换<br>⌘F      查找<br>⌘⌥F      替换<br>⌘⌥G      查找下一个符合当前所选的内容<br>⌘⌃G      查找所有符合当前所选的内容进行多重编辑<br>⌘⇧F      在所有打开的文件中进行查找<br>拆分窗口/标签页<br>⌘⌥1      单列<br>⌘⌥2      双列<br>⌘⌥5      网格 (4组)<br>⌃[1,2,3,4]      焦点移动至相应组<br>⌃⇧[1,2,3,4]      将当前文件移动至相应组<br>⌘[1,2,3…]      选择相应标签页<br>书签<br>⌘F2      添加/去除书签<br>F2      下一个书签<br>⇧F2      前一个书签<br>⌘⇧F2      清除书签<br>标记<br>⌘K space      设置标记<br>⌘KW      从光标位置删除至标记<br>⌘KA      从光标位置选择至标记<br>⌘KG      清除标记</p>
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -205,23 +239,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/07/13/WordPress无法显示已安装主题/">
+              <a class="post-title-link" href="/2012/07/13/WordPress无法显示已安装主题/" itemprop="url">
                 WordPress无法显示已安装主题
               </a>
             
@@ -231,14 +265,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-07-13
+          發表於
+          <time itemprop="dateCreated" datetime="2012-07-13T16:14:00+08:00" content="2012-07-13">
+            2012-07-13
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -250,15 +291,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/07/13/WordPress无法显示已安装主题/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/13/WordPress无法显示已安装主题/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/07/13/WordPress无法显示已安装主题/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/13/WordPress无法显示已安装主题/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -267,13 +308,13 @@
 
       
         
-          <p>最近升级了lnmp0.9.然后发现主题下面原先安装的都看不见了，到服务器目录下一看，文件都还在，所有者及组权限也没有问题。<br>网上搜寻一阵发现问题所在，此版本配置的的php.ini有点问题，禁用掉了php默认函数scandir，从而导致出现此问题，开启php.ini中scandir函数即可。<br>解决方案:<br>1、找到php.ini的位置，如果你也是默认安装的话，路径应该是： /usr/local/php/etc/php.ini   也可以通过 <a href="http://你的域名/phpinfo.php查看到php.ini的路径；" target="_blank" rel="external">http://你的域名/phpinfo.php查看到php.ini的路径；</a><br>2、使用vi编辑php.ini文件；<br>3、搜索disable_functions 函数（vi的搜索方式：/disable_functions），将其中的scandir去掉，文件位置如下图所示：<br><img src="http://zryblog.qiniudn.com/2014/07/2608150778.jpg" alt="BE66087E-DE2F-4175-8423-4DCF3B0E8903.jpg"><br>4、保存文件，如果用vi命令找到的，按esc，然后输入:wq! 保存即可;<br>5、最后需要重启加载/重启lnmp服务，在ssh下执行   /root/lnmp  reload</p>
-
+          <span itemprop="articleBody"><p>最近升级了lnmp0.9.然后发现主题下面原先安装的都看不见了，到服务器目录下一看，文件都还在，所有者及组权限也没有问题。<br>网上搜寻一阵发现问题所在，此版本配置的的php.ini有点问题，禁用掉了php默认函数scandir，从而导致出现此问题，开启php.ini中scandir函数即可。<br>解决方案:<br>1、找到php.ini的位置，如果你也是默认安装的话，路径应该是： /usr/local/php/etc/php.ini   也可以通过 <a href="http://你的域名/phpinfo.php查看到php.ini的路径；" target="_blank" rel="external">http://你的域名/phpinfo.php查看到php.ini的路径；</a><br>2、使用vi编辑php.ini文件；<br>3、搜索disable_functions 函数（vi的搜索方式：/disable_functions），将其中的scandir去掉，文件位置如下图所示：<br><img src="http://zryblog.qiniudn.com/2014/07/2608150778.jpg" alt="BE66087E-DE2F-4175-8423-4DCF3B0E8903.jpg"><br>4、保存文件，如果用vi命令找到的，按esc，然后输入:wq! 保存即可;<br>5、最后需要重启加载/重启lnmp服务，在ssh下执行   /root/lnmp  reload</p>
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -282,23 +323,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/07/02/Sublime Text 2 初始配置/">
+              <a class="post-title-link" href="/2012/07/02/Sublime Text 2 初始配置/" itemprop="url">
                 Sublime Text 2 初始配置
               </a>
             
@@ -308,14 +349,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-07-02
+          發表於
+          <time itemprop="dateCreated" datetime="2012-07-02T14:58:00+08:00" content="2012-07-02">
+            2012-07-02
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -327,15 +375,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/07/02/Sublime Text 2 初始配置/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/02/Sublime Text 2 初始配置/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/07/02/Sublime Text 2 初始配置/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/02/Sublime Text 2 初始配置/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -344,7 +392,7 @@
 
       
         
-          <p>Sublime Text 2 的特色功能：</p>
+          <span itemprop="articleBody"><p>Sublime Text 2 的特色功能：</p>
 <ul>
 <li>良好的扩展功能，官方称之为安装包(Package)。</li>
 <li>右边没有滚动条，取而代之的是代码缩略图，这个功能非常赞</li>
@@ -379,12 +427,12 @@
 <pre><code><span class="keyword">var</span> joe      = <span class="string">'joe'</span>;
 <span class="keyword">var</span> johnnydd = <span class="string">'johnny'</span>;
 <span class="keyword">var</span> quaid    = <span class="string">'quaid'</span>;
-</code></pre>
+</code></pre></span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -393,23 +441,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/06/07/facebox 弹层插件/">
+              <a class="post-title-link" href="/2012/06/07/facebox 弹层插件/" itemprop="url">
                 facebox 弹层插件
               </a>
             
@@ -419,14 +467,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-06-07
+          發表於
+          <time itemprop="dateCreated" datetime="2012-06-07T04:32:00+08:00" content="2012-06-07">
+            2012-06-07
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -438,15 +493,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/06/07/facebox 弹层插件/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/06/07/facebox 弹层插件/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/06/07/facebox 弹层插件/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/06/07/facebox 弹层插件/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -455,7 +510,7 @@
 
       
         
-          <p><a href="http://defunkt.io/facebox/" target="_blank" rel="external">facebox</a>是一个开源的弹出层插件，基于jQuery.  可显示图像， divs ，或者远程页面。目前存放在Github上 </p>
+          <span itemprop="articleBody"><p><a href="http://defunkt.io/facebox/" target="_blank" rel="external">facebox</a>是一个开源的弹出层插件，基于jQuery.  可显示图像， divs ，或者远程页面。目前存放在Github上 </p>
 <p>使用简单，文件少，例子也浅显易懂，个人比较喜欢 。</p>
 <p>项目中用到了比较多的弹层操作，facebox还是比较适合。具体如下:</p>
 <p>首先需要引入css,js文件 及 一个隐藏的DIV</p>
@@ -499,12 +554,12 @@
      &lt;/div&gt; \
    &lt;/div&gt;'
    },
-</code></pre>
+</code></pre></span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -513,23 +568,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/05/17/Python-优酷视频空间数据抓取(Dota)/">
+              <a class="post-title-link" href="/2012/05/17/Python-优酷视频空间数据抓取(Dota)/" itemprop="url">
                 Python-优酷视频空间数据抓取(Dota)
               </a>
             
@@ -539,14 +594,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-05-17
+          發表於
+          <time itemprop="dateCreated" datetime="2012-05-17T04:02:00+08:00" content="2012-05-17">
+            2012-05-17
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -558,15 +620,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/05/17/Python-优酷视频空间数据抓取(Dota)/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/05/17/Python-优酷视频空间数据抓取(Dota)/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/05/17/Python-优酷视频空间数据抓取(Dota)/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/05/17/Python-优酷视频空间数据抓取(Dota)/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -575,7 +637,7 @@
 
       
         
-          <p>最近挺闲的。看了不少Dota视频~ 我会经常关注那些知名解说或选手发出的视频（海涛，牛蛙……等)。涛哥在应该算是个公认的好解说的。看他的视频很有乐趣的……顺便吐槽下 ，个人觉得PIS的视频比较无聊，主要在于PIS的解说方式，情绪，声音等一些地方吧，也是由于是专业游戏选手，这方面并不是强项。</p>
+          <span itemprop="articleBody"><p>最近挺闲的。看了不少Dota视频~ 我会经常关注那些知名解说或选手发出的视频（海涛，牛蛙……等)。涛哥在应该算是个公认的好解说的。看他的视频很有乐趣的……顺便吐槽下 ，个人觉得PIS的视频比较无聊，主要在于PIS的解说方式，情绪，声音等一些地方吧，也是由于是专业游戏选手，这方面并不是强项。</p>
 <p>我并不想在gr里看到这些信息。所以每次要观看视频的时候就会进入到各个选手的主页去留意一下最新出的视频有没有自己爱看的~ 说起来这事也挺麻烦的。决定写个脚本把这些信息给抓出来，在想看的时候方便自己选择。</p>
 <p>第一步是准备先把基本信息都给抓出来，然后预想是做些处理，例如观看过的视频以后就不在显示了，再然后可以做丰富些，多个分类等……再然后……越来越多的然后！ 目前是准备放到sae上，担心的是视频的流量对于我那不到1W的豆来说，估计挺不了多久。</p>
 <p>说再多都是预想~ 先从第一步开始吧，从涛哥入手：</p>
@@ -716,12 +778,12 @@ videos.printInfo()
 【海涛教你打DOTA】先知第一视角解说 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzQ2NDc4NzQ4.html</span>
 </code></pre><p>取出的是第一页的20个视频名称及地址~ 当然第二页 三页 ……等相同原理。</p>
 <p>第一步到这里就差不多了，数据可以再处理的漂亮点~~~~</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -730,24 +792,24 @@ videos.printInfo()
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/14/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/16/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -759,18 +821,18 @@ videos.printInfo()
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -792,12 +854,12 @@ videos.printInfo()
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -807,49 +869,52 @@ videos.printInfo()
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -864,9 +929,8 @@ videos.printInfo()
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -875,38 +939,8 @@ videos.printInfo()
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -923,14 +957,57 @@ videos.printInfo()
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/11/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/01/26/web.py与Flask/">
+              <a class="post-title-link" href="/2013/01/26/web.py与Flask/" itemprop="url">
                 web.py与Flask
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-01-26
+          發表於
+          <time itemprop="dateCreated" datetime="2013-01-26T02:04:00+08:00" content="2013-01-26">
+            2013-01-26
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/01/26/web.py与Flask/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/26/web.py与Flask/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/01/26/web.py与Flask/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/26/web.py与Flask/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,16 +224,16 @@
 
       
         
-          <p>web.py是极为精简的一个框架，用来入门很不错。Tornado都思想是从web.py衍生出来的。<br>Flask是新生的框架，采用了装饰器模式来配置URL，代码也很精简，而且内置了Jinja2与werkzuug。<br>作为Python界较流行的几大框架之二，网上都口水战到处都是。</p>
+          <span itemprop="articleBody"><p>web.py是极为精简的一个框架，用来入门很不错。Tornado都思想是从web.py衍生出来的。<br>Flask是新生的框架，采用了装饰器模式来配置URL，代码也很精简，而且内置了Jinja2与werkzuug。<br>作为Python界较流行的几大框架之二，网上都口水战到处都是。</p>
 <p>最近自己的一个小项目在开始使用了web.py。后来转到了Flask。原因? Flask更方便，例如session，实时的Debug。都把py与Flask分为面向对象和面向过程，因为一个是route到类，一个是route到函数～ 其实都一样，只是代码的编程习惯，如果现在还有人说面向对象一定必面向过程好，那我建议多去看几本书吧。</p>
 <p>要说py与Flask哪个好，我也是菜鸟，我只能说在目前的项目里Flask比较适合～ 并且在遇到问题检索信息的时候Flask较为丰富（纯属个人感觉）<br>关于route到class和def上的区别， py的方式能更方便的管理URLs ，而route到def的好处就是方便检查，修改，并且需要移动的时候直接整块拖走就OK。  总之一句：罗卜白菜，各有所爱。</p>
 <p>PS：别以为Flask是一个微框架，配合上众多的extension可以折腾成Django一样，如果觉得太重了，再换回来，伸缩性很好</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -208,23 +242,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/01/14/西安西安/">
+              <a class="post-title-link" href="/2013/01/14/西安西安/" itemprop="url">
                 西安西安
               </a>
             
@@ -234,14 +268,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-01-14
+          發表於
+          <time itemprop="dateCreated" datetime="2013-01-14T16:16:00+08:00" content="2013-01-14">
+            2013-01-14
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -253,15 +294,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/01/14/西安西安/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/14/西安西安/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/01/14/西安西安/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/14/西安西安/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -270,18 +311,18 @@
 
       
         
-          <p>夜已深，不想在碰电脑，试着用ipad来完成。<br>从西安回来十多天了，选择在这个不合时宜的时间去西安也是随意之旅，恰好有便宜机票。<br>中学历史学的并不好，西安给我的印象除了古都就剩下兵马俑，当然还有西岳华山。<br>这次西安的行程很随意，完全随心情。<br>说不合时宜是有依据的，元旦温度很低，零下十度左右，导致很多地方也没开发，例如华山著名的鹞子翻身与长空栈道。也是最遗憾的地方！好在顶着寒风硬是看完了日出。体会了僵硬的状态。<br><img src="http://zryblog.qiniudn.com/2014/07/1366326586.jpg" alt="华山"></p>
+          <span itemprop="articleBody"><p>夜已深，不想在碰电脑，试着用ipad来完成。<br>从西安回来十多天了，选择在这个不合时宜的时间去西安也是随意之旅，恰好有便宜机票。<br>中学历史学的并不好，西安给我的印象除了古都就剩下兵马俑，当然还有西岳华山。<br>这次西安的行程很随意，完全随心情。<br>说不合时宜是有依据的，元旦温度很低，零下十度左右，导致很多地方也没开发，例如华山著名的鹞子翻身与长空栈道。也是最遗憾的地方！好在顶着寒风硬是看完了日出。体会了僵硬的状态。<br><img src="http://zryblog.qiniudn.com/2014/07/1366326586.jpg" alt="华山"></p>
 <p>站在城墙上还是有古都的感觉，加上冬天天气一般，人烟稀少。在寒风中漫步在城墙上有种风萧萧兮易水寒，壮士一去兮不复返的感觉〜偶尔身边会冲出几辆自行车，有赶时间回去还车的〜超时要加钱了〜<br><img src="http://zryblog.qiniudn.com/2014/07/3739295031.jpg" alt="城楼"><br><img src="http://zryblog.qiniudn.com/2014/07/3824602309.jpg" alt="城墙"><br>站在城墙上我想起电视剧中那些攻城用的云梯，在现场看来得非常高，光爬这么高且陡得梯子也非一般人敢为。何况搬运的人有多苦。<br><img src="http://zryblog.qiniudn.com/2014/07/114151958.jpg" alt="城墙Style"><br><img src="http://zryblog.qiniudn.com/2014/07/4159531252.jpg" alt="cao"><br>到哪都有潮流，看我们的城墙Style！模特都是好基友Cao来担任。</p>
 <p>城墙很长13km左右。步行可以费很长时间，我们就等到了夕阳，只可惜现在城墙周围楼高房大，不然可以看到很美的落日景象<br><img src="http://zryblog.qiniudn.com/2014/07/2791369512.jpg" alt="落日"><br>城墙的夜景也相当漂亮，可惜再最后走的时候才发现，大包小包的没法拍了。<br>不论是兵马俑还是博物馆都是去学知识的，如果历史课都是这样现场来讲，相信所有人都能学的倍儿棒。</p>
 <p>来西安不吃小吃是不可能的，不过现在全国小吃一条街都类似，什么都有。既然在西安那就多吃羊肉泡馍，BiangBIang面，肉夹馍等类似食物，在我看来不太符合我的口味习惯，因为每天都在愁吃什么〜我还是更偏向北方的面食。<br>重点提下羊肉泡馍，真的要自己撕，不熟练的我们撕了二十分钟有，手指都疼了一天。。。吃个泡馍不容易</p>
 <p>关于华山也要说几句，华山在大家眼里是险字，实际上只是坡度稍大一些，对于其他山来说确实较险，不过也没有危险。真正的险也许是那条古老的真正的智取华山路线，景点内开放的那条是假的〜<br>华山的观景台在东峰，也许是因为高度不够，位置并不是太好，有山峦挡住了地平线，不不算最好的看日出位置，相比泰山、峨眉还是有点差距的。不过也是另一种感觉。<br><img src="http://zryblog.qiniudn.com/2014/07/539457072.jpg" alt="华山之巅"><br>最后可以看看冻僵硬后还没完全恢复的我。此时已经接近中午了，地处南峰，华山之巅。身后这块石头上面应该就是华山的最高点了。<br>一个身穿一件T恤、一件卫衣加一件普通防风帽衫在夜爬之后扛着脚架，背着相机顶着零下十多度寒风等日出的不要命的孩子</p>
 <p>好了，用pad打这么多字，手都酸了。下次还是电脑吧…………</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -290,23 +331,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/01/09/ipad批量删除相片/">
+              <a class="post-title-link" href="/2013/01/09/ipad批量删除相片/" itemprop="url">
                 ipad批量删除相片
               </a>
             
@@ -316,14 +357,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-01-09
+          發表於
+          <time itemprop="dateCreated" datetime="2013-01-09T15:20:00+08:00" content="2013-01-09">
+            2013-01-09
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -335,15 +383,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/01/09/ipad批量删除相片/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/09/ipad批量删除相片/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/01/09/ipad批量删除相片/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/09/ipad批量删除相片/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -352,14 +400,14 @@
 
       
         
-          <p>用过Camera Kit的朋友应该深有体会…<br>PS:Camera Kit是应用于ipad1-ipad3上的，ipad4接口换成了Lightning to SD Card Reader。两件拆开卖了～更贵，而且没有原来方便（个人认为）</p>
+          <span itemprop="articleBody"><p>用过Camera Kit的朋友应该深有体会…<br>PS:Camera Kit是应用于ipad1-ipad3上的，ipad4接口换成了Lightning to SD Card Reader。两件拆开卖了～更贵，而且没有原来方便（个人认为）</p>
 <p>每次旅游回来回有很多照片，导入ipad后至少都有上百张。但是导入后想再删除这些那就累死了，因为只能一张一张删，最近才知道原来ipad有多选的操作。。<br>在Photo （照片）App中进入待删除的相簿（不是进入单张照片，而是进入到缩略图模式）——点右上角的Edit（编辑）—— 用两只手指轻点并停留在要删除的第一张照片上，继续保持双指，扫过需要删除的照片。 这个时候你可以看到手指扫过的照片已经被选定。重复操作直到需要删除的照片被全部选定，点删除即可。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -368,23 +416,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/">
+              <a class="post-title-link" href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/" itemprop="url">
                 Mac OS X系统下刷新DNS缓存的方法
               </a>
             
@@ -394,14 +442,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-12-14
+          發表於
+          <time itemprop="dateCreated" datetime="2012-12-14T02:22:00+08:00" content="2012-12-14">
+            2012-12-14
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -413,15 +468,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/14/Mac OS X系统下刷新DNS缓存的方法/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/14/Mac OS X系统下刷新DNS缓存的方法/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -430,17 +485,17 @@
 
       
         
-          <p>在Lion(10.7)之前，刷新DNS缓存的方法是：</p>
+          <span itemprop="articleBody"><p>在Lion(10.7)之前，刷新DNS缓存的方法是：</p>
 <p>互联网上搜索 Mac OS X 系统下刷新 DNS 缓存的方法，绝大部分网站都说是在终端中执行下面这个命令：</p>
 <pre><code><span class="title">sudo</span> dscacheutil -flushcache
 </code></pre><p>但其实上面的命令仅针对 Mac OS X 10.5 和 10.6 有效，在 Lion 和 Mountain Lion 中都是错误的，正确的应该是：</p>
 <pre><code><span class="title">sudo</span> killall -HUP mDNSResponder
-</code></pre>
+</code></pre></span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -449,23 +504,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/12/13/世界上最好的VPS：Linode/">
+              <a class="post-title-link" href="/2012/12/13/世界上最好的VPS：Linode/" itemprop="url">
                 世界上最好的VPS：Linode
               </a>
             
@@ -475,14 +530,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-12-13
+          發表於
+          <time itemprop="dateCreated" datetime="2012-12-13T03:34:00+08:00" content="2012-12-13">
+            2012-12-13
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -494,15 +556,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/12/13/世界上最好的VPS：Linode/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/13/世界上最好的VPS：Linode/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/12/13/世界上最好的VPS：Linode/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/13/世界上最好的VPS：Linode/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -511,7 +573,7 @@
 
       
         
-          <p>这名字听起来很像一篇软文~</p>
+          <span itemprop="articleBody"><p>这名字听起来很像一篇软文~</p>
 <p>玩过VPS的人应该没人不知道Linode，虽然不一定都用过。网上搜出来的各种推崇文章也是一片一片的。</p>
 <p>说世界上最好的VPS过于夸张，不过的确是一个很不错的VPS。最主要的是国内的VPS服务商非常不靠谱，实在没有让人放心的商家，就算购买大部分人都只敢使用月付的方式，因为商家携款跑路或者突然倒闭的事情屡不见鲜。比如前段时间刚倒下的风云VPS。在A大刚创立vpswind的时候口碑还是很不错的，现在突然这样，难免不让人伤心，身边有不少朋友刚买完一年的。不到半个月收到这样的通知。</p>
 <p>至于国外的VPS服务商基本都很不错，甚至有很便宜VPS商家，例如 @mr.asong 童鞋给我推荐的123systems 。活动中买的$10 / 年 。 一样比国内靠谱很多，既然要在国内买，那就买大公司的吧，起码有保障，例如阿里云。虽然有很多负面的消息，但至少还能过得去。</p>
@@ -525,12 +587,12 @@
 <p>42qu.vps链接：<a href="http://vps.42qu.com/by/10006783" target="_blank" rel="external">vps</a></p>
 <p>阿里云9.5折购买链接：<a href="http://www.aliyun.com/cps/rebate?from_uid=ziCugoEImGY=" target="_blank" rel="external">aliyun</a></p>
 <p>PS： linode的注册就是购买，只有购买的产品才算注册成功。 当然，还需要你有一张VISA或者Mastercart 信用卡一张~ 年付9折，两年付85折，个人觉得年付还是比较实惠。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -539,24 +601,24 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/10/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/12/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -568,18 +630,18 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -601,12 +663,12 @@
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -616,49 +678,52 @@
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -673,9 +738,8 @@
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -684,38 +748,8 @@
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -732,14 +766,57 @@
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

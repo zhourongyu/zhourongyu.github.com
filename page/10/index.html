@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/10/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/04/16/北海公园的春天/">
+              <a class="post-title-link" href="/2013/04/16/北海公园的春天/" itemprop="url">
                 北海公园的春天
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-04-16
+          發表於
+          <time itemprop="dateCreated" datetime="2013-04-16T12:09:00+08:00" content="2013-04-16">
+            2013-04-16
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/04/16/北海公园的春天/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/04/16/北海公园的春天/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/04/16/北海公园的春天/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/04/16/北海公园的春天/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,17 +224,17 @@
 
       
         
-          <p>周日天气不是非常好，有一定的污染，为了试镜头还是出门转了一圈。<br>上次去北海公园貌似还是2010年，来北京后貌似再也没去过。</p>
+          <span itemprop="articleBody"><p>周日天气不是非常好，有一定的污染，为了试镜头还是出门转了一圈。<br>上次去北海公园貌似还是2010年，来北京后貌似再也没去过。</p>
 <p>具体线路是六号线到达北海公园站，从北海北门进，转两圈后东门出到景山公园。为什么是两圈，因为北海不是一个环形的，从北门走到西门只能返头走，否则就出去了~。</p>
 <p>上景山登顶拍照后沿景山后街达地安门内大街去南锣鼓巷，由南至北穿过南锣从旧鼓楼大街乘地铁二号线回家。 一个人走的比较快，三个多小时就搞定了~<br><img src="http://zryblog.qiniudn.com/2014/07/3696373457.jpg" alt="IMG_3748.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3582682906.jpg" alt="IMG_3775.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/2946683246.jpg" alt="IMG_3844.jpg"></p>
 <p>北海公园里吸引人的是那片“海”和一个白塔，并无其他优势，在我看来没有颐和园好。<br><img src="http://zryblog.qiniudn.com/2014/07/3866923251.jpg" alt="IMG\_3824.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3423513237.jpg" alt="IMG\_3811.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3087597852.jpg" alt="IMG\_3786.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3314681705.jpg" alt="IMG\_3781.jpg"></p>
 <p>景山公园是故宫的“靠山” ，在这里可以看到故宫全景，一堆堆摄影师来拍日落的故宫，可惜今天天气不是很好但人依然满满当当。在这里竟然看到了哈苏…诶。<br><img src="http://zryblog.qiniudn.com/2014/07/3998996795.jpg" alt="IMG\_3856.jpg"></p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -209,23 +243,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/03/16/mysql5.6绿色安装的1067错误/">
+              <a class="post-title-link" href="/2013/03/16/mysql5.6绿色安装的1067错误/" itemprop="url">
                 mysql5.6绿色安装的1067错误
               </a>
             
@@ -235,14 +269,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-03-16
+          發表於
+          <time itemprop="dateCreated" datetime="2013-03-16T13:22:00+08:00" content="2013-03-16">
+            2013-03-16
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -254,15 +295,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/03/16/mysql5.6绿色安装的1067错误/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/16/mysql5.6绿色安装的1067错误/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/03/16/mysql5.6绿色安装的1067错误/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/16/mysql5.6绿色安装的1067错误/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -271,7 +312,7 @@
 
       
         
-          <p>近两年没用mysql了，最新需要为新项目配一套全新的开发环境。<br>使用了最新的mysql5.6。根目录带的是一个my-default.ini文件。复制出一份my.ini。添加以下配置</p>
+          <span itemprop="articleBody"><p>近两年没用mysql了，最新需要为新项目配一套全新的开发环境。<br>使用了最新的mysql5.6。根目录带的是一个my-default.ini文件。复制出一份my.ini。添加以下配置</p>
 <pre><code>[mysqld]
 basedir=<span class="constant">D</span><span class="symbol">:/MYSQL</span>
 datadir=<span class="constant">D</span><span class="symbol">:/MYSQL/data</span>
@@ -297,12 +338,12 @@ character_set_server = utf8
 default-character-set=utf8
 <span class="constant">PS</span>：[client]里的属性名没有改变
 </code></pre><p>由此可见… 不要遇上什么问题就立马上网找，一是网上的信息比较老且重复内容太多。还是先自己仔细检查的比较好 。 阿弥陀佛</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -311,23 +352,23 @@ default-character-set=utf8
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/03/13/Wordpress迁移流程/">
+              <a class="post-title-link" href="/2013/03/13/Wordpress迁移流程/" itemprop="url">
                 Wordpress迁移流程
               </a>
             
@@ -337,14 +378,21 @@ default-character-set=utf8
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-03-13
+          發表於
+          <time itemprop="dateCreated" datetime="2013-03-13T04:07:00+08:00" content="2013-03-13">
+            2013-03-13
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -356,15 +404,15 @@ default-character-set=utf8
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/03/13/Wordpress迁移流程/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/13/Wordpress迁移流程/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/03/13/Wordpress迁移流程/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/03/13/Wordpress迁移流程/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -373,7 +421,7 @@ default-character-set=utf8
 
       
         
-          <p>对Wordpress做一次迁移，<br>现有服务器A ,B 两台，zhourongyu.me运行在A上，现在需要转移到B之上。<br>流程如下：<br>一，首先导出A之上的mysql数据。进入phpmyadmin里选导出即可，需要通过ftp传到B之上。<br>另一种方法使用命令</p>
+          <span itemprop="articleBody"><p>对Wordpress做一次迁移，<br>现有服务器A ,B 两台，zhourongyu.me运行在A上，现在需要转移到B之上。<br>流程如下：<br>一，首先导出A之上的mysql数据。进入phpmyadmin里选导出即可，需要通过ftp传到B之上。<br>另一种方法使用命令</p>
 <pre><code>mysqldump -u root -<span class="tag">p</span> wpblog &gt; zdata.sql
 </code></pre><p>二，打包A之上的wp目录，可以选择通过ftp拷到本地，再打包上传到B。<br>另一种使用tar打包</p>
 <pre><code><span class="tag">tar</span> <span class="tag">-cvf</span> <span class="tag">zwp</span><span class="class">.tar</span> <span class="tag">zhourongyu</span><span class="class">.me</span>
@@ -398,12 +446,12 @@ default-character-set=utf8
 </code></pre><p>更正wordpress文章默认的永久链接：</p>
 <pre><code>&gt; UPDATE wp_posts SET guid = replace<span class="list">(<span class="keyword">guid</span>, <span class="quoted">'http</span><span class="keyword">://zhourongyu</span>.me',<span class="quoted">'http</span><span class="keyword">://ooxx</span>.me')</span><span class="comment">;</span>
 </code></pre><p>最后进入B的wp后台修改wordpress地址为新域名</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -412,23 +460,23 @@ default-character-set=utf8
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/01/30/Jinja2与Flask的HTML自动转义/">
+              <a class="post-title-link" href="/2013/01/30/Jinja2与Flask的HTML自动转义/" itemprop="url">
                 Jinja2与Flask的HTML自动转义
               </a>
             
@@ -438,14 +486,21 @@ default-character-set=utf8
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-01-30
+          發表於
+          <time itemprop="dateCreated" datetime="2013-01-30T10:22:00+08:00" content="2013-01-30">
+            2013-01-30
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -457,15 +512,15 @@ default-character-set=utf8
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/01/30/Jinja2与Flask的HTML自动转义/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/30/Jinja2与Flask的HTML自动转义/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/01/30/Jinja2与Flask的HTML自动转义/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/30/Jinja2与Flask的HTML自动转义/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -474,7 +529,7 @@ default-character-set=utf8
 
       
         
-          <p>今天写一个页面的时候发现代码竟然原封不动的出现了，怀疑是Jinja的自动转义。结果发现Jinja2的Escaping是自动关闭的，下面是Jinja官方文档中描述的，默认自动转义是关闭的，可以手动转义或者开启自动转义。</p>
+          <span itemprop="articleBody"><p>今天写一个页面的时候发现代码竟然原封不动的出现了，怀疑是Jinja的自动转义。结果发现Jinja2的Escaping是自动关闭的，下面是Jinja官方文档中描述的，默认自动转义是关闭的，可以手动转义或者开启自动转义。</p>
 <blockquote>
 <p>HTML Escaping</p>
 <p>When generating HTML from templates, there’s always a risk that a<br>variable will include characters that affect the resulting HTML. There<br>are two approaches: manually escaping each variable or automatically<br>escaping everything by default.</p>
@@ -493,12 +548,12 @@ default-character-set=utf8
 <p>要想在模版中禁用全局自动转义功能，可以用  语句块:<br>    {\% codeblock lang:python \%}<br>    {\% autoescaping false \%}<br>    autoescaping is disableed here<br>    {\% endautoescape \%}<br>    {\% endcodeblock \%}</p>
 <p>在这么做的时候，要语句块中使用到的变量非常小心。</p>
 <p>自动开始转义也是不错的，这方面的安全就可以少考虑了，关闭也很简单。我直接使用第二种方式，在需要禁止转义的部分加上safe标记，很方便。其他的两种目前还没用上~</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -507,23 +562,23 @@ default-character-set=utf8
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/01/29/呼吸防护标准/">
+              <a class="post-title-link" href="/2013/01/29/呼吸防护标准/" itemprop="url">
                 呼吸防护标准
               </a>
             
@@ -533,14 +588,21 @@ default-character-set=utf8
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-01-29
+          發表於
+          <time itemprop="dateCreated" datetime="2013-01-29T03:58:00+08:00" content="2013-01-29">
+            2013-01-29
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -552,15 +614,15 @@ default-character-set=utf8
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/01/29/呼吸防护标准/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/29/呼吸防护标准/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/01/29/呼吸防护标准/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/29/呼吸防护标准/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -569,7 +631,7 @@ default-character-set=utf8
 
       
         
-          <p>北京近短时间空气实属差到极点，已经到了无法忍受的状态。能看见满大街各式各样的口罩出现，有医用的，有装饰的~孰不知他们都是带的完全没有防护效果，甚至还对呼吸造成了阻碍，只有保温和防风的功能。有人说医院那个不错，医院那个蓝色的口罩的防护标准只限于空气中的细菌防护。</p>
+          <span itemprop="articleBody"><p>北京近短时间空气实属差到极点，已经到了无法忍受的状态。能看见满大街各式各样的口罩出现，有医用的，有装饰的~孰不知他们都是带的完全没有防护效果，甚至还对呼吸造成了阻碍，只有保温和防风的功能。有人说医院那个不错，医院那个蓝色的口罩的防护标准只限于空气中的细菌防护。</p>
 <p>懂一些的朋友都知道要买N95。PS:这不是诺基亚手机。N95是美国CDC下属的职业安全与健康研究所(NIOSH)制定的标准，不是特定的产品名称。针对不适合油性的颗粒过滤效率达到95%，并且通过NIOSH审查的产品就可以称为“N95型口罩”。</p>
 <p>3M是安全防护产品的全球顶尖品牌，当然防护口罩的种类也是非常多。普通人刚开始有可能接受不了这种造型~ 因为这类型的口罩只有在美国各类病毒片里面才能看见，例如《生化危机》。所以带这个出门回头率还是很高的，在我看来造型还是很酷的！最主要的是它管用。<br>因为种类繁多， 8210、8821、8511、8599、9322、9332… 很多人确实也不知道怎么选，当然一般后面会标注该产品的防护类别。例如 8210(带呼吸阀/防PM2.5/工业级防粉尘 /防流感/防二手烟)</p>
 <p>关于防护标准也分FFP标准和N标准，下面是收集来的资料以供参考：</p>
@@ -599,12 +661,12 @@ default-character-set=utf8
 <p>在口罩的选购上可以参考下这个标准，至于我们有必要使用FFP3和N100这么好的吗？ 这个问题请参考自己的经济能力。 就像“我们需要喝进口牛奶吗”这个问题一样，当然没有唯一答案，问题是国内的牛奶你还敢喝吗~ 有人说何必讲究这么多呢，在北京这么多年，喝三鹿这么多年不照样活的好好的吗。 随你呢，各人有各人的活法… 自求多福吧。</p>
 <p>有人说这样太矫情，要知道这个年代不是你身体好就能活的好。随便给你来一下，能让你至少少活十年或者痛苦十年。</p>
 <p>最后个人推荐一下：经济能力好的朋友推荐买FFP3标准，防护能力好，功能全面。 性价比高的比如8210，便宜好用。还有8210v，这是带呼吸阀的，口罩对呼吸的阻碍还是很大的，“N95″口罩密闭较严，透气性差，心肺负担很大。戴上后会有胸闷、不舒服的感觉，老人、孩子、孕妇，以及已经患有呼吸道疾病的患者应减少佩戴时间。呼吸阀除了让呼吸更顺畅并且较适合带眼镜的朋友，因为没有呼吸阀呼气中的水蒸气可能会使眼镜模糊，所以带眼镜的朋友尤其是骑行的朋友优先考虑此类型。有人推荐8233佩戴很舒适~ 仅供参考 o(︶︿︶)o</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -613,24 +675,24 @@ default-character-set=utf8
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -642,18 +704,18 @@ default-character-set=utf8
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -675,12 +737,12 @@ default-character-set=utf8
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -690,49 +752,52 @@ default-character-set=utf8
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -747,9 +812,8 @@ default-character-set=utf8
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -758,38 +822,8 @@ default-character-set=utf8
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -806,14 +840,57 @@ default-character-set=utf8
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

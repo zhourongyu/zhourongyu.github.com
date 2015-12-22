@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,45 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="mac下自带了Git，而Windows下需要自己安装……
+第一，目前windows版本的git有几种实现，但我们选择msysgit发行版，这是目前做得兼容性最好的。下载地址
+首先，git要求使用者必须提供自己的身份标识，为此我们需要在git bash中执行以下命令：
+git config --global user.name &apos;zuroyu&apos;
+git config --global user.em">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git入门">
+<meta property="og:url" content="http://xxxx.ooo/2011/10/05/Git入门/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="mac下自带了Git，而Windows下需要自己安装……
+第一，目前windows版本的git有几种实现，但我们选择msysgit发行版，这是目前做得兼容性最好的。下载地址
+首先，git要求使用者必须提供自己的身份标识，为此我们需要在git bash中执行以下命令：
+git config --global user.name &apos;zuroyu&apos;
+git config --global user.em">
+<meta property="og:updated_time" content="2015-07-19T13:00:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git入门">
+<meta name="twitter:description" content="mac下自带了Git，而Windows下需要自己安装……
+第一，目前windows版本的git有几种实现，但我们选择msysgit发行版，这是目前做得兼容性最好的。下载地址
+首先，git要求使用者必须提供自己的身份标识，为此我们需要在git bash中执行以下命令：
+git config --global user.name &apos;zuroyu&apos;
+git config --global user.em">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
 
-
-
-
-  <title> Git入门 // 擦擦擦擦 </title>
+  <title> Git入门 | 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,17 +88,28 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -85,7 +124,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -93,52 +132,53 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
+        <div id="content" class="content"> 
 
   <div id="posts" class="posts-expand">
     
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
@@ -150,14 +190,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-10-05
+          發表於
+          <time itemprop="dateCreated" datetime="2011-10-05T05:51:00+08:00" content="2011-10-05">
+            2011-10-05
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -169,15 +216,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/10/05/Git入门/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/10/05/Git入门/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/10/05/Git入门/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/10/05/Git入门/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -185,7 +232,7 @@
       
 
       
-        <p>mac下自带了Git，而Windows下需要自己安装……</p>
+        <span itemprop="articleBody"><p>mac下自带了Git，而Windows下需要自己安装……</p>
 <p>第一，<br>目前windows版本的git有几种实现，但我们选择msysgit发行版，这是目前做得兼容性最好的。<a href="http://code.google.com/p/msysgit/downloads/list" target="_blank" rel="external">下载地址</a></p>
 <p>首先，git要求使用者必须提供自己的身份标识，为此我们需要在git bash中执行以下命令：</p>
 <pre><code>git config --global user<span class="class">.name</span> <span class="string">'zuroyu'</span>
@@ -215,15 +262,15 @@ git init
 </code></pre><p>如果提示你的密钥不正确，那么你需要重新确认上一步的操作是否完整无误。</p>
 <p>4，如果上一步测试无错，那么现在就可以将本地的文件提交到github仓库了。在git bash中执行以下命令：</p>
 <pre><code><span class="label">git</span> <span class="keyword">push </span>origin master
-</code></pre>
+</code></pre></span>
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/git/"> #git </a>
+            <a href="/tags/git/" rel="tag">#git</a>
           
         </div>
       
@@ -232,13 +279,13 @@ git init
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2011/10/31/帝都工作日乘地铁秘籍/">帝都工作日乘地铁秘籍</a>
+              <a href="/2011/10/31/帝都工作日乘地铁秘籍/" rel="prev">帝都工作日乘地铁秘籍</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2011/06/12/eclipse's default workspace/">eclipse's default workspace</a>
+              <a href="/2011/06/12/eclipse's default workspace/" rel="next">eclipse's default workspace</a>
             
           </div>
         </div>
@@ -246,30 +293,30 @@ git init
 
       
       
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
     </div>
   </div>
 
+ </div>
 
-
-    
-
-    
-      <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2011/10/05/Git入门/"
-               data-title="Git入门" data-url="http://xxxx.ooo/2011/10/05/Git入门/">
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2011/10/05/Git入门/"
+                   data-title="Git入门" data-url="http://xxxx.ooo/2011/10/05/Git入门/">
+              </div>
+            
           </div>
         
       </div>
-    
-  </div>
-
-
-        </div>
-
-        
-      </div>
-
 
       
   
@@ -281,12 +328,12 @@ git init
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
             文章目錄
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -295,13 +342,13 @@ git init
         </ul>
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -323,12 +370,12 @@ git init
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -338,33 +385,37 @@ git init
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
-        <div class="post-toc-wrap sidebar-panel-active">
+        <section class="post-toc-wrap sidebar-panel-active">
           <div class="post-toc-indicator-top post-toc-indicator"></div>
           <div class="post-toc">
             
@@ -373,25 +424,24 @@ git init
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </div>
+        </section>
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -406,9 +456,8 @@ git init
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -417,27 +466,51 @@ git init
 
   
   
+  
+    
 
   
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hexoxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
   
 
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
 
 
 
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -470,7 +543,6 @@ git init
     }
 
     function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
       var height = $('.sidebar').height() -
                    $tocSelector.position().top -
                    $('.post-toc-indicator-bottom').height();
@@ -492,7 +564,7 @@ git init
       )
     }
 
-    $(document).on('sidebar.didShow', function () {
+    $(document).on('sidebar.motion.complete', function () {
       processTOC();
     });
 
@@ -509,7 +581,6 @@ git init
       element.on('mousewheel DOMMouseScroll', function (event) {
           var oe = event.originalEvent;
           var delta = oe.wheelDelta || -oe.detail;
-          var self = this;
 
           this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
           event.preventDefault();
@@ -519,60 +590,82 @@ git init
     }
 
     function tocOverflowIndicator (indicator, action) {
-      $(indicator).velocity('stop').velocity({
-        opacity: action === 'show' ? 0.4 : 0
-      }, { duration: 100 });
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
     }
 
   });
 </script>
 
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
 
-  <script type="text/javascript" id="sidebar.nav">
-    $(document).ready(function () {
-      var html = $('html');
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
 
-      $('.sidebar-nav li').on('click', function () {
-        var item = $(this);
-        var activeTabClassName = 'sidebar-nav-active';
-        var activePanelClassName = 'sidebar-panel-active';
-        if (item.hasClass(activeTabClassName)) {
-          return;
-        }
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
 
-        var currentTarget = $('.' + activePanelClassName);
-        var target = $('.' + item.data('target'));
-
-        currentTarget.velocity('transition.slideUpOut', 200, function () {
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
           target
             .velocity('stop')
-            .velocity('transition.slideDownIn', 200)
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
             .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
         });
 
-        item.siblings().removeClass(activeTabClassName);
-        item.addClass(activeTabClassName);
-      });
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
 
-      $('.post-toc a').on('click', function (e) {
-        e.preventDefault();
-        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
         html.velocity('stop').velocity('scroll', {
           offset: offset  + 'px',
           mobileHA: false
-        });
-      });
-
-      // Expand sidebar on post detail page by default, when post has a toc.
-      var $tocContent = $('.post-toc-content');
-      if (isDesktop() && CONFIG.sidebar === 'post') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          displaySidebar();
-        }
-      }
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
     });
-  </script>
 
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
 
 
 
@@ -581,6 +674,9 @@ git init
       if (CONFIG.sidebar === 'always') {
         displaySidebar();
       }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
     });
   </script>
 
@@ -590,28 +686,14 @@ git init
   
 
   
-    
-  
-
+  <script type="text/javascript" src="/js/lazyload.js"></script>
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"hexoxxxx"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
   </script>
-
-  
-
-
-  
-  
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
-
-
 </body>
 </html>

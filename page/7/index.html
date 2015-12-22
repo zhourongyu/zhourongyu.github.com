@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/7/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/12/31/2013年读过的那些书/">
+              <a class="post-title-link" href="/2013/12/31/2013年读过的那些书/" itemprop="url">
                 2013年读过的那些书
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-12-31
+          發表於
+          <time itemprop="dateCreated" datetime="2013-12-31T14:55:00+08:00" content="2013-12-31">
+            2013-12-31
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/12/31/2013年读过的那些书/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/31/2013年读过的那些书/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/12/31/2013年读过的那些书/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/31/2013年读过的那些书/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,7 +224,7 @@
 
       
         
-          <h3 id="经管">经管</h3><p>《一本书读懂中国税》<br>《你应该懂点投资学》<br>《看懂财经新闻的第一本书》<br>《暗时间》</p>
+          <span itemprop="articleBody"><h3 id="经管">经管</h3><p>《一本书读懂中国税》<br>《你应该懂点投资学》<br>《看懂财经新闻的第一本书》<br>《暗时间》</p>
 <h3 id="摄影">摄影</h3><p>《美国纽约摄影教材上、下》<br>《狗头拍牛片》<br>《一本摄影书》<br>《我们始终牵手旅行》  </p>
 <h3 id="艺术设计">艺术设计</h3><p>《像艺术家一样思考》<br>《简约至上》  </p>
 <h3 id="计算机">计算机</h3><p>《深入理解JAVA虚拟机》<br>《MySQL性能调优及设计》<br>《构建高性能Web站点》<br>《白帽子讲WEB安全》<br>《设计模式之禅》<br>《HTTP详解》<br>《浪潮之巅》<br>《数学之美》  </p>
@@ -198,12 +232,12 @@
 <h3 id="科普">科普</h3><p>《上帝掷骰子吗:量子物理史话》<br>《大象为什么不长毛》（在读）<br>《果壳中的宇宙》<br>《时间简史》<br>《物种起源》（在读）<br>《批判中医》</p>
 <h3 id="历史">历史</h3><p>《talich 侃美国》<br>《图释世界史》<br>《极简欧洲史》  </p>
 <h3 id="政治&amp;军事">政治&amp;军事</h3><p>《看懂世界格局的第一本书》</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -212,23 +246,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/12/10/由Wordpress迁移至Typecho/">
+              <a class="post-title-link" href="/2013/12/10/由Wordpress迁移至Typecho/" itemprop="url">
                 由Wordpress迁移至Typecho
               </a>
             
@@ -238,14 +272,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-12-10
+          發表於
+          <time itemprop="dateCreated" datetime="2013-12-10T18:49:00+08:00" content="2013-12-10">
+            2013-12-10
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -257,15 +298,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/12/10/由Wordpress迁移至Typecho/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/10/由Wordpress迁移至Typecho/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/12/10/由Wordpress迁移至Typecho/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/12/10/由Wordpress迁移至Typecho/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -274,17 +315,17 @@
 
       
         
-          <h4 id="Typecho">Typecho</h4><p>关注Typecho是在去年，在用了这么久得Wordpress后感觉累了，写文章得不方便+巨多得插件管理等，确实略显庞大。<br>Typecho是一个轻量级得php程序，在我关注得时候就想试试，但一看已经两年没有更新了～ 当时Sunny说快要有新版本了，所以一直关注中…<br>前不久0.9的测试版发布，憋到现在正式版终于出山了，立即切换了过来。<br>再关注得期间也想尝试Jekyll/Octopress ，但因为是Ruby得东西，实在有点不适应，所以放弃。</p>
+          <span itemprop="articleBody"><h4 id="Typecho">Typecho</h4><p>关注Typecho是在去年，在用了这么久得Wordpress后感觉累了，写文章得不方便+巨多得插件管理等，确实略显庞大。<br>Typecho是一个轻量级得php程序，在我关注得时候就想试试，但一看已经两年没有更新了～ 当时Sunny说快要有新版本了，所以一直关注中…<br>前不久0.9的测试版发布，憋到现在正式版终于出山了，立即切换了过来。<br>再关注得期间也想尝试Jekyll/Octopress ，但因为是Ruby得东西，实在有点不适应，所以放弃。</p>
 <h4 id="Markdown">Markdown</h4><p>这几个项目有共同得特色，就是支持Markdown语法，极大得简化了写作得「成本」，Wordpress一直让我诟病的就是写文章时候得麻烦，网页基本无法写东西（排版太难）…在本地使用Live Writer是公认最为合适得写作方案，但对于图片等文件得支持又要麻烦些。<br>如果博客连基本得写作都不能让人舒心，就算做得功能再全，效果再好那也不能得到写作者得青睐。只可能会更吸引一些好奇得读者。</p>
 <p>而Markdown得出现就是为了不再忧虑排版，专注写作，学习成本也极低。</p>
 <h4 id="写作">写作</h4><p>目前真正最省心高效得方法应该是Github+Jekyll.连服务器都不用管，只用专心写作，重要得是完全免费……<br>大部分人做事都是由繁入简的，刚开始玩博客你会想尽办法尝试新得东西，进入无限得折腾，当时间长了以后部分人开始放弃写博客了，因为没有折腾得动力/兴趣了，他们喜欢得是这个过程，而不是写作。而另外一些对写作有一定得热爱的人开始由繁入简，换简单得模板，用简介得写作方案。</p>
 <p>下一步要进行得是内容得转移，这是一个大工程，估计又要折腾不少时间。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -293,23 +334,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/11/27/Nginx反向代理获取真实IP/">
+              <a class="post-title-link" href="/2013/11/27/Nginx反向代理获取真实IP/" itemprop="url">
                 Nginx反向代理获取真实IP
               </a>
             
@@ -319,14 +360,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-11-27
+          發表於
+          <time itemprop="dateCreated" datetime="2013-11-27T15:50:00+08:00" content="2013-11-27">
+            2013-11-27
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -338,15 +386,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/11/27/Nginx反向代理获取真实IP/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/27/Nginx反向代理获取真实IP/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/11/27/Nginx反向代理获取真实IP/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/27/Nginx反向代理获取真实IP/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -355,7 +403,7 @@
 
       
         
-          <p>今天面试官的一个问题让我有点疑惑：如何配置 Nginx 能让程序在后台获取真实的用户IP，当时我没理解这个问题意思，获取请求IP不是很简单的事情么？例如：request.getRemoteAddr()</p>
+          <span itemprop="articleBody"><p>今天面试官的一个问题让我有点疑惑：如何配置 Nginx 能让程序在后台获取真实的用户IP，当时我没理解这个问题意思，获取请求IP不是很简单的事情么？例如：request.getRemoteAddr()</p>
 <p>回来查询了资料. 此问题是指使用了 Nginx 反向代理获取不到真实用户的 IP ，当使用了反向代理后 getRemoteAddr() 返回的是反向服务器的 IP。</p>
 <p>什么是反向代理，曾经写了一个聊天小应用并部署再服务器上，端口为8888，本地访问也就是127.0.0.1:8888</p>
 <p>我想让 t.imim.me 访问到我的这个应用上（应用已撤除），配置如下</p>
@@ -368,12 +416,12 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 </code></pre><p>配置 X-real-ip 就可以在 web 服务器端通过 request.getAttribute(“X-real-ip”) 获得用户的真实 ip。</p>
 <p>X-Forwarded-For 是一个 proxy 转发记录,每次经过转发都会有记录，以 client,proxy1,proxy2 格式保存。如果没有2配置的话，后端通过 request.getAttribute(“X-Forwarded-For”) 获取值为Null。</p>
 <p>当一个应用经过 N(N&gt;1) 次 Nginx 转发时，X-real-ip 中保存的是 N-1 的服务器地址，也就是说当第二次代理的时候 X-real-ip 的值为第一台 Nginx 服务器 IP，X-Forwarded-For 的值则变为”用户真实 IP , 第一台 Nginx 服务器 IP”</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -382,23 +430,23 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/11/10/三清山之行/">
+              <a class="post-title-link" href="/2013/11/10/三清山之行/" itemprop="url">
                 三清山之行
               </a>
             
@@ -408,14 +456,21 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-11-10
+          發表於
+          <time itemprop="dateCreated" datetime="2013-11-10T14:28:00+08:00" content="2013-11-10">
+            2013-11-10
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -427,15 +482,15 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/11/10/三清山之行/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/10/三清山之行/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/11/10/三清山之行/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/10/三清山之行/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -444,13 +499,13 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 
       
         
-          <h3 id="十一三清山之行">十一三清山之行</h3><p>做为一个爱爬山的江西人没去过三清山似乎有些所不过去，这次就去了却心愿。 去过三清山得驴友都说特别好，果不其然，围绕着山周围有大片得云海，可以让你看个够。<br>因为离家近而且小看三清山，这次连准备都没有，差点当晚在玉山没找到住宿…<br>景区位置非常远，从玉山县做大巴过去大概还花了2小时。有意思得是我们在山脚买好了票，竟然没人检票…一路爬到山顶才发现检票口！（我们是从后山上）<br>到山顶景区内发现真实人满为患，驻扎营地里去完了都没有地方，为了先抢占位置连日落也错过了，甚至遗憾。<br><a href="http://zryblog.qiniudn.com/2014/07/2678639862.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/2678639862.jpg" alt="日落时得营地"></a><br>这时候应该是五点半左右，驻扎的地方已经满当当了。<br>十一得山顶其实已经非常凉了，我是非常想在半夜起来拍星星得，实在是冷的只想缩在被窝内。到快要天亮四五点硬着头皮起来了，出了帐篷我就后悔了，漫天星辰，错过了第一次拍银河得最佳实际，天边已经亮起了红霞，太阳也快冒出来了，抓紧之间拍了几张，时间紧迫冻得手抖还是没出几张好片子。<br><a href="http://zryblog.qiniudn.com/2014/07/2256452798.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/2256452798.jpg" alt="山顶得星空"></a><br><a href="http://zryblog.qiniudn.com/2014/07/1825757398.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/1825757398.jpg" alt="流星滑落得天空"></a><br>看，一颗流星滑过～<br>营地离最佳日出点还有一段距离，但队里有一妹纸实在爬不动了，只好退而求其次再其他点看，也就是拍星星得地方，然后杯具得是，这里看不到刚出现得太阳……..<br>只能侧面突击了,嗯。<br><a href="http://zryblog.qiniudn.com/2014/07/3652771800.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/3652771800.jpg" alt="日出时得山峦"></a><br><a href="http://zryblog.qiniudn.com/2014/07/3101016437.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/3101016437.jpg" alt="云海里得山脚"></a><br>看着云海里得山峰让我觉得那像是天宫…也许住着神仙。<br>下山时我们走得西海岸，是一条非常长得栈道，伴随着你得是一路得云海山峦，记忆犹新。</p>
-
+          <span itemprop="articleBody"><h3 id="十一三清山之行">十一三清山之行</h3><p>做为一个爱爬山的江西人没去过三清山似乎有些所不过去，这次就去了却心愿。 去过三清山得驴友都说特别好，果不其然，围绕着山周围有大片得云海，可以让你看个够。<br>因为离家近而且小看三清山，这次连准备都没有，差点当晚在玉山没找到住宿…<br>景区位置非常远，从玉山县做大巴过去大概还花了2小时。有意思得是我们在山脚买好了票，竟然没人检票…一路爬到山顶才发现检票口！（我们是从后山上）<br>到山顶景区内发现真实人满为患，驻扎营地里去完了都没有地方，为了先抢占位置连日落也错过了，甚至遗憾。<br><a href="http://zryblog.qiniudn.com/2014/07/2678639862.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/2678639862.jpg" alt="日落时得营地"></a><br>这时候应该是五点半左右，驻扎的地方已经满当当了。<br>十一得山顶其实已经非常凉了，我是非常想在半夜起来拍星星得，实在是冷的只想缩在被窝内。到快要天亮四五点硬着头皮起来了，出了帐篷我就后悔了，漫天星辰，错过了第一次拍银河得最佳实际，天边已经亮起了红霞，太阳也快冒出来了，抓紧之间拍了几张，时间紧迫冻得手抖还是没出几张好片子。<br><a href="http://zryblog.qiniudn.com/2014/07/2256452798.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/2256452798.jpg" alt="山顶得星空"></a><br><a href="http://zryblog.qiniudn.com/2014/07/1825757398.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/1825757398.jpg" alt="流星滑落得天空"></a><br>看，一颗流星滑过～<br>营地离最佳日出点还有一段距离，但队里有一妹纸实在爬不动了，只好退而求其次再其他点看，也就是拍星星得地方，然后杯具得是，这里看不到刚出现得太阳……..<br>只能侧面突击了,嗯。<br><a href="http://zryblog.qiniudn.com/2014/07/3652771800.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/3652771800.jpg" alt="日出时得山峦"></a><br><a href="http://zryblog.qiniudn.com/2014/07/3101016437.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/3101016437.jpg" alt="云海里得山脚"></a><br>看着云海里得山峰让我觉得那像是天宫…也许住着神仙。<br>下山时我们走得西海岸，是一条非常长得栈道，伴随着你得是一路得云海山峦，记忆犹新。</p>
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -459,23 +514,23 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/10/31/Ripple赠送Github用户福利/">
+              <a class="post-title-link" href="/2013/10/31/Ripple赠送Github用户福利/" itemprop="url">
                 Ripple赠送Github用户福利
               </a>
             
@@ -485,14 +540,21 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-10-31
+          發表於
+          <time itemprop="dateCreated" datetime="2013-10-31T08:40:00+08:00" content="2013-10-31">
+            2013-10-31
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -504,15 +566,15 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/10/31/Ripple赠送Github用户福利/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/10/31/Ripple赠送Github用户福利/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/10/31/Ripple赠送Github用户福利/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/10/31/Ripple赠送Github用户福利/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -521,7 +583,7 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 
       
         
-          <p>今天收到一封邮件，号称是在github做任务，帮忙可以获取30RMB佣金~</p>
+          <span itemprop="articleBody"><p>今天收到一封邮件，号称是在github做任务，帮忙可以获取30RMB佣金~</p>
 <p><img src="http://zryblog.qiniudn.com/2014/07/3146515397.png" alt="mail_snap"></p>
 <p>所幸最近我刚好了解了下Ripple币这个东西，是一种电子货币，类似近来一直很火的比特币。</p>
 <p>Ripple最近给github上开发者送福利：</p>
@@ -540,12 +602,12 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 <p>注册，领取流程就不用说了吧~</p>
 <p><img src="http://zryblog.qiniudn.com/2014/07/4185901013.png" alt="20131031161120"></p>
 <p>成功领取code是和你帐号绑定的，第一个是我的钱包地址，下面两个随机生成的是scret是用来找回你丢失了的code，一般领完就去兑换了XRP了，所以基本不用记了~</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -554,24 +616,24 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/6/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/8/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -583,18 +645,18 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -616,12 +678,12 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -631,49 +693,52 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -688,9 +753,8 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -699,38 +763,8 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -747,14 +781,57 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

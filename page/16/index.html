@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/16/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/04/15/iPhone那些你不知道的小技巧/">
+              <a class="post-title-link" href="/2012/04/15/iPhone那些你不知道的小技巧/" itemprop="url">
                 iPhone那些你不知道的小技巧
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-04-15
+          發表於
+          <time itemprop="dateCreated" datetime="2012-04-15T13:38:00+08:00" content="2012-04-15">
+            2012-04-15
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/04/15/iPhone那些你不知道的小技巧/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/04/15/iPhone那些你不知道的小技巧/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/04/15/iPhone那些你不知道的小技巧/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/04/15/iPhone那些你不知道的小技巧/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,18 +224,18 @@
 
       
         
-          <p>很多朋友经常的问我关于iPhone的许多技巧，国内确实有很多玩不明白的小白～<br>iPhone有很多实用的小技巧，还是值得一学的，如果你真的想做一个iPhone达人的话……</p>
+          <span itemprop="articleBody"><p>很多朋友经常的问我关于iPhone的许多技巧，国内确实有很多玩不明白的小白～<br>iPhone有很多实用的小技巧，还是值得一学的，如果你真的想做一个iPhone达人的话……</p>
 <p>技巧1：<br>截屏功能，个人认为最实用的功能，以前用诺基亚都得下载各种截屏软件，挺麻烦，iphone默认提供了这个功能，在当前界面按HOME+开机键既可把当前屏幕截取下来，默认存在相册中</p>
 <p>技巧2：<br>旋转屏幕，有时候躺在床上看书或者网页，屏幕会自动的随着旋转，有时候确实很烦人，这时候需要按HOME键2次，底部会出现一排图标，都是近期使用过的app，滑动东到第一页（手指向右侧滑动），点一下第一个图标，在电池左侧会出现一个小锁，代表了屏幕锁定，不会再随着重力感应旋转了</p>
 <p>技巧3：<br>表情键盘，iPhone是可以默认打出各种表情图片的，相信很多人都见过，遇到新的表情甚至会问对方是打哪个词语而出现的表情，其实iPhone是带有一个表情键盘的，大约有450多种表情都在里面，在设置—通用—键盘—国际键盘—添加键盘—表情符号。添加完后在输入界面就可以切换到表情符号键盘（左下角的地球符号）。有人说要安装一个叫emoji的app，运行，然后才能添加，在我的4s下是可以直接添加的，其他的机型没有测试过。</p>
 <p>技巧4：<br>编辑短信的时候如果想把所写的内容全部删掉，可以试着晃动几下手机，会弹出个窗口，选择“撤销键入”就可以把内容全部删除，如果删除错了想恢复，再次晃动手机，选择“重做键入”既可。如果是粘贴过来的内容，则会出现“撤销粘贴”。</p>
 <p>技巧5：<br>摄氏度，在输入内容的时候如果想输入摄氏度这个符号“ °C ”，切换到数字输入界面，长按0会出现一排类似的符号哦，第一个就是摄氏度的°</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -210,23 +244,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/03/28/免费增加Dropbox 23G空间/">
+              <a class="post-title-link" href="/2012/03/28/免费增加Dropbox 23G空间/" itemprop="url">
                 免费增加Dropbox 23G空间
               </a>
             
@@ -236,14 +270,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-03-28
+          發表於
+          <time itemprop="dateCreated" datetime="2012-03-28T04:22:00+08:00" content="2012-03-28">
+            2012-03-28
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -255,15 +296,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/03/28/免费增加Dropbox 23G空间/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/28/免费增加Dropbox 23G空间/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/03/28/免费增加Dropbox 23G空间/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/28/免费增加Dropbox 23G空间/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -272,7 +313,7 @@
 
       
         
-          <p>前段时间Android手机可以免费增加23G Dropbox容量，可以使用2年。<br>很简单，直接删除目前android手机上的dropbox程序，<br>下载 <a href="http://dl.dropbox.com/u/25054669/Dropbox.apk" target="_blank" rel="external">http://dl.dropbox.com/u/25054669/Dropbox.apk</a> 程序到手机，安装，用dropbox帐号登录即可。</p>
+          <span itemprop="articleBody"><p>前段时间Android手机可以免费增加23G Dropbox容量，可以使用2年。<br>很简单，直接删除目前android手机上的dropbox程序，<br>下载 <a href="http://dl.dropbox.com/u/25054669/Dropbox.apk" target="_blank" rel="external">http://dl.dropbox.com/u/25054669/Dropbox.apk</a> 程序到手机，安装，用dropbox帐号登录即可。</p>
 <p>由于自己是iPhone，只能羡慕嫉妒恨，现在有一个新方法来扩容（亲测有效）：</p>
 <p>下载BlueStacks App Player<br>下载地址： <a href="http://www.bluestacks.com/" target="_blank" rel="external">http://www.bluestacks.com/</a></p>
 <p>下载Dropbox.apk<br>下载地址： <a href="http://dl.dropbox.com/u/25054669/Dropbox.apk" target="_blank" rel="external">http://dl.dropbox.com/u/25054669/Dropbox.apk</a></p>
@@ -284,12 +325,12 @@
 <ul>
 <li>The Dropbox Team</li>
 </ul>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -298,23 +339,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/03/22/屌丝的个人简介/">
+              <a class="post-title-link" href="/2012/03/22/屌丝的个人简介/" itemprop="url">
                 屌丝的个人简介
               </a>
             
@@ -324,14 +365,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-03-22
+          發表於
+          <time itemprop="dateCreated" datetime="2012-03-22T06:51:00+08:00" content="2012-03-22">
+            2012-03-22
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -343,15 +391,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/03/22/屌丝的个人简介/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/22/屌丝的个人简介/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/03/22/屌丝的个人简介/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/22/屌丝的个人简介/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -360,19 +408,19 @@
 
       
         
-          <p>@Terry Yin同学的文章 ：</p>
+          <span itemprop="articleBody"><p>@Terry Yin同学的文章 ：</p>
 <p>今天彻底查了下屌丝到底什么意思，这个是还算满意的结果。<br>屌丝一词源于百度李毅贴吧，是一种带有谐谑语气的称呼，可用于称呼别人，亦可自谓。屌丝二字蕴含着无奈与自嘲的意味。但凡被称作屌丝的，或者自称为屌丝的人都有一些共同特征。<br>起源<br>表面上屌丝一词起源于百度雷霆吧对李毅的球迷无用心的恶搞称谓。但广大毅丝能接受了这个称呼并发扬光大，深沉次的原因还是因为每个人心中都有屌丝一面。</p>
 <p>特征<br>成长历程：屌丝一般都是农村出身，小时家里贫穷。有的十二载寒窗考上大学，攻读工科专业，毕业后工作类似搬砖、码农，毫无地位、收入微薄；有的初中辍学，进 城务工，或成了发廊师傅，或成了网吧网管，在城市的繁华之中分得一杯苦羹；或是无业游民，但是自己一般不愿承认，网上经常以自由职业者。</p>
 <p>感情：屌丝的情感世界是一片空白的，甚至可以用荒凉来形容。小学时男男女女混在泥土堆里，毫无性别可言，初高中的屌丝开始懵懂，可是那时坚信读书会改变命运，埋头 苦读，错过了本来就不多的机会，不过这是的屌丝还是自视清高的。到了大学，屌丝会悲剧地发现自己的工科专业里，女生少得可怜，而且质量堪忧。本来和女生话 就不多的屌丝在大学里几乎就没和女生说过几句话。他们也梦想着在校园里会拥有浪漫艳遇，可是带着幻想蹉跎四年是他们的最终归宿。屌丝是没有爱情的，他心中 也许会有一个高贵的公主，但能和那公主牵手自是屌丝的白日梦，即便那个所谓的公主最终变成了高富帅的弃妇。相亲、迁就、结婚、隐忍、流泪就是屌丝的感情轨 迹，这是毫无悬念的。</p>
 <p>工作：毫无疑问屌丝做的工作都是下贱的，所谓工作无卑贱之分都是成功人士糊弄屌丝的。屌丝干着类似搬砖、和水泥的活却拿着只 够勉强活下去的薪水。工作时时遭人唾骂、处处被人嫌弃，一年上360天的班，却赚不到过年回家的车票。未来：又是毫无疑问，屌丝是没有未来的，黑暗的前面 还是黑暗，是无尽的。若是有屌丝在你面前畅谈他的人生规划或者谈笑风生说些房子车子的问题，那么，毫无疑问，他在意淫。健康：屌丝都是蓬头垢面的，双眼无 光，形容枯黄，恍若就死之人，俨然行尸走肉。屌丝灵魂负重，怎么会有健康的身体。他们纵欲、他们操心、他们熬夜，屌丝的身体像是一台台老旧的机器，走起来 磕磕碰碰，晃荡晃荡都是声音，耗油耗电却没有功率。</p>
 <p>性格：可怜之人必有可恨之处，屌丝的性格有许多硬伤：他们缺乏行动力，他们虚荣又故作清高，害羞却又自作多情，他们怯懦，他们自卑自贱却又自以为是。总之，他们的性格一无是处，这也决定了他们在这社会上也是一无是处。</p>
 <p>情 操：这个词用在屌丝身上本身就是对着两个字的侮辱了，屌丝还谈什么情怀、操守的？他们心中有的只有性、谎言、逆反。他们不知廉耻，狗尚不嫌家贫，他们却常 常反咬自己的主人；尊老爱幼是传统美德，他们却常常粗言以伤慈祥的老人，P图丧失可爱的幼女，又常常以体格上的弱点讽刺威武的将军。他们心中根本没有纯洁 的感情，他们以己度人，认为时间一切都是险恶丑陋肮脏的.</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -381,23 +429,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/03/15/泰山行计划V1.0/">
+              <a class="post-title-link" href="/2012/03/15/泰山行计划V1.0/" itemprop="url">
                 泰山行计划V1.0
               </a>
             
@@ -407,14 +455,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-03-15
+          發表於
+          <time itemprop="dateCreated" datetime="2012-03-15T15:42:00+08:00" content="2012-03-15">
+            2012-03-15
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -426,15 +481,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/03/15/泰山行计划V1.0/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/15/泰山行计划V1.0/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/03/15/泰山行计划V1.0/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/15/泰山行计划V1.0/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -443,7 +498,7 @@
 
       
         
-          <p>泰山是我国的五岳之首，有“天下第一山”之美誉，又称东岳，中国最美的、令人震撼的十大名山之一。<br>泰山位于山东省中部，隶属于泰安市。海拔1532.7米，极顶玉皇顶-玉皇峰。<br>此次泰山行重点的四处：探海石看日出，玉皇顶，十八盘-南天门及岱庙。</p>
+          <span itemprop="articleBody"><p>泰山是我国的五岳之首，有“天下第一山”之美誉，又称东岳，中国最美的、令人震撼的十大名山之一。<br>泰山位于山东省中部，隶属于泰安市。海拔1532.7米，极顶玉皇顶-玉皇峰。<br>此次泰山行重点的四处：探海石看日出，玉皇顶，十八盘-南天门及岱庙。</p>
 <p>交通：为了节省开支，没有选择更快更贵的高铁。<br>    北京-泰安:<br>    D315  08:22 - 11:11   历时2小时52分<br>    D355  16:42 - 19:29   历时2小时47分<br>    D351  18:18 - 20:56   历时2小时38分</p>
 <p>泰山有四处路口，我们选择走泰山东路，即从红门上山，进山口在火车站东北方向2.5KM处。（公交3、4路抵达岱庙，打车10-15元）<br>登山线路：<br>    经典路线：岱庙 — 红门 — 岱顶<br>    沿途景点：岱宗坊，关帝庙，一天门，孔子登临处，红门宫，万仙楼，风月无边刻石，三观庙，斗母宫，元君庙，奉安纪念碑，壶天阁，回马岭，中天门，云步桥，忘人松，朝阳洞，十八盘，升仙坊，南天门……<br>    下山路线：依据大家体力来决定，体力充足则从后山下，也就是被称为最绿色的天烛峰路线。景色无敌，松林，瀑布，云海。</p>
 <p>行程费用：<br>    岱庙：      ￥30/人        军大衣：         ￥10/人<br>    进山门票:   ￥125 /人      食物及水：        ￥150<br>    红门宫：    ￥5 /人        车费及其他：      ￥200 /人<br>    中天门-南天门索道：80/单程，往返140（除万不得已，否则尽量不坐）<br>    预计人均支出：￥500 - ￥600</p>
@@ -452,12 +507,12 @@
 <p>泰安特色餐饮：<br>    1.豆腐宴和野菜宴<br>    2.小米煎饼和烧烤（天街，李胖子烧烤）</p>
 <p>注意事项：<br>    1.禁止在没有经过大家同意做出各种有危险或使团队不和谐的事情<br>    2.有学生证的请务必携带～便宜不少<br>    3.夜间山顶风大，手套、帽子、围脖都是御风防寒的好物品，建议携带<br>    4.下午五点后公交停止运行</p>
 <p>备注：<br>    泰安旅游局电话：     0538-8209949<br>    旅游投诉电话:       0538-8285462<br>    火车票问询：        0538-95105175<br>    汽车票问询：        0538-8332938</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -466,23 +521,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/03/08/MBP换内存小记/">
+              <a class="post-title-link" href="/2012/03/08/MBP换内存小记/" itemprop="url">
                 MBP换内存小记
               </a>
             
@@ -492,14 +547,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-03-08
+          發表於
+          <time itemprop="dateCreated" datetime="2012-03-08T15:58:00+08:00" content="2012-03-08">
+            2012-03-08
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -511,15 +573,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/03/08/MBP换内存小记/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/08/MBP换内存小记/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/03/08/MBP换内存小记/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/08/MBP换内存小记/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -528,7 +590,7 @@
 
       
         
-          <p>MBP原配为4G内存，很早就想换8G，一直犹豫换下来的2x2内存怎么处理。正好今天有朋友把这两要走～趁机完成个小心愿。</p>
+          <span itemprop="articleBody"><p>MBP原配为4G内存，很早就想换8G，一直犹豫换下来的2x2内存怎么处理。正好今天有朋友把这两要走～趁机完成个小心愿。</p>
 <p>其实MBP设计的很简单，背部十颗十字口小螺丝，不像惠普一样恶心扒拉的整个六口的螺丝~<br><img src="http://zryblog.qiniudn.com/2014/07/3023708556.png" alt="mbp.png"></p>
 <p>来自官方的图片 注意又上方三颗是长螺丝，左侧那个是短的…</p>
 <p>第一次拆后盖的时候 里面有“粘性”物体，误认为还有螺丝没有拆卸下来，其实只要稍微用力就可以把后盖拿起来。</p>
@@ -540,12 +602,12 @@
 <p>最后开机检测：<br><img src="http://zryblog.qiniudn.com/2014/07/1107529777.jpg" alt="IMG\_0398.jpg"></p>
 <p>一次成功，没遇上什么问题。整体来说内存对于MBP的影响没有太大。真正让人体会到差距的应该是在换SSD之后。等有机会的吧…</p>
 <p>ps: 4s在夜间的照相效果还是不咋样，图片不是很清晰。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -554,24 +616,24 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/15/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/17/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -583,18 +645,18 @@
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -616,12 +678,12 @@
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -631,49 +693,52 @@
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -688,9 +753,8 @@
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -699,38 +763,8 @@
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -747,14 +781,57 @@
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

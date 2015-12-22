@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/18/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/02/09/The Zen of Python/">
+              <a class="post-title-link" href="/2012/02/09/The Zen of Python/" itemprop="url">
                 The Zen of Python
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-02-09
+          發表於
+          <time itemprop="dateCreated" datetime="2012-02-09T14:22:00+08:00" content="2012-02-09">
+            2012-02-09
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/02/09/The Zen of Python/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/09/The Zen of Python/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/02/09/The Zen of Python/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/09/The Zen of Python/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,7 +224,7 @@
 
       
         
-          <p>从《Programming Python》中有一段有意思的内容，在Python中使用import  this可以看到Python哲学</p>
+          <span itemprop="articleBody"><p>从《Programming Python》中有一段有意思的内容，在Python中使用import  this可以看到Python哲学</p>
 <pre><code>&gt;&gt;&gt; import this
 The Zen <span class="keyword">of</span> Python, <span class="keyword">by</span> Tim Peters
 
@@ -218,12 +252,12 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 <p>平面的比嵌套的好<br>错落有致比密密匝匝的好<br>可读性很重要</p>
 <p>虽然实用比纯粹更重要<br>但特殊情况不能特殊到打破规律<br>永远别让错误悄悄地溜走<br>除非是你故意的<br>碰到模棱两可的地方，绝对不要去作猜测<br>什么事情都应该有一个，而且最好只有一个显而易见的解决办法<br>虽然刚开始的时候，这个办法可能不是那么的显而易见，但谁叫你不是荷兰人<br>有些事情不理不睬可能会比过一会解决要好<br>但最好是现在就解决</p>
 <p>如果一个想法实现起来很困难，那它本身就不是一个好想法<br>如果一个想法实现起来很容易，那它或许就是一个好想法<br>命名空间是一个很了不起的想法,让我们多多使用吧</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -232,23 +266,23 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/01/13/MBP的启动速度改进方案/">
+              <a class="post-title-link" href="/2012/01/13/MBP的启动速度改进方案/" itemprop="url">
                 MBP的启动速度改进方案
               </a>
             
@@ -258,14 +292,21 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-01-13
+          發表於
+          <time itemprop="dateCreated" datetime="2012-01-13T07:14:00+08:00" content="2012-01-13">
+            2012-01-13
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -277,15 +318,15 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/01/13/MBP的启动速度改进方案/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/13/MBP的启动速度改进方案/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/01/13/MBP的启动速度改进方案/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/13/MBP的启动速度改进方案/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -294,7 +335,7 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
       
         
-          <p>今天自己的MBP启动速度很慢呢，最初的时候30+秒，如今已经到1分钟了。</p>
+          <span itemprop="articleBody"><p>今天自己的MBP启动速度很慢呢，最初的时候30+秒，如今已经到1分钟了。</p>
 <p>有几种可以提升下速度的方案:<br>1.最直接的方案，更换SSD，效果一流，速度在10-15秒左右，当然价格比较昂贵。</p>
 <p>2.修复磁盘权限，这个方法较实用，效果也还比较明显</p>
 <p>3.重置 PRAM 和 NVRAM </p>
@@ -304,12 +345,12 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 <p>另附上一些的常用提速技巧</p>
 <p>MAC OS在每次启动都会为桌面文件做索引，所以尽量少在桌面上放文件，可放置快速链接</p>
 <p>在User&amp;Groups 里面把Login items筛选一下</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -318,23 +359,23 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2012/01/10/No module named yum/">
+              <a class="post-title-link" href="/2012/01/10/No module named yum/" itemprop="url">
                 No module named yum
               </a>
             
@@ -344,14 +385,21 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2012-01-10
+          發表於
+          <time itemprop="dateCreated" datetime="2012-01-10T03:07:00+08:00" content="2012-01-10">
+            2012-01-10
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -363,15 +411,15 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/01/10/No module named yum/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/10/No module named yum/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2012/01/10/No module named yum/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/10/No module named yum/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -380,7 +428,7 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
       
         
-          <p>今早运行Yum报错：</p>
+          <span itemprop="articleBody"><p>今早运行Yum报错：</p>
 <pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># yum</span>
 
 There was a problem importing one <span class="keyword">of</span> the Python modules
@@ -428,12 +476,12 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
 改为:
 <span class="shebang">#!/usr/bin/python2.4</span>
 </code></pre><p>然后保存OK.</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -442,23 +490,23 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2011/12/22/对于CSDN帐号资料泄漏的感悟/">
+              <a class="post-title-link" href="/2011/12/22/对于CSDN帐号资料泄漏的感悟/" itemprop="url">
                 对于CSDN帐号资料泄漏的感悟
               </a>
             
@@ -468,14 +516,21 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-12-22
+          發表於
+          <time itemprop="dateCreated" datetime="2011-12-22T06:24:00+08:00" content="2011-12-22">
+            2011-12-22
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -487,15 +542,15 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/12/22/对于CSDN帐号资料泄漏的感悟/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/12/22/对于CSDN帐号资料泄漏的感悟/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/12/22/对于CSDN帐号资料泄漏的感悟/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/12/22/对于CSDN帐号资料泄漏的感悟/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -504,7 +559,7 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
 
       
         
-          <p>昨日CSDN多达600余万用户资料被黑客公布，瞬间这600万资料被众多网友下载，有拿来做查询是否有自己帐号的应用，有拿来做各种统计图表，估计最多的是被拿去做发垃圾邮件~</p>
+          <span itemprop="articleBody"><p>昨日CSDN多达600余万用户资料被黑客公布，瞬间这600万资料被众多网友下载，有拿来做查询是否有自己帐号的应用，有拿来做各种统计图表，估计最多的是被拿去做发垃圾邮件~</p>
 <p>和网友讨论过，这个库在几个月前已经被人拿到手，只是没有放出来，所以里面一些有价值的帐号估计大部分都被发掘光了，剩下的也就只能娱乐娱乐了。</p>
 <p>下面是传说中的我最喜爱的CSDN密码评选top100~</p>
 <p>第 1 名: 123456789 - 235033 次<br>第 2 名: 12345678 - 212751 次<br>第 3 名: 11111111 - 76346 次<br>第 4 名: dearbook - 46054 次<br>第 5 名: 00000000 - 34952 次<br>第 6 名: 123123123 - 19986 次<br>第 7 名: 1234567890 - 17791 次<br>第 8 名: 88888888 - 15033 次<br>第 9 名: 111111111 - 6995 次<br>第 10 名: 147258369 - 5966 次<br>第 11 名: aaaaaaaa - 5890 次<br>第 12 名: 987654321 - 5553 次<br>第 13 名: 1111111111 - 5145 次<br>第 14 名: 66666666 - 5025 次<br>第 15 名: a123456789 - 4686 次<br>第 16 名: 11223344 - 4096 次<br>第 17 名: 1qaz2wsx - 3962 次<br>第 18 名: xiazhili - 3649 次<br>第 19 名: password - 3647 次<br>第 20 名: 789456123 - 3610 次<br>第 21 名: qwertyuiop - 3504 次<br>第 22 名: qqqqqqqq - 3491 次<br>第 23 名: iloveyou - 3294 次<br>第 24 名: qq123456 - 3287 次<br>第 25 名: 87654321 - 3281 次<br>第 26 名: 000000000 - 3175 次<br>第 27 名: asdfghjkl - 3100 次<br>第 28 名: 31415926 - 3061 次<br>第 29 名: 12344321 - 2985 次<br>第 30 名: 1q2w3e4r - 2943 次<br>第 31 名: 0000000000 - 2886 次<br>第 32 名: qazwsxedc - 2770 次<br>第 33 名: 123456abc - 2751 次<br>第 34 名: abcd1234 - 2612 次<br>第 35 名: 0123456789 - 2578 次<br>第 36 名: 123654789 - 2573 次<br>第 37 名: 12121212 - 2540 次<br>第 38 名: asdasdasd - 2437 次<br>第 39 名: 12341234 - 2380 次<br>第 40 名: 110110110 - 2348 次<br>第 41 名: abc123456 - 2338 次<br>第 42 名: aa123456 - 2298 次<br>第 43 名: a12345678 - 2245 次<br>第 44 名: 22222222 - 2243 次<br>第 45 名: 1234qwer - 2218 次<br>第 46 名: a1234567 - 2216 次<br>第 47 名: 123321123 - 2166 次<br>第 48 名: qwertyui - 2165 次<br>第 49 名: 123456 - 2141 次<br>第 50 名: 123456123 - 2113 次<br>第 51 名: 123456789a - 2110 次<br>第 52 名: 123456aa - 2058 次<br>第 53 名: asdfasdf - 2023 次<br>第 54 名: 99999999 - 1891 次<br>第 55 名: 999999999 - 1859 次<br>第 56 名: 123456123456 - 1854 次<br>第 57 名: 520520520 - 1699 次<br>第 58 名: 963852741 - 1656 次<br>第 59 名: 55555555 - 1652 次<br>第 60 名: 741852963 - 1652 次<br>第 61 名: 33333333 - 1589 次<br>第 62 名: qwer1234 - 1573 次<br>第 63 名: asd123456 - 1464 次<br>第 64 名: qweasdzxc - 1413 次<br>第 65 名: zzzzzzzz - 1343 次<br>第 66 名: 77777777 - 1339 次<br>第 67 名: code8925 - 1286 次<br>第 68 名: 11112222 - 1273 次<br>第 69 名: ms0083jxj - 1268 次<br>第 70 名: 123456qq - 1267 次<br>第 71 名: qweqweqwe - 1263 次<br>第 72 名: 111222333 - 1214 次<br>第 73 名: asdf1234 - 1203 次<br>第 74 名: 3.1415926 - 1200 次<br>第 75 名: asdfghjk - 1159 次<br>第 76 名: 147852369 - 1148 次<br>第 77 名: q1w2e3r4 - 1140 次<br>第 78 名: 521521521 - 1136 次<br>第 79 名: 12345678A - 1121 次<br>第 80 名: 123qweasd - 1116 次<br>第 81 名: 123698745 - 1111 次<br>第 82 名: 1123581321 - 1109 次<br>第 83 名: 1234abcd - 1085 次<br>第 84 名: WOAINI1314 - 1067 次<br>第 85 名: 1qazxsw2 - 1036 次<br>第 86 名: woaiwojia - 1016 次<br>第 87 名: zxcvbnm123 - 952 次<br>第 88 名: 321321321 - 920 次<br>第 89 名: 05962514787 - 910 次<br>第 90 名: wwwwwwww - 907 次<br>第 91 名: 123456987 - 894 次<br>第 92 名: kingcom5 - 892 次<br>第 93 名: 5845201314 - 882 次<br>第 94 名: 0987654321 - 853 次<br>第 95 名: 11111111111111111111 - 835 次<br>第 96 名: 123456asd - 829 次<br>第 97 名: 1q2w3e4r5t - 819 次<br>第 98 名: 12345600 - 805 次<br>第 99 名: lilylily - 784 次<br>第 100 名: 11235813 - 783 次</p>
@@ -512,12 +567,12 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
 <p>且不说为什么CSDN的那些程序员是多么多么的劣质，从上面的数据也可以看出一些更为严重的问题，首当其冲的就是国内网民对帐号密码的态度，值得一提的是CSDN的用户群大多数都应该是IT行业的工程师，设计师，技术人员。都是具备专业技能的IT人士，对电脑和网络的认识应该也是很强的，这样的用户都能让123456789成为top1，纵观top100中，全都是安全性极低的密码，使用单纯的穷举法想窃取资料都相当的简单。由此可想几亿的普通网名对网络的安全性的认识低到了哪个地步，也就侧面的反映了为什么老百姓抵御不了那些网络诈骗的原因。</p>
 <p>抱着娱乐心情，我从泄漏的数据中抽取了一些做了测试，大多数的帐号竟还可以登陆，据Robbin文中表明，这些数据是2009年的备份数据，也就是说2009年到现在三年多时间这些用户密码不曾改变过，按理说也没有太大问题，但具备强安全意识的人都知道密码应该定期的变换是最好的。 还有更严重的问题，那就是从数据中抽取的用户的邮箱密码竟然也是一样，从而顺利的进入了该用户的邮箱，最严重的是在他的邮箱中发现了支付宝的邮件，抱着试一试的态度，惊喜的发现支付宝也能正常登陆~ 里面还绑定了银行卡，最后一步就是支付密码~当然这种违法的事情是不能做的，这里就没有进行测试……  我相信绝对有不良份子去利用这些数据生产利益。</p>
 <p>随着CSDN的资料泄漏，这两天各种的数据都流露出来，多玩，人人，7k7k，178，猫扑……等等等等，虽然数据不是最新的，但要知道这些“挖掘者”是一直在工作的，为了他们的生活！这次事件应该会为大家的安全性意识带来一定的提升，在这个互联网与真实生活越来越紧密的年代，互联网的安全性就像家里的锁一样，一把好锁，能让你更加的安心！</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -526,23 +581,23 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2011/12/21/Linux Shell 内存监控技巧/">
+              <a class="post-title-link" href="/2011/12/21/Linux Shell 内存监控技巧/" itemprop="url">
                 Linux Shell 内存监控技巧
               </a>
             
@@ -552,14 +607,21 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-12-21
+          發表於
+          <time itemprop="dateCreated" datetime="2011-12-21T15:49:00+08:00" content="2011-12-21">
+            2011-12-21
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -571,15 +633,15 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/12/21/Linux Shell 内存监控技巧/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/12/21/Linux Shell 内存监控技巧/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/12/21/Linux Shell 内存监控技巧/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/12/21/Linux Shell 内存监控技巧/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -588,7 +650,7 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
 
       
         
-          <p>1.查看当前系统内存使用状况(free)：</p>
+          <span itemprop="articleBody"><p>1.查看当前系统内存使用状况(free)：</p>
 <p>free命令有以下几个常用选项：<br>-b 以字节为单位显示数据。<br>-k 以千字节(KB)为单位显示数据(缺省值)。<br>-m 以兆(MB)为单位显示数据。<br>-s delay 该选项将使free持续不断的刷新，每次刷新之间的间隔为delay指定的秒数，如果含有小数点，将精确到毫秒，如0.5为500毫秒，1为一秒。</p>
 <p>free命令输出的表格中包含以下几列：<br>total： 总计物理内存的大小。<br>used： 已使用的内存数量。<br>free： 可用的内存数量。<br>Shared： 多个进程共享的内存总额。<br>Buffers/cached：磁盘缓存的大小。</p>
 <p>见以下具体示例和输出说明：</p>
@@ -624,12 +686,12 @@ Swap: 786416 36 786380
 <h1 id="1)_以兆(MB)为单位输出系统当前的内存使用状况。">1) 以兆(MB)为单位输出系统当前的内存使用状况。</h1><h1 id="2)_通过grep定位到Mem行，该行是以操作系统为视角统计数据的。">2) 通过grep定位到Mem行，该行是以操作系统为视角统计数据的。</h1><h1 id="3)_通过awk打印出该行的第二列，即total列。">3) 通过awk打印出该行的第二列，即total列。</h1><p> [root@Rony ~]$ free -m | grep “Mem” | awk ‘{print $2, “MB”}’<br>  256 MB</p>
 </li>
 </ol>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -638,24 +700,24 @@ Swap: 786416 36 786380
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/17/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/19/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -667,18 +729,18 @@ Swap: 786416 36 786380
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -700,12 +762,12 @@ Swap: 786416 36 786380
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -715,49 +777,52 @@ Swap: 786416 36 786380
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -772,9 +837,8 @@ Swap: 786416 36 786380
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -783,38 +847,8 @@ Swap: 786416 36 786380
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -831,14 +865,57 @@ Swap: 786416 36 786380
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

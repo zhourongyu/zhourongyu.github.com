@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/12/22/try-osx-notification/">
+              <a class="post-title-link" href="/2015/12/22/try-osx-notification/" itemprop="url">
                 巧用 OSX 的 Notification
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-12-22
+          發表於
+          <time itemprop="dateCreated" datetime="2015-12-22T13:54:30+08:00" content="2015-12-22">
+            2015-12-22
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/12/22/try-osx-notification/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/try-osx-notification/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/12/22/try-osx-notification/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/22/try-osx-notification/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,7 +224,7 @@
 
       
         
-          <p>起因：最近兴起一个 App 叫好近，专做 SOHO 附近小食，每日推出 1 分钱抢购或一些特价下午茶之类的活动，很难抢，不是错过就是被秒抢，遂想出个办法来提高抢购率！</p>
+          <span itemprop="articleBody"><p>起因：最近兴起一个 App 叫好近，专做 SOHO 附近小食，每日推出 1 分钱抢购或一些特价下午茶之类的活动，很难抢，不是错过就是被秒抢，遂想出个办法来提高抢购率！</p>
 <p>最直接的需求是相对即时通知，让你快人一步。此类工具用 Python 来实现再合适不过了</p>
 <h4 id="提醒方式">提醒方式</h4><p>工作期间不能老盯着手机，考虑通过 OSX 的 Notification 实现，让它带着音乐蹦出来~<br>调用 OSX 接口需要依赖 PyObjC 模块，通过 pip 装之（时间比较长，装一堆 OC 相关的包）：</p>
 <pre><code>pip <span class="keyword">install</span> PyObjC
@@ -265,12 +299,12 @@ setup(
 <li>活动状态好像是根据手机当前时间与接口里 end_time 对比来判断活动是否结束，且所有时间格式如下 “end_time”: “2015-12-21 23:59:00”，这种实现貌似不够好</li>
 </ul>
 <p>Notification 刚移植到 OSX 上时就觉得这东西可以有很多种玩法，比如自己实现类似番茄工作法这样的小工具，这次也算试水成功了</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -279,23 +313,23 @@ setup(
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/11/26/parallels_desktop_黑五购置指南/">
+              <a class="post-title-link" href="/2015/11/26/parallels_desktop_黑五购置指南/" itemprop="url">
                 Parallels Desktop 黑五购置指南
               </a>
             
@@ -305,14 +339,21 @@ setup(
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-11-26
+          發表於
+          <time itemprop="dateCreated" datetime="2015-11-26T12:48:40+08:00" content="2015-11-26">
+            2015-11-26
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -324,15 +365,15 @@ setup(
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/11/26/parallels_desktop_黑五购置指南/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/parallels_desktop_黑五购置指南/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/11/26/parallels_desktop_黑五购置指南/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/26/parallels_desktop_黑五购置指南/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -341,7 +382,7 @@ setup(
 
       
         
-          <p>Parallels Desktop 是 Mac 端最好用的虚拟机，没有之一，这个不多说了。虽然它的定价一直很坑爹，每年升级「骗钱」，双十一也参加打折但也很贵，但这次黑五新出的 Bundle 非常值</p>
+          <span itemprop="articleBody"><p>Parallels Desktop 是 Mac 端最好用的虚拟机，没有之一，这个不多说了。虽然它的定价一直很坑爹，每年升级「骗钱」，双十一也参加打折但也很贵，但这次黑五新出的 Bundle 非常值</p>
 <p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187294.png" alt="bundle"></p>
 <p>因为这次 Bundle 里所有的 App 都相当的不错  </p>
 <ul>
@@ -359,12 +400,12 @@ setup(
 <p>你会惊喜的发现价格变为了 ￥216.61，还可以用支付宝支付！有木有感觉不买不行的感觉？</p>
 <p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187681.png" alt="cn"></p>
 <p><strong>PS</strong>: 1Password 我已经买过，￥100 转出去了，还有自己用不着的都可以转给其他朋友</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -373,23 +414,23 @@ setup(
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/10/06/草原天路/">
+              <a class="post-title-link" href="/2015/10/06/草原天路/" itemprop="url">
                 草原天路
               </a>
             
@@ -399,14 +440,21 @@ setup(
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-10-06
+          發表於
+          <time itemprop="dateCreated" datetime="2015-10-06T22:01:30+08:00" content="2015-10-06">
+            2015-10-06
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -418,15 +466,15 @@ setup(
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/10/06/草原天路/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/06/草原天路/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/10/06/草原天路/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/06/草原天路/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -435,19 +483,19 @@ setup(
 
       
         
-          <h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成景区收费了，真是坑爹。</p>
+          <span itemprop="articleBody"><h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成景区收费了，真是坑爹。</p>
 <h4 id="北京自驾游方案">北京自驾游方案</h4><p><code>不靠谱方案：周末大清早六七点钟出发，因为节假日八达岭高速太堵，估计中午才能到，开一上午车已经非常累了，况且到达天路还要继续堵（正是景区高峰期）</code><br>建议方案：下午从北京出发到崇礼/张北住宿，第二天一早出发。我俩次都是住在崇礼，从桦皮岭进入天路自东向西游玩，这样人相对少很多，悠然自得。</p>
 <p>住宿可以选择张北县城内或者沿途的农家乐，因为景区化的原因，沿途当地人自办的农家乐都被勒令拆除，日后大概只有正规运营的场所了<br>另一个方案是露营，沿途不少适合的点，这次我背着帐篷准备来尝试一下，夜间非常冷，一定要做好防寒措施。 六七月应该好很多</p>
 <p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612276.jpg" alt="随处可见的风车"></p>
 <p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612174.jpg" alt="满屏幕都是风车"></p>
 <p>一个好的天气很重要，虽然在北京这很难得~<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612371.jpg" alt="草原上休息的马儿们"></p>
 <p>在草原上住的好处就是可以看看日落/日出/星星，玩摄影的自然不能错过。但是夜间太冷，加上当日月亮非常的亮，导致本次星星没拍上~ 囧！<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612650.jpg" alt="日落夕阳"></p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -456,23 +504,23 @@ setup(
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/09/26/iPhone-6s-上手体验/">
+              <a class="post-title-link" href="/2015/09/26/iPhone-6s-上手体验/" itemprop="url">
                 iPhone 6s 上手体验
               </a>
             
@@ -482,14 +530,21 @@ setup(
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-09-26
+          發表於
+          <time itemprop="dateCreated" datetime="2015-09-26T11:23:30+08:00" content="2015-09-26">
+            2015-09-26
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -501,15 +556,15 @@ setup(
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/09/26/iPhone-6s-上手体验/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/26/iPhone-6s-上手体验/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/09/26/iPhone-6s-上手体验/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/26/iPhone-6s-上手体验/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -518,7 +573,7 @@ setup(
 
       
         
-          <p>今年的抢购比往年似乎容易些，但问题还是不少，例如重复支付、无法支付的问题。在多次支付失败的情况下，尝试预约到店成功，随后再使用分期支付成功~<br>共抢获 2 台，一台漂亮的深空灰，一台脑残粉玫瑰金  </p>
+          <span itemprop="articleBody"><p>今年的抢购比往年似乎容易些，但问题还是不少，例如重复支付、无法支付的问题。在多次支付失败的情况下，尝试预约到店成功，随后再使用分期支付成功~<br>共抢获 2 台，一台漂亮的深空灰，一台脑残粉玫瑰金  </p>
 <p><code>其他颜色请不要购买，树立「正确」的审美观人人有责！不做脑残粉，请选择深空灰</code><br>我本想选择优雅，但被迫成为脑残粉~  </p>
 <p>记得去年预约到店取货那天排队就排了一个多小时， 这次又抱着排大队的准备杀过去了，结果十分钟后手机到手。 一是这次苹果的准备比上次做的还要好，分流都分为几段，门口/一层/二层（三里屯店），并动用了大量的员工在帮忙预约客户。二可能是因为毕竟是 S 代升级，买的人没那么多  </p>
 <p>特意问了下店员今天人貌似很少，回答说大部分预约都在下午~<br>预约处摆满了各版本的iPhone，今年的包装盒设计不同，各颜色的iPhone对应的画面不同~  </p>
@@ -536,12 +591,12 @@ setup(
 </ul>
 <p>众多更新，让我惊喜的只有Touch ID 。在 Apple 推出 Touch ID 之后各大厂商都相继有了各自的产品，但是识别速度和Apple相差不是一个等级。随后一两年，各大厂商的性能已经追上来了。二代一出，感觉又秒杀其他厂商了~ 大致可以推算出 Apple 的技术水平还是要领先行业1-2年（股票是不是还可以继续持有~）。  </p>
 <p>综上所述， 购买建议为：仅不建议 6 代用户升级！<br>等 3D Touch 玩法成熟，估计 7 代也该出了~</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -550,23 +605,23 @@ setup(
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2015/07/16/一个MySQL 查询优化器的疑问/">
+              <a class="post-title-link" href="/2015/07/16/一个MySQL 查询优化器的疑问/" itemprop="url">
                 一个MySQL 查询优化器的疑问
               </a>
             
@@ -576,14 +631,21 @@ setup(
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2015-07-16
+          發表於
+          <time itemprop="dateCreated" datetime="2015-07-16T13:49:00+08:00" content="2015-07-16">
+            2015-07-16
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -595,15 +657,15 @@ setup(
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/16/一个MySQL 查询优化器的疑问/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/一个MySQL 查询优化器的疑问/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/07/16/一个MySQL 查询优化器的疑问/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/一个MySQL 查询优化器的疑问/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -612,7 +674,7 @@ setup(
 
       
         
-          <p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
+          <span itemprop="articleBody"><p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
 <pre><code>id bigint
 name <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">200</span>)</span></span>
 create_time <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>
@@ -737,12 +799,12 @@ mysql&gt; show profile for query 3;
 <span class="header">|        5 | 209.23518600 | select sex, created_at from user  where created_at &gt; 1434115807296 order by created_at limit 1000          |
 +----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
 </code></pre><p>这个问题有待解决！</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -751,24 +813,24 @@ mysql&gt; show profile for query 3;
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -780,18 +842,18 @@ mysql&gt; show profile for query 3;
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -813,12 +875,12 @@ mysql&gt; show profile for query 3;
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -828,49 +890,52 @@ mysql&gt; show profile for query 3;
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -885,9 +950,8 @@ mysql&gt; show profile for query 3;
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -896,38 +960,8 @@ mysql&gt; show profile for query 3;
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -944,14 +978,57 @@ mysql&gt; show profile for query 3;
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

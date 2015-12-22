@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/20/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2011/06/12/eclipse's default workspace/">
+              <a class="post-title-link" href="/2011/06/12/eclipse's default workspace/" itemprop="url">
                 eclipse's default workspace
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-06-12
+          發表於
+          <time itemprop="dateCreated" datetime="2011-06-12T05:23:00+08:00" content="2011-06-12">
+            2011-06-12
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/06/12/eclipse's default workspace/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/12/eclipse's default workspace/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/06/12/eclipse's default workspace/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/12/eclipse's default workspace/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,13 +224,13 @@
 
       
         
-          <p>一直忠于eclipse，由于近期项目的环境统一问题，昨天装了Myeclipse 9。无意中让他默认启动不选择workspace，每次都得Switch it.<br>最好的解决办法~ %MyEclipse%下有configuration目录，其中的config.ini中有如下配置：<br>osgi.instance.area.default=@user.home/Workspaces/MyEclipse 9<br>初次启动默认的都是@user.home下.也就是C盘的用户目录下. 直接将它修改成：<br>osgi.instance.area.default=file\:/E\:/DTools/Workspaces<br>这样就OK了…</p>
-
+          <span itemprop="articleBody"><p>一直忠于eclipse，由于近期项目的环境统一问题，昨天装了Myeclipse 9。无意中让他默认启动不选择workspace，每次都得Switch it.<br>最好的解决办法~ %MyEclipse%下有configuration目录，其中的config.ini中有如下配置：<br>osgi.instance.area.default=@user.home/Workspaces/MyEclipse 9<br>初次启动默认的都是@user.home下.也就是C盘的用户目录下. 直接将它修改成：<br>osgi.instance.area.default=file\:/E\:/DTools/Workspaces<br>这样就OK了…</p>
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -205,23 +239,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2011/06/09/Mac下常用软件/">
+              <a class="post-title-link" href="/2011/06/09/Mac下常用软件/" itemprop="url">
                 Mac下常用软件
               </a>
             
@@ -231,14 +265,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-06-09
+          發表於
+          <time itemprop="dateCreated" datetime="2011-06-09T12:01:00+08:00" content="2011-06-09">
+            2011-06-09
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -250,15 +291,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/06/09/Mac下常用软件/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/09/Mac下常用软件/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/06/09/Mac下常用软件/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/09/Mac下常用软件/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -267,13 +308,13 @@
 
       
         
-          <p>Internet:<br>Safari;(mac有支付宝证书）<br>Firefox;<br>Camino;<br>通信：<br>QQ for MAC;<br>Microsoft Messnger;（可视频）<br>输入法：<br>FIT;<br>邮件：<br>Thunderbird;<br>办公：<br>iwork;<br>office for mac;<br>下载：<br>Folx;<br>easymule;<br>影音：<br>itunes;<br>MPlayerX;<br>清理：<br>CleanMyMac;<br>AppZapper;</p>
-
+          <span itemprop="articleBody"><p>Internet:<br>Safari;(mac有支付宝证书）<br>Firefox;<br>Camino;<br>通信：<br>QQ for MAC;<br>Microsoft Messnger;（可视频）<br>输入法：<br>FIT;<br>邮件：<br>Thunderbird;<br>办公：<br>iwork;<br>office for mac;<br>下载：<br>Folx;<br>easymule;<br>影音：<br>itunes;<br>MPlayerX;<br>清理：<br>CleanMyMac;<br>AppZapper;</p>
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -282,23 +323,23 @@
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2011/06/09/Diskpart做U启/">
+              <a class="post-title-link" href="/2011/06/09/Diskpart做U启/" itemprop="url">
                 Diskpart做U启
               </a>
             
@@ -308,14 +349,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-06-09
+          發表於
+          <time itemprop="dateCreated" datetime="2011-06-09T07:18:00+08:00" content="2011-06-09">
+            2011-06-09
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -327,15 +375,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/06/09/Diskpart做U启/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/09/Diskpart做U启/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/06/09/Diskpart做U启/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/06/09/Diskpart做U启/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -344,7 +392,7 @@
 
       
         
-          <p>还记得为了能够迅速稳定安装XP的时代么，做PE，GHOST等，当时还乐在其中，非常有成就感，知道NT 6.0以后，似乎一切变得简单了，因为有DISKPART。</p>
+          <span itemprop="articleBody"><p>还记得为了能够迅速稳定安装XP的时代么，做PE，GHOST等，当时还乐在其中，非常有成就感，知道NT 6.0以后，似乎一切变得简单了，因为有DISKPART。</p>
 <p>从Windows NT开始，Windows已经彻底从曾经的MS-DOS中分离出来了，但是直到现在，仍然有很多人在使用MS-DOS下的FDISKS工具来对磁盘进行分区，接下来，我就介绍一下Windows NT的磁盘分区工具DISKPART。</p>
 <p>DISKPART 可以做的事情太多了，下面只是对一个U盘做了U启方便了日后为自己或他人安装WIN　NT6.0以上都系统（vista，win７）。</p>
 <p>在命令提示符下输入diskpart即可启动，注意：你必须拥有管理员权限。<br>接下来的例子中，我对一个新的U盘做U启，将其格式化成NTFS格式。</p>
@@ -356,12 +404,12 @@
 active
 exit</span>
 </code></pre><p>够简单了吧，不必再去网上找各种制作U盘启动都工具了！</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -370,23 +418,23 @@ exit</span>
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2011/03/30/入手MacBook Pro 723/">
+              <a class="post-title-link" href="/2011/03/30/入手MacBook Pro 723/" itemprop="url">
                 入手MacBook Pro 723
               </a>
             
@@ -396,14 +444,21 @@ exit</span>
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-03-30
+          發表於
+          <time itemprop="dateCreated" datetime="2011-03-30T13:15:00+08:00" content="2011-03-30">
+            2011-03-30
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/life/">life</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
 
               
               
@@ -415,15 +470,15 @@ exit</span>
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/03/30/入手MacBook Pro 723/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/03/30/入手MacBook Pro 723/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/03/30/入手MacBook Pro 723/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/03/30/入手MacBook Pro 723/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -432,14 +487,14 @@ exit</span>
 
       
         
-          <p>15 英寸 MacBook Pro （2011.3）：<br>2.2GHz 四核 Intel Core i7 处理器<br>750GB 5400-rpm 硬盘<br>Intel HD Graphics 3000图形处理器，与主存共享384MB DDR3 SDRAM 显存<br>AMD Radeon HD 6750M 图形处理器，配备 1GB GDDR5 显存</p>
+          <span itemprop="articleBody"><p>15 英寸 MacBook Pro （2011.3）：<br>2.2GHz 四核 Intel Core i7 处理器<br>750GB 5400-rpm 硬盘<br>Intel HD Graphics 3000图形处理器，与主存共享384MB DDR3 SDRAM 显存<br>AMD Radeon HD 6750M 图形处理器，配备 1GB GDDR5 显存</p>
 <p>28号上海浦东apple直营店购入。可惜的是店里不能更换高清防眩光的屏幕，只好使用光面屏了，有一定的反光。<br>从此也摆脱了WIN OS，不是它不好，mac能更好的让你专注于工作，而win下会让你有更多的机会分散注意力。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -448,23 +503,23 @@ exit</span>
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/">
+              <a class="post-title-link" href="/2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/" itemprop="url">
                 RHEL下DB2 V9.7数据库服务器的安装与配置
               </a>
             
@@ -474,14 +529,21 @@ exit</span>
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2011-03-25
+          發表於
+          <time itemprop="dateCreated" datetime="2011-03-25T07:27:00+08:00" content="2011-03-25">
+            2011-03-25
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -493,15 +555,15 @@ exit</span>
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -510,7 +572,7 @@ exit</span>
 
       
         
-          <p>本文使用的是文本方式安装DB2 V9.7</p>
+          <span itemprop="articleBody"><p>本文使用的是文本方式安装DB2 V9.7</p>
 <p>主要流程:<br>（1）解压安装包<br>（2）执行安装程序<br>（3）创建3个用户，分别是实例用户、受限用户、管理用户<br>（4）创建一个管理服务器<br>（5）创建一个实例<br>（6）配置DB2参数</p>
 <p>1、安装DB2准备工作<br>获得安装包v9.7_linuxia32_server.tar.gz<br>执行解压缩 tar -zxvf v9.7_linuxia32_server.tar.gz</p>
 <p>2、执行安装程序<br>进入到解压后的server文件夹<br>cd / server<br>./DB2_install<br>选择”否“</p>
@@ -667,12 +729,12 @@ ex.printStackTrace<span class="params">()</span>;
 
 }
 </code></pre><p>执行结果：<br>000010 CHRISTINE PRES</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -681,24 +743,24 @@ ex.printStackTrace<span class="params">()</span>;
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/19/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -710,18 +772,18 @@ ex.printStackTrace<span class="params">()</span>;
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -743,12 +805,12 @@ ex.printStackTrace<span class="params">()</span>;
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -758,49 +820,52 @@ ex.printStackTrace<span class="params">()</span>;
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -815,9 +880,8 @@ ex.printStackTrace<span class="params">()</span>;
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -826,38 +890,8 @@ ex.printStackTrace<span class="params">()</span>;
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -874,14 +908,57 @@ ex.printStackTrace<span class="params">()</span>;
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>

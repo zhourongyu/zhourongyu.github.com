@@ -8,6 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
 
 
 
@@ -15,7 +21,11 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
 
 
     <meta name="description" content="别怕，我不是什么好人！" />
@@ -30,27 +40,32 @@
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
+
+<meta name="description" content="别怕，我不是什么好人！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="擦擦擦擦">
+<meta property="og:url" content="http://xxxx.ooo/page/9/index.html">
+<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:description" content="别怕，我不是什么好人！">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    analytics: {
-      google: 'UA-68669626-1'
-    },
-    sidebar: 'always'
+    sidebar: 'post'
   };
 </script>
-
-
-
 
   <title> 擦擦擦擦 </title>
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
     <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -60,19 +75,30 @@
     </a>
   </div>
 <![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
 
   <div class="container one-column 
    page-home 
 ">
     <div class="headband"></div>
 
-    <div id="header" class="header">
-      <div class="header-inner">
-        <h1 class="site-meta">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
   <span class="logo-line-before"><i></i></span>
-  <a href="/" class="brand">
+  <a href="/" class="brand" rel="start">
       <span class="logo">
-        <i class="icon-logo"></i>
+        <i class="icon-next-logo"></i>
       </span>
       <span class="site-title">擦擦擦擦</span>
   </a>
@@ -87,7 +113,7 @@
   </button>
 </div>
 
-<div class="site-nav">
+<nav class="site-nav">
   
 
   
@@ -95,56 +121,57 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/">
-            <i class="menu-item-icon icon-home"></i> <br />
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
             首頁
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            <i class="menu-item-icon icon-archives"></i> <br />
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
             歸檔
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            <i class="menu-item-icon icon-tags"></i> <br />
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
             標籤
           </a>
         </li>
+      
+
+      
       
     </ul>
   
 
   
-</div>
+</nav>
 
+ </div>
+    </header>
 
-      </div>
-    </div>
-
-    <div id="main" class="main">
+    <main id="main" class="main">
       <div class="main-inner">
-        <div id="content" class="content">
-          
-  <div id="posts" class="posts-expand">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/07/17/WordPress的半角全角字符转义/">
+              <a class="post-title-link" href="/2013/07/17/WordPress的半角全角字符转义/" itemprop="url">
                 WordPress的半角全角字符转义
               </a>
             
@@ -154,14 +181,21 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-07-17
+          發表於
+          <time itemprop="dateCreated" datetime="2013-07-17T14:52:00+08:00" content="2013-07-17">
+            2013-07-17
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -173,15 +207,15 @@
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/07/17/WordPress的半角全角字符转义/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/17/WordPress的半角全角字符转义/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/07/17/WordPress的半角全角字符转义/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/17/WordPress的半角全角字符转义/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -190,7 +224,7 @@
 
       
         
-          <p>在WordPress码字中出现了符号中横线”—“ ，页面显示效果却是”—“ 。当你问别人为什么我输入了杠杠却显示了一个大杠呢，相信连专业人士都要思考一会才能明白你的意思。</p>
+          <span itemprop="articleBody"><p>在WordPress码字中出现了符号中横线”—“ ，页面显示效果却是”—“ 。当你问别人为什么我输入了杠杠却显示了一个大杠呢，相信连专业人士都要思考一会才能明白你的意思。</p>
 <p>这个问题学名是：半角全角字符转义，可以简称代码转义。困扰了我很久，今天终于解决了。</p>
 <p>WordPress 会智能地将源代码中的所有半角符号自动修正为全角符号，以防止外部源代码在网页上执行。这个功能所带来的麻烦就是在输入代码后，显示的不是原始代码，所以有时候网上复制别人代码会发现不好用。</p>
 <p>这个问题应该遇上的不算多，基本只有挨踢的会在博客里写写代码，—这种更多会出现在运维人的博客中～ 既然知道了问题，解决起来就方便多了，方法有多种，这里放出我使用的，并成功的方案（如果你在本文里看到的—是两个的话，说明正确了） 在主题的functions.php 最后添加以下代码：</p>
@@ -201,12 +235,12 @@ remove_filter(<span class="string">'the_excerpt'</span>, <span class="string">'w
 <span class="comment">//取消评论转义 </span>
 remove_filter(<span class="string">'comment_text'</span>, <span class="string">'wptexturize'</span>);
 </code></pre><p>保存后问题应该解决了，WordPress的官方介绍请点击<a href="http://codex.wordpress.org/Function_Reference/wptexturize" target="_blank" rel="external">wptexturize</a></p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -215,23 +249,23 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/07/04/雨后的故宫/">
+              <a class="post-title-link" href="/2013/07/04/雨后的故宫/" itemprop="url">
                 雨后的故宫
               </a>
             
@@ -241,14 +275,21 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-07-04
+          發表於
+          <time itemprop="dateCreated" datetime="2013-07-04T15:54:00+08:00" content="2013-07-04">
+            2013-07-04
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -260,15 +301,15 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/07/04/雨后的故宫/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/04/雨后的故宫/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/07/04/雨后的故宫/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/04/雨后的故宫/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -277,7 +318,7 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       
         
-          <p>北京经过几天的雨水，这礼拜的天空异常的好，所以我这两天都背着相机，想找时间去拍几张片子。</p>
+          <span itemprop="articleBody"><p>北京经过几天的雨水，这礼拜的天空异常的好，所以我这两天都背着相机，想找时间去拍几张片子。</p>
 <p>昨天下班太晚出门都要天黑了，没得逞。今天下午突然的大雨差点让我以为又泡汤了，幸好雨过天晴，竟然太阳也出来了，下班已经七点了，远地方是去不了了，想了一下决定去景山，因为雨后的天空必然会很美，但要找制高点也不是很好找，市内也就景山还行了。</p>
 <p>到景山已经快八点了，景山顶上各种长枪短炮，好不热闹…… 差点连位置都没有，可惜人懒了点没背脚架。最后只能找缝隙拍了几张…</p>
 <p>有几点遗憾:</p>
@@ -292,12 +333,12 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 <p>最后只能换几个位置拍了几张，拼了幅全景（点击看大图）……</p>
 <p><a href="http://zryblog.qiniudn.com/2014/07/2802488854.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/2802488854.jpg" alt="gugong"></a></p>
 <p>昨天没得逞，只好在路上把看了无数遍的坟包给拍了！！！<br><img src="http://zryblog.qiniudn.com/2014/07/2758677482.jpg" alt="IMG_1224"></p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -306,23 +347,23 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/06/18/行之天津/">
+              <a class="post-title-link" href="/2013/06/18/行之天津/" itemprop="url">
                 行之天津
               </a>
             
@@ -332,14 +373,21 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-06-18
+          發表於
+          <time itemprop="dateCreated" datetime="2013-06-18T14:42:00+08:00" content="2013-06-18">
+            2013-06-18
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/photo/">photo</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/photo/" itemprop="url" rel="index">
+                  <span itemprop="name">photo</span>
+                </a>
+              </span>
 
               
               
@@ -351,15 +399,15 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/06/18/行之天津/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/18/行之天津/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/06/18/行之天津/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/18/行之天津/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -368,7 +416,7 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       
         
-          <p>天津号称北方第二大城市，作为通商口岸，被西方多个国家设立过租界，所以很多天津建筑都是国际范儿的～ 和青岛类似，例如意式风情街。</p>
+          <span itemprop="articleBody"><p>天津号称北方第二大城市，作为通商口岸，被西方多个国家设立过租界，所以很多天津建筑都是国际范儿的～ 和青岛类似，例如意式风情街。</p>
 <p>天津小吃也是很出名的，著名的是tian天津三绝：狗不理，十八街麻花，耳朵眼炸糕。切记千万不要因为吃来天津……三样我都吃过，除了麻花还行，狗不理是公认的难吃，炸糕也一般。天津并不算好的旅游地区，可玩之处较少，大部分都是人文建筑，此行也是过来休闲摄影的。</p>
 <p>一： 天津之眼。 英国有伦敦之眼，天津也出一个天津之眼。天津真算个山寨之城，不光仿照国外，连国内也不放过。“外滩”正在建设中。放眼过去摊对面高楼大厦还在建设ing……</p>
 <p><img src="http://zryblog.qiniudn.com/2014/07/3170721564.jpg" alt="IMG_0985"></p>
@@ -377,12 +425,12 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 <p><img src="http://zryblog.qiniudn.com/2014/07/3029396005.jpg" alt="IMG_0783"><br><img src="http://zryblog.qiniudn.com/2014/07/1775213445.jpg" alt="IMG_0894"><br><img src="http://zryblog.qiniudn.com/2014/07/3789894395.jpg" alt="IMG_0857"></p>
 <p>三、人文建筑。 意式风情街，瓷房子，五大道等。两老爷们看着好别扭….囧…</p>
 <p><img src="http://zryblog.qiniudn.com/2014/07/204679873.jpg" alt="IMG_4763"></p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -391,23 +439,23 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/06/07/Clear简介/">
+              <a class="post-title-link" href="/2013/06/07/Clear简介/" itemprop="url">
                 Clear简介
               </a>
             
@@ -417,14 +465,21 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-06-07
+          發表於
+          <time itemprop="dateCreated" datetime="2013-06-07T12:09:00+08:00" content="2013-06-07">
+            2013-06-07
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -436,15 +491,15 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/06/07/Clear简介/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/07/Clear简介/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/06/07/Clear简介/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/07/Clear简介/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -453,18 +508,18 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       
         
-          <p><img src="http://zryblog.qiniudn.com/2014/07/3552376262.png" alt="IMG_0373"><br>Clear刚出世的时候以令人上耳目一新的设计和交互方式迅速爬到了付费排行榜第一，传说只有了不到10小时。</p>
+          <span itemprop="articleBody"><p><img src="http://zryblog.qiniudn.com/2014/07/3552376262.png" alt="IMG_0373"><br>Clear刚出世的时候以令人上耳目一新的设计和交互方式迅速爬到了付费排行榜第一，传说只有了不到10小时。</p>
 <p>但发现不少人买了后评分并不高，许多人把它当作todo类的App，和其他gtd软件相比功能差很多，所以不是非常满意。我只觉得它是个备忘录性质的App，所以还是非常满意的。</p>
 <p>Clear主要分三层， 菜单、分类、详细事项</p>
 <p>主要操作如下：</p>
 <p>切换层： 大幅下拉， 详细事项—(下拉)—&gt;分类—(下拉)—&gt;菜单<br>新建事项： 点击空白处/小幅下拉/双指在两条事项上做张开操作<br>完成事项： 在单条事项上右滑使该项目变成完成状态，重新打开只需重复操作(右滑)<br>删除： 左滑<br>打开收起： 双指进行捏/张开的操作可以缩放当前列表<br>菜单里有主题、提醒方式等设置，其中一向设置是否在icon上显示数目提醒，这个对有强迫症的人来说是很实用的~</p>
 <p>ps：貌似有几个隐藏主题可以开启哦，攻略网上有。</p>
-
+</span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -473,23 +528,23 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
       
 
-  <div class="post post-type-normal ">
-    <div class="post-header">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-        <h1 class="post-title">
+        <h1 class="post-title" itemprop="name headline">
           
           
             
-              <a class="post-title-link" href="/2013/06/06/Array与List的那些事/">
+              <a class="post-title-link" href="/2013/06/06/Array与List的那些事/" itemprop="url">
                 Array与List的那些事
               </a>
             
@@ -499,14 +554,21 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       <div class="post-meta">
         <span class="post-time">
-          發表於 2013-06-06
+          發表於
+          <time itemprop="dateCreated" datetime="2013-06-06T13:42:00+08:00" content="2013-06-06">
+            2013-06-06
+          </time>
         </span>
 
         
-          <span class="post-category">
+          <span class="post-category" >
             &nbsp; | &nbsp; 分類於
             
-              <a href="/categories/tech/">tech</a>
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
 
               
               
@@ -518,15 +580,15 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
         
           
             <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/06/06/Array与List的那些事/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/06/Array与List的那些事/"></span>
-            </a>
-          </span>
+              &nbsp; | &nbsp;
+              <a href="/2013/06/06/Array与List的那些事/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/06/Array与List的那些事/" itemprop="commentsCount"></span>
+              </a>
+            </span>
           
         
       </div>
-    </div>
+    </header>
 
     <div class="post-body">
 
@@ -535,7 +597,7 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       
         
-          <p>Java Api中提供了数组对List的转换方法</p>
+          <span itemprop="articleBody"><p>Java Api中提供了数组对List的转换方法</p>
 <pre><code>String[] tmp = {<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>};
 
 <span class="keyword">List</span>&lt;String&gt; <span class="keyword">list</span> = Arrays.asList(tmp);
@@ -551,12 +613,12 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
     <span class="built_in">list</span><span class="built_in">.</span>addAll(hs);
     <span class="keyword">return</span> <span class="built_in">list</span>;
 }
-</code></pre>
+</code></pre></span>
         
       
     </div>
 
-    <div class="post-footer">
+    <footer class="post-footer">
       
 
       
@@ -565,24 +627,24 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       
         <div class="post-eof"></div>
       
-    </div>
-  </div>
+    </footer>
+  </article>
 
 
     
-  </div>
+  </section>
 
   
-  <div class="pagination">
+  <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/8/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/10/">&raquo;</a>
-  </div>
+  </nav>
 
+ </div>
 
-        </div>
+        
 
         
       </div>
-
 
       
   
@@ -594,18 +656,18 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
       
 
-      <div class="site-overview">
-        <div class="site-author motion-element">
-          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" />
-          <p class="site-author-name">山荣</p>
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
         </div>
-        <p class="site-description motion-element">别怕，我不是什么好人！</p>
-        <div class="site-state motion-element">
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">100</span>
@@ -627,12 +689,12 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
               </a>
           </div>
 
-        </div>
+        </nav>
 
         
           <div class="feed-link motion-element">
-            <a href="/atom.xml">
-              <i class="menu-item-icon icon-feed"></i>
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
               RSS
             </a>
           </div>
@@ -642,49 +704,52 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
           
             
               <span class="links-of-author-item">
-              <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
-            </span>
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
-            </span>
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
             
               <span class="links-of-author-item">
-              <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
-            </span>
+                <a href="http://weibo.com/zhourongyu" target="_blank">Weibo</a>
+              </span>
             
           
         </div>
 
         
         
-          <div class="cc-license motion-element">
+          <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
               <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
             </a>
           </div>
         
 
-      </div>
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
 
       
 
     </div>
-  </div>
+  </aside>
 
 
-    </div>
+    </main>
 
-    <div id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp; 
-  2015
+  <span itemprop="copyrightYear">2015</span>
   <span class="with-love">
-    <i class="icon-heart"></i>
+    <i class="icon-next-heart"></i>
   </span>
-  <span class="author">山荣</span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
 </div>
 
 <div class="powered-by">
@@ -699,9 +764,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 </div>
 
 
-
-      </div>
-    </div>
+ </div>
+    </footer>
 
     <div class="back-to-top"></div>
   </div>
@@ -710,38 +774,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
   
   
-
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
-
-
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
-  
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
-
-
-
-  <script type="text/javascript" src="/js/search-toggle.js"></script>
-
-  
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
-    });
-  </script>
-
-  
-
-  
-  
+    
 
   
     
@@ -758,14 +792,57 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
 
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
 
   
   
-  <script type="text/javascript" src="/js/analytics_google-analytics.js?v=0.4.3"></script>
 
-
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
 </body>
 </html>
