@@ -144,6 +144,103 @@
           
           
             
+              <a class="post-title-link" href="/2012/03/07/Python可变与不可变类型/">
+                Python可变与不可变类型
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2012-03-07
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2012/03/07/Python可变与不可变类型/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/07/Python可变与不可变类型/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Python中的变量存储和Java类似，分为可变类型与不可变类型（mutable与immutable）。这里的变指的是内存，Python中的任何东西都是object，占用一定的内存，而Python中的变量名则像一个”指针”，指向对应的一块内存空间。</p>
+<p>Python中immutable类型有数字、字符串、Tuple：</p>
+<pre><code><span class="prompt">&gt;&gt;</span>&gt; x=<span class="number">1</span>
+<span class="prompt">&gt;&gt;</span>&gt; id(x)
+<span class="number">140042976655288</span>
+<span class="prompt">&gt;&gt;</span>&gt; x+=<span class="number">1</span>
+<span class="prompt">&gt;&gt;</span>&gt; id(x)
+<span class="number">140042976655264</span>
+</code></pre><p>在x做加法时并不是对x指向的内存加一，而是指向了2的另一块内存。字符与Tuple也是同样。immutable类型是不可以改变的，所以HASH之后的值不变。可以用来做键值，例如字典的键。</p>
+<p>Python中mutable类型有List、Dict、类实例：</p>
+<pre><code><span class="prompt">&gt;&gt;</span>&gt; y=[<span class="number">1</span>,<span class="number">2</span>]
+<span class="prompt">&gt;&gt;</span>&gt; id(y)
+<span class="number">140042973080752</span>
+<span class="prompt">&gt;&gt;</span>&gt; y+=[<span class="number">3</span>]
+<span class="prompt">&gt;&gt;</span>&gt; id(y)
+<span class="number">140042973080752</span>
+</code></pre><p>可以看到对y操作后的内存地址是没有改变的。这点和C语言是有点区别的:</p>
+<pre><code><span class="constant">x</span>=1
+<span class="constant">y</span>=x
+<span class="constant">y</span>+=1
+</code></pre><p>在C语言看来y+=1是对指向的内存进行操作，结果就是x,y共同为2。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2012/02/24/程序小白的技术普及贴/">
                 程序小白的技术普及贴
               </a>
@@ -506,110 +603,6 @@ Serving HTTP <span class="function_start"><span class="keyword">on</span></span>
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2012/02/09/The Zen of Python/">
-                The Zen of Python
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2012-02-09
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/tech/">tech</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2012/02/09/The Zen of Python/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/09/The Zen of Python/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>从《Programming Python》中有一段有意思的内容，在Python中使用import  this可以看到Python哲学</p>
-<pre><code>&gt;&gt;&gt; import this
-The Zen <span class="keyword">of</span> Python, <span class="keyword">by</span> Tim Peters
-
-Beautiful <span class="keyword">is</span> better than ugly.
-<span class="keyword">Explicit</span> <span class="keyword">is</span> better than implicit.
-Simple <span class="keyword">is</span> better than complex.
-Complex <span class="keyword">is</span> better than complicated.
-Flat <span class="keyword">is</span> better than nested.
-Sparse <span class="keyword">is</span> better than dense.
-Readability counts.
-Special cases aren<span class="comment">'t special enough to break the rules.</span>
-Although practicality beats purity.
-Errors should never pass silently.
-Unless explicitly silenced.
-<span class="keyword">In</span> the face <span class="keyword">of</span> ambiguity, refuse the temptation <span class="keyword">to</span> guess.
-There should be one-- <span class="keyword">and</span> preferably only one --obvious way <span class="keyword">to</span> <span class="keyword">do</span> it.
-Although that way may <span class="keyword">not</span> be obvious at first unless you<span class="comment">'re Dutch.</span>
-Now <span class="keyword">is</span> better than never.
-Although never <span class="keyword">is</span> often better than *right* now.
-<span class="keyword">If</span> the implementation <span class="keyword">is</span> hard <span class="keyword">to</span> explain, it<span class="comment">'s a bad idea.</span>
-<span class="keyword">If</span> the implementation <span class="keyword">is</span> easy <span class="keyword">to</span> explain, it may be a good idea.
-Namespaces are one honking great idea -- <span class="keyword">let</span><span class="comment">'s do more of those!</span>
-</code></pre><p>给出对应的中文翻译，还是挺给力的～</p>
-<h2 id="Python之禅">Python之禅</h2><p>美比丑好<br>直言不讳比心照不宣好<br>简单比复杂好<br>复杂比难以理解好</p>
-<p>平面的比嵌套的好<br>错落有致比密密匝匝的好<br>可读性很重要</p>
-<p>虽然实用比纯粹更重要<br>但特殊情况不能特殊到打破规律<br>永远别让错误悄悄地溜走<br>除非是你故意的<br>碰到模棱两可的地方，绝对不要去作猜测<br>什么事情都应该有一个，而且最好只有一个显而易见的解决办法<br>虽然刚开始的时候，这个办法可能不是那么的显而易见，但谁叫你不是荷兰人<br>有些事情不理不睬可能会比过一会解决要好<br>但最好是现在就解决</p>
-<p>如果一个想法实现起来很困难，那它本身就不是一个好想法<br>如果一个想法实现起来很容易，那它或许就是一个好想法<br>命名空间是一个很了不起的想法,让我们多多使用吧</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -648,7 +641,7 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">100</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

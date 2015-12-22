@@ -144,6 +144,93 @@
           
           
             
+              <a class="post-title-link" href="/2013/07/17/WordPress的半角全角字符转义/">
+                WordPress的半角全角字符转义
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於 2013-07-17
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分類於
+            
+              <a href="/categories/tech/">tech</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2013/07/17/WordPress的半角全角字符转义/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2013/07/17/WordPress的半角全角字符转义/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>在WordPress码字中出现了符号中横线”—“ ，页面显示效果却是”—“ 。当你问别人为什么我输入了杠杠却显示了一个大杠呢，相信连专业人士都要思考一会才能明白你的意思。</p>
+<p>这个问题学名是：半角全角字符转义，可以简称代码转义。困扰了我很久，今天终于解决了。</p>
+<p>WordPress 会智能地将源代码中的所有半角符号自动修正为全角符号，以防止外部源代码在网页上执行。这个功能所带来的麻烦就是在输入代码后，显示的不是原始代码，所以有时候网上复制别人代码会发现不好用。</p>
+<p>这个问题应该遇上的不算多，基本只有挨踢的会在博客里写写代码，—这种更多会出现在运维人的博客中～ 既然知道了问题，解决起来就方便多了，方法有多种，这里放出我使用的，并成功的方案（如果你在本文里看到的—是两个的话，说明正确了） 在主题的functions.php 最后添加以下代码：</p>
+<pre><code><span class="comment">//取消内容转义 </span>
+remove_filter(<span class="string">'the_content'</span>, <span class="string">'wptexturize'</span>);
+<span class="comment">//取消摘要转义 </span>
+remove_filter(<span class="string">'the_excerpt'</span>, <span class="string">'wptexturize'</span>);
+<span class="comment">//取消评论转义 </span>
+remove_filter(<span class="string">'comment_text'</span>, <span class="string">'wptexturize'</span>);
+</code></pre><p>保存后问题应该解决了，WordPress的官方介绍请点击<a href="http://codex.wordpress.org/Function_Reference/wptexturize" target="_blank" rel="external">wptexturize</a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2013/07/04/雨后的故宫/">
                 雨后的故宫
               </a>
@@ -483,87 +570,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2013/04/16/北海公园的春天/">
-                北海公园的春天
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於 2013-04-16
-        </span>
-
-        
-          <span class="post-category">
-            &nbsp; | &nbsp; 分類於
-            
-              <a href="/categories/photo/">photo</a>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2013/04/16/北海公园的春天/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2013/04/16/北海公园的春天/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>周日天气不是非常好，有一定的污染，为了试镜头还是出门转了一圈。<br>上次去北海公园貌似还是2010年，来北京后貌似再也没去过。</p>
-<p>具体线路是六号线到达北海公园站，从北海北门进，转两圈后东门出到景山公园。为什么是两圈，因为北海不是一个环形的，从北门走到西门只能返头走，否则就出去了~。</p>
-<p>上景山登顶拍照后沿景山后街达地安门内大街去南锣鼓巷，由南至北穿过南锣从旧鼓楼大街乘地铁二号线回家。 一个人走的比较快，三个多小时就搞定了~<br><img src="http://zryblog.qiniudn.com/2014/07/3696373457.jpg" alt="IMG_3748.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3582682906.jpg" alt="IMG_3775.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/2946683246.jpg" alt="IMG_3844.jpg"></p>
-<p>北海公园里吸引人的是那片“海”和一个白塔，并无其他优势，在我看来没有颐和园好。<br><img src="http://zryblog.qiniudn.com/2014/07/3866923251.jpg" alt="IMG\_3824.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3423513237.jpg" alt="IMG\_3811.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3087597852.jpg" alt="IMG\_3786.jpg"><br><img src="http://zryblog.qiniudn.com/2014/07/3314681705.jpg" alt="IMG\_3781.jpg"></p>
-<p>景山公园是故宫的“靠山” ，在这里可以看到故宫全景，一堆堆摄影师来拍日落的故宫，可惜今天天气不是很好但人依然满满当当。在这里竟然看到了哈苏…诶。<br><img src="http://zryblog.qiniudn.com/2014/07/3998996795.jpg" alt="IMG\_3856.jpg"></p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -602,7 +608,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-count">100</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
