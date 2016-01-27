@@ -57,7 +57,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
     scheme: '',
-    sidebar: 'post'
+    sidebar: 'always'
   };
 </script>
 
@@ -159,6 +159,112 @@
       <div class="main-inner">
         <div id="content" class="content"> 
   <section id="posts" class="posts-expand">
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/01/27/about-api-design/" itemprop="url">
+                浅谈 Api 设计
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2016-01-27T22:15:23+08:00" content="2016-01-27">
+            2016-01-27
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/01/27/about-api-design/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/27/about-api-design/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>之前在团队内做了一次 Api 的规范化，决定采用 RESTful Api 的架构。 并统一了 JSON 结构，约定常用属性、字段的命名方式、URL/HTTP Method 的使用规则。<br>这样的好处不用多说，一个方便易懂，易于使用的 Api 能大大的提高开发效率（做开发的有谁没被第三方 Api 坑过？）  </p>
+<h5 id="设计过程">设计过程</h5><p>之前我们有一些设计比较不错的 api 可能是这样的：</p>
+<pre><code><span class="regexp">/user/</span>(add<span class="regexp">/get/</span>cancel)?id=<span class="number">123</span>
+<span class="regexp">/topic/</span>(create<span class="regexp">/destroy/</span>destroy_batch)?id=<span class="number">123</span> 
+</code></pre><p>也算是简单易懂了，那为什么要换成 RESTful 架构？（关于 REST 的特性，设计思想什么的就不说了，网上自取）这样带来最直接的问题就是不统一（规范）。我的 CRUD 叫 add/get/cancel，换一个人可能叫 create/modify/destroy， 甚至可能我的是 adduser 你的是 useradd (瞬间想到了 ubuntu 有木有！)。</p>
+<p><strong>规范这东西小范围没什么大问题， 一但队伍庞大了就是个大坑，所以大公司在规范上都是下了大功夫。</strong></p>
+<p>HTTP 协议就是一个标准的 REST 实现，RESTful Api 是以 HTTP 协议为强烈依托的，最终我们规范后是这样的：</p>
+<pre><code><span class="regexp">/user/</span>{uid} HTTP.GET<span class="regexp">/POST/</span>PUT/DELETE
+<span class="regexp">/topic/</span>{tid} HTTP.GET<span class="regexp">/POST/</span>PUT/DELETE
+</code></pre><p>暂时只使用这四个方法，使用 PUT 替换 PATCH。很多人对部分情景下 PUT / POST 的使用会有疑问:</p>
+<pre><code>解答：根据 HTTP 文档介绍，GET/HEAD/PUT/DELETE 是 Idempotent（重复执行多遍，結果一致）。  
+<span class="keyword">POST</span> 每次执行肯定会新增一条记录，大多数情况下可以根据此原则从 <span class="keyword">POST</span>/PUT 中选择合适的动作。  
+</code></pre><p>/模块/{id} HTTP.Mehod 这种统一的规范能节省出不少的沟通时间~ 刚开始感觉很美好，当场景多起来之后又出现一些新的问题：<br>有一种功能叫「撤单」，使用 /order/{oid} HTTP.DELETE吗? 那删除订单用什么呢？<br>所以有人开始用 /order/undo/{order_id} HTTP.PUT 类似的方式。按 REST 规范每个 URL 都是一个独立资源，其中不应该包含任何动作。<br>也许应该改成 /order/{oid}?action=undo HTTP.PUT，但这样可能会在同一个接口中引入过多的操作。</p>
+<p>类似这样的模糊的场景可能有许多，在 Api 数量随业务庞大的过程中需要反复的对当前 Api 做迭代重构，使它更适合当前的业务场景</p>
+<h5 id="那满足以上设计就是_RESTful_Api_吗？">那满足以上设计就是 RESTful Api 吗？</h5><pre><code><span class="string">eg:</span> <span class="regexp">/topic/</span>fav/{tid} HTTP.POST 收藏某个话题
+</code></pre><p>这个接口需要从 token 中获取登陆用户信息，且所有的用户都是访问同一个地址。<br>这与 REST 架构中的「无状态」和「唯一资源」的概念冲突。<br>按要求可能是这样的：</p>
+<pre><code><span class="regexp">/topic/</span>{uid}<span class="regexp">/fav/</span>{tid} 
+</code></pre><p>当然这些都是 REST 的建议，如何做还是要根据具体的业务情况而定</p>
+<h5 id="总结下来就是以下几点：">总结下来就是以下几点：</h5><ol>
+<li>规范很重要</li>
+<li>保持 Api 的优雅是一件持续的重复迭代的工作</li>
+<li>不要局限于各种规范中，要在设计规范的时候充分考虑业务上的灵活性</li>
+</ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -610,219 +716,11 @@ setup(
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/16/一个MySQL 查询优化器的疑问/" itemprop="url">
-                一个MySQL 查询优化器的疑问
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2015-07-16T13:49:00+08:00" content="2015-07-16">
-            2015-07-16
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/07/16/一个MySQL 查询优化器的疑问/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/16/一个MySQL 查询优化器的疑问/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
-<pre><code>id bigint
-name <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">200</span>)</span></span>
-create_time <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>
-<span class="comment">//索引</span>
-KEY `IDX_CREATED` (`create_time`),
-</code></pre><p>数据约500多万，现在引出发现的问题，一条sql语句效率非常的低：</p>
-<pre><code><span class="operator"><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time <span class="keyword">limit</span> <span class="number">1000</span>;</span>
-</code></pre><p>本机测试200s，执行计划：</p>
-<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time limit 1000;
-
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type  </span>|<span class="string"> possible_keys </span>|<span class="string"> key           </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows </span>|<span class="string"> Extra       </span>|
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> index </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">   63    </span>|<span class="string"> NULL </span>|<span class="string"> 1000 </span>|<span class="string"> Using where </span>|
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-1 row in set (0.00 sec)
-</code></pre><p>如果去掉 limit :</p>
-<pre><code><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time
-</code></pre><p>执行时间5s，执行计划：</p>
-<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time
-
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type </span>|<span class="string"> possible_keys </span>|<span class="string"> key  </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows    </span>|<span class="string"> Extra                       </span>|
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> ALL  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string"> NULL </span>|<span class="string">   NULL  </span>|<span class="string"> NULL </span>|<span class="string"> 4858500 </span>|<span class="string"> Using where; Using filesort </span>|
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-1 row in set (0.00 sec)    
-</code></pre><p>一个 index 查询竟然比 ALL&amp;filesort 查询慢这么多？ 用profiles看下详细信息</p>
-<pre><code>mysql&gt; show profiles;
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-|<span class="string"> Query_ID </span>|<span class="string"> Duration     </span>|<span class="string"> Query                                                                                                      </span>|
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-|<span class="string">        1 </span>|<span class="string">   0.00179100 </span>|<span class="string"> explain select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000  </span>|
-|<span class="string">        2 </span>|<span class="string"> 195.10171300 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000          </span>|
-|<span class="string">        3 </span>|<span class="string">   5.28713500 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at                     </span>|
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-2 rows in set, 1 warning (0.00 sec)
-
-mysql&gt; show profile for query 2;
-+----------------------+------------+
-|<span class="string"> Status               </span>|<span class="string"> Duration   </span>|
-+----------------------+------------+
-|<span class="string"> starting             </span>|<span class="string">   0.000050 </span>|
-|<span class="string"> checking permissions </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string">   0.000013 </span>|
-|<span class="string"> init                 </span>|<span class="string">   0.000017 </span>|
-|<span class="string"> System lock          </span>|<span class="string">   0.000005 </span>|
-|<span class="string"> optimizing           </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> statistics           </span>|<span class="string">   0.000018 </span>|
-|<span class="string"> preparing            </span>|<span class="string">   0.000011 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string">   0.000002 </span>|
-|<span class="string"> executing            </span>|<span class="string">   0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 195.101362 </span>|
-|<span class="string"> end                  </span>|<span class="string">   0.000011 </span>|
-|<span class="string"> query end            </span>|<span class="string">   0.000009 </span>|
-|<span class="string"> closing tables       </span>|<span class="string">   0.000012 </span>|
-|<span class="string"> freeing items        </span>|<span class="string">   0.000158 </span>|
-|<span class="string"> logging slow query   </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string">   0.000025 </span>|
-+----------------------+------------+
-17 rows in set, 1 warning (0.00 sec)    
-
-mysql&gt; show profile for query 3;
-+----------------------+----------+
-|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
-+----------------------+----------+
-|<span class="string"> starting             </span>|<span class="string"> 0.000063 </span>|
-|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string"> 0.000029 </span>|
-|<span class="string"> init                 </span>|<span class="string"> 0.000024 </span>|
-|<span class="string"> System lock          </span>|<span class="string"> 0.000730 </span>|
-|<span class="string"> optimizing           </span>|<span class="string"> 0.000014 </span>|
-|<span class="string"> statistics           </span>|<span class="string"> 0.000021 </span>|
-|<span class="string"> preparing            </span>|<span class="string"> 0.000010 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
-|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> Creating sort index  </span>|<span class="string"> 5.286166 </span>|
-|<span class="string"> end                  </span>|<span class="string"> 0.000012 </span>|
-|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> closing tables       </span>|<span class="string"> 0.000011 </span>|
-|<span class="string"> freeing items        </span>|<span class="string"> 0.000016 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
-+----------------------+----------+
-17 rows in set, 1 warning (0.00 sec)
-</code></pre><p>查询1 基本所有的耗时都在 Sending Data 时期，查询3 的耗时在创建排序索引的时期，也就是 filesort 的耗时了，Sending Data是什么鬼玩意！</p>
-<blockquote>
-<p>Sending data</p>
-<p>The thread is reading and processing rows for a SELECT statement, and sending data to the client. Because operations occurring during this this state tend to perform large amounts of disk access (reads), it is often the longest-running state over the lifetime of a given query.</p>
-</blockquote>
-<p>官方对这个状态解释的是处理查询的数据及返回给客户端，根据查询3能排除返回客户端耗时的原因。<br><code>问题很早就看出来了，create_time是varchar类型，但sql对比的是一个int类型，解决方案就是改为Int/Bigint类型。</code><br>但是慢的原因还未知，随后又增加了其他的测试，例如把name换成主键id，速度立马变成不到5秒</p>
-<pre><code>+----------------------+----------+
-|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
-+----------------------+----------+
-|<span class="string"> starting             </span>|<span class="string"> 0.000061 </span>|
-|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string"> 0.000014 </span>|
-|<span class="string"> init                 </span>|<span class="string"> 0.000019 </span>|
-|<span class="string"> System lock          </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> optimizing           </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> statistics           </span>|<span class="string"> 0.000018 </span>|
-|<span class="string"> preparing            </span>|<span class="string"> 0.000013 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
-|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 4.531929 </span>|
-|<span class="string"> end                  </span>|<span class="string"> 0.000009 </span>|
-|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> closing tables       </span>|<span class="string"> 0.000010 </span>|
-|<span class="string"> freeing items        </span>|<span class="string"> 0.000041 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
-+----------------------+----------+
-16 rows in set, 1 warning (0.00 sec)
-</code></pre><p>可以看到Sending data时间大大降低，是因为<code>id</code>是索引字段？那么我给<code>name</code>也增加一个索引…<br>结果竟然依旧是200多s，这就奇怪了，难道是因为name的长度太大？ 再新增一个sex char(2)，并建好索引，<br>结果依旧一样！</p>
-<pre><code><span class="header">mysql&gt; show profiles;
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-<span class="header">| Query_ID | Duration     | Query                                                                                                      |
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-|        1 |   0.00179100 | explain  select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at limit 1000 |
-|        2 | 195.10171300 | select name, created_</span>at from user where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000          |
-|        3 |   5.28713500 | select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at                     |
-|        4 |   4.53215900 | select id, created_</span>at from user  where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000           |
-<span class="header">|        5 | 209.23518600 | select sex, created_at from user  where created_at &gt; 1434115807296 order by created_at limit 1000          |
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-</code></pre><p>这个问题有待解决！</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -856,7 +754,7 @@ mysql&gt; show profile for query 3;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">100</span>
+              <span class="site-state-item-count">101</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -870,7 +768,7 @@ mysql&gt; show profile for query 3;
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">106</span>
+              <span class="site-state-item-count">110</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -930,8 +828,8 @@ mysql&gt; show profile for query 3;
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright" >
   
-  &copy; &nbsp; 
-  <span itemprop="copyrightYear">2015</span>
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
