@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2016-01-27T14:53:34.000Z</updated>
+  <updated>2016-03-20T14:42:04.000Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[一封邮件的故事]]></title>
+    <link href="http://xxxx.ooo/2016/02/29/%E4%B8%80%E5%B0%81%E9%82%AE%E4%BB%B6%E7%9A%84%E6%95%85%E4%BA%8B/"/>
+    <id>http://xxxx.ooo/2016/02/29/一封邮件的故事/</id>
+    <published>2016-02-29T14:28:00.000Z</published>
+    <updated>2016-03-20T14:42:04.000Z</updated>
+    <content type="html"><![CDATA[<p>下午收到封邮件，标题是沉痛哀悼xxxx，差点吓尿… 原来是哀悼之前的项目下线。引发了很多的回忆…<br>两年前加入雪球时写了篇十个字博客，今天就来完成那篇文章吧<br>Snowball 是雪球的「核心」项目（从名字就能看出来），就像歌手出道喜欢发行同名专辑一样。也是因为这个项目，雪球在「互联网金融」领域崭露头角。<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F2%2F1456759177888.png" alt="email"></p>
+<h4 id="第一次上线事故">第一次上线事故</h4><p>记得刚进公司时第一次提交上线代码，是一个技术改造，某个接口虽然已经使用了缓存(redis)，但因为业务较为复杂导致接口速度还是比较慢，最后考虑使用 local-cache 方案替换原有方案。但因为没有仔细了解透业务，导致遗漏一个接口没有替换。上线后，匿名首页出现异常，那时候雪球上线管理非常随意，一天可能上线多次。那次时间正好是下班时后七点左右，我正高兴的和妹纸吃着饭… leader 来电说出问题了，代码回滚，导致饭也没有吃好，以至于至今还记忆犹新。</p>
+<p>之后业务发展越来越好，用户越来越多，单一项目带来的坑也越来越多。随后开始做项目拆分、RPC 改造。别扭着从零开始写 scala ，写到后面越来越顺手。之后换到组合业务、做雪球钱包，全都是 Scala 的项目。</p>
+<h4 id="公司搬家">公司搬家</h4><p>15 年初公司顺利搬迁望京 SOHO, 也从一个小公司转变为100人左右的「中小型企业」，从一两个小破屋变成了有茶水间，健身房，餐厅，多个会议室的让人羡慕的工作环境，终于像一个土豪互联网企业了。 </p>
+<p>公司是大了，但并没有找到自己独有的商业模式。15年开始各种的尝试，当时组合售卖做的风生水起，大家仿佛看到了希望之光，直到某天一位中年秃顶男子来到我司。之前一直都是只闻 「紫金花」其名，不知其厉害。现在亲身体会了…此处省略八百字。</p>
+<p>此路不通后开始转向全力做交易，此前组合业务同事大部分都转到目前我们这个基金业务当中了。小半年后我们的产品终于也即将上市了…尽请期待吧</p>
+<p>雪球目前一百多人，我的工号 3x 也算是个老油条，现在已经有很多新员工不认识了~ 经常吃饭感觉到了一个陌生的公司…虽然人越来越多，但雪球还是那个雪球。</p>
+<h4 id="总结">总结</h4><p>雪球是个好公司，扁平化的管理，宽松的工作环境，管午饭，有年度旅游和各种小福利。产品有自己的逼格，有特有的创新，「组合」上线后已经被多个竞品模仿抄袭。几乎没有办公室斗争，虽然人数过百，还是保持着创业公司的风范。</p>
+<p>当然也有缺点，雪球员工多数个性低调含蓄，从 leader 到员工都如此。整个团队环境是比较内敛的，新员工不容易融入，一些入职不久的新员工因为这个原因也很快就离职了。或许这就是雪球团队特有的一种风格。</p>
+<p>当然以上所有都是我个人作为一个普通员工的看法，嘿</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>下午收到封邮件，标题是沉痛哀悼xxxx，差点吓尿… 原来是哀悼之前的项目下线。引发了很多的回忆…<br>两年前加入雪球时写了篇十个字博客，今天就来完成那篇文章吧<br>Snowball 是雪球的「核心」项目（从名字就能看出来），就像歌手出道喜欢发行同名专辑一样。也是因为这个]]>
+    </summary>
+    
+      <category term="雪球" scheme="http://xxxx.ooo/tags/%E9%9B%AA%E7%90%83/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[浅谈 Api 设计]]></title>
@@ -208,9 +235,9 @@ setup(
     <![CDATA[<h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成]]>
     </summary>
     
-      <category term="京郊" scheme="http://xxxx.ooo/tags/%E4%BA%AC%E9%83%8A/"/>
-    
       <category term="摄影" scheme="http://xxxx.ooo/tags/%E6%91%84%E5%BD%B1/"/>
+    
+      <category term="京郊" scheme="http://xxxx.ooo/tags/%E4%BA%AC%E9%83%8A/"/>
     
       <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
     
@@ -519,69 +546,6 @@ res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int
       <category term="hhkb" scheme="http://xxxx.ooo/tags/hhkb/"/>
     
       <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[实用的Git高级用法 (一)]]></title>
-    <link href="http://xxxx.ooo/2014/12/16/%E5%AE%9E%E7%94%A8%E7%9A%84Git%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95%20(%E4%B8%80)/"/>
-    <id>http://xxxx.ooo/2014/12/16/实用的Git高级用法 (一)/</id>
-    <published>2014-12-16T07:31:00.000Z</published>
-    <updated>2015-07-19T13:00:49.000Z</updated>
-    <content type="html"><![CDATA[<p>本文大部分内容翻译自一篇Git好文（<a href="http://code.tutsplus.com/tutorials/git-tips-from-the-pros--net-29799" target="_blank" rel="external">原文地址</a>），经过我拙劣的英文加上自定义的删减与修改~ 也作为Git系列的开头篇</p>
-<h3 id="Interactive_stage">Interactive stage</h3><p>你也许经常会遇到在对一个文件的多次不同的修改，并且在提交的时候常犹豫哪一段修改是需要commit，这时你可以使用：  </p>
-<pre><code>git<span class="instruction"> add/commit </span>-p &lt;FILE&gt;
-</code></pre><p>加上 <code>-p</code> 参数之后，git会一块一块的显示出差异，确认当前块是否需要暂存。这样你可以提交文件中的部分修改，还可以使用 <code>-i</code> 参数，更为详细的交互式界面。</p>
-<blockquote>
-<p>ps: 使用交互式的提交不仅能让Commit更加的准确，还可以对代码进行一次很好的review，是值得养成的一个好习惯</p>
-</blockquote>
-<h3 id="Checkout_Your_Last_Branch">Checkout Your Last Branch</h3><p>当你正忙碌的工作在当前分支下，此时有紧急需求需要对之前的主分支做一些修改，<br>这时候常用的操作流：</p>
-<pre><code>git stash
-git checkout develop
-<span class="comment">//修改提交后 ...commit..push..</span>
-git checkout xxx
-git stash <span class="keyword">pop</span>
-</code></pre><p>你可能觉得这样很繁琐乏味，你需要这样的操作：</p>
-<pre><code>git checkout -
-<span class="comment">//切换到develop分支 ...commit...push</span>
-git checkout -
-</code></pre><p>这样可以快速切换分支，只能切换到当前分支的上一级母分支，和*NIX的 <code>cd -</code> 类似。 </p>
-<h3 id="Show_Which_Branches_are_Merged_(or_not)">Show Which Branches are Merged (or not)</h3><p>工作中经常同时工作于多个分支之上，一个项目的feature分支会非常的多，可以通过 <code>branch --list/-l</code> 看到，常遇到情况是，当想清理分支的时候心理还带着一丝犹豫，担心这个分支是否合并到主分支过，或者经常忘记哪些分支合并过，哪些没有。一般情况下都去查看pr记录，或者检查commit信息。<br>那你可能需要是以下的操作：</p>
-<pre><code><span class="title">git</span> branch --<span class="built_in">no</span>-merged
-</code></pre><p>可以查看有哪些分支还没有合并到当前的分支， 当然也可以查看哪些已经合并过：</p>
-<pre><code>git branch <span class="comment">--merged</span>
-</code></pre><p>并且还可以配合一些简单的UNIX工具来执行迅速的删除操作，像这样：</p>
-<pre><code>git branch --merged <span class="string">| xargs git branch -d</span>
-</code></pre><h3 id="Grab_a_File_from_Another_Branch_without_Switching_Branches">Grab a File from Another Branch without Switching Branches</h3><p>当你在做一些类似重构的工作时，你可能需要从多个分支中取出不同的几个修改纳入到当前的分支来。<br>如果没有下面的提示，你可能进行的操作是：  </p>
-<pre><code><span class="keyword">while</span>(<span class="constant">true</span>){
-  stash 当前修改
-  切换分支
-  找出修改的部分，<span class="keyword">copy</span>到临时文件
-  checkout -
-  粘贴到该修改的地方
-}
-</code></pre><p>或者你可以进行简单的文件迁移工作：</p>
-<pre><code>git checkout &lt;BRANCH&gt; -- path/to/file<span class="class">.rb</span>
-eg: 
-#把tmp分支的 <span class="class">.gitignore</span> 修改迁移到本分支
-git checkout tmp -- ./.gitignore
-</code></pre><p>注意，这里是整个文件的覆盖，并不是合并。</p>
-<h3 id="Git_Branches_Sorted_by_Last_Commit">Git Branches Sorted by Last Commit</h3><p>你应该已经看到了本地的一大堆杂乱的分支，并且使用之前的 <code>--merged</code> 清理过其中一些分支了，那对于剩下的分支，该如何确定哪些是有用的，哪些是过时的呢？</p>
-<p><code>for-each-ref</code> 命令会输出每个分支列表，并且显示最后一次的提交信息。重要的是，我们还可以对列表进行日期的排序，以下命令会显示整个分支列表以及最后一次提交信息和提交者，并且按日期降序排序。</p>
-<pre><code>//这是原版
-git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
-//原版并没有输出commit时的message，以下是我个人使用的改良版
-git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) <span class="string">"%(subject)"</span> [%(committername)]'
-</code></pre><p>建议给它取一个别名，方便日后使用。</p>
-<pre><code>git config --<span class="keyword">global</span> <span class="keyword">alias</span>.latest <span class="string">"for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) "</span><span class="variable">%(</span>subject)<span class="string">" [%(committername)]'"</span>
-</code></pre>]]></content>
-    <summary type="html">
-    <![CDATA[<p>本文大部分内容翻译自一篇Git好文（<a href="http://code.tutsplus.com/tutorials/git-tips-from-the-pros--net-29799" target="_blank" rel="external">原文地址</a>）]]>
-    </summary>
-    
-      <category term="git" scheme="http://xxxx.ooo/tags/git/"/>
-    
-      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
     
   </entry>
   

@@ -123,7 +123,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             <i class="menu-item-icon icon-next-home"></i> <br />
-            首頁
+            Startseite
           </a>
         </li>
       
@@ -131,7 +131,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             <i class="menu-item-icon icon-next-archives"></i> <br />
-            歸檔
+            Archiv
           </a>
         </li>
       
@@ -139,7 +139,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             <i class="menu-item-icon icon-next-tags"></i> <br />
-            標籤
+            Tags
           </a>
         </li>
       
@@ -171,6 +171,246 @@
           
           
             
+              <a class="post-title-link" href="/2012/08/15/MYSQL 调优和使用必读/" itemprop="url">
+                MYSQL 调优和使用必读
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2012-08-15T13:17:00+08:00" content="2012-08-15">
+            2012-08-15
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; in
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2012/08/15/MYSQL 调优和使用必读/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/08/15/MYSQL 调优和使用必读/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>来自：<a href="http://blog.eood.cn/mysql" target="_blank" rel="external">Bruce Dou</a>的一篇好文</p>
+<p>MYSQL 应该是最流行了 WEB 后端数据库。WEB 开发语言最近发展很快，PHP， Ruby, Python, Java 各有特点，虽然 NOSQL 最近越來越多的被提到，但是相信大部分架构师还是会选择 MYSQL 来做数据存储。</p>
+<p>MYSQL 如此方便和稳定，以至于我们在开发 WEB 程序的时候很少想到它。即使想到优化也是程序级别的，比如，不要写过于消耗资源的 SQL 语句。但是除此之外，在整个系统上仍然有很多可以优化的地方。</p>
+<ol>
+<li>选择合适的存储引擎: INNODB</li>
+</ol>
+<p>除非你的数据表使用来做只读或者全文检索 (相信现在提到全文检索，没人会用 MYSQL 了)，你应该默认选择 INNODB 。</p>
+<p>你自己在测试的时候可能会发现 MYISAM 比 INNODB 速度快，这是因为： MYISAM 只缓存索引，而 INNODB 缓存数据和索引，MYISAM 不支持事务。但是 如果你使用 innodb_flush_log_at_trx_commit = 2 可以获得接近的读取性能 (相差百倍) 。</p>
+<p>1.1 如何将现有的 MYISAM 数据库转换为 INNODB:</p>
+<pre><code>mysql -<span class="keyword">u</span> [USER_NAME] -p -<span class="keyword">e</span> <span class="string">"SHOW TABLES IN [DATABASE_NAME];"</span> | tail -<span class="keyword">n</span> +2 | xargs -I '{}' echo <span class="string">"ALTER TABLE {} ENGINE=INNODB;"</span> &gt; alter_table.sql
+perl -p -i -<span class="keyword">e</span> 's/(search_[a-z_]+ ENGINE=)INNODB/\1MYISAM/<span class="keyword">g</span>' alter_table.sql
+mysql -<span class="keyword">u</span> [USER_NAME] -p [DATABASE_NAME] &lt; alter_table.sql
+</code></pre><p>1.2 为每个表分别创建 INNODB FILE：</p>
+<pre><code><span class="keyword">innodb_file_per_t</span>able=<span class="number">1</span>
+</code></pre><p>这样可以保证 ibdata1 文件不会过大，失去控制。尤其是在执行 mysqlcheck -o –all-databases 的时候。</p>
+<ol>
+<li>保证从内存中读取数据，讲数据保存在内存中</li>
+</ol>
+<p>2.1 足够大的 innodb_buffer_pool_size</p>
+<p>推荐将数据完全保存在 innodb_buffer_pool_size ，即按存储量规划 innodb_buffer_pool_size 的容量。这样你可以完全从内存中读取数据，最大限度减少磁盘操作。</p>
+<p>2.1.1 如何确定 innodb_buffer_pool_size 足够大，数据是从内存读取而不是硬盘？</p>
+<p>方法 1</p>
+<pre><code><span class="header">mysql&gt; SHOW GLOBAL STATUS LIKE 'innodb_buffer_pool_pages_%';
++----------------------------------+--------+</span>
+<span class="header">| Variable_name                    | Value  |
++----------------------------------+--------+</span>
+| Innodb<span class="emphasis">_buffer_</span>pool<span class="emphasis">_pages_</span>data    | 129037 |
+| Innodb<span class="emphasis">_buffer_</span>pool<span class="emphasis">_pages_</span>dirty   | 362    |
+| Innodb<span class="emphasis">_buffer_</span>pool<span class="emphasis">_pages_</span>flushed | 9998   |
+| Innodb<span class="emphasis">_buffer_</span>pool<span class="emphasis">_pages_</span>free    | 0      |  !!!!!!!!
+| Innodb<span class="emphasis">_buffer_</span>pool<span class="emphasis">_pages_</span>misc    | 2035   |
+<span class="header">| Innodb_buffer_pool_pages_total   | 131072 |
++----------------------------------+--------+</span>
+6 rows in set (0.00 sec)
+</code></pre><p>发现 Innodb_buffer_pool_pages_free 为 0，则说明 buffer pool 已经被用光，需要增大 innodb_buffer_pool_size</p>
+<p>INNODB 的其他几个参数</p>
+<pre><code>innodb_additional_mem_pool_size = <span class="number">1</span>/<span class="number">200</span> <span class="keyword">of</span> buffer_pool
+innodb_max_dirty_pages_pct <span class="number">80</span><span class="comment">%</span>
+</code></pre><p>方法 2<br>或者用 iostat -d -x -k 1 命令，查看硬盘的操作。</p>
+<p>2.1.2 服务器上是否有足够内存用来规划</p>
+<p>执行 echo 1 &gt; /proc/sys/vm/drop_caches 清除操作系统的文件缓存，可以看到真正的内存使用量。</p>
+<p>2.2 数据预热</p>
+<p>默认情况，只有某条数据被读取一次，才会缓存在 innodb_buffer_pool。所以，数据库刚刚启动，需要进行数据预热，将磁盘上的所有数据缓存到内存中。数据预热可以提高读取速度。</p>
+<p>对于 InnoDB 数据库，可以用以下方法，进行数据预热:</p>
+<ol>
+<li><p>将以下脚本保存为 MakeSelectQueriesToLoad.sql</p>
+<p> SELECT DISTINCT</p>
+<pre><code>CONCAT('<span class="operator"><span class="keyword">SELECT</span> <span class="string">',ndxcollist,'</span> <span class="keyword">FROM</span> <span class="string">',db,'</span>.<span class="string">',tb,
+'</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="string">',ndxcollist,'</span>;</span>') SelectQueryToLoadCache
+FROM
+(
+    <span class="operator"><span class="keyword">SELECT</span>
+        <span class="keyword">engine</span>,table_schema db,table_name tb,
+        index_name,<span class="keyword">GROUP_CONCAT</span>(column_name <span class="keyword">ORDER</span> <span class="keyword">BY</span> seq_in_index) ndxcollist
+    <span class="keyword">FROM</span>
+    (
+        <span class="keyword">SELECT</span>
+            B.<span class="keyword">engine</span>,A.table_schema,A.table_name,
+            A.index_name,A.column_name,A.seq_in_index
+        <span class="keyword">FROM</span>
+            information_schema.statistics A <span class="keyword">INNER</span> <span class="keyword">JOIN</span>
+            (
+                <span class="keyword">SELECT</span> <span class="keyword">engine</span>,table_schema,table_name
+                <span class="keyword">FROM</span> information_schema.<span class="keyword">tables</span> <span class="keyword">WHERE</span>
+                <span class="keyword">engine</span>=<span class="string">'InnoDB'</span>
+            ) B <span class="keyword">USING</span> (table_schema,table_name)
+        <span class="keyword">WHERE</span> B.table_schema <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="string">'information_schema'</span>,<span class="string">'mysql'</span>)
+        <span class="keyword">ORDER</span> <span class="keyword">BY</span> table_schema,table_name,index_name,seq_in_index
+    ) A
+    <span class="keyword">GROUP</span> <span class="keyword">BY</span> table_schema,table_name,index_name
+) AA</span>
+</code></pre><p> ORDER BY db,tb<br> ;</p>
+</li>
+</ol>
+<ol>
+<li><p>执行</p>
+<p> mysql -uroot -AN &lt; /root/MakeSelectQueriesToLoad.sql &gt; /root/SelectQueriesToLoad.sql</p>
+</li>
+<li><p>每次重启数据库，或者整库备份前需要预热的时候执行：</p>
+<p> mysql -uroot &lt; /root/SelectQueriesToLoad.sql &gt; /dev/null 2&gt;&amp;1</p>
+</li>
+</ol>
+<p>2.3 不要让数据存到 SWAP 中</p>
+<p>如果是专用 MYSQL 服务器，可以禁用 SWAP，如果是共享服务器，确定 innodb_buffer_pool_size 足够大。或者使用固定的内存空间做缓存，使用 memlock 指令。</p>
+<ol>
+<li><p>定期优化重建数据库</p>
+<p> mysqlcheck -o –all-databases 会让 ibdata1 不断增大，真正的优化只有重建数据表结构：</p>
+<p> CREATE TABLE mydb.mytablenew LIKE mydb.mytable;<br> INSERT INTO mydb.mytablenew SELECT * FROM mydb.mytable;<br> ALTER TABLE mydb.mytable RENAME mydb.mytablezap;<br> ALTER TABLE mydb.mytablenew RENAME mydb.mytable;<br> DROP TABLE mydb.mytablezap;</p>
+</li>
+</ol>
+<ol>
+<li>减少磁盘写入操作</li>
+</ol>
+<p>4.1 使用足够大的写入缓存</p>
+<p>innodb_log_file_size</p>
+<p>但是需要注意如果用 1G 的 innodb_log_file_size ，假如服务器当机，需要 10 分钟来恢复。</p>
+<p>推荐 innodb_log_file_size = 0.25 innodb_buffer_pool_size</p>
+<p>4.2 innodb_flush_log_at_trx_commit</p>
+<p>这个选项和写磁盘操作密切相关：</p>
+<pre><code>innodb_flush_<span class="built_in">log</span>_at_trx_commit = <span class="number">1</span> 则每次修改写入磁盘
+innodb_flush_<span class="built_in">log</span>_at_trx_commit = <span class="number">0</span>/<span class="number">2</span> 每秒写入磁盘
+</code></pre><p>如果你的应用不涉及很高的安全性 (金融系统)，或者基础架构足够安全，或者 事务都很小，都可以用<br>0 或者 2 来降低磁盘操作。</p>
+<p>4.3 避免双写入缓冲</p>
+<pre><code><span class="attribute">innodb_flush_method</span>=<span class="string">O_DIRECT</span>
+</code></pre><ol>
+<li>提高磁盘读写速度</li>
+</ol>
+<p>RAID0 尤其是在使用 EC2 这种虚拟磁盘 (EBS) 的时候，使用软 RAID0 非常重要。</p>
+<ol>
+<li>充分使用索引</li>
+</ol>
+<p>6.1 查看现有表结构和索引</p>
+<pre><code><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> db1.tb1\G</span>
+</code></pre><p>6.2 添加必要的索引</p>
+<p>索引是提高查询速度的唯一方法，比如搜索引擎用的倒排索引是一样的原理。<br>索引的添加需要根据查询来确定，比如通过慢查询日志或者查询日志,或者通过 EXPLAIN 命令分析查询。</p>
+<pre><code><span class="built_in">ADD</span> <span class="bash">UNIQUE INDEX
+</span><span class="built_in">ADD</span> <span class="bash">INDEX</span>
+</code></pre><p>6.2.1 比如，优化用户验证表：</p>
+<p>添加索引</p>
+<pre><code><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> users <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> username_ndx (username);</span>
+<span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> users <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> <span class="keyword">INDEX</span> username_password_ndx (username,<span class="keyword">password</span>);</span>
+</code></pre><p>每次重启服务器进行数据预热</p>
+<pre><code>echo “<span class="keyword">select</span> username,password <span class="keyword">from</span> users;” &gt; /<span class="keyword">var</span>/lib/mysql/upcache.sql
+</code></pre><p>添加启动脚本到 my.cnf</p>
+<pre><code>[mysqld]
+init-<span class="keyword">file</span>=<span class="regexp">/var/</span>lib<span class="regexp">/mysql/u</span>pcache.sql
+</code></pre><p>6.2.2 使用自动加索引的框架或者自动拆分表结构的框架</p>
+<p>比如，Rails 这样的框架，会自动添加索引，Drupal 这样的框架会自动拆分表结构。会在你开发的初期指明正确的方向。所以，经验不太丰富的人一开始就追求从 0 开始构建，实际是不好的做法。</p>
+<ol>
+<li>分析查询日志和慢查询日志</li>
+</ol>
+<p>记录所有查询，这在用 ORM 系统或者生成查询语句的系统很有用。<br>log=/var/log/mysql.log<br>注意不要在生产环境用，否则会占满你的磁盘空间。</p>
+<p>记录执行时间超过 1 秒的查询</p>
+<pre><code><span class="keyword">long_query_t</span>ime=<span class="number">1</span>
+<span class="built_in">log</span>-slow-queries=/var/<span class="built_in">log</span>/mysql/<span class="built_in">log</span>-slow-queries.<span class="built_in">log</span>
+</code></pre><ol>
+<li>激进的方法，使用内存磁盘</li>
+</ol>
+<p>现在基础设施的可靠性已经非常高了，比如 EC2 几乎不用担心服务器硬件当机。而且内存实在是便宜，很容易买到几十G内存的服务器，可以用内存磁盘，定期备份到磁盘。</p>
+<p>将 MYSQL 目录迁移到 4G 的内存磁盘</p>
+<pre><code>mkdir -p <span class="regexp">/mnt/</span>ramdisk
+sudo mount -t tmpfs -o size=<span class="number">4000</span>M tmpfs <span class="regexp">/mnt/</span>ramdisk/
+mv <span class="regexp">/var/</span>lib<span class="regexp">/mysql /</span>mnt<span class="regexp">/ramdisk/</span>mysql
+ln -s <span class="regexp">/tmp/</span>ramdisk<span class="regexp">/mysql /</span>var<span class="regexp">/lib/</span>mysql
+chown <span class="string">mysql:</span>mysql mysql
+</code></pre><ol>
+<li>用 NOSQL 的方式使用 MYSQL</li>
+</ol>
+<p>B-TREE 仍然是最高效的索引之一，所有 MYSQL 仍然不会过时。<br>用 HandlerSocket 跳过 MYSQL 的 SQL 解析层，MYSQL 就真正变成了 NOSQL。</p>
+<ol>
+<li>其他</li>
+</ol>
+<p>单条查询最后增加 LIMIT 1，停止全表扫描。<br>将非”索引”数据分离，比如将大篇文章分离存储，不影响其他自动查询。<br>不用 MYSQL 内置的函数，因为内置函数不会建立查询缓存。<br>PHP 的建立连接速度非常快，所有可以不用连接池，否则可能会造成超过连接数。当然不用连接池 PHP 程序也可能将<br>连接数占满比如用了 @ignore_user_abort(TRUE);<br>使用 IP 而不是域名做数据库路径，避免 DNS 解析问题</p>
+<ol>
+<li>结束</li>
+</ol>
+<p>你会发现优化后，数据库的性能提高几倍到几百倍。所以 MYSQL 基本还是可以适用大部分场景的应用的。优化现有系统的成本比系统重构或者迁移到 NOSQL 低很多。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2012/08/14/显卡天梯/" itemprop="url">
                 显卡天梯
               </a>
@@ -181,7 +421,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2012-08-14T02:02:00+08:00" content="2012-08-14">
             2012-08-14
           </time>
@@ -189,7 +429,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/life/" itemprop="url" rel="index">
@@ -267,7 +507,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2012-07-15T13:54:00+08:00" content="2012-07-15">
             2012-07-15
           </time>
@@ -275,7 +515,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/tech/" itemprop="url" rel="index">
@@ -351,7 +591,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2012-07-13T16:14:00+08:00" content="2012-07-13">
             2012-07-13
           </time>
@@ -359,7 +599,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/tech/" itemprop="url" rel="index">
@@ -435,7 +675,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2012-07-02T14:58:00+08:00" content="2012-07-02">
             2012-07-02
           </time>
@@ -443,7 +683,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/tech/" itemprop="url" rel="index">
@@ -532,133 +772,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2012/06/07/facebox 弹层插件/" itemprop="url">
-                facebox 弹层插件
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2012-06-07T04:32:00+08:00" content="2012-06-07">
-            2012-06-07
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2012/06/07/facebox 弹层插件/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/06/07/facebox 弹层插件/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><a href="http://defunkt.io/facebox/" target="_blank" rel="external">facebox</a>是一个开源的弹出层插件，基于jQuery.  可显示图像， divs ，或者远程页面。目前存放在Github上 </p>
-<p>使用简单，文件少，例子也浅显易懂，个人比较喜欢 。</p>
-<p>项目中用到了比较多的弹层操作，facebox还是比较适合。具体如下:</p>
-<p>首先需要引入css,js文件 及 一个隐藏的DIV</p>
-<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"js/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"facebox/facebox.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">href</span>=<span class="value">"facebox/facebox.css"</span>&gt;</span>
-
-<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"dnote"</span> <span class="attribute">style</span>=<span class="value">"display:none"</span>&gt;</span> <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-</code></pre><p>一个弹层的方法：</p>
-<pre><code><span class="tag">function</span> <span class="tag">popup</span>(el) {
-        <span class="tag">jQuery</span><span class="class">.facebox</span>({<span class="attribute">div</span>:el,
-            <span class="attribute">loadingImage</span>:<span class="string">'facebox/loading.gif'</span>,
-            <span class="attribute">closeImage</span>:<span class="string">'facebox/closelabel.png'</span>
-        });
-}
-</code></pre><p>调用就比较简单了，在ajax中：</p>
-<pre><code>jQuery.ajax({
-    url:<span class="string">"marketing,ShowNotes.vm"</span>,
-    <span class="built_in">type</span>:<span class="string">"POST"</span>,
-    data:<span class="string">"messId="</span>+id,
-    success:<span class="function"><span class="keyword">function</span><span class="params">(response)</span></span>{
-        jQuery(<span class="string">"#dnotes"</span>).html(response);
-        popup(<span class="string">"#dnotes"</span>)
-    },
-    <span class="built_in">error</span>:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    }
-});
-</code></pre><p>  遇到个小问题 就是关于loading及closelabel图片的路径问题，文件没存放在项目的根路径下。而上面指定的路径似乎也不好用，最后到源码facebox.js里修改为正确的路径，最终正确显示，不知道这是我使用问题还是什么原因~~</p>
-<pre><code>settings: {
-     opacity      : <span class="number">0.2</span>,
-     overlay      : <span class="literal">true</span>,
-     loadingImage : <span class="symbol">'facebox</span>/loading.gif',       <span class="comment">//此处</span>
-     closeImage   : <span class="symbol">'facebox</span>/closelabel.png',  <span class="comment">//此处</span>
-     imageTypes   : [ <span class="symbol">'pn</span>g', <span class="symbol">'jp</span>g', <span class="symbol">'jpe</span>g', <span class="symbol">'gi</span>f' ],
-     faceboxHtml  : '\
-   &lt;div id=<span class="string">"facebox"</span> style=<span class="string">"display:none;"</span>&gt; \
-     &lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"popup"</span>&gt; \
-       &lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"content"</span>&gt; \
-       &lt;/div&gt; \
-       &lt;a href=<span class="string">"#"</span> <span class="class"><span class="keyword">class</span>=</span><span class="string">"close"</span>&gt;&lt;img src=<span class="string">"facebox/closelabel.png //此处"</span> title=<span class="string">"close"</span> <span class="class"><span class="keyword">class</span>=</span><span class="string">"close_image"</span> /&gt;&lt;/a&gt; \
-     &lt;/div&gt; \
-   &lt;/div&gt;'
-   },
-</code></pre></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -697,22 +810,22 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
               <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">分類</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">110</span>
-              <span class="site-state-item-name">標籤</span>
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">Tags</span>
               </a>
           </div>
 
@@ -780,11 +893,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主題 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>

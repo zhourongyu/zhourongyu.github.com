@@ -123,7 +123,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             <i class="menu-item-icon icon-next-home"></i> <br />
-            首頁
+            Startseite
           </a>
         </li>
       
@@ -131,7 +131,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             <i class="menu-item-icon icon-next-archives"></i> <br />
-            歸檔
+            Archiv
           </a>
         </li>
       
@@ -139,7 +139,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             <i class="menu-item-icon icon-next-tags"></i> <br />
-            標籤
+            Tags
           </a>
         </li>
       
@@ -171,6 +171,135 @@
           
           
             
+              <a class="post-title-link" href="/2014/12/16/实用的Git高级用法 (一)/" itemprop="url">
+                实用的Git高级用法 (一)
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Veröffentlicht am
+          <time itemprop="dateCreated" datetime="2014-12-16T15:31:00+08:00" content="2014-12-16">
+            2014-12-16
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; in
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/12/16/实用的Git高级用法 (一)/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/12/16/实用的Git高级用法 (一)/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>本文大部分内容翻译自一篇Git好文（<a href="http://code.tutsplus.com/tutorials/git-tips-from-the-pros--net-29799" target="_blank" rel="external">原文地址</a>），经过我拙劣的英文加上自定义的删减与修改~ 也作为Git系列的开头篇</p>
+<h3 id="Interactive_stage">Interactive stage</h3><p>你也许经常会遇到在对一个文件的多次不同的修改，并且在提交的时候常犹豫哪一段修改是需要commit，这时你可以使用：  </p>
+<pre><code>git<span class="instruction"> add/commit </span>-p &lt;FILE&gt;
+</code></pre><p>加上 <code>-p</code> 参数之后，git会一块一块的显示出差异，确认当前块是否需要暂存。这样你可以提交文件中的部分修改，还可以使用 <code>-i</code> 参数，更为详细的交互式界面。</p>
+<blockquote>
+<p>ps: 使用交互式的提交不仅能让Commit更加的准确，还可以对代码进行一次很好的review，是值得养成的一个好习惯</p>
+</blockquote>
+<h3 id="Checkout_Your_Last_Branch">Checkout Your Last Branch</h3><p>当你正忙碌的工作在当前分支下，此时有紧急需求需要对之前的主分支做一些修改，<br>这时候常用的操作流：</p>
+<pre><code>git stash
+git checkout develop
+<span class="comment">//修改提交后 ...commit..push..</span>
+git checkout xxx
+git stash <span class="keyword">pop</span>
+</code></pre><p>你可能觉得这样很繁琐乏味，你需要这样的操作：</p>
+<pre><code>git checkout -
+<span class="comment">//切换到develop分支 ...commit...push</span>
+git checkout -
+</code></pre><p>这样可以快速切换分支，只能切换到当前分支的上一级母分支，和*NIX的 <code>cd -</code> 类似。 </p>
+<h3 id="Show_Which_Branches_are_Merged_(or_not)">Show Which Branches are Merged (or not)</h3><p>工作中经常同时工作于多个分支之上，一个项目的feature分支会非常的多，可以通过 <code>branch --list/-l</code> 看到，常遇到情况是，当想清理分支的时候心理还带着一丝犹豫，担心这个分支是否合并到主分支过，或者经常忘记哪些分支合并过，哪些没有。一般情况下都去查看pr记录，或者检查commit信息。<br>那你可能需要是以下的操作：</p>
+<pre><code><span class="title">git</span> branch --<span class="built_in">no</span>-merged
+</code></pre><p>可以查看有哪些分支还没有合并到当前的分支， 当然也可以查看哪些已经合并过：</p>
+<pre><code>git branch <span class="comment">--merged</span>
+</code></pre><p>并且还可以配合一些简单的UNIX工具来执行迅速的删除操作，像这样：</p>
+<pre><code>git branch --merged <span class="string">| xargs git branch -d</span>
+</code></pre><h3 id="Grab_a_File_from_Another_Branch_without_Switching_Branches">Grab a File from Another Branch without Switching Branches</h3><p>当你在做一些类似重构的工作时，你可能需要从多个分支中取出不同的几个修改纳入到当前的分支来。<br>如果没有下面的提示，你可能进行的操作是：  </p>
+<pre><code><span class="keyword">while</span>(<span class="constant">true</span>){
+  stash 当前修改
+  切换分支
+  找出修改的部分，<span class="keyword">copy</span>到临时文件
+  checkout -
+  粘贴到该修改的地方
+}
+</code></pre><p>或者你可以进行简单的文件迁移工作：</p>
+<pre><code>git checkout &lt;BRANCH&gt; -- path/to/file<span class="class">.rb</span>
+eg: 
+#把tmp分支的 <span class="class">.gitignore</span> 修改迁移到本分支
+git checkout tmp -- ./.gitignore
+</code></pre><p>注意，这里是整个文件的覆盖，并不是合并。</p>
+<h3 id="Git_Branches_Sorted_by_Last_Commit">Git Branches Sorted by Last Commit</h3><p>你应该已经看到了本地的一大堆杂乱的分支，并且使用之前的 <code>--merged</code> 清理过其中一些分支了，那对于剩下的分支，该如何确定哪些是有用的，哪些是过时的呢？</p>
+<p><code>for-each-ref</code> 命令会输出每个分支列表，并且显示最后一次的提交信息。重要的是，我们还可以对列表进行日期的排序，以下命令会显示整个分支列表以及最后一次提交信息和提交者，并且按日期降序排序。</p>
+<pre><code>//这是原版
+git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
+//原版并没有输出commit时的message，以下是我个人使用的改良版
+git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) <span class="string">"%(subject)"</span> [%(committername)]'
+</code></pre><p>建议给它取一个别名，方便日后使用。</p>
+<pre><code>git config --<span class="keyword">global</span> <span class="keyword">alias</span>.latest <span class="string">"for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) "</span><span class="variable">%(</span>subject)<span class="string">" [%(committername)]'"</span>
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2014/12/03/Comparator vs Comparable/" itemprop="url">
                 Comparator vs Comparable
               </a>
@@ -181,7 +310,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2014-12-03T17:16:00+08:00" content="2014-12-03">
             2014-12-03
           </time>
@@ -189,7 +318,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/tech/" itemprop="url" rel="index">
@@ -399,7 +528,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2014-10-09T13:54:00+08:00" content="2014-10-09">
             2014-10-09
           </time>
@@ -407,7 +536,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/photo/" itemprop="url" rel="index">
@@ -490,7 +619,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2014-09-14T02:34:00+08:00" content="2014-09-14">
             2014-09-14
           </time>
@@ -498,7 +627,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/photo/" itemprop="url" rel="index">
@@ -579,7 +708,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          發表於
+          Veröffentlicht am
           <time itemprop="dateCreated" datetime="2014-09-02T15:30:00+08:00" content="2014-09-02">
             2014-09-02
           </time>
@@ -587,7 +716,7 @@
 
         
           <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
+            &nbsp; | &nbsp; in
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                 <a href="/categories/tech/" itemprop="url" rel="index">
@@ -694,99 +823,6 @@ java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</sp
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/08/16/为毛怪萨利文拍写真/" itemprop="url">
-                为毛怪萨利文拍写真
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2014-08-16T12:14:00+08:00" content="2014-08-16">
-            2014-08-16
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/08/16/为毛怪萨利文拍写真/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/16/为毛怪萨利文拍写真/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>从西维那淘来‘玩宠’一只，名叫 James P. Sullivan 。就是《怪物电力公司》中头号吓人专家毛怪萨利文… 其实我没之前并没有看过此片，趁周末补习了一下，是一部富含的正能量的欢乐电影~  </p>
-<p>真正有意思的是这只玩宠，虽然模具很小，但相当灵活，各个肢体关节可以灵活弯曲，甚至眼珠也可以调整。据说是韩国买回来的…看来棒子的工艺还是可以的，比国内那些骗小孩的坑爹玩具强多了。既然这么灵活，那就为他设计一些奇葩的动作，来一套写真吧…</p>
-<p><strong><code>断臂的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/3534462744.jpg" alt="IMG\_0609.jpg"></p>
-<p><strong><code>断尾的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/3247438404.jpg" alt="IMG\_0608.jpg"></p>
-<p><strong><code>奔跑的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/1376471382.jpg" alt="IMG\_0611.jpg"><br><img src="http://zryblog.qiniudn.com/2014/08/3681048360.jpg" alt="IMG\_0623.jpg"></p>
-<p><strong><code>挠痒的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/1993202337.jpg" alt="IMG\_0610.jpg"></p>
-<p><strong><code>思考的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/3651744766.jpg" alt="IMG\_0613.jpg"></p>
-<p><strong><code>犯二的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/2722126725.jpg" alt="IMG\_0612.jpg"></p>
-<p>因为表情实属萌系，无法表现出「吓人专家」的面目，只好用一些特殊手段勉强表现一下了~<br><strong><code>邪恶的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/162692182.jpg" alt="IMG\_0607.jpg"></p>
-<p>高潮来了，一个 ‘猥琐’ 的童鞋居然摆出了如此的猥琐的姿势，I服了U，胡总。<br><strong><code>猥琐的毛怪萨利文</code></strong><br><img src="http://zryblog.qiniudn.com/2014/08/2421865499.jpg" alt="IMG\_0617.jpg"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -825,22 +861,22 @@ java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</sp
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
               <span class="site-state-item-count">3</span>
-              <span class="site-state-item-name">分類</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">110</span>
-              <span class="site-state-item-name">標籤</span>
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">Tags</span>
               </a>
           </div>
 
@@ -908,11 +944,11 @@ java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</sp
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主題 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT
   </a>
