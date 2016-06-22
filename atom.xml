@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2016-03-20T14:42:04.000Z</updated>
+  <updated>2016-06-22T05:09:49.000Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[MTM-FS-Server-Failed]]></title>
+    <link href="http://xxxx.ooo/2016/06/22/MTM-FS-server-failed/"/>
+    <id>http://xxxx.ooo/2016/06/22/MTM-FS-server-failed/</id>
+    <published>2016-06-22T03:36:16.000Z</published>
+    <updated>2016-06-22T05:09:49.000Z</updated>
+    <content type="html"><![CDATA[<p>今天处理系统问题时，偶然发现 Console 里系统日志一直在打一些奇怪的错误日志，统计了下总数有 10w+ …</p>
+<p> <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F6%2F1466566947114.png" alt="console_log"><br>猜测是哪个软件的流氓进程，直到看到最后这行日志，像是个系统备份服务。<br>mtmfs 是个啥子呢</p>
+<blockquote>
+<p><strong>mtmfs</strong> is the <em>Mobile Time Machine File System</em>, that handles Local snapshots, both making them and managing them (consolidating, deleting, etc).  They’re made on laptops running Lion whenever Time Machine is ON, whether you’re in range of your Time Machine backup destination or not.  These are completely separate from “normal” Time Machine backups to an external HD, Time Capsule, etc.</p>
+</blockquote>
+<p>Lion 以上的系统，只要打开了 Time Machine 就会启动 mtmfs 进程。查得 mtmfs 进程监听地址是 localhost ，本地 ping 发现不通。查看 /etc/hosts :<br><code>127.0.0.1 test.pay.inter.domian</code><br>原来是自己测试时把 localhost 域给改掉了，改回来即可<br><code>127.0.0.1 localhost</code></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>今天处理系统问题时，偶然发现 Console 里系统日志一直在打一些奇怪的错误日志，统计了下总数有 10w+ …</p>
+<p> <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F6%2F1466566947114]]>
+    </summary>
+    
+      <category term="osx" scheme="http://xxxx.ooo/tags/osx/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[一封邮件的故事]]></title>
@@ -518,32 +542,6 @@ res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int
     </summary>
     
       <category term="读书" scheme="http://xxxx.ooo/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[HOW-TO-CLEAN-HHKB?!]]></title>
-    <link href="http://xxxx.ooo/2014/12/30/HOW-TO-CLEAN-HHKB/"/>
-    <id>http://xxxx.ooo/2014/12/30/HOW-TO-CLEAN-HHKB/</id>
-    <published>2014-12-30T07:55:00.000Z</published>
-    <updated>2015-07-19T13:00:49.000Z</updated>
-    <content type="html"><![CDATA[<p>小h陪我俩年多了，饱经沧桑与折磨，却依然不离不弃~ 看着身边不少朋友都加入了hhkb阵营，倍感欣慰…hahaha<br>因为是白色版本，易脏，非常不易洗，在2014过去之前给它好好洗个澡吧，这也是它的第二个「澡」</p>
-<ol>
-<li><p>拔键帽，试用过市面上常用的几种拔键器，貌似不太好拔，原因不明。换成原厂的拔键器后则轻松很多，如图：<br><img src="http://zryblog.qiniudn.com/2014/12/1358260270.jpg" alt="hhkb-clean-1.jpg"><br>不要看这个键盘挺干净，其实是洗完后拍的，忘记把它的脏样子留下来了~<br>拆卸的时候注意下每排键帽的高度不同，别到装得时候开始惆怅了。拆卸空格键的时候要小心下面的那颗弹簧，很容易飞出去~</p>
-</li>
-<li><p>拆下的键帽可机洗，可手洗，第一次我试用机洗「扔洗衣机」，效果非常好~ 但总觉得会对键帽造成一定磨损，这次索性就手洗了，目测效果比机洗差一个等级。键帽的材质是pbt，不易出油，但不清楚洗涤液对它的腐蚀性如何。<br>底座的清洗方式只能动用小刷子和Cyber Clean了，效果也不错。<br>洗完拍个全家福，预祝2015年「阖家欢乐」：<br><img src="http://zryblog.qiniudn.com/2014/12/2623668468.jpg" alt="hhkb-clean-2.jpg"></p>
-</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>小h陪我俩年多了，饱经沧桑与折磨，却依然不离不弃~ 看着身边不少朋友都加入了hhkb阵营，倍感欣慰…hahaha<br>因为是白色版本，易脏，非常不易洗，在2014过去之前给它好好洗个澡吧，这也是它的第二个「澡」</p>
-<ol>
-<li><p>拔键帽，试用过市面上常用的几]]>
-    </summary>
-    
-      <category term="hhkb" scheme="http://xxxx.ooo/tags/hhkb/"/>
     
       <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
     

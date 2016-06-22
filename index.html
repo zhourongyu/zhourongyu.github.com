@@ -171,6 +171,95 @@
           
           
             
+              <a class="post-title-link" href="/2016/06/22/MTM-FS-server-failed/" itemprop="url">
+                MTM-FS-Server-Failed
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2016-06-22T11:36:16+08:00" content="2016-06-22">
+            2016-06-22
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/06/22/MTM-FS-server-failed/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/22/MTM-FS-server-failed/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>今天处理系统问题时，偶然发现 Console 里系统日志一直在打一些奇怪的错误日志，统计了下总数有 10w+ …</p>
+<p> <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F6%2F1466566947114.png" alt="console_log"><br>猜测是哪个软件的流氓进程，直到看到最后这行日志，像是个系统备份服务。<br>mtmfs 是个啥子呢</p>
+<blockquote>
+<p><strong>mtmfs</strong> is the <em>Mobile Time Machine File System</em>, that handles Local snapshots, both making them and managing them (consolidating, deleting, etc).  They’re made on laptops running Lion whenever Time Machine is ON, whether you’re in range of your Time Machine backup destination or not.  These are completely separate from “normal” Time Machine backups to an external HD, Time Capsule, etc.</p>
+</blockquote>
+<p>Lion 以上的系统，只要打开了 Time Machine 就会启动 mtmfs 进程。查得 mtmfs 进程监听地址是 localhost ，本地 ping 发现不通。查看 /etc/hosts :<br><code>127.0.0.1 test.pay.inter.domian</code><br>原来是自己测试时把 localhost 域给改掉了，改回来即可<br><code>127.0.0.1 localhost</code></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/02/29/一封邮件的故事/" itemprop="url">
                 一封邮件的故事
               </a>
@@ -618,96 +707,6 @@ setup(
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/06/草原天路/" itemprop="url">
-                草原天路
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2015-10-06T22:01:30+08:00" content="2015-10-06">
-            2015-10-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/06/草原天路/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/06/草原天路/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成景区收费了，真是坑爹。</p>
-<h4 id="北京自驾游方案">北京自驾游方案</h4><p><code>不靠谱方案：周末大清早六七点钟出发，因为节假日八达岭高速太堵，估计中午才能到，开一上午车已经非常累了，况且到达天路还要继续堵（正是景区高峰期）</code><br>建议方案：下午从北京出发到崇礼/张北住宿，第二天一早出发。我俩次都是住在崇礼，从桦皮岭进入天路自东向西游玩，这样人相对少很多，悠然自得。</p>
-<p>住宿可以选择张北县城内或者沿途的农家乐，因为景区化的原因，沿途当地人自办的农家乐都被勒令拆除，日后大概只有正规运营的场所了<br>另一个方案是露营，沿途不少适合的点，这次我背着帐篷准备来尝试一下，夜间非常冷，一定要做好防寒措施。 六七月应该好很多</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612276.jpg" alt="随处可见的风车"></p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612174.jpg" alt="满屏幕都是风车"></p>
-<p>一个好的天气很重要，虽然在北京这很难得~<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612371.jpg" alt="草原上休息的马儿们"></p>
-<p>在草原上住的好处就是可以看看日落/日出/星星，玩摄影的自然不能错过。但是夜间太冷，加上当日月亮非常的亮，导致本次星星没拍上~ 囧！<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612650.jpg" alt="日落夕阳"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -746,7 +745,7 @@ setup(
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

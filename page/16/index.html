@@ -171,8 +171,126 @@
           
           
             
+              <a class="post-title-link" href="/2012/07/02/Sublime Text 2 初始配置/" itemprop="url">
+                Sublime Text 2 初始配置
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2012-07-02T14:58:00+08:00" content="2012-07-02">
+            2012-07-02
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2012/07/02/Sublime Text 2 初始配置/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/07/02/Sublime Text 2 初始配置/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Sublime Text 2 的特色功能：</p>
+<ul>
+<li>良好的扩展功能，官方称之为安装包(Package)。</li>
+<li>右边没有滚动条，取而代之的是代码缩略图，这个功能非常赞</li>
+<li>强大的快捷命令“可以实时搜索到相应的命令、选项、snippet 和 syntex， 按下回车就可以直接执行，减少了查找的麻烦。”</li>
+<li>即时的文件切换。</li>
+<li>随心所欲的跳转到任意文件的任意位置。</li>
+<li>多重选择(Multi-Selection)功能允许在页面中同时存在多个光标。</li>
+<li>支持 VIM 模式</li>
+<li>支持宏，宏是什么，简单地说就是把操作录制下来或者自己编写命令，然后播放刚才录制的操作或者命令。</li>
+<li>更新非常勤快，几乎每周都会有一个新版本杀出来</li>
+<li>等等……</li>
+</ul>
+<p>安装包控制(Package Control)</p>
+<p>Sublime Text 2 也拥有良好的扩展功能，这就是安装包(Package)；同样，就像 TextMate 有用来安装、升级、卸载 Bundle 的 GetBundles 一样，Sublime Text 2 也有其用来进行 Package 控制的插件：Sublime Package Control。 安装 Package Control 的方法：</p>
+<p>打开 Sublime Text 2，按下 Control + ` 调出 Console<br>将以下代码粘贴进命令行中并回车：  </p>
+<pre><code><span class="built_in">import</span> urllib2,os;pf=’Package Control.sublime-package’;ipp=sublime.installed_packages_path<span class="params">()</span>;os.makedirs<span class="params">(ipp)</span> <span class="keyword">if</span> not os.path.exists<span class="params">(ipp)</span> <span class="keyword">else</span> None;open<span class="params">(os.path.join<span class="params">(ipp,pf)</span>,’wb’)</span>.write<span class="params">(urllib2.urlopen<span class="params">(‘http://sublime.wbond.net/’+pf.replace<span class="params">(‘ ‘,’%<span class="number">20</span>′)</span>)</span>.read<span class="params">()</span>)</span>
+</code></pre><p>重启 Sublime Text 2，如果在 Preferences -&gt; Package Settings中见到Package Control这一项，就说明安装成功了。</p>
+<p>使用 Package Control 安装 Package 的方法将在后面用到的地方详述。</p>
+<p>安装 Soda 主题</p>
+<p>这里所讲的主题不同于针对代码的 Color Scheme，是指针对 Sublime 程序本身的主题，目前可以安装的是 Ian Hill 的 Soda。</p>
+<p>因为源中已经添加，所以这款主题的安装同样可以通过 Package Control，非常方便。目前 Soda 主题提供了明暗两种风格。<br>按Shift + Command + P调出命令面板；<br>输入 install 调出 Package Control：Install Package 选项，并回车；<br>输入 theme soda 选中后回车即可安装；<br>安装完之后要激活主题，打开 Preferences → Global Settings – User，加上以下代码保存即可生效：</p>
+<pre><code>“<span class="tag">theme</span>”: “<span class="tag">Soda</span> <span class="tag">Light</span><span class="class">.sublime-theme</span>”　
+或者
+”<span class="tag">theme</span>” : “<span class="tag">Soda</span> <span class="tag">Dark</span><span class="class">.sublime-theme</span>”
+</code></pre><p>安装Alignment插件</p>
+<p>对于喜欢整齐的玛民来说，这不失为一个省事的插件。该插件可以通过上面安装好的 Package Control 来安装：<br>按Shift + Command + P调出命令面板；<br>输入 install 调出 Package Control: Install Package 选项，按下回车。</p>
+<p>输入Alignment，选中并按回车安装；<br>重启Sublime Text 2，</p>
+<pre><code><span class="keyword">var</span> joe  = <span class="string">'joe'</span>;
+<span class="keyword">var</span> johnnydd = <span class="string">'johnny'</span>;
+<span class="keyword">var</span> quaid  = <span class="string">'quaid'</span>;
+</code></pre><p>选中文本并按Ctrl + Command + A就可以进行对齐操作了。</p>
+<pre><code><span class="keyword">var</span> joe      = <span class="string">'joe'</span>;
+<span class="keyword">var</span> johnnydd = <span class="string">'johnny'</span>;
+<span class="keyword">var</span> quaid    = <span class="string">'quaid'</span>;
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2012/06/07/facebox 弹层插件/" itemprop="url">
-                facebox 弹层插件
+                Facebox 弹层插件
               </a>
             
           
@@ -695,96 +813,6 @@ videos.printInfo()
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2012/03/22/屌丝的个人简介/" itemprop="url">
-                屌丝的个人简介
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2012-03-22T06:51:00+08:00" content="2012-03-22">
-            2012-03-22
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2012/03/22/屌丝的个人简介/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/03/22/屌丝的个人简介/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>@Terry Yin同学的文章 ：</p>
-<p>今天彻底查了下屌丝到底什么意思，这个是还算满意的结果。<br>屌丝一词源于百度李毅贴吧，是一种带有谐谑语气的称呼，可用于称呼别人，亦可自谓。屌丝二字蕴含着无奈与自嘲的意味。但凡被称作屌丝的，或者自称为屌丝的人都有一些共同特征。<br>起源<br>表面上屌丝一词起源于百度雷霆吧对李毅的球迷无用心的恶搞称谓。但广大毅丝能接受了这个称呼并发扬光大，深沉次的原因还是因为每个人心中都有屌丝一面。</p>
-<p>特征<br>成长历程：屌丝一般都是农村出身，小时家里贫穷。有的十二载寒窗考上大学，攻读工科专业，毕业后工作类似搬砖、码农，毫无地位、收入微薄；有的初中辍学，进 城务工，或成了发廊师傅，或成了网吧网管，在城市的繁华之中分得一杯苦羹；或是无业游民，但是自己一般不愿承认，网上经常以自由职业者。</p>
-<p>感情：屌丝的情感世界是一片空白的，甚至可以用荒凉来形容。小学时男男女女混在泥土堆里，毫无性别可言，初高中的屌丝开始懵懂，可是那时坚信读书会改变命运，埋头 苦读，错过了本来就不多的机会，不过这是的屌丝还是自视清高的。到了大学，屌丝会悲剧地发现自己的工科专业里，女生少得可怜，而且质量堪忧。本来和女生话 就不多的屌丝在大学里几乎就没和女生说过几句话。他们也梦想着在校园里会拥有浪漫艳遇，可是带着幻想蹉跎四年是他们的最终归宿。屌丝是没有爱情的，他心中 也许会有一个高贵的公主，但能和那公主牵手自是屌丝的白日梦，即便那个所谓的公主最终变成了高富帅的弃妇。相亲、迁就、结婚、隐忍、流泪就是屌丝的感情轨 迹，这是毫无悬念的。</p>
-<p>工作：毫无疑问屌丝做的工作都是下贱的，所谓工作无卑贱之分都是成功人士糊弄屌丝的。屌丝干着类似搬砖、和水泥的活却拿着只 够勉强活下去的薪水。工作时时遭人唾骂、处处被人嫌弃，一年上360天的班，却赚不到过年回家的车票。未来：又是毫无疑问，屌丝是没有未来的，黑暗的前面 还是黑暗，是无尽的。若是有屌丝在你面前畅谈他的人生规划或者谈笑风生说些房子车子的问题，那么，毫无疑问，他在意淫。健康：屌丝都是蓬头垢面的，双眼无 光，形容枯黄，恍若就死之人，俨然行尸走肉。屌丝灵魂负重，怎么会有健康的身体。他们纵欲、他们操心、他们熬夜，屌丝的身体像是一台台老旧的机器，走起来 磕磕碰碰，晃荡晃荡都是声音，耗油耗电却没有功率。</p>
-<p>性格：可怜之人必有可恨之处，屌丝的性格有许多硬伤：他们缺乏行动力，他们虚荣又故作清高，害羞却又自作多情，他们怯懦，他们自卑自贱却又自以为是。总之，他们的性格一无是处，这也决定了他们在这社会上也是一无是处。</p>
-<p>情 操：这个词用在屌丝身上本身就是对着两个字的侮辱了，屌丝还谈什么情怀、操守的？他们心中有的只有性、谎言、逆反。他们不知廉耻，狗尚不嫌家贫，他们却常 常反咬自己的主人；尊老爱幼是传统美德，他们却常常粗言以伤慈祥的老人，P图丧失可爱的幼女，又常常以体格上的弱点讽刺威武的将军。他们心中根本没有纯洁 的感情，他们以己度人，认为时间一切都是险恶丑陋肮脏的.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -823,7 +851,7 @@ videos.printInfo()
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-count">103</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
