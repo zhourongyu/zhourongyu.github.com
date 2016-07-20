@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2016-06-22T05:09:49.000Z</updated>
+  <updated>2016-07-20T13:05:58.000Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[定制自己的健身计划]]></title>
+    <link href="http://xxxx.ooo/2016/07/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E5%81%A5%E8%BA%AB%E8%AE%A1%E5%88%92/"/>
+    <id>http://xxxx.ooo/2016/07/18/定制自己的健身计划/</id>
+    <published>2016-07-18T10:05:35.000Z</published>
+    <updated>2016-07-20T13:05:58.000Z</updated>
+    <content type="html"><![CDATA[<p>刚开始健身不久，根据自己的情况定制一份适合自己的计划是很有必要的。</p>
+<p>健身大多目的有两个，瘦子想变壮与胖子想变瘦（用专业的术语应该说是增肌与减脂）。 多数人都认为减肥更难，长肉还不容易么？多吃多睡呗</p>
+<p>其实靠吃就能增重的人往往处于需要减脂的群体中，都是增加了脂肪，而需要增肌的人群大都是百吃不胖，也许是因为体质或者其他因素。</p>
+<p>很不幸我是属于「吃不胖」群体的，体脂一直都是在10-15之间。最近去健身房测试竟然是7.x，我想这应该是机器有问题，在增重的道路上路漫漫兮…</p>
+<p>这份计划也是在咨询了许多经验人士，并依据自身及场馆情况而制定，考虑场馆因素是因为一些动作是依赖相关器械的。</p>
+<h4 id="计划详情：">计划详情：</h4><p><strong>目标</strong>：体重增重5-7kg，增强上肢三围及力量<br><strong>频率</strong>：3-4次/周</p>
+<h5 id="胸、二头">胸、二头</h5><p>胸：史密斯卧推/哑铃卧推（上斜、水平、下斜）、蝴蝶机<br>二头：杠铃弯举、哑铃弯举、锤式弯举</p>
+<h5 id="背、三头">背、三头</h5><p>背：坐姿下拉、坐姿划船、屈退硬拉<br>三头：拉力器曲臂下压、哑铃屈伸</p>
+<h5 id="肩、腿">肩、腿</h5><p>三角肌：哑铃交替前举、哑铃肩上推举、反式蝴蝶机展肩<br>腿：坐姿水平蹬腿、杠铃深蹲</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>刚开始健身不久，根据自己的情况定制一份适合自己的计划是很有必要的。</p>
+<p>健身大多目的有两个，瘦子想变壮与胖子想变瘦（用专业的术语应该说是增肌与减脂）。 多数人都认为减肥更难，长肉还不容易么？多吃多睡呗</p>
+<p>其实靠吃就能增重的人往往处于需要减脂的群体中，都]]>
+    </summary>
+    
+      <category term="健身" scheme="http://xxxx.ooo/tags/%E5%81%A5%E8%BA%AB/"/>
+    
+      <category term="健康" scheme="http://xxxx.ooo/tags/%E5%81%A5%E5%BA%B7/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[MTM-FS-Server-Failed]]></title>
@@ -516,34 +546,6 @@ res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int
       <category term="scala" scheme="http://xxxx.ooo/tags/scala/"/>
     
       <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[2014年读过的那些书]]></title>
-    <link href="http://xxxx.ooo/2014/12/31/2014%E5%B9%B4%E8%AF%BB%E8%BF%87%E7%9A%84%E9%82%A3%E4%BA%9B%E4%B9%A6/"/>
-    <id>http://xxxx.ooo/2014/12/31/2014年读过的那些书/</id>
-    <published>2014-12-31T08:00:00.000Z</published>
-    <updated>2015-07-19T13:00:49.000Z</updated>
-    <content type="html"><![CDATA[<h3 id="小说">小说</h3><p>《地球大炮》<br>《殷商玛雅征服史》<br>《时间之墟》<br>《王小波全集》（1-3）  </p>
-<h3 id="计算机">计算机</h3><p>《高性能Linux服务器构建实战》<br>《快学Scala》  </p>
-<h3 id="历史">历史</h3><p>《费马大定理》<br>《战争就是这么回事》（1-3）  </p>
-<h3 id="其他">其他</h3><p>《集装箱改变世界》<br>《时间的形状》<br>《牌局心理学》<br>《男人除了性还在想什么？》  </p>
-<hr>
-<p>很明显14年读书少了，太多的东西让人分心，又到了反思的时刻了。<br>因为14年入市，还看了一些投资相关的书，结论就是：都是放屁。总结起来就一句话：投资有风险，入市需谨慎。大部分讲的都是鸡蛋要分开放的各种道理，这类书还是少看为秒。</p>
-<p>《集装箱改变世界》 这本书挺有意思，看书名完全没什么感觉，看后发现津津有味，似乎看到了世界变化的原理，明白一些世界定律，比如：技术往往不太重要，重要的是如何应用。算是个人年度推荐的唯一书籍了。</p>
-<p>随着信息获取的方式增长，原来看纸质书，后来基本看电子书，现在电子书都缩减了，各种短篇微博&amp;微信都能合集出书，似乎书的价值在越来越低，甚至都不用看书了，微信公众号，微博，社交平台…各种的信息占据了很大一部分时间。如果不使用这些，会丢失很多实时信息，似乎与当前社会有点脱节，很out。如何在这里面来快速获取有效信息越来越重要。 </p>
-<p>新的一年要好好规划，新年快乐！</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="小说">小说</h3><p>《地球大炮》<br>《殷商玛雅征服史》<br>《时间之墟》<br>《王小波全集》（1-3）  </p>
-<h3 id="计算机">计算机</h3><p>《高性能Linux服务器构建实战》<br>《快学Scala》  </p>
-<h3 i]]>
-    </summary>
-    
-      <category term="读书" scheme="http://xxxx.ooo/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
     
   </entry>
   
