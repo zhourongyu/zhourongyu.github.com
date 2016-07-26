@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2016-07-20T13:05:58.000Z</updated>
+  <updated>2016-07-26T15:30:04.000Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[墨菲定律]]></title>
+    <link href="http://xxxx.ooo/2016/07/26/%E5%A2%A8%E8%8F%B2%E5%AE%9A%E5%BE%8B/"/>
+    <id>http://xxxx.ooo/2016/07/26/墨菲定律/</id>
+    <published>2016-07-26T15:21:12.000Z</published>
+    <updated>2016-07-26T15:30:04.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>墨菲定律：可能会出错的地方一定会出错，如果有多个可能，必定朝最坏的情况发展。大俗话：明明之前没有错，偏偏关键时刻就是出错了  —wikipedia</p>
+</blockquote>
+<p>这是这两天遇到线上事故的总结</p>
+<h5 id="事故过程：">事故过程：</h5><p>早前做了一个系统维护的解决方案，目的阻挡一些涉及维护系统的请求，避免造成数据上的错误。但因业务的扩展，并且多次升级维护都比较顺利，此方案并没有更新覆盖到一些新业务。</p>
+<p><strong>升级的过程为：停服务-&gt; 备份数据库 -&gt; 升级服务 -&gt; 重启服务</strong></p>
+<p>升级后上线测试业务失败，经过半小时检测未找到原因（事后查出是三方升级包BUG，部分用户可以成功）。随后进行回滚操作，回滚后出现系统数据同步异常，检测发现在维护期间有部分新数据写入，回滚导致部分数据丢失。</p>
+<p>好在没有对用户造成经济上的损失，但修数据耗费了大家一整天时间。</p>
+<h5 id="主要原因：">主要原因：</h5><ol>
+<li>维护方案不是最新，但每次维护都在使用</li>
+<li>升级后未经过灰度直接上线测试</li>
+<li>线上测试发现问题后未检测是否有新数据就进行回滚</li>
+<li>三方提供的升级包质检不合格</li>
+</ol>
+<p>又一次用血泪印证了墨菲定律。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>墨菲定律：可能会出错的地方一定会出错，如果有多个可能，必定朝最坏的情况发展。大俗话：明明之前没有错，偏偏关键时刻就是出错了  —wikipedia</p>
+</blockquote>
+<p>这是这两天遇到线上事故的总结</p>
+<h5 id="事故]]>
+    </summary>
+    
+      <category term="工作" scheme="http://xxxx.ooo/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="墨菲定律" scheme="http://xxxx.ooo/tags/%E5%A2%A8%E8%8F%B2%E5%AE%9A%E5%BE%8B/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[定制自己的健身计划]]></title>
@@ -474,76 +512,6 @@ name <span class="function"><span class="title">varchar</span><span class="param
     </summary>
     
       <category term="mysql" scheme="http://xxxx.ooo/tags/mysql/"/>
-    
-      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Scala 之 JavaConverters 与 JavaConversions]]></title>
-    <link href="http://xxxx.ooo/2015/03/15/Scala%20%E4%B9%8B%20JavaConverters%20%E4%B8%8E%20JavaConversions/"/>
-    <id>http://xxxx.ooo/2015/03/15/Scala 之 JavaConverters 与 JavaConversions/</id>
-    <published>2015-03-14T23:58:00.000Z</published>
-    <updated>2015-07-19T13:00:49.000Z</updated>
-    <content type="html"><![CDATA[<p>在实际使用中经常遇见Scala &lt;=&gt; Java之间的转换。例如要调用某个第三方包的方法需要一个Java的Map，那么可能用到Scala提供的JavaConverters或JavaConversions工具包<br>案例：</p>
-<pre><code><span class="comment">//待转换的Map</span>
-scala&gt; val m = <span class="function"><span class="title">Map</span><span class="params">(<span class="number">1</span>-&gt;<span class="number">2</span>)</span></span>
-m: scala<span class="class">.collection</span><span class="class">.immutable</span><span class="class">.Map</span>[Int,Int] = <span class="function"><span class="title">Map</span><span class="params">(<span class="number">1</span> -&gt; <span class="number">2</span>)</span></span>
-</code></pre><p>JavaConversions示例：</p>
-<pre><code><span class="keyword">import</span> collection.JavaConversions._
-scala&gt; <span class="variable"><span class="keyword">val</span> conversionsMap</span> = mapAsJavaMap(m).asInstanceOf[java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>]]
-conversionsMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-</code></pre><p>JavaConversters示例：</p>
-<pre><code><span class="keyword">import</span> scala.collection.JavaConverters._
-scala&gt; <span class="variable"><span class="keyword">val</span> convertersMap</span> = m.asJava
-convertersMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-</code></pre><p>俩者都转换成功，看似一模一样的效果，为什么共同存在？</p>
-<pre><code>scala&gt; conversionsMap.<span class="function"><span class="title">put</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>
-java<span class="class">.lang</span><span class="class">.UnsupportedOperationException</span>
-  at java<span class="class">.util</span><span class="class">.AbstractMap</span><span class="class">.put</span>(AbstractMap<span class="class">.java</span>:<span class="number">203</span>)
-  ... <span class="number">33</span> elided      
-
-  scala&gt; convertersMap.<span class="function"><span class="title">put</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>
-  java<span class="class">.lang</span><span class="class">.UnsupportedOperationException</span>
-  at java<span class="class">.util</span><span class="class">.AbstractMap</span><span class="class">.put</span>(AbstractMap<span class="class">.java</span>:<span class="number">203</span>)
-  ... <span class="number">33</span> elided 
-</code></pre><p>转换成功后的Map竟然是不可修改的，这好像不符合我的需求，猜测是因为m是immutable类型的原因，那么继续：</p>
-<pre><code><span class="comment">//先转换成mutable</span>
-<span class="variable"><span class="keyword">val</span> m2</span> = collection.mutable.Map(m.toSeq: _*)
-scala&gt; m2.+(<span class="number">3</span>-&gt;<span class="number">4</span>)
-res4: scala.collection.mutable.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = Map(<span class="number">1</span> -&gt; <span class="number">2</span>, <span class="number">3</span> -&gt; <span class="number">4</span>)
-  <span class="comment">//好，现在m2可以修改了</span>
-
-  scala&gt; <span class="variable"><span class="keyword">val</span> conversionsMap</span> = mapAsJavaMap(m2).asInstanceOf[java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>]]
-conversionsMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-scala&gt; conversionsMap.put(<span class="number">3</span>,<span class="number">4</span>)
-java.lang.UnsupportedOperationException
-  at java.util.AbstractMap.put(AbstractMap.java:<span class="number">203</span>)
-  ... <span class="number">33</span> elided
-  <span class="comment">//conversionsMap依旧不能修改，囧</span>
-
-scala&gt; <span class="variable"><span class="keyword">val</span> convertersMap</span> = m2.asJava
-convertersMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-scala&gt; convertersMap.put(<span class="number">3</span>,<span class="number">4</span>)
-res5: <span class="typename">Int</span> = <span class="number">0</span>
-scala&gt; convertersMap
-res6: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>, <span class="number">3</span>=<span class="number">4</span>}
-<span class="comment">//convertersMap 可以修改</span>
-</code></pre><p>那么JavaConversions需要转换出可修改的Map该如何操作，搜索一番得到答案，JavaConversions提供的是Java集合之间的隐式转换，如果想让JavaConversions产出可变的Map应该如下操作：</p>
-<pre><code><span class="comment">//JavaConversions直接隐式的转换了</span>
-<span class="variable"><span class="keyword">val</span> conversionsMap2</span>: java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>] = m2
-scala&gt; conversionsMap2.put(<span class="number">3</span>,<span class="number">4</span>)
-res7: <span class="typename">Int</span> = <span class="number">0</span>
-scala&gt; conversionsMap2
-res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>, <span class="number">3</span>=<span class="number">4</span>}
-</code></pre><p>JavaConversions出现在V2.8版本，JavaConverters出现于V2.8.1，相比JavaConversions更新，并且显示的转换更易于理解，推荐使用JavaConverters</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>在实际使用中经常遇见Scala &lt;=&gt; Java之间的转换。例如要调用某个第三方包的方法需要一个Java的Map，那么可能用到Scala提供的JavaConverters或JavaConversions工具包<br>案例：</p>
-<pre><code><spa]]>
-    </summary>
-    
-      <category term="scala" scheme="http://xxxx.ooo/tags/scala/"/>
     
       <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
     

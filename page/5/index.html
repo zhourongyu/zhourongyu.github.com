@@ -171,6 +171,122 @@
           
           
             
+              <a class="post-title-link" href="/2014/06/11/Scala学习-模式匹配/" itemprop="url">
+                Scala学习-模式匹配
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2014-06-11T15:46:00+08:00" content="2014-06-11">
+            2014-06-11
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/06/11/Scala学习-模式匹配/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/11/Scala学习-模式匹配/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h4 id="模式匹配">模式匹配</h4><p>模式匹配是scala的一大特性，有点像增加版的switch-case。<br>在Scala代码中无处不在：用于合并条件执行、解构(destructuring) 、在构造中造型。  </p>
+<pre><code>def getSex(name:Any){
+    name match {
+        <span class="comment">//匹配字符串</span>
+          <span class="keyword">case</span> <span class="string">"rony"</span> =&gt; println(“male”)
+          <span class="keyword">case</span> <span class="string">"lina"</span> =&gt; println(“female”)
+          <span class="comment">//匹配元组</span>
+          <span class="keyword">case</span> (<span class="string">"rony"</span>,<span class="string">"lina"</span>) =&gt; println(name)
+          <span class="comment">//匹配列表</span>
+          <span class="keyword">case</span> <span class="built_in">List</span>(<span class="string">"rony"</span>,<span class="string">"lina"</span>) =&gt; println(name)
+          <span class="comment">//匹配自定义类</span>
+          <span class="keyword">case</span> User(u) =&gt; println(u.name)
+          <span class="comment">//匹配通配符</span>
+          <span class="keyword">case</span> _ =&gt;
+    }
+  }
+</code></pre><p>《Effective Scala》中建议匹配通配符时改为 <code>case other =&gt;</code> 可读性更高</p>
+<h4 id="Options">Options</h4><p>写多了java得同学都见多了NullPointerException，一不小心就会出现这种低级错误，Scala中有一种Option类型，是一个表示有可能包含值的容器。空(None)或满(Some(value))二选一。  </p>
+<p>《Effective Scala》中提出Option提供了使用null的另一种安全选择，应该尽可能的替代null。它是一个集合(最多只有一个元素)并用集合操所修饰，尽量用Option。<br>但它也提示了不要过度使用Option： 如果有一个明确的缺省值——一个Null对象——直接用Null而不必用Option</p>
+<pre><code><span class="function"><span class="keyword">def</span> <span class="title">getUser</span><span class="params">(user_id: Long)</span>:</span>User = {
+    //userDao.getUser()返回Option[User]类型
+    val user = userDao.getUser(user_id)
+    user match {
+        case Some(u) =&gt; u
+        case <span class="keyword">None</span> =&gt; //不存在用户
+    }
+}
+</code></pre><p>有人说这不和if判断null一样么，根本没有什么优势，个人认为这只是更像一种警示，当习惯后，看到方法的返回值是Option时，心里应该明白这个可能是要做空处理的。<br>Option里面还有一些的好用方法，例如getOrElse()，如果没有取到则给一个默认值，</p>
+<pre><code><span class="function"><span class="keyword">def</span> <span class="title">getUserName</span><span class="params">(user_id: Long)</span>:</span>String = {
+    //userDao.getUserName()返回Option[String]类型
+    val user = userDao.getUserName(user_id)
+    user.getOrElse(<span class="string">"rony"</span>)
+}
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2014/05/17/2014大连徒步大会/" itemprop="url">
                 2014大连徒步大会
               </a>
@@ -536,93 +652,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/04/01/Filco Minila Air 与 HHKB Pro 2/" itemprop="url">
-                Filco Minila Air 与 HHKB Pro 2
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2014-04-01T14:46:00+08:00" content="2014-04-01">
-            2014-04-01
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/04/01/Filco Minila Air 与 HHKB Pro 2/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/04/01/Filco Minila Air 与 HHKB Pro 2/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>上周刚入了款新机械键盘 Filco Minila Air 蓝牙版，产地台湾。<br>在机械键盘里无线/蓝牙的非常少，也正是这点吸引了我。先上图</p>
-<p><img src="http://zryblog.qiniudn.com/2014/08/2899409208.jpg" alt="IMG\_0906.jpg"><br><img src="http://zryblog.qiniudn.com/2014/08/3265090577.jpg" alt="IMG\_0907.jpg"><br>我很烦那些缠绕的线，以及庞大的体积，还有那些低劣的灯光/花哨的外表等。Minila Air是67键位，和MacBook键盘大小基本一样。<br>整体的键盘布局较为紧凑，比HHKB略微紧凑，买的青轴，欢快的打字声音还是比较扰民的，所以放在家里使用~<br><img src="http://zryblog.qiniudn.com/2014/08/1111906697.jpg" alt="IMG\_0923.jpg"><br>与HHKB的大小也几乎一致，但高度略高，没有手托的话感觉稍微有一点不舒服。份量也比HHKB稍重，底部防滑效果非常好，胜过HHKB，甚至感觉水平基本移动不了，需要拿起来移动。可惜的是没有无刻的版本，Filco在键盘界是公认的具有上乘质量和手感的，之前我最喜欢的是87键的圣手二代，大小/布局都非常好，但是只有线版本。<br>青轴的声音是「哒哒哒哒哒」，HHKB是电容键盘，声音是「的的的的的」，两者手感完全不一样。有同事认为HHKB的手感更好，我两者都比较喜欢~ 看个人喜好了。</p>
-<p>有人说Minila Air的键位比HHKB好，其实布局基本一样（可以通过DPI和改建设置下达到一致），Minila的优点在于左侧多出Fn键，并且可以通过便捷的方式操作方向键，这也是HHKB的劣势之一。</p>
-<p><strong>总结</strong><br>Filco Minila Air 与 HHKB Pro 2两者不相上下。操作性Minila Air略优，论装B，那还得是HHKB。当然后者的价格也近乎于前者的两倍，充分说明要装B是要付出代价的。<br>总之两者都是不会让你后悔的选择^_^</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -661,7 +690,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">104</span>
+              <span class="site-state-item-count">105</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -675,7 +704,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">111</span>
+              <span class="site-state-item-count">112</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
