@@ -171,6 +171,119 @@
           
           
             
+              <a class="post-title-link" href="/2011/10/05/Git入门/" itemprop="url">
+                Git入门
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2011-10-05T05:51:00+08:00" content="2011-10-05">
+            2011-10-05
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011/10/05/Git入门/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/10/05/Git入门/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>mac下自带了Git，而Windows下需要自己安装……</p>
+<p>第一，<br>目前windows版本的git有几种实现，但我们选择msysgit发行版，这是目前做得兼容性最好的。<a href="http://code.google.com/p/msysgit/downloads/list" target="_blank" rel="external">下载地址</a></p>
+<p>首先，git要求使用者必须提供自己的身份标识，为此我们需要在git bash中执行以下命令：</p>
+<pre><code>git config --global user<span class="class">.name</span> <span class="string">'zuroyu'</span>
+git config --global user<span class="class">.email</span> zuroyu@xxxxx.com
+</code></pre><p>其次，选择git仓库目录</p>
+<p>我们假设将git仓库目录放在D盘的OPENSource目录下，可以通过在git bash中执行以下命令完成：</p>
+<pre><code><span class="keyword">cd</span> /<span class="literal">d</span>
+<span class="keyword">mkdir</span> OPENSource
+</code></pre><p>注：git bash支持大多linux bash终端命令，你可以自己尝试更多终端操作。</p>
+<p>第二，建立项目并初始化git仓库</p>
+<p>我们的第一个项目是ZWeb通过执行以下命令完成此步骤：</p>
+<pre><code><span class="built_in">mkdir</span> ZWeb
+<span class="built_in">cd</span> ZWeb
+git init
+</code></pre><p>执行此操作后，git将在ZWeb目录下创建一个隐藏目录（.git），这个目录就是git用来管理软件版本的仓库。</p>
+<p>第三，使用git管理项目<br>git commit -m “这是我们第一次初始化项目”</p>
+<p>git add命令可以将参数指定的文件添加到git仓库索引中，如果你一次添加太多文件可以使用：git add . 命令全部添加。</p>
+<p>git commit命令才是真正的将文件添加到git仓库中去，-m选项允许在命令行后直接给出每次添加的简短说明（PS：我们强烈推荐你再每次提交时都给出一个说明，以便项目版本的查阅等），如果没有给出此命令将调用默认文本编辑器以便你添加说明。</p>
+<p>第四，将项目提交到github管理</p>
+<p>要想将本地的git项目提交到github我们需要先在github添加此项目，登入github主页点击“create a new one”根据提示完成项目创建。刚创建好的项目不包含任何文件，我们需要稍作设置后方可使用。</p>
+<p>1，在git bash中执行以下命令创建密钥：</p>
+<pre><code>ssh-keygen -<span class="keyword">C</span> <span class="string">'zuroyu@xxxxx.com'</span> -t rsa
+</code></pre><p>一路按Enter键即可，当然如果你想选择使用密码功能，那么在提示输入密码是选择你自己的密码。</p>
+<p>2，找到刚才生成的密钥（id_rsa.pub）文件并用文本编辑器打开，然后复制里面的内容。接着转到github站点项目编辑（edit），找到”Deploy keys“选项后点击”add another deploy key“并将刚才复制的内容黏贴保存。</p>
+<p>3，测试SSH连接。在git bash中执行以下命令：</p>
+<pre><code><span class="title">SSH</span> -v git<span class="variable">@github</span>.com
+</code></pre><p>如果提示你的密钥不正确，那么你需要重新确认上一步的操作是否完整无误。</p>
+<p>4，如果上一步测试无错，那么现在就可以将本地的文件提交到github仓库了。在git bash中执行以下命令：</p>
+<pre><code><span class="label">git</span> <span class="keyword">push </span>origin master
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011/06/12/eclipse's default workspace/" itemprop="url">
                 Eclipse's Default Workspace
               </a>
@@ -508,251 +621,11 @@ exit</span>
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/" itemprop="url">
-                RHEL下DB2 V9.7数据库服务器的安装与配置
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2011-03-25T07:27:00+08:00" content="2011-03-25">
-            2011-03-25
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011/03/25/RHEL下DB2 V9.7数据库服务器的安装与配置/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>本文使用的是文本方式安装DB2 V9.7</p>
-<p>主要流程:<br>（1）解压安装包<br>（2）执行安装程序<br>（3）创建3个用户，分别是实例用户、受限用户、管理用户<br>（4）创建一个管理服务器<br>（5）创建一个实例<br>（6）配置DB2参数</p>
-<p>1、安装DB2准备工作<br>获得安装包v9.7_linuxia32_server.tar.gz<br>执行解压缩 tar -zxvf v9.7_linuxia32_server.tar.gz</p>
-<p>2、执行安装程序<br>进入到解压后的server文件夹<br>cd / server<br>./DB2_install<br>选择”否“</p>
-<p>3、新建组和用户<br>创建组</p>
-<pre><code><span class="id">#groupadd</span> db2iadm1
-<span class="id">#groupadd</span> db2fadm1
-<span class="id">#groupadd</span> dasadm1
-</code></pre><p>创建用户</p>
-<pre><code><span class="title">#useradd -g db2</span>iad<span class="title">m1</span> -m -d /home/db<span class="number">2</span>i<span class="label">nst1</span> db<span class="number">2</span>i<span class="label">nst1</span>
-<span class="title">#useradd -g db2</span>fad<span class="title">m1</span> -m -d /home/db<span class="number">2</span>fe<span class="label">nc1</span> db<span class="number">2</span>fe<span class="label">nc1</span>
-<span class="title">#useradd -g dasadm1</span> -m -d /home/dasusr<span class="number">1</span> dasusr<span class="number">1</span>
-</code></pre><p>修改用户密码</p>
-<pre><code><span class="id">#passwd</span> db2inst1
-<span class="id">#passwd</span> db2fenc1
-<span class="id">#passwd</span> dasusr1
-</code></pre><p>4、创建管理服务器</p>
-<pre><code># <span class="regexp">/opt/i</span>bm<span class="regexp">/DB2/</span>V9.<span class="number">7</span><span class="regexp">/instance/</span>dascrt -u dasusr1
-</code></pre><p>创建一个实例</p>
-<pre><code>#<span class="regexp">/opt/i</span>bm<span class="regexp">/DB2/</span>V9.<span class="number">7</span><span class="regexp">/instance/</span>DB2icrt -a SERVER -u db2fenc1 db2inst1
-</code></pre><p>5、配置DB2<br>(1) 对DB2进行配置</p>
-<pre><code><span class="variable">#vi</span> /etc/rc<span class="built_in">.</span><span class="built_in">local</span>
-</code></pre><p>在touch /var/lock/subsys/local的后面加上以下内容</p>
-<pre><code><span class="title">#su - DB2</span>i<span class="label">nst1</span> -c <span class="string">"DB2start"</span>
-</code></pre><p>(2) 修改sysctl.conf文件</p>
-<pre><code><span class="id">#vi</span> /etc/sysctl<span class="class">.conf</span>
-kernel<span class="class">.msgmni</span> = <span class="number">1024</span>
-kernel<span class="class">.sem</span> = <span class="number">250</span> <span class="number">256000</span> <span class="number">32</span> <span class="number">1024</span>
-</code></pre><p>(3) 修改limits.conf文件，修改文件中soft nofile的值</p>
-<pre><code><span class="header">#vi /etc/security/limits.conf</span>
-<span class="bullet">* </span>soft nofile 10240
-</code></pre><p>10240 打开文件的最大数目<br>改动完成后要重新启动服务器</p>
-<p>以上是安装全过程，至此如果我们还需要添加多用户，只需按下列步骤操作(只演示一个用户的例子)：</p>
-<ol>
-<li><p>添加一个新用户zry到db2iadm1组：</p>
-<p> useradd -g db2iadm1 -m -d /home/zry zry<br> passwd zry (为用户设置密码)</p>
-</li>
-</ol>
-<p>2．切换到root 用户为zry 建立实例：</p>
-<pre><code>su root
-<span class="regexp">/opt/i</span>bm<span class="regexp">/DB2/</span>V9.<span class="number">7</span><span class="regexp">/instance/</span>DB2icrt -a SERVER -u zry zry *(实例名长度不能超过八位)
-</code></pre><p>这样就为zry 用户创建了一个名为zry实例，而这个实例的管理员也就是zry.<br>切换到zry用户下就可以启动和管理zry实例了</p>
-<pre><code><span class="title">su</span> zry
-db2start
-</code></pre><p>配置DB2 V9.7客户端与服务器端通信<br>我们要让程序链接上DB2服务器首先必须在本机上安装DB2 V9.7 客户端，编目服务器上的数据库到本地客户端,这样我们就可以在程序中直接操作DB2数据库了.</p>
-<ol>
-<li>安装DB2 V9.7 客户机</li>
-</ol>
-<p>………图形界面….过程省略……</p>
-<ol>
-<li>配置DB2 服务器参数</li>
-</ol>
-<p>(1) 使用用户zry登陆系统. 启动对应的实例:</p>
-<pre><code>db2start
-cat /etc/services 查找此文件。新建的用户一般会出现在最后几行:
-DB2_zry 60032/tcp
-DB2_zry_<span class="number">1 60033</span>/tcp
-DB2_zry_<span class="number">2 60034</span>/tcp
-DB2_zry_END 60035/tcp
-发现 DB2_zry 60032/tcp. 端口为: 60032 / tcp协议.
-</code></pre><p>(2) 查找DB2配置文件中的端口配置</p>
-<pre><code>db2 <span class="built_in">get</span> dbm cfg | <span class="keyword">grep</span> SVCENAME
-</code></pre><p>如出现：<br>TCP/IP Service name (SVCENAME) =<br>SSL service name (SSL_SVCENAME) =<br>说明端口没有配置.使用以下命令：</p>
-<pre><code>db2 <span class="operator"><span class="keyword">update</span> dbm cfg <span class="keyword">using</span> svcename <span class="number">60032</span></span>
-</code></pre><p>把DB2_zry的端口添加进去.<br>并使用db2set db2comm=tcpip 命令，设置为TCPIP协议<br>重启实例: </p>
-<pre><code>db2stop db2star
-db2 <span class="built_in">get</span> dbm cfg | <span class="keyword">grep</span> SVCENAME
-</code></pre><p>结果：<br>TCP/IP Service name (SVCENAME) = 60032<br>SSL service name (SSL_SVCENAME) =<br>db2set –all</p>
-<p>结果：<br>[i] DB2COMM=tcpip<br>netstat -an | grep 60032<br>结果：<br>tcp 0 0 0.0.0.0:60032 0.0.0.0:* LISTEN<br>出现以上三条结果，说明服务器配置已经成功,60032端口正在被监听.</p>
-<p>(3) 客户端编目<br>客户端进入db2cmd,<br>(3.1) 通过tcpip协议 端口进行编目节点( ibmClass 是远程主机名，也就是服务器主机名, 172.x.x.x 是服务器IP)</p>
-<pre><code><span class="tag">db2</span> <span class="tag">catalog</span> <span class="tag">tcpip</span> <span class="tag">node</span> <span class="tag">ibmClass</span> <span class="tag">remote</span> 172<span class="class">.24</span><span class="class">.10</span><span class="class">.151</span> <span class="tag">server</span> 60032
-<span class="tag">db2</span> <span class="tag">list</span> <span class="tag">node</span> <span class="rule"><span class="attribute">directory</span>:<span class="value"></span></span>
-</code></pre><p>节点目录<br>目录中的条目数 = 1<br>节点 1 条目：<br>节点名 = IBMCLASS<br>注释 =<br>目录条目类型 = LOCAL<br>协议 = TCPIP<br>主机名 = 172.24.10.151<br>服务名称 = 60032<br>出现以上结果则表明编目节点成功</p>
-<p>(3.2) 通过节点编目数据库到本机 (假设实例里存在SAMPLE数据库)</p>
-<pre><code>db2 catalog <span class="keyword">db</span> <span class="keyword">sample</span> at node ibmClass
-db2 <span class="keyword">list</span> <span class="keyword">db</span> directory
-</code></pre><p>数据库 1 条目：<br>数据库别名 = SAMPLE<br>数据库名称 = SAMPLE<br>节点名 = IBMCLASS<br>数据库发行版级别 = d.00<br>注释 =<br>目录条目类型 = 远程<br>目录数据库分区号 = -1<br>备用服务器主机名 =<br>备用服务器端口号 =</p>
-<p>出现以上结果则表明编目数据库成功。<br>现在，我们可以在本机直接操作sample数据库了. 可以直接在db2cmd里写测试语句进行相应的测试.（注意: 记得操作数据库需要先connect哦. 如下：<br>db2 connect to sample user zry(用户) using ibm.zhourongyu(密码)，需要拥有实例权限的用户才可以,在这里也就是zry 用户.）<br>使用JAVA程序连接DB2V9.7测试</p>
-<p>我把测试程序也写上来供大家参考，和Mysql区别不大………..</p>
-<pre><code><span class="built_in">import</span> java.sql.<span class="built_in">*</span>;
-
-<span class="comment">/**
-
-* @Create Time：2010-8-31 下午21:43:57
-
-* @author ZhouRongyu
-
-* © 2010-2015 zhourongyu. All rights reserved
-
-*/</span>
-
-public class JDBCConnectTest {
-
-<span class="comment">// Connection to DB2 V9.7</span>
-
-private static Connection newcon = null;
-
-public static void main<span class="params">(String[] args)</span>
-
-{
-
-try {
-
-ConnectV9_7<span class="params">()</span>;
-
-} catch <span class="params">(Exception ex)</span> {
-
-ex.printStackTrace<span class="params">()</span>;
-
-}
-
-}
-
-private static void ConnectV9_7<span class="params">()</span>
-
-{
-
-try {
-
-Class.forName<span class="params">(<span class="string">"com.ibm.db2.jcc.DB2Driver"</span>)</span>;
-
-newcon = DriverManager.getConnection<span class="params">(
-
-<span class="string">"jdbc:db2://172.24.10.151:60032/sample"</span>,
-
-<span class="string">"zry"</span>,<span class="string">"ibm.zhourongyu"</span>)</span>;
-
-newcon.setAutoCommit<span class="params">(<span class="literal">false</span>)</span>;
-
-Statement stmt = newcon.createStatement<span class="params">()</span>;
-
-String selstr = <span class="string">"select empno,firstnme,job from employee where empno=000010"</span>;
-
-ResultSet rs = stmt.executeQuery<span class="params">(selstr)</span>;
-
-while <span class="params">(rs.next<span class="params">()</span>)</span> {
-
-System.out.println<span class="params">(rs.getString<span class="params">(<span class="number">1</span>)</span> + <span class="string">"\t"</span> + rs.getString<span class="params">(<span class="number">2</span>)</span> + <span class="string">"\t"</span> + rs.getString<span class="params">(<span class="number">3</span>)</span>)</span>;
-
-}
-
-newcon.commit<span class="params">()</span>;
-
-rs.close<span class="params">()</span>;
-
-stmt.close<span class="params">()</span>;
-
-} catch <span class="params">(Exception ex)</span> {
-
-ex.printStackTrace<span class="params">()</span>;
-
-}
-
-}
-
-}
-</code></pre><p>执行结果：<br>000010 CHRISTINE PRES</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span>
+    <a class="extend prev" rel="prev" href="/page/20/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/22/">&raquo;</a>
   </nav>
 
  </div>
@@ -786,7 +659,7 @@ ex.printStackTrace<span class="params">()</span>;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">105</span>
+              <span class="site-state-item-count">106</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

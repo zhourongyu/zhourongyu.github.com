@@ -171,6 +171,99 @@
           
           
             
+              <a class="post-title-link" href="/2013/08/26/Sublime Text 3 公测/" itemprop="url">
+                Sublime Text 3 公测
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2013-08-26T14:40:00+08:00" content="2013-08-26">
+            2013-08-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/08/26/Sublime Text 3 公测/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/08/26/Sublime Text 3 公测/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Sublime Text 3(<a href="http://www.sublimetext.com/3" target="_blank" rel="external">下载地址</a>)已经公测了。 Python版本已经更新到3x，导致很多插件不好用,。<br>Package Control安装方式也无法使用，官方最近也给出了最新的安装方式：</p>
+<pre><code><span class="built_in">import</span> urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path<span class="params">()</span>; urllib.request.install_opener<span class="params">( urllib.request.build_opener<span class="params">( urllib.request.ProxyHandler<span class="params">()</span>)</span> )</span>; open<span class="params">(os.path.join<span class="params">(ipp, pf)</span>, 'wb')</span>.write<span class="params">(urllib.request.urlopen<span class="params">( 'http://sublime.wbond.net/' + pf.replace<span class="params">(' ','%<span class="number">20</span>')</span>)</span>.read<span class="params">()</span>)</span>
+</code></pre><p>另外也可以单独下载Package Control.sublime-package 放入Installed Packages/中，然后手动选择安装。</p>
+<p>Sublime Text 3的主要改进：</p>
+<ol>
+<li>强大的加载速度，基本等于秒开</li>
+</ol>
+<p>2.新增Go Definition , Sublime Text 2最大的缺憾就是不能跳转到方法，只能借助ctags</p>
+<p>3.新增错字的模糊匹配，例如main 输入min也有提</p>
+<p><img src="http://zryblog.qiniudn.com/2014/07/1118070359.png" alt="Screen Shot"></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/07/17/WordPress的半角全角字符转义/" itemprop="url">
                 WordPress的半角全角字符转义
               </a>
@@ -533,110 +626,11 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/06/06/Array与List的那些事/" itemprop="url">
-                Array与List的那些事
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-06-06T13:42:00+08:00" content="2013-06-06">
-            2013-06-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/06/06/Array与List的那些事/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/06/Array与List的那些事/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Java Api中提供了数组对List的转换方法</p>
-<pre><code>String[] tmp = {<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>};
-
-<span class="keyword">List</span>&lt;String&gt; <span class="keyword">list</span> = Arrays.asList(tmp);
-
-<span class="keyword">list</span>.<span class="keyword">clear</span>() <span class="comment">//抛出java.lang.UnsupportedOperationException异常</span>
-</code></pre><p>Arrays的asList实现方式是使用参数引用的数组的大小来new的一个ArrayList，对返回列表的更改会“直写”到数组，而数组没有clear,add,remove等方法。</p>
-<p>可以使用CollectionUtils(org.apache.commons.collections.CollectionUtils)进行深度转换</p>
-<pre><code><span class="built_in">List</span> <span class="built_in">list</span><span class="subst">=</span> <span class="literal">new</span> ArrayList(); CollectionUtils<span class="built_in">.</span>addAll(<span class="built_in">list</span>, tmp);
-</code></pre><p>随后对List进行去重操作，方法有多种，这里使用HashSet来实现</p>
-<pre><code><span class="keyword">public</span> <span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> removeDuplicate(<span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> <span class="built_in">list</span>) {
-    HashSet<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> hs <span class="subst">=</span> <span class="literal">new</span> HashSet<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>(<span class="built_in">list</span>);
-    <span class="built_in">list</span><span class="built_in">.</span>clear();
-    <span class="built_in">list</span><span class="built_in">.</span>addAll(hs);
-    <span class="keyword">return</span> <span class="built_in">list</span>;
-}
-</code></pre></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
   </nav>
 
  </div>
@@ -670,7 +664,7 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">105</span>
+              <span class="site-state-item-count">106</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

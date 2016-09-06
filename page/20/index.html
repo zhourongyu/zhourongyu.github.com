@@ -171,6 +171,125 @@
           
           
             
+              <a class="post-title-link" href="/2011/12/21/Linux Shell 内存监控技巧/" itemprop="url">
+                Linux Shell 内存监控技巧
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2011-12-21T15:49:00+08:00" content="2011-12-21">
+            2011-12-21
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011/12/21/Linux Shell 内存监控技巧/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/12/21/Linux Shell 内存监控技巧/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>1.查看当前系统内存使用状况(free)：</p>
+<p>free命令有以下几个常用选项：<br>-b 以字节为单位显示数据。<br>-k 以千字节(KB)为单位显示数据(缺省值)。<br>-m 以兆(MB)为单位显示数据。<br>-s delay 该选项将使free持续不断的刷新，每次刷新之间的间隔为delay指定的秒数，如果含有小数点，将精确到毫秒，如0.5为500毫秒，1为一秒。</p>
+<p>free命令输出的表格中包含以下几列：<br>total： 总计物理内存的大小。<br>used： 已使用的内存数量。<br>free： 可用的内存数量。<br>Shared： 多个进程共享的内存总额。<br>Buffers/cached：磁盘缓存的大小。</p>
+<p>见以下具体示例和输出说明：</p>
+<pre><code><span class="comment">[root@Rony ~]</span>$ free -k
+total used free shared buffers cached 
+Mem: 262328 242000 20328 0 17336 42488
+-/+ buffers/cache: 182176 80152
+Swap: 786416 36 786380
+</code></pre><p>对于free命令的输出，我们只需关注红色高亮的输出行和绿色高亮的输出行，见如下具体解释：</p>
+<p>红色输出行：该行使从操作系统的角度来看待输出数据的，used(242000)表示内核(Kernel)+Applications+buffers+cached。free(20382)表示系统还有多少内存可供使用。<br>绿色输出行：该行则是从应用程序的角度来看输出数据的。其free = 操作系统used + buffers + cached，既：<br>80152 = 20328 + 17336 + 42488</p>
+<pre><code>[root<span class="variable">@Rony</span> ~]<span class="variable">$ </span>free -m
+ total used free shared buffers cached
+ <span class="constant">Mem:</span> <span class="number">256</span> <span class="number">236</span> <span class="number">19</span> <span class="number">0</span> <span class="number">16</span> <span class="number">41</span>
+ -<span class="regexp">/+ buffers/cache</span><span class="symbol">:</span> <span class="number">178</span> <span class="number">78</span>
+ <span class="constant">Swap:</span> <span class="number">199</span> <span class="number">0</span> <span class="number">199</span>
+</code></pre><ol>
+<li><p>虚拟内存的实时监控工具(vmstat)：<br>vmstat命令用来获得UNIX系统有关进程、虚存、页面交换空间及CPU活动的信息。这些信息反映了系统的负载情况。vmstat首次运行时显示自系统启动开始的各项统计信息，之后运行vmstat将显示自上次运行该命令以后的统计信息。用户可以通过指定统计的次数和时间来获得所需的统计信息。</p>
+<p> [root@Rony ~]$ vmstat 1 3 #这是vmstat最为常用的方式，其含义为每隔1秒输出一条，一共输出3条后程序退出。<br> procs —————-memory————— —-swap— ——-io—— —system— ——-cpu———<br> r b swpd free buff cache si so bi bo in cs us sy id wa st<br> 0 0 36 20740 16888 42212 0 0 0 1 7 1 0 0 100 0 0<br> 0 0 36 20740 16888 42212 0 0 0 0 41 38 0 0 100 0 0<br> 0 0 36 20740 16888 42212 0 0 0 0 29 42 0 0 100 0 0<br> [root@Rony ~]$vmstat 1 #其含义为每隔1秒输出一条，直到按CTRL+C后退出。</p>
+</li>
+</ol>
+<p>下面将给出输出表格中每一列的含义说明：<br>有关进程的信息有：(procs)<br>r: 在就绪状态等待的进程数。<br>b: 在等待状态等待的进程数。</p>
+<p>有关内存的信息有：(memory)<br>swpd: 正在使用的swap大小，单位为KB。<br>free: 空闲的内存空间。<br>buff: 已使用的buff大小，对块设备的读写进行缓冲。<br>cache: 已使用的cache大小，文件系统的cache。</p>
+<p>有关页面交换空间的信息有：(swap)<br>si: 交换内存使用，由磁盘调入内存。<br>so: 交换内存使用，由内存调入磁盘。</p>
+<p>有关IO块设备的信息有：(io)<br>bi: 从块设备读入的数据总量(读磁盘) (KB/s)<br>bo: 写入到块设备的数据总理(写磁盘) (KB/s)</p>
+<p>有关故障的信息有：(system)<br>in: 在指定时间内的每秒中断次数。<br>sy: 在指定时间内每秒系统调用次数。<br>cs: 在指定时间内每秒上下文切换的次数。</p>
+<p>有关CPU的信息有：(cpu)<br>us: 在指定时间间隔内CPU在用户态的利用率。<br>sy: 在指定时间间隔内CPU在核心态的利用率。<br>id: 在指定时间间隔内CPU空闲时间比。<br>wa: 在指定时间间隔内CPU因为等待I/O而空闲的时间比。</p>
+<p>vmstat 可以用来确定一个系统的工作是受限于CPU还是受限于内存：如果CPU的sy和us值相加的百分比接近100%，或者运行队列(r)中等待的进程数总是不等于0，且经常大于4，同时id也经常小于40，则该系统受限于CPU；如果bi、bo的值总是不等于0，则该系统受限于内存。</p>
+<ol>
+<li><p>输出当前系统中占用内存最多的5条命令:</p>
+<h1 id="1)_通过ps命令列出当前主机正在运行的所有进程。">1) 通过ps命令列出当前主机正在运行的所有进程。</h1><h1 id="2)_按照第五个字段基于数值的形式进行正常排序(由小到大)。">2) 按照第五个字段基于数值的形式进行正常排序(由小到大)。</h1><h1 id="3)_仅显示最后5条输出。">3) 仅显示最后5条输出。</h1><p> [root@Rony ~]$ ps aux | sort -k 5n | tail -5<br> mysql 25492 0.0 3.3 39860 8680 ? Sl Dec13 0:01 /usr/local/mysql/libexec/mysqld —basedir=/usr/local/mysql —datadir=/usr/local/mysql/var —user=mysql —log-error=/usr/local/mysql/var/Rony.err —pid-file=/usr/local/mysql/var/Rony.pid —socket=/tmp/mysql.sock —port=3306<br> www 25379 0.0 10.3 40212 27216 ? S Dec13 1:20 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf<br> www 25375 0.0 11.0 42016 29052 ? S Dec13 1:17 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf<br> www 25376 0.0 11.2 42260 29416 ? S Dec13 1:20 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf<br> www 25381 0.0 12.6 45884 33156 ? S Dec13 1:19 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf</p>
+</li>
+<li><p>获取当前系统物理内存的总大小:</p>
+<h1 id="1)_以兆(MB)为单位输出系统当前的内存使用状况。">1) 以兆(MB)为单位输出系统当前的内存使用状况。</h1><h1 id="2)_通过grep定位到Mem行，该行是以操作系统为视角统计数据的。">2) 通过grep定位到Mem行，该行是以操作系统为视角统计数据的。</h1><h1 id="3)_通过awk打印出该行的第二列，即total列。">3) 通过awk打印出该行的第二列，即total列。</h1><p> [root@Rony ~]$ free -m | grep “Mem” | awk ‘{print $2, “MB”}’<br>  256 MB</p>
+</li>
+</ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011/12/07/HTTP的状态码/" itemprop="url">
                 HTTP的状态码
               </a>
@@ -535,124 +654,11 @@ cd Python-<span class="number">2.7</span>.<span class="number">2</span>
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011/10/05/Git入门/" itemprop="url">
-                Git入门
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2011-10-05T05:51:00+08:00" content="2011-10-05">
-            2011-10-05
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011/10/05/Git入门/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011/10/05/Git入门/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>mac下自带了Git，而Windows下需要自己安装……</p>
-<p>第一，<br>目前windows版本的git有几种实现，但我们选择msysgit发行版，这是目前做得兼容性最好的。<a href="http://code.google.com/p/msysgit/downloads/list" target="_blank" rel="external">下载地址</a></p>
-<p>首先，git要求使用者必须提供自己的身份标识，为此我们需要在git bash中执行以下命令：</p>
-<pre><code>git config --global user<span class="class">.name</span> <span class="string">'zuroyu'</span>
-git config --global user<span class="class">.email</span> zuroyu@xxxxx.com
-</code></pre><p>其次，选择git仓库目录</p>
-<p>我们假设将git仓库目录放在D盘的OPENSource目录下，可以通过在git bash中执行以下命令完成：</p>
-<pre><code><span class="keyword">cd</span> /<span class="literal">d</span>
-<span class="keyword">mkdir</span> OPENSource
-</code></pre><p>注：git bash支持大多linux bash终端命令，你可以自己尝试更多终端操作。</p>
-<p>第二，建立项目并初始化git仓库</p>
-<p>我们的第一个项目是ZWeb通过执行以下命令完成此步骤：</p>
-<pre><code><span class="built_in">mkdir</span> ZWeb
-<span class="built_in">cd</span> ZWeb
-git init
-</code></pre><p>执行此操作后，git将在ZWeb目录下创建一个隐藏目录（.git），这个目录就是git用来管理软件版本的仓库。</p>
-<p>第三，使用git管理项目<br>git commit -m “这是我们第一次初始化项目”</p>
-<p>git add命令可以将参数指定的文件添加到git仓库索引中，如果你一次添加太多文件可以使用：git add . 命令全部添加。</p>
-<p>git commit命令才是真正的将文件添加到git仓库中去，-m选项允许在命令行后直接给出每次添加的简短说明（PS：我们强烈推荐你再每次提交时都给出一个说明，以便项目版本的查阅等），如果没有给出此命令将调用默认文本编辑器以便你添加说明。</p>
-<p>第四，将项目提交到github管理</p>
-<p>要想将本地的git项目提交到github我们需要先在github添加此项目，登入github主页点击“create a new one”根据提示完成项目创建。刚创建好的项目不包含任何文件，我们需要稍作设置后方可使用。</p>
-<p>1，在git bash中执行以下命令创建密钥：</p>
-<pre><code>ssh-keygen -<span class="keyword">C</span> <span class="string">'zuroyu@xxxxx.com'</span> -t rsa
-</code></pre><p>一路按Enter键即可，当然如果你想选择使用密码功能，那么在提示输入密码是选择你自己的密码。</p>
-<p>2，找到刚才生成的密钥（id_rsa.pub）文件并用文本编辑器打开，然后复制里面的内容。接着转到github站点项目编辑（edit），找到”Deploy keys“选项后点击”add another deploy key“并将刚才复制的内容黏贴保存。</p>
-<p>3，测试SSH连接。在git bash中执行以下命令：</p>
-<pre><code><span class="title">SSH</span> -v git<span class="variable">@github</span>.com
-</code></pre><p>如果提示你的密钥不正确，那么你需要重新确认上一步的操作是否完整无误。</p>
-<p>4，如果上一步测试无错，那么现在就可以将本地的文件提交到github仓库了。在git bash中执行以下命令：</p>
-<pre><code><span class="label">git</span> <span class="keyword">push </span>origin master
-</code></pre></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/21/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/19/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/21/">&raquo;</a>
   </nav>
 
  </div>
@@ -686,7 +692,7 @@ git init
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">105</span>
+              <span class="site-state-item-count">106</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

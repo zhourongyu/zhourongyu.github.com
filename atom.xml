@@ -54,6 +54,33 @@
   </entry>
   
   <entry>
+    <title><![CDATA[墨菲定律]]></title>
+    <link href="http://xxxx.ooo/2016/07/26/%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    <id>http://xxxx.ooo/2016/07/26/什么是程序员/</id>
+    <published>2016-07-26T15:21:12.000Z</published>
+    <updated>2016-09-06T12:38:15.000Z</updated>
+    <content type="html"><![CDATA[<p>说到程序员目前有几种认知</p>
+<p>普遍认知：网上疯传的格子衬衫、牛仔裤、运动鞋、黑色双肩包</p>
+<p>偏见认知：闷骚，宅男， 不会聊天</p>
+<p>深度认知：有追求、上进、老公不二人选</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>说到程序员目前有几种认知</p>
+<p>普遍认知：网上疯传的格子衬衫、牛仔裤、运动鞋、黑色双肩包</p>
+<p>偏见认知：闷骚，宅男， 不会聊天</p>
+<p>深度认知：有追求、上进、老公不二人选</p>
+]]>
+    </summary>
+    
+      <category term="墨菲定律" scheme="http://xxxx.ooo/tags/%E5%A2%A8%E8%8F%B2%E5%AE%9A%E5%BE%8B/"/>
+    
+      <category term="工作" scheme="http://xxxx.ooo/tags/%E5%B7%A5%E4%BD%9C/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[定制自己的健身计划]]></title>
     <link href="http://xxxx.ooo/2016/07/18/%E5%AE%9A%E5%88%B6%E8%87%AA%E5%B7%B1%E7%9A%84%E5%81%A5%E8%BA%AB%E8%AE%A1%E5%88%92/"/>
     <id>http://xxxx.ooo/2016/07/18/定制自己的健身计划/</id>
@@ -370,150 +397,6 @@ setup(
       <category term="iphone" scheme="http://xxxx.ooo/tags/iphone/"/>
     
       <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[一个MySQL 查询优化器的疑问]]></title>
-    <link href="http://xxxx.ooo/2015/07/16/%E4%B8%80%E4%B8%AAMySQL%20%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E7%96%91%E9%97%AE/"/>
-    <id>http://xxxx.ooo/2015/07/16/一个MySQL 查询优化器的疑问/</id>
-    <published>2015-07-16T05:49:00.000Z</published>
-    <updated>2015-11-30T09:31:33.000Z</updated>
-    <content type="html"><![CDATA[<p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
-<pre><code>id bigint
-name <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">200</span>)</span></span>
-create_time <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>
-<span class="comment">//索引</span>
-KEY `IDX_CREATED` (`create_time`),
-</code></pre><p>数据约500多万，现在引出发现的问题，一条sql语句效率非常的低：</p>
-<pre><code><span class="operator"><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time <span class="keyword">limit</span> <span class="number">1000</span>;</span>
-</code></pre><p>本机测试200s，执行计划：</p>
-<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time limit 1000;
-
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type  </span>|<span class="string"> possible_keys </span>|<span class="string"> key           </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows </span>|<span class="string"> Extra       </span>|
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> index </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">   63    </span>|<span class="string"> NULL </span>|<span class="string"> 1000 </span>|<span class="string"> Using where </span>|
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-1 row in set (0.00 sec)
-</code></pre><p>如果去掉 limit :</p>
-<pre><code><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time
-</code></pre><p>执行时间5s，执行计划：</p>
-<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time
-
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type </span>|<span class="string"> possible_keys </span>|<span class="string"> key  </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows    </span>|<span class="string"> Extra                       </span>|
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> ALL  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string"> NULL </span>|<span class="string">   NULL  </span>|<span class="string"> NULL </span>|<span class="string"> 4858500 </span>|<span class="string"> Using where; Using filesort </span>|
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-1 row in set (0.00 sec)    
-</code></pre><p>一个 index 查询竟然比 ALL&amp;filesort 查询慢这么多？ 用profiles看下详细信息</p>
-<pre><code>mysql&gt; show profiles;
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-|<span class="string"> Query_ID </span>|<span class="string"> Duration     </span>|<span class="string"> Query                                                                                                      </span>|
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-|<span class="string">        1 </span>|<span class="string">   0.00179100 </span>|<span class="string"> explain select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000  </span>|
-|<span class="string">        2 </span>|<span class="string"> 195.10171300 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000          </span>|
-|<span class="string">        3 </span>|<span class="string">   5.28713500 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at                     </span>|
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-2 rows in set, 1 warning (0.00 sec)
-
-mysql&gt; show profile for query 2;
-+----------------------+------------+
-|<span class="string"> Status               </span>|<span class="string"> Duration   </span>|
-+----------------------+------------+
-|<span class="string"> starting             </span>|<span class="string">   0.000050 </span>|
-|<span class="string"> checking permissions </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string">   0.000013 </span>|
-|<span class="string"> init                 </span>|<span class="string">   0.000017 </span>|
-|<span class="string"> System lock          </span>|<span class="string">   0.000005 </span>|
-|<span class="string"> optimizing           </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> statistics           </span>|<span class="string">   0.000018 </span>|
-|<span class="string"> preparing            </span>|<span class="string">   0.000011 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string">   0.000002 </span>|
-|<span class="string"> executing            </span>|<span class="string">   0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 195.101362 </span>|
-|<span class="string"> end                  </span>|<span class="string">   0.000011 </span>|
-|<span class="string"> query end            </span>|<span class="string">   0.000009 </span>|
-|<span class="string"> closing tables       </span>|<span class="string">   0.000012 </span>|
-|<span class="string"> freeing items        </span>|<span class="string">   0.000158 </span>|
-|<span class="string"> logging slow query   </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string">   0.000025 </span>|
-+----------------------+------------+
-17 rows in set, 1 warning (0.00 sec)    
-
-mysql&gt; show profile for query 3;
-+----------------------+----------+
-|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
-+----------------------+----------+
-|<span class="string"> starting             </span>|<span class="string"> 0.000063 </span>|
-|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string"> 0.000029 </span>|
-|<span class="string"> init                 </span>|<span class="string"> 0.000024 </span>|
-|<span class="string"> System lock          </span>|<span class="string"> 0.000730 </span>|
-|<span class="string"> optimizing           </span>|<span class="string"> 0.000014 </span>|
-|<span class="string"> statistics           </span>|<span class="string"> 0.000021 </span>|
-|<span class="string"> preparing            </span>|<span class="string"> 0.000010 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
-|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> Creating sort index  </span>|<span class="string"> 5.286166 </span>|
-|<span class="string"> end                  </span>|<span class="string"> 0.000012 </span>|
-|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> closing tables       </span>|<span class="string"> 0.000011 </span>|
-|<span class="string"> freeing items        </span>|<span class="string"> 0.000016 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
-+----------------------+----------+
-17 rows in set, 1 warning (0.00 sec)
-</code></pre><p>查询1 基本所有的耗时都在 Sending Data 时期，查询3 的耗时在创建排序索引的时期，也就是 filesort 的耗时了，Sending Data是什么鬼玩意！</p>
-<blockquote>
-<p>Sending data</p>
-<p>The thread is reading and processing rows for a SELECT statement, and sending data to the client. Because operations occurring during this this state tend to perform large amounts of disk access (reads), it is often the longest-running state over the lifetime of a given query.</p>
-</blockquote>
-<p>官方对这个状态解释的是处理查询的数据及返回给客户端，根据查询3能排除返回客户端耗时的原因。<br><code>问题很早就看出来了，create_time是varchar类型，但sql对比的是一个int类型，解决方案就是改为Int/Bigint类型。</code><br>但是慢的原因还未知，随后又增加了其他的测试，例如把name换成主键id，速度立马变成不到5秒</p>
-<pre><code>+----------------------+----------+
-|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
-+----------------------+----------+
-|<span class="string"> starting             </span>|<span class="string"> 0.000061 </span>|
-|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string"> 0.000014 </span>|
-|<span class="string"> init                 </span>|<span class="string"> 0.000019 </span>|
-|<span class="string"> System lock          </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> optimizing           </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> statistics           </span>|<span class="string"> 0.000018 </span>|
-|<span class="string"> preparing            </span>|<span class="string"> 0.000013 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
-|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 4.531929 </span>|
-|<span class="string"> end                  </span>|<span class="string"> 0.000009 </span>|
-|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> closing tables       </span>|<span class="string"> 0.000010 </span>|
-|<span class="string"> freeing items        </span>|<span class="string"> 0.000041 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
-+----------------------+----------+
-16 rows in set, 1 warning (0.00 sec)
-</code></pre><p>可以看到Sending data时间大大降低，是因为<code>id</code>是索引字段？那么我给<code>name</code>也增加一个索引…<br>结果竟然依旧是200多s，这就奇怪了，难道是因为name的长度太大？ 再新增一个sex char(2)，并建好索引，<br>结果依旧一样！</p>
-<pre><code><span class="header">mysql&gt; show profiles;
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-<span class="header">| Query_ID | Duration     | Query                                                                                                      |
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-|        1 |   0.00179100 | explain  select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at limit 1000 |
-|        2 | 195.10171300 | select name, created_</span>at from user where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000          |
-|        3 |   5.28713500 | select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at                     |
-|        4 |   4.53215900 | select id, created_</span>at from user  where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000           |
-<span class="header">|        5 | 209.23518600 | select sex, created_at from user  where created_at &gt; 1434115807296 order by created_at limit 1000          |
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-</code></pre><p>这个问题有待解决！</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
-<pre><code>id bigint
-name <span class="function"><span class="title">varchar</span><span class="params"]]>
-    </summary>
-    
-      <category term="mysql" scheme="http://xxxx.ooo/tags/mysql/"/>
-    
-      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
     
   </entry>
   
