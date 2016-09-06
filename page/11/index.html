@@ -171,6 +171,95 @@
           
           
             
+              <a class="post-title-link" href="/2013/06/07/Clear简介/" itemprop="url">
+                Clear简介
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2013-06-07T12:09:00+08:00" content="2013-06-07">
+            2013-06-07
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/06/07/Clear简介/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/06/07/Clear简介/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><img src="http://zryblog.qiniudn.com/2014/07/3552376262.png" alt="IMG_0373"><br>Clear刚出世的时候以令人上耳目一新的设计和交互方式迅速爬到了付费排行榜第一，传说只有了不到10小时。</p>
+<p>但发现不少人买了后评分并不高，许多人把它当作todo类的App，和其他gtd软件相比功能差很多，所以不是非常满意。我只觉得它是个备忘录性质的App，所以还是非常满意的。</p>
+<p>Clear主要分三层， 菜单、分类、详细事项</p>
+<p>主要操作如下：</p>
+<p>切换层： 大幅下拉， 详细事项—(下拉)—&gt;分类—(下拉)—&gt;菜单<br>新建事项： 点击空白处/小幅下拉/双指在两条事项上做张开操作<br>完成事项： 在单条事项上右滑使该项目变成完成状态，重新打开只需重复操作(右滑)<br>删除： 左滑<br>打开收起： 双指进行捏/张开的操作可以缩放当前列表<br>菜单里有主题、提醒方式等设置，其中一向设置是否在icon上显示数目提醒，这个对有强迫症的人来说是很实用的~</p>
+<p>ps：貌似有几个隐藏主题可以开启哦，攻略网上有。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/06/06/Array与List的那些事/" itemprop="url">
                 Array与List的那些事
               </a>
@@ -564,108 +653,6 @@ default-character-set=utf8
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/01/30/Jinja2与Flask的HTML自动转义/" itemprop="url">
-                Jinja2与Flask的HTML自动转义
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-01-30T10:22:00+08:00" content="2013-01-30">
-            2013-01-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/01/30/Jinja2与Flask的HTML自动转义/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/30/Jinja2与Flask的HTML自动转义/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>今天写一个页面的时候发现代码竟然原封不动的出现了，怀疑是Jinja的自动转义。结果发现Jinja2的Escaping是自动关闭的，下面是Jinja官方文档中描述的，默认自动转义是关闭的，可以手动转义或者开启自动转义。</p>
-<blockquote>
-<p>HTML Escaping</p>
-<p>When generating HTML from templates, there’s always a risk that a<br>variable will include characters that affect the resulting HTML. There<br>are two approaches: manually escaping each variable or automatically<br>escaping everything by default.</p>
-<p>Jinja supports both, but what is used depends on the application<br>configuration. The default configuaration is no automatic escaping for<br>various reasons:</p>
-<p>escaping everything except of safe values will also mean that Jinja is<br>escaping variables known to not include HTML such as numbers which is<br>a huge performance hit. The information about the safety of a variable<br>is very fragile. It could happen that by coercing safe and unsafe<br>values the return value is double escaped HTML.</p>
-</blockquote>
-<p>转而搜索发现是Flask的原因，Flask的自动转义是默认开启的，如需要关闭需要以下操作（来自官方文档）：</p>
-<p>自动转义就是自动帮你将特殊的字符替换成转义符号。HTML（或者XML， XHTML）的特殊字符有 &amp;, &gt;, &lt;, “, ‘ 。因为这些字符在文档中有它自己特殊的含义，所以如果你想在文章中使用这些符号，必须将它替换成转义符号。如果不这样做，不仅用户使用不了这些符号，还会导致安全问题。(更多 :ref:<code>xss</code>)</p>
-<p>但是有时候你需要在模版中禁用自动转义。如果你想直接将HTML插入页面，比如将markdown语言转换成HTML，那么你就需要这样做了。</p>
-<p>有3种方法可以关闭自动转义：</p>
-<ul>
-<li>在Python文件中进行转义。先在 :class:<code>~flask.Markup</code> 对象中进行转义，然后将它传送给模版。一般推荐使用这个方式。</li>
-<li>在模版文件中进行转义。通过 |safe 过滤器来表示字符串是安全的()</li>
-<li>暂时禁用全局的自动转义功能。  </li>
-</ul>
-<p>要想在模版中禁用全局自动转义功能，可以用  语句块:<br>    {\% codeblock lang:python \%}<br>    {\% autoescaping false \%}<br>    autoescaping is disableed here<br>    {\% endautoescape \%}<br>    {\% endcodeblock \%}</p>
-<p>在这么做的时候，要语句块中使用到的变量非常小心。</p>
-<p>自动开始转义也是不错的，这方面的安全就可以少考虑了，关闭也很简单。我直接使用第二种方式，在需要禁止转义的部分加上safe标记，很方便。其他的两种目前还没用上~</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -704,7 +691,7 @@ default-character-set=utf8
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">106</span>
+              <span class="site-state-item-count">107</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -718,7 +705,7 @@ default-character-set=utf8
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

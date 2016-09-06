@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2016-07-26T15:30:04.000Z</updated>
+  <updated>2016-09-06T16:54:37.000Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -16,11 +16,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[互联网程序员]]></title>
+    <link href="http://xxxx.ooo/2016/09/06/%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    <id>http://xxxx.ooo/2016/09/06/什么是程序员/</id>
+    <published>2016-09-06T15:21:12.000Z</published>
+    <updated>2016-09-06T16:54:37.000Z</updated>
+    <content type="html"><![CDATA[<p>说到程序员目前有几种认知<br>普遍认知：网上疯传的格子衬衫、牛仔裤、运动鞋、黑色双肩包<br>偏见认知：闷骚，宅男， 不会聊天<br>深度认知：有追求、上进、当老公不二人选</p>
+<p>上面说的都对… 但是程序员也分很多种，有一种叫「互联网程序员」<br>现在不混互联网圈的都不好意思说自己是程序员！<br>互联网程序员（以下简称 H）和传统程序员（以下简称 C）区别是什么？</p>
+<p><strong>工作强度</strong><br>C：965，即早上 9 点上班，晚上 6 点下班，一周上班 5 天。偶尔加班<br>H：996，解释同上。工作节奏快，为了赶进度加班加点常要996。 其实很多公司都是上下班灵活制不打卡，上班时间十点十一点，不过晚下班也是常态</p>
+<p><strong>工作内容</strong><br>C：银行、金融、国政企业的IT 部门，用户群小，用户体验要求较低，业务流程复杂。<br>H：面向大众的创新类产品，用户群大，用户体验要求高。高并发、大数据等等热门技术应用</p>
+<p><strong>待遇</strong><br>有一次我跟长辈们出去吃饭，桌上一位做 IT 周边行业的叔叔问我，说你们赚多少钱一个月啊。我说没多少，万八千的。叔叔说是不是得天天加班到半夜啊？<br>我：o(︶︿︶)o ……</p>
+<p><strong>PS</strong>: 我司虽然是互联网公司，但很少加班，还享受互联网公司各种福利待遇… 有兴趣的同学可以联系我（<a href="https://xueqiu.com/about/jobs" target="_blank" rel="external">相关职位信息</a>）</p>
+<p><strong>福利</strong><br>附赠一幅「互联网程序员」日常照….<br>拖拉板、大裤衩、Macbook Pro、iPhone、机械键盘，不拘一格，不修边幅。这就是互联网程序员</p>
+<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/IMG_2124.JPG" alt="coder"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>说到程序员目前有几种认知<br>普遍认知：网上疯传的格子衬衫、牛仔裤、运动鞋、黑色双肩包<br>偏见认知：闷骚，宅男， 不会聊天<br>深度认知：有追求、上进、当老公不二人选</p>
+<p>上面说的都对… 但是程序员也分很多种，有一种叫「互联网程序员」<br>现在不混互联网]]>
+    </summary>
+    
+      <category term="程序员" scheme="http://xxxx.ooo/tags/%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[韩式美妆教学]]></title>
+    <link href="http://xxxx.ooo/2016/08/20/%E9%9F%A9%E5%BC%8F%E7%BE%8E%E5%A6%86%E6%95%99%E5%AD%A6/"/>
+    <id>http://xxxx.ooo/2016/08/20/韩式美妆教学/</id>
+    <published>2016-08-20T14:21:12.000Z</published>
+    <updated>2016-09-06T16:26:48.000Z</updated>
+    <content type="html"><![CDATA[<p>某个周末无聊的举动，第一次动手，效果还是不错的，看来有一些天分。<br>生活么，图个乐呵……</p>
+<embed src="http://player.youku.com/player.php/sid/XMTU5MjI2ODU5Mg==/v.swf" allowfullscreen="true" quality="high" width="640" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash">
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>某个周末无聊的举动，第一次动手，效果还是不错的，看来有一些天分。<br>生活么，图个乐呵……</p>
+<embed src="http://player.youku.com/player.php/sid/XMTU5MjI2ODU5Mg==/v.swf" allowfulls]]>
+    </summary>
+    
+      <category term="原创视频" scheme="http://xxxx.ooo/tags/%E5%8E%9F%E5%88%9B%E8%A7%86%E9%A2%91/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[墨菲定律]]></title>
     <link href="http://xxxx.ooo/2016/07/26/%E5%A2%A8%E8%8F%B2%E5%AE%9A%E5%BE%8B/"/>
     <id>http://xxxx.ooo/2016/07/26/墨菲定律/</id>
     <published>2016-07-26T15:21:12.000Z</published>
-    <updated>2016-07-26T15:30:04.000Z</updated>
+    <updated>2016-09-06T12:40:20.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>墨菲定律：可能会出错的地方一定会出错，如果有多个可能，必定朝最坏的情况发展。大俗话：明明之前没有错，偏偏关键时刻就是出错了  —wikipedia</p>
 </blockquote>
@@ -43,33 +89,6 @@
 </blockquote>
 <p>这是这两天遇到线上事故的总结</p>
 <h5 id="事故]]>
-    </summary>
-    
-      <category term="墨菲定律" scheme="http://xxxx.ooo/tags/%E5%A2%A8%E8%8F%B2%E5%AE%9A%E5%BE%8B/"/>
-    
-      <category term="工作" scheme="http://xxxx.ooo/tags/%E5%B7%A5%E4%BD%9C/"/>
-    
-      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[墨菲定律]]></title>
-    <link href="http://xxxx.ooo/2016/07/26/%E4%BB%80%E4%B9%88%E6%98%AF%E7%A8%8B%E5%BA%8F%E5%91%98/"/>
-    <id>http://xxxx.ooo/2016/07/26/什么是程序员/</id>
-    <published>2016-07-26T15:21:12.000Z</published>
-    <updated>2016-09-06T12:38:15.000Z</updated>
-    <content type="html"><![CDATA[<p>说到程序员目前有几种认知</p>
-<p>普遍认知：网上疯传的格子衬衫、牛仔裤、运动鞋、黑色双肩包</p>
-<p>偏见认知：闷骚，宅男， 不会聊天</p>
-<p>深度认知：有追求、上进、老公不二人选</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>说到程序员目前有几种认知</p>
-<p>普遍认知：网上疯传的格子衬衫、牛仔裤、运动鞋、黑色双肩包</p>
-<p>偏见认知：闷骚，宅男， 不会聊天</p>
-<p>深度认知：有追求、上进、老公不二人选</p>
-]]>
     </summary>
     
       <category term="墨菲定律" scheme="http://xxxx.ooo/tags/%E5%A2%A8%E8%8F%B2%E5%AE%9A%E5%BE%8B/"/>
@@ -357,44 +376,6 @@ setup(
       <category term="摄影" scheme="http://xxxx.ooo/tags/%E6%91%84%E5%BD%B1/"/>
     
       <category term="京郊" scheme="http://xxxx.ooo/tags/%E4%BA%AC%E9%83%8A/"/>
-    
-      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[iPhone 6s 上手体验]]></title>
-    <link href="http://xxxx.ooo/2015/09/26/iPhone-6s-%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/"/>
-    <id>http://xxxx.ooo/2015/09/26/iPhone-6s-上手体验/</id>
-    <published>2015-09-26T03:23:30.000Z</published>
-    <updated>2015-09-26T05:45:47.000Z</updated>
-    <content type="html"><![CDATA[<p>今年的抢购比往年似乎容易些，但问题还是不少，例如重复支付、无法支付的问题。在多次支付失败的情况下，尝试预约到店成功，随后再使用分期支付成功~<br>共抢获 2 台，一台漂亮的深空灰，一台脑残粉玫瑰金  </p>
-<p><code>其他颜色请不要购买，树立「正确」的审美观人人有责！不做脑残粉，请选择深空灰</code><br>我本想选择优雅，但被迫成为脑残粉~  </p>
-<p>记得去年预约到店取货那天排队就排了一个多小时， 这次又抱着排大队的准备杀过去了，结果十分钟后手机到手。 一是这次苹果的准备比上次做的还要好，分流都分为几段，门口/一层/二层（三里屯店），并动用了大量的员工在帮忙预约客户。二可能是因为毕竟是 S 代升级，买的人没那么多  </p>
-<p>特意问了下店员今天人貌似很少，回答说大部分预约都在下午~<br>预约处摆满了各版本的iPhone，今年的包装盒设计不同，各颜色的iPhone对应的画面不同~  </p>
-<p><img src="http://7lrvut.com1.z0.glb.clouddn.com/2015/09/25100001.jpg" alt="店内预约"></p>
-<p>在线订单的寄送也很准时，为了迎合线下的开售，在线订单之前一直显示为准备发货，在24号终于变为已发货，25日上午十点多就已经送到了，到手时间几乎和预约到店时间一致~  </p>
-<p>回来拍了张对比图：<br><img src="http://7lrvut.com1.z0.glb.clouddn.com/2015/09/25100002.jpg" alt="深空灰 VS 玫瑰金"></p>
-<h3 id="导购意见">导购意见</h3><ul>
-<li>6s 比 6 略重，略厚，略宽（此为优点，握持感更好，妈妈再也不用担心我手机滑落了）</li>
-<li>玫瑰金比我想象的更加「粉嫩」，男性慎买，只有在夜晚或强光下和香槟金看着差不多~</li>
-<li>3D Touch 没什么大卵用（目前看来是这样）， 但反馈很细腻，很好玩~ 咯噔噔~</li>
-<li>后置摄像头的提升目测效果不明显，前置的提升较大，还会有屏幕的补光，更方便姑娘们自拍了</li>
-<li>LIVE Photo 仅限玩一玩，目前还没玩出彩</li>
-<li>不知道是不是 A9 和 2G 内存的原因，速度的提升有点明显</li>
-<li>Touch ID 二代嗷嗷的棒，秒识别，快到解锁的时候几乎看不到锁屏页面了~  </li>
-</ul>
-<p>众多更新，让我惊喜的只有Touch ID 。在 Apple 推出 Touch ID 之后各大厂商都相继有了各自的产品，但是识别速度和Apple相差不是一个等级。随后一两年，各大厂商的性能已经追上来了。二代一出，感觉又秒杀其他厂商了~ 大致可以推算出 Apple 的技术水平还是要领先行业1-2年（股票是不是还可以继续持有~）。  </p>
-<p>综上所述， 购买建议为：仅不建议 6 代用户升级！<br>等 3D Touch 玩法成熟，估计 7 代也该出了~</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>今年的抢购比往年似乎容易些，但问题还是不少，例如重复支付、无法支付的问题。在多次支付失败的情况下，尝试预约到店成功，随后再使用分期支付成功~<br>共抢获 2 台，一台漂亮的深空灰，一台脑残粉玫瑰金  </p>
-<p><code>其他颜色请不要购买，树立「正确」的审美观人人]]>
-    </summary>
-    
-      <category term="apple" scheme="http://xxxx.ooo/tags/apple/"/>
-    
-      <category term="iphone" scheme="http://xxxx.ooo/tags/iphone/"/>
     
       <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
     

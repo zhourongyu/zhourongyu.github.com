@@ -171,6 +171,108 @@
           
           
             
+              <a class="post-title-link" href="/2013/01/30/Jinja2与Flask的HTML自动转义/" itemprop="url">
+                Jinja2与Flask的HTML自动转义
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2013-01-30T10:22:00+08:00" content="2013-01-30">
+            2013-01-30
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/01/30/Jinja2与Flask的HTML自动转义/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/01/30/Jinja2与Flask的HTML自动转义/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>今天写一个页面的时候发现代码竟然原封不动的出现了，怀疑是Jinja的自动转义。结果发现Jinja2的Escaping是自动关闭的，下面是Jinja官方文档中描述的，默认自动转义是关闭的，可以手动转义或者开启自动转义。</p>
+<blockquote>
+<p>HTML Escaping</p>
+<p>When generating HTML from templates, there’s always a risk that a<br>variable will include characters that affect the resulting HTML. There<br>are two approaches: manually escaping each variable or automatically<br>escaping everything by default.</p>
+<p>Jinja supports both, but what is used depends on the application<br>configuration. The default configuaration is no automatic escaping for<br>various reasons:</p>
+<p>escaping everything except of safe values will also mean that Jinja is<br>escaping variables known to not include HTML such as numbers which is<br>a huge performance hit. The information about the safety of a variable<br>is very fragile. It could happen that by coercing safe and unsafe<br>values the return value is double escaped HTML.</p>
+</blockquote>
+<p>转而搜索发现是Flask的原因，Flask的自动转义是默认开启的，如需要关闭需要以下操作（来自官方文档）：</p>
+<p>自动转义就是自动帮你将特殊的字符替换成转义符号。HTML（或者XML， XHTML）的特殊字符有 &amp;, &gt;, &lt;, “, ‘ 。因为这些字符在文档中有它自己特殊的含义，所以如果你想在文章中使用这些符号，必须将它替换成转义符号。如果不这样做，不仅用户使用不了这些符号，还会导致安全问题。(更多 :ref:<code>xss</code>)</p>
+<p>但是有时候你需要在模版中禁用自动转义。如果你想直接将HTML插入页面，比如将markdown语言转换成HTML，那么你就需要这样做了。</p>
+<p>有3种方法可以关闭自动转义：</p>
+<ul>
+<li>在Python文件中进行转义。先在 :class:<code>~flask.Markup</code> 对象中进行转义，然后将它传送给模版。一般推荐使用这个方式。</li>
+<li>在模版文件中进行转义。通过 |safe 过滤器来表示字符串是安全的()</li>
+<li>暂时禁用全局的自动转义功能。  </li>
+</ul>
+<p>要想在模版中禁用全局自动转义功能，可以用  语句块:<br>    {\% codeblock lang:python \%}<br>    {\% autoescaping false \%}<br>    autoescaping is disableed here<br>    {\% endautoescape \%}<br>    {\% endcodeblock \%}</p>
+<p>在这么做的时候，要语句块中使用到的变量非常小心。</p>
+<p>自动开始转义也是不错的，这方面的安全就可以少考虑了，关闭也很简单。我直接使用第二种方式，在需要禁止转义的部分加上safe标记，很方便。其他的两种目前还没用上~</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/01/29/呼吸防护标准/" itemprop="url">
                 呼吸防护标准
               </a>
@@ -534,94 +636,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/" itemprop="url">
-                Mac OS X系统下刷新DNS缓存的方法
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2012-12-14T02:22:00+08:00" content="2012-12-14">
-            2012-12-14
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2012/12/14/Mac OS X系统下刷新DNS缓存的方法/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/12/14/Mac OS X系统下刷新DNS缓存的方法/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>在Lion(10.7)之前，刷新DNS缓存的方法是：</p>
-<p>互联网上搜索 Mac OS X 系统下刷新 DNS 缓存的方法，绝大部分网站都说是在终端中执行下面这个命令：</p>
-<pre><code><span class="title">sudo</span> dscacheutil -flushcache
-</code></pre><p>但其实上面的命令仅针对 Mac OS X 10.5 和 10.6 有效，在 Lion 和 Mountain Lion 中都是错误的，正确的应该是：</p>
-<pre><code><span class="title">sudo</span> killall -HUP mDNSResponder
-</code></pre></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -660,7 +674,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">106</span>
+              <span class="site-state-item-count">107</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -674,7 +688,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
