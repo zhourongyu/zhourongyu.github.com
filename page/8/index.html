@@ -171,6 +171,77 @@
           
           
             
+              <a class="post-title-link" href="/2014/01/22/Sublime Text的常用技巧/" itemprop="url">
+                Sublime Text的常用技巧
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2014-01-22T03:09:00+08:00" content="2014-01-22">
+            2014-01-22
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/01/22/Sublime Text的常用技巧/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/22/Sublime Text的常用技巧/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>shift+鼠标右键可切换到列模式</p>
+<h5 id="查找与定位">查找与定位</h5><p>Commond/Ctrl + p 文件定位<br>Commond/Ctrl + ; 词语定位 #<br>Commond/Ctrl + r 函数定位 @<br>Commond/Ctrl + g 行号定位 :</p>
+<h5 id="主题">主题</h5><p>个人最爱的两个主题是 Flatland 与 Tomorrow<br>Flatland可以使用Package Control来安装。<br>Tomorrow下载后复制textmate文件至安装目录下的Data/Packages中。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2014/01/14/2014 Mac装机手册/" itemprop="url">
                 2014 Mac装机手册
               </a>
@@ -527,102 +598,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/11/27/Nginx反向代理获取真实IP/" itemprop="url">
-                Nginx反向代理获取真实IP
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-11-27T15:50:00+08:00" content="2013-11-27">
-            2013-11-27
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/11/27/Nginx反向代理获取真实IP/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/11/27/Nginx反向代理获取真实IP/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>今天面试官的一个问题让我有点疑惑：如何配置 Nginx 能让程序在后台获取真实的用户IP，当时我没理解这个问题意思，获取请求IP不是很简单的事情么？例如：request.getRemoteAddr()</p>
-<p>回来查询了资料. 此问题是指使用了 Nginx 反向代理获取不到真实用户的 IP ，当使用了反向代理后 getRemoteAddr() 返回的是反向服务器的 IP。</p>
-<p>什么是反向代理，曾经写了一个聊天小应用并部署再服务器上，端口为8888，本地访问也就是127.0.0.1:8888</p>
-<p>我想让 t.imim.me 访问到我的这个应用上（应用已撤除），配置如下</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/617923233.jpg" alt="t.imim.me">  </p>
-<pre><code>proxy_pass <span class="string">http:</span><span class="comment">//chat</span>
-</code></pre><p>这就是反向代理，将来自这个域名的请求转发到了一个名为 chat 的 upstream，也是真实的应用地址（127.0.0.1:8888）</p>
-<p>再看这两行配置:</p>
-<pre><code>proxy_<span class="built_in">set</span>_header X-real-ip <span class="variable">$remote_addr</span>
-proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;
-</code></pre><p>配置 X-real-ip 就可以在 web 服务器端通过 request.getAttribute(“X-real-ip”) 获得用户的真实 ip。</p>
-<p>X-Forwarded-For 是一个 proxy 转发记录,每次经过转发都会有记录，以 client,proxy1,proxy2 格式保存。如果没有2配置的话，后端通过 request.getAttribute(“X-Forwarded-For”) 获取值为Null。</p>
-<p>当一个应用经过 N(N&gt;1) 次 Nginx 转发时，X-real-ip 中保存的是 N-1 的服务器地址，也就是说当第二次代理的时候 X-real-ip 的值为第一台 Nginx 服务器 IP，X-Forwarded-For 的值则变为”用户真实 IP , 第一台 Nginx 服务器 IP”</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -661,7 +636,7 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">107</span>
+              <span class="site-state-item-count">108</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -675,7 +650,7 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">113</span>
+              <span class="site-state-item-count">115</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
