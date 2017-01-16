@@ -36,7 +36,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="擦擦擦擦" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="某某某某" type="application/atom+xml" />
 
 
 
@@ -45,12 +45,12 @@
 
 <meta name="description" content="别怕，我不是什么好人！">
 <meta property="og:type" content="website">
-<meta property="og:title" content="擦擦擦擦">
+<meta property="og:title" content="某某某某">
 <meta property="og:url" content="http://xxxx.ooo/page/19/index.html">
-<meta property="og:site_name" content="擦擦擦擦">
+<meta property="og:site_name" content="某某某某">
 <meta property="og:description" content="别怕，我不是什么好人！">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="擦擦擦擦">
+<meta name="twitter:title" content="某某某某">
 <meta name="twitter:description" content="别怕，我不是什么好人！">
 
 
@@ -61,7 +61,7 @@
   };
 </script>
 
-  <title> 擦擦擦擦 </title>
+  <title> 某某某某 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw,en,default">
@@ -100,7 +100,7 @@
       <span class="logo">
         <i class="icon-next-logo"></i>
       </span>
-      <span class="site-title">擦擦擦擦</span>
+      <span class="site-title">某某某某</span>
   </a>
   <span class="logo-line-after"><i></i></span>
 </h1>
@@ -159,6 +159,104 @@
       <div class="main-inner">
         <div id="content" class="content"> 
   <section id="posts" class="posts-expand">
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2012/02/24/程序小白的技术普及贴/" itemprop="url">
+                程序小白的技术普及贴
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2012-02-24T15:47:00+08:00" content="2012-02-24">
+            2012-02-24
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2012/02/24/程序小白的技术普及贴/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/02/24/程序小白的技术普及贴/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>来自irising， 挺有意思的一篇文章</p>
+<p>扫盲1：同步和异步</p>
+<p>同步（Synchronous），主要是指客户端在发送请求后，必须得在服务端有回应后才发送下一个请求。比如你需要发送一条短信，必须等信息发送完毕才能退出界面；异步（Asynchronous），指客户端在发送请求后，不必等待服务端的回应就可以发送下一个请求，这样对于所有的请求动作来说将会在服务端得到异步。比如你发送一条短信，不用等它发送完毕，你就可以爱干嘛干嘛去，系统会在后台把这条短信发送完毕。</p>
+<p>【举例】同步就是你追一个姑娘，晚上给她发我爱你，她一直没有搭理你，你就一直等，一直等，一直等，一直等，直到姑娘终于答复了你，我也爱你，于是你们在一起了；异步就是你追一个姑娘，晚上给她发我爱你，没等她搭理你，你就又给另一个姑娘发我爱你，没等她搭理你，你就又给第三个姑娘发我爱你，姑娘一、姑娘二、姑娘三都以为你是专心致志的对自己，最后可能有的答复了我爱你，有的答复了对不起。</p>
+<p>扫盲2：模态与非模态</p>
+<p>模态（Mode），就是指当这个控件弹出的时候，鼠标不能单击这个控件之外的区域，这种控件往往是用户进行了某种操作后才出现的。例如：windows的选择字体颜色对话框 ；必须先关闭对话框才能进行其他操作；非模态（Modeless），通常用于显示用户需要经常访问的控件和数据，并且在使用这个控件的过程中需要访问其它窗体的情况。例如：word的查找对话框。可以直接点击任何地方，例如，发邮件时添加附件就是个非模态的。</p>
+<p>【举例】模态就是你陪这个姑娘吃饭，姑娘让你不许玩手机，不许你上厕所，不许你听音乐，甚至不许你说话，只能做一件事，就是乖乖把饭吃完；非模态就是你陪这个姑娘吃饭，姑娘不管你，爱玩手机玩手机，爱刷微博刷微博，爱上厕所上厕所，甚至可以玩亲亲。</p>
+<p>扫盲3：轮询和中断</p>
+<p>中断（interrupts），程序中断通常简称中断，是指程序在正常运行的过程中，由于预选安排或发生了各种随机的内部或外部事件，使程序中断当前操作，转到处理相应事件，这个过程称为程序中断；轮询（Polling），是让程序以一定的周期按次序查询每一个外设，看它是否有数据输入或输出的要求，若有，则进行相应的输入/输出服务。</p>
+<p>【举例】中断就是你跟这个姑娘开始同居，你正在写一个项目计划书的时候，姑娘一会儿跟你说玻璃脏了，要你擦擦玻璃，一会儿跟你说地板脏了，要擦擦地板；轮询就是你跟这个姑娘开始同居，她一会儿跟你说玻璃脏了，一会儿说地板脏了，你淡定的告诉她，当脏的地方累积到10个的时候，再告诉你，你才开始打扫，这样就不会频繁的被打断啦。</p>
+<p>扫盲4：长连接和短连接</p>
+<p>长连接，指在一个TCP连接上可以连续发送多个数据包，在TCP连接保持期间，如果没有数据包发送，需要双方发检测包以维持此连接，一般需要自己做在线维持；短连接是指通信双方有数据交互时，就建立一个TCP连接，数据发送完成后，则断开此TCP连接，一般银行都使用短连接。</p>
+<p>【举例】长连接就是你们俩开始异地恋了，他会每天给你一个电话，保持跟你的联系，遇到节假日等大事，会额外准备一些惊喜给你；短连接就是你们俩开始异地恋了，他会在逢年过节等特殊情况下，才跟你取得联系，然后就消失。</p>
+<p>以一个程序小白的视角，去解释这些概念，肯定让人觉得傻的可笑吧，如果有说的不对的地方，还请真正的技术大拿帮忙指正一下。</p>
+<p>程序和设计，都是有法可依有据可循的，当一个程序员跟你讨论二八原则简单法则，商量让你砍设计砍功能的时候，你肯定也更容易被说服，因为，你们是在同等的层面做沟通。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -574,99 +672,6 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2012/01/13/MBP的启动速度改进方案/" itemprop="url">
-                MBP的启动速度改进方案
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2012-01-13T07:14:00+08:00" content="2012-01-13">
-            2012-01-13
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2012/01/13/MBP的启动速度改进方案/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/01/13/MBP的启动速度改进方案/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>今天自己的MBP启动速度很慢呢，最初的时候30+秒，如今已经到1分钟了。</p>
-<p>有几种可以提升下速度的方案:<br>1.最直接的方案，更换SSD，效果一流，速度在10-15秒左右，当然价格比较昂贵。</p>
-<p>2.修复磁盘权限，这个方法较实用，效果也还比较明显</p>
-<p>3.重置 PRAM 和 NVRAM </p>
-<p>因为没舍得整块换SSD,而好的支架也不好买，所以1方案还不在考虑范围内。<br>用了2，3测试后，现在到45秒左右，效果还算满意。<br>有遇到相似问题的朋友不妨试一下这个方法,这个操作基本是无伤害的，详情可以查看官方介绍：何时需要重置 PRAM 和 NVRAM</p>
-<p>重置 PRAM 和 NVRAM</p>
-<p>关闭电脑。<br>在键盘上找到以下按键：Command、Option、P 和 R。您需要在步骤 4 中同时按下这些键。<br>启动电脑。<br>按住 Command-Option-P-R 键。必须在出现灰屏前按下此组合键。<br>按住上述键，直到电脑重新启动，您会再次听到启动声。<br>松开这些键。</p>
-<p>另附上一些的常用提速技巧</p>
-<p>MAC OS在每次启动都会为桌面文件做索引，所以尽量少在桌面上放文件，可放置快速链接</p>
-<p>在User&amp;Groups 里面把Login items筛选一下</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -705,7 +710,7 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">108</span>
+              <span class="site-state-item-count">109</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -719,7 +724,7 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">115</span>
+              <span class="site-state-item-count">117</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -780,7 +785,7 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
