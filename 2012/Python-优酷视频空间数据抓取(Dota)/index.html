@@ -1,0 +1,803 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="别怕，我不是什么好人！" />
+
+
+
+  <meta name="keywords" content="python,dota," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="某某某某" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="最近挺闲的。看了不少Dota视频~ 我会经常关注那些知名解说或选手发出的视频（海涛，牛蛙……等)。涛哥在应该算是个公认的好解说的。看他的视频很有乐趣的……顺便吐槽下 ，个人觉得PIS的视频比较无聊，主要在于PIS的解说方式，情绪，声音等一些地方吧，也是由于是专业游戏选手，这方面并不是强项。
+我并不想在gr里看到这些信息。所以每次要观看视频的时候就会进入到各个选手的主页去留意一下最新出的视频有没有自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-优酷视频空间数据抓取(Dota)">
+<meta property="og:url" content="http://xxxx.ooo/2012/Python-优酷视频空间数据抓取(Dota)/index.html">
+<meta property="og:site_name" content="某某某某">
+<meta property="og:description" content="最近挺闲的。看了不少Dota视频~ 我会经常关注那些知名解说或选手发出的视频（海涛，牛蛙……等)。涛哥在应该算是个公认的好解说的。看他的视频很有乐趣的……顺便吐槽下 ，个人觉得PIS的视频比较无聊，主要在于PIS的解说方式，情绪，声音等一些地方吧，也是由于是专业游戏选手，这方面并不是强项。
+我并不想在gr里看到这些信息。所以每次要观看视频的时候就会进入到各个选手的主页去留意一下最新出的视频有没有自">
+<meta property="og:updated_time" content="2015-07-19T13:00:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-优酷视频空间数据抓取(Dota)">
+<meta name="twitter:description" content="最近挺闲的。看了不少Dota视频~ 我会经常关注那些知名解说或选手发出的视频（海涛，牛蛙……等)。涛哥在应该算是个公认的好解说的。看他的视频很有乐趣的……顺便吐槽下 ，个人觉得PIS的视频比较无聊，主要在于PIS的解说方式，情绪，声音等一些地方吧，也是由于是专业游戏选手，这方面并不是强项。
+我并不想在gr里看到这些信息。所以每次要观看视频的时候就会进入到各个选手的主页去留意一下最新出的视频有没有自">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+  <title> Python-优酷视频空间数据抓取(Dota) | 某某某某 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw,en,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">某某某某</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Python-优酷视频空间数据抓取(Dota)
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2012-05-17T04:02:00+08:00" content="2012-05-17">
+            2012-05-17
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2012/Python-优酷视频空间数据抓取(Dota)/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/Python-优酷视频空间数据抓取(Dota)/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>最近挺闲的。看了不少Dota视频~ 我会经常关注那些知名解说或选手发出的视频（海涛，牛蛙……等)。涛哥在应该算是个公认的好解说的。看他的视频很有乐趣的……顺便吐槽下 ，个人觉得PIS的视频比较无聊，主要在于PIS的解说方式，情绪，声音等一些地方吧，也是由于是专业游戏选手，这方面并不是强项。</p>
+<p>我并不想在gr里看到这些信息。所以每次要观看视频的时候就会进入到各个选手的主页去留意一下最新出的视频有没有自己爱看的~ 说起来这事也挺麻烦的。决定写个脚本把这些信息给抓出来，在想看的时候方便自己选择。</p>
+<p>第一步是准备先把基本信息都给抓出来，然后预想是做些处理，例如观看过的视频以后就不在显示了，再然后可以做丰富些，多个分类等……再然后……越来越多的然后！ 目前是准备放到sae上，担心的是视频的流量对于我那不到1W的豆来说，估计挺不了多久。</p>
+<p>说再多都是预想~ 先从第一步开始吧，从涛哥入手：</p>
+<p>涛哥的视频空间地址：<a href="http://i.youku.com/u/UMTcxMzI3OTE2/videos" target="_blank" rel="external">http://i.youku.com/u/UMTcxMzI3OTE2/videos</a> （个人空间下的videos频道页）</p>
+<p>步骤很简单，主要分2步</p>
+<p>1，抓取整个HTML页面代码</p>
+<p>需要用到了urllib 包，分urllib 与 urllib2 两种，区别可以上自己看。总体来说urllib2比urllib要高一个层次（可以接受Request类的实例来设置URL请求的headers）,HTTP访问大部分都会用urllib2。</p>
+<p>ps：urllib 与 urllib2 是不能互相替代的，经常会同时被使用，urllib提供urlencode方法用来GET查询字符串的产生，而urllib2没有。</p>
+<p>最基本的抓取：</p>
+<pre><code>import urllib2
+<span class="attribute">content</span> = urllib2.<span class="function"><span class="title">urlopen</span><span class="params">(<span class="string">'http://XXXX'</span>)</span></span>.<span class="function"><span class="title">read</span><span class="params">()</span></span>
+</code></pre><p>这样就得到了整个页面的html代码</p>
+<p>2，解析HTML</p>
+<p>重要的就是这一步了，如何从一推HTML代码中获取我们想要的信息。这里又提及到了HTMLParser、SGMLParser。当然还有BeautifulSoup等其他一些好用的解析工具，各种优劣比较网上自己查。</p>
+<p>这里使用SGMLParser，好处是比较简单，比较通用。另《Dive into Python》中例子用的是SGMLParser。</p>
+<p>贴出两段目标HTML代码：</p>
+<pre><code><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"v"</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_link"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">title</span>=<span class="value">"【海涛解说】nada卡尔大战精灵淡淡水人，无法预料的结局"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://v.youku.com/v_show/id_XMzk3MTg3MTI0.html"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_thumb"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">replace</span>=<span class="value">"false"</span> <span class="attribute">id</span>=<span class="value">"PlaylistID_XMzk3MTg3MTI0"</span> <span class="attribute">name</span>=<span class="value">"XMzk3MTg3MTI0"</span> <span class="attribute">src</span>=<span class="value">"http://g2.ykimg.com/0100641F464FB2D27D28DE028D906B51504F96-E0BF-0E0A-4968-6551061E989A"</span> <span class="attribute">alt</span>=<span class="value">"【海涛解说】nada卡尔大战精灵淡淡水人，无法预料的结局"</span> <span class="attribute">title</span>=<span class="value">"【海涛解说】nada卡尔大战精灵淡淡水人，无法预料的结局"</span>/&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_ishd"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"ico__SD"</span> <span class="attribute">title</span>=<span class="value">"超清"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_menu"</span> <span class="attribute">style</span>=<span class="value">"display: none;"</span> <span class="attribute">id</span>=<span class="value">"PlayListFlag_XMzk3MTg3MTI0"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_time"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"num"</span>&gt;</span>57:32<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_title"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">title</span>=<span class="value">"【海涛解说】nada卡尔大战精灵淡淡水人，无法预料的结局"</span> <span class="attribute">target</span>=<span class="value">"video"</span> <span class="attribute">href</span>=<span class="value">"http://v.youku.com/v_show/id_XMzk3MTg3MTI0.html"</span>&gt;</span>【海涛解说】nada卡尔大战精灵淡淡水人<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_pub"</span>&gt;</span><span class="tag">&lt;<span class="title">label</span>&gt;</span>发布时间:<span class="tag">&lt;/<span class="title">label</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>1天前<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_stat"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">title</span>=<span class="value">"播放"</span> <span class="attribute">class</span>=<span class="value">"ico__statplay"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"num"</span>&gt;</span>118,929<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"ico__statcomment"</span> <span class="attribute">title</span>=<span class="value">"评论"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"num"</span>&gt;</span>7,085<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"v"</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_link"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">title</span>=<span class="value">"【海涛教你打DOTA】刚背兽第一视角解说"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span> <span class="attribute">href</span>=<span class="value">"http://v.youku.com/v_show/id_XMzk0NjM1ODUy.html"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_thumb"</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">replace</span>=<span class="value">"false"</span> <span class="attribute">id</span>=<span class="value">"PlaylistID_XMzk0NjM1ODUy"</span> <span class="attribute">name</span>=<span class="value">"XMzk0NjM1ODUy"</span> <span class="attribute">src</span>=<span class="value">"http://g3.ykimg.com/0100641F464FACA216BBC7028D906B01385155-EA47-FB8B-3D04-4E526969BEB6"</span> <span class="attribute">alt</span>=<span class="value">"【海涛教你打DOTA】刚背兽第一视角解说"</span> <span class="attribute">title</span>=<span class="value">"【海涛教你打DOTA】刚背兽第一视角解说"</span>/&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_ishd"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"ico__SD"</span> <span class="attribute">title</span>=<span class="value">"超清"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_menu"</span> <span class="attribute">style</span>=<span class="value">"display: none;"</span> <span class="attribute">id</span>=<span class="value">"PlayListFlag_XMzk0NjM1ODUy"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_time"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"num"</span>&gt;</span>56:17<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"bg"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_title"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">title</span>=<span class="value">"【海涛教你打DOTA】刚背兽第一视角解说"</span> <span class="attribute">target</span>=<span class="value">"video"</span> <span class="attribute">href</span>=<span class="value">"http://v.youku.com/v_show/id_XMzk0NjM1ODUy.html"</span>&gt;</span>【海涛教你打DOTA】刚背兽第一视角解说<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_pub"</span>&gt;</span><span class="tag">&lt;<span class="title">label</span>&gt;</span>发布时间:<span class="tag">&lt;/<span class="title">label</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>5天前<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_stat"</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">title</span>=<span class="value">"播放"</span> <span class="attribute">class</span>=<span class="value">"ico__statplay"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"num"</span>&gt;</span>452,253<span class="tag">&lt;/<span class="title">span</span>&gt;</span> <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"ico__statcomment"</span> <span class="attribute">title</span>=<span class="value">"评论"</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"num"</span>&gt;</span>1,313<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+</code></pre><p>上面2段html是我们想要的信息，可以看出每个视频都是用 ul 来表示的。信息都在 li 标签下。</p>
+<p>这就很明了了，把我们需要的信息从li标签里抽出来即可， 既然是视频，那么URL、名称、发布时间必然是最重要的。</p>
+<p>因为默认是按照时间的倒序来排的，这样连发布时间都可以省去，留下最关心的名称及URL。可以看到这两个信息都可以在</p>
+<pre><code><span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"v_title"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">title</span>=<span class="value">"xxx"</span> <span class="attribute">target</span>=<span class="value">"video"</span> <span class="attribute">href</span>=<span class="value">"xxx"</span>&gt;</span>xxxx<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+</code></pre><p>这么一个class 为v_title的<li>标签里。 href指向的就是我们需要的URL，<a></a>内是我们需要的名称。</li></p>
+<p>1.进到class=’v_title’的li标签</p>
+<p>2.找到<a>标签的href地址放入urls列表中</a></p>
+<p>3.提取<a></a>的text数据放入title列表中</p>
+<p>4.按&lt;名称 URL&gt;循环打印。</p>
+<p>简洁明了，直接上代码吧：</p>
+<pre><code><span class="comment">#HTML解析类GetVideos</span>
+<span class="keyword">import</span> urllib2
+<span class="keyword">from</span> sgmllib <span class="keyword">import</span> SGMLParser
+
+<span class="class"><span class="keyword">class</span> <span class="title">GetVideos</span><span class="params">(SGMLParser)</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span>
+        SGMLParser.__init__(self)
+        self.titles = []
+        self.hrefs = []
+        self.flag = <span class="keyword">False</span>    <span class="comment">##&lt;li&gt;标记</span>
+        self.data = <span class="keyword">False</span>    <span class="comment">##&lt;a&gt;标记</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">start_li</span><span class="params">(self,attrs)</span>:</span>
+        <span class="keyword">for</span> k,v <span class="keyword">in</span> attrs:
+            <span class="keyword">if</span> k == <span class="string">'class'</span> <span class="keyword">and</span> v == <span class="string">'v_title'</span>:   <span class="comment">##进到&lt;li class="v_title"&gt;</span>
+                self.flag = <span class="keyword">True</span>
+                <span class="keyword">return</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">end_li</span><span class="params">(self)</span>:</span>
+        self.flag = <span class="keyword">False</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">start_a</span><span class="params">(self,attrs)</span>:</span>
+        <span class="keyword">if</span> self.flag == <span class="keyword">False</span>:
+            <span class="keyword">return</span>
+        self.data = <span class="keyword">True</span>
+        <span class="keyword">for</span> k,v <span class="keyword">in</span> attrs:    <span class="comment">##进入&lt;a&gt;，并把href标签数据保存</span>
+            <span class="keyword">if</span> k  == <span class="string">'href'</span> <span class="keyword">and</span> v:
+                self.hrefs.append(v)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">end_a</span><span class="params">(self)</span>:</span>
+        <span class="keyword">if</span> self.data:
+            self.data = <span class="keyword">False</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">handle_data</span><span class="params">(self,text)</span>:</span>
+        <span class="keyword">if</span> self.data:
+            self.titles.append(text)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">printInfo</span><span class="params">(self)</span>:</span>    <span class="comment">##打印所获得的数据</span>
+        <span class="keyword">for</span> title,item <span class="keyword">in</span> map(<span class="keyword">None</span>,self.titles,self.hrefs):
+            <span class="keyword">print</span> title.decode(<span class="string">'gbk'</span>,<span class="string">'ignore'</span>).encode(<span class="string">'utf8'</span>),item    <span class="comment">##将GBK转UTF8，遇特殊字符则ignore</span>
+测试代码:
+
+<span class="comment">##格式化url</span>
+url = <span class="string">"%s"</span>%(<span class="string">"http://i.youku.com/u/UMTcxMzI3OTE2/videos"</span>)
+
+content = urllib2.urlopen(url).read()
+
+videos = GetVideos()
+
+videos.feed(content)
+
+videos.printInfo()
+</code></pre><p>执行结果:</p>
+<pre><code>【海涛解说】nada卡尔大战精灵淡淡水人 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzk3MTg3MTI0.html</span>
+【海涛教你打DOTA】刚背兽第一视角解说 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzk0NjM1ODUy.html</span>
+【海涛解说】凤舞婷婷暴力冰女大战超级 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzkxMTI0NTEy.html</span>
+【海涛解说】吾有上将nada，善使暴走影 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzg2NTAxNTky.html</span>
+【海涛解说】DK VS IG，NGF出线名额争 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzg0MDYxOTI4.html</span>
+海涛<span class="number">2012.4</span>.13中科大演讲 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzgxNDQ3Mzg0.html</span>
+海涛<span class="number">4</span>v5 超神食尸鬼第一视角解说 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzc5MzkwOTU2.html</span>
+【海涛解说】<span class="number">430</span>推荐：幻刺跳大，疯狂 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzc2OTU3MTIw.html</span>
+【海涛解说】质量局海涛圣剑骷髅王大战 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzczMTA0NTA4.html</span>
+【海涛教你打DOTA】冰女第一视角解说 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzcwMDAyMzg4.html</span>
+海涛风行第一视角，与lgd姚德华同台飙 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzY4MjU1NjU2.html</span>
+海涛第一视角之发条大牛两连发 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzY0OTkxNzcy.html</span>
+【海涛教你打DOTA】卡尔第一视角解说 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzYxNjU2OTU2.html</span>
+海涛香蕉neo天梯高分局八十分钟大翻盘 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzU4Mjk3NTI4.html</span>
+海涛首次尝试DOTA2解说，暴走翻盘不是 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzU0MzQzMzE2.html</span>
+海涛暗影恶魔第一视角，单杀无敌，团战 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzUzMjY5MzIw.html</span>
+【海涛解说】队友全退，辉耀被A，船长 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzUyMjMyNjI4.html</span>
+海涛凯文携手第一视角大战职业战队DT.L <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzUwMTExNzQ0.html</span>
+【海涛解说】双圣剑炸弹人的showtime <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzQ4MjE5OTA4.html</span>
+【海涛教你打DOTA】先知第一视角解说 <span class="string">http:</span><span class="comment">//v.youku.com/v_show/id_XMzQ2NDc4NzQ4.html</span>
+</code></pre><p>取出的是第一页的20个视频名称及地址~ 当然第二页 三页 ……等相同原理。</p>
+<p>第一步到这里就差不多了，数据可以再处理的漂亮点~~~~</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/dota/" rel="tag">#dota</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2012/facebox 弹层插件/" rel="prev">Facebox 弹层插件</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2012/iPhone那些你不知道的小技巧/" rel="next">iPhone那些你不知道的小技巧</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2012/Python-优酷视频空间数据抓取(Dota)/"
+                   data-title="Python-优酷视频空间数据抓取(Dota)" data-url="http://xxxx.ooo/2012/Python-优酷视频空间数据抓取(Dota)/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">117</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://imim.me" target="_blank">Home</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">此文章未包含目錄</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hexoxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
