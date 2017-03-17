@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2017-01-18T02:10:36.000Z</updated>
+  <updated>2017-03-16T08:34:29.000Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -16,11 +16,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="http://xxxx.ooo/2017/using-lombok/"/>
+    <id>http://xxxx.ooo/2017/using-lombok/</id>
+    <published>2017-03-15T11:12:38.000Z</published>
+    <updated>2017-03-16T08:34:29.000Z</updated>
+    <content type="html"><![CDATA[<p>title: 使用 Lombok 的注意事项<br>date: 2017-03-16 22:11:20<br>category: tech</p>
+<h2 id="tags:_[devlombok,_java]">tags: [devlombok, java]</h2><p>Lombok的主旨是提高开发效率，消除冗长的 JAVA 代码，尤其是 POJO 类型。在开发初期 POJO 经常修改，随之涉及到改动 getter/setter/toString 等一系列方法。虽然现在 IDE 都能自动生成对应代码，但还是需要手动删除重新生成。</p>
+<p>它的原理是在编译期操作 AST(抽象语法树) 去改变字节码，根据注解生成对应的代码。因为在静态编译期做的，相对可控，使用也简单。</p>
+<blockquote>
+<p>Google 开源的 AutoValue 也是用来解决这个问题，功能很全面，还可以定制化。但有一些的问题</p>
+<ol>
+<li>代码侵入重，所有定义的对象是抽象类，使用都是封装后的 AutoValue_XXX </li>
+<li>生成的 POJO 都是 immutable 的，需要频繁操作的类会非常麻烦。</li>
+</ol>
+</blockquote>
+<p>在使用 Lombok 期间遇到一个坑</p>
+<p>当你的 POJO 中出现单字母驼峰名称时，例如：iType，Lombok生成出来的 getter/setter 方法</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">String</span> iType;</div><div class="line"><span class="keyword">public</span> <span class="keyword">String</span> getIType() &#123;</div><div class="line">    <span class="built_in">return</span> iType;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> setIType(<span class="keyword">String</span> iType) &#123;</div><div class="line">    <span class="keyword">this</span>.iType = iType;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>乍一看没啥问题，但是影响很严重，首先 Spring 是不认此方法的，<strong>其次</strong>：</p>
+<p>一般来说，代码规范和 API 规范有所区别，参考之前的文章「<a href="/2016/about-api-design/">浅谈 Api 设计</a>」。从后端输出 Api 时会做一些转换，例如驼峰转小写+下划线格式，这个 Jackson 有对应支持</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Jackson2ObjectMapperBuilder.propertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES)</div><div class="line"><span class="comment">//Jackson 也是通过 get 方法来获取属性</span></div><div class="line"><span class="comment">//我们的预期是 </span></div><div class="line">iType -&gt; i_type</div><div class="line"><span class="comment">//而结果是 </span></div><div class="line">IType -&gt; itype</div></pre></td></tr></table></figure>
+<p>刚开始我觉得这是 Lombok 的 bug，随后我下载了 Lombok 的源码来验证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//HandlerUtil 类统一处理方法名</span></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> prefix Something like &#123;<span class="doctag">@code</span> get&#125; or &#123;<span class="doctag">@code</span> set&#125; or &#123;<span class="doctag">@code</span> is&#125;.</div><div class="line">     * <span class="doctag">@param</span> suffix Something like &#123;<span class="doctag">@code</span> running&#125;.</div><div class="line">     * <span class="doctag">@return</span> prefix + smartly title-cased suffix. For example, &#123;<span class="doctag">@code</span> setRunning&#125;.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">buildAccessorName</span><span class="params">(String prefix, String suffix)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (suffix.length() == <span class="number">0</span>) <span class="keyword">return</span> prefix;</div><div class="line">        <span class="keyword">if</span> (prefix.length() == <span class="number">0</span>) <span class="keyword">return</span> suffix;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> first = suffix.charAt(<span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span> (Character.isLowerCase(first)) &#123;</div><div class="line">            <span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp;</div><div class="line">                (Character.isTitleCase(suffix.charAt(<span class="number">1</span>)) || Character.isUpperCase(suffix.charAt(<span class="number">1</span>)));</div><div class="line">            suffix = String.format(<span class="string">"%s%s"</span>,</div><div class="line">                    useUpperCase ? Character.toUpperCase(first) : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> String.format(<span class="string">"%s%s"</span>, prefix, suffix);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//可以看到规则是如果首字母小写，长度大于2并且第二个字母是大写或者是 titlecase 的话，则把首字母变大写。</span></div></pre></td></tr></table></figure>
+<p>显然这是特意而为之，随后我上官方 issue 中看了下，在15年已经有人提出了这个问题，而官方的答复是 JAVA Bean 的规范就是如此，且不应该使用首字母小写第二个字符大写的命名规则，是 Spring 的处理方式有问题，我们不能跟着 Spring 乱来，如果有官方规范推荐如此或者所有大厂都是这么做只有我们不的话我们才改~</p>
+<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/x2jea.png" alt=""></p>
+<p>虽然我没有仔细的看过 Bean 规范，但如果 Spring 这么大厂都不支持的话就很难推广了，在我刚和同事推荐的时候大家都非常激动，一听有这么个坑几乎都放弃了，也许是 xXxx 这种命名非常常见吧，比如 iPhone……</p>
+<p>不光 Spring，Jackson，编译器（ IDEA）自动生成的也是如此，只能说 Lombok 性格太倔了。既然如此只好自己修改下源码了…</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//好在改动也非常小， 规则改为：长度大于2，并且第二个字母是大写则不转换大写</span></div><div class="line"><span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp; Character.isUpperCase(suffix.charAt(<span class="number">1</span>));</div><div class="line"></div><div class="line">suffix = String.format(<span class="string">"%s%s"</span>, useUpperCase ? first : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div></pre></td></tr></table></figure>
+<p>有原则总是好的，但如果死守规矩，未必是件好事…</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>title: 使用 Lombok 的注意事项<br>date: 2017-03-16 22:11:20<br>category: tech</p>
+<h2 id="tags:_[devlombok,_java]">tags: [devlombok, java]</h2><p]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[北海道滑雪不完全指南]]></title>
     <link href="http://xxxx.ooo/2017/Ski-In-Hokkaido/"/>
     <id>http://xxxx.ooo/2017/Ski-In-Hokkaido/</id>
     <published>2017-01-16T12:41:12.000Z</published>
-    <updated>2017-01-18T02:10:36.000Z</updated>
+    <updated>2017-01-18T03:44:13.000Z</updated>
     <content type="html"><![CDATA[<p>北海道雪场非常多，二世谷、留寿都、札幌国际等诸多著名雪场，前年公司年会去的时候傻逼的被导游带去玩雪橇错过了留寿都的体验，据同事反馈也是相当的好。后面去了札幌国际玩了一天，体验也还不错。今年首次自带装备去滑雪，前期做了不少功课。</p>
 <p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/1yo59.JPG" alt=""></p>
 <h5 id="自带板的一些注意事项">自带板的一些注意事项</h5><ul>
@@ -136,7 +174,7 @@
     <link href="http://xxxx.ooo/2016/Beauty-Makeup-Han/"/>
     <id>http://xxxx.ooo/2016/Beauty-Makeup-Han/</id>
     <published>2016-08-20T14:21:12.000Z</published>
-    <updated>2017-01-18T02:12:18.000Z</updated>
+    <updated>2017-01-18T03:44:11.000Z</updated>
     <content type="html"><![CDATA[<p>某个周末无聊的举动，第一次动手，图个乐呵……</p>
 <iframe height="480" width="100%" src="http://player.youku.com/embed/XMTU5MjI2ODU5Mg==" frameborder="0" 'allowfullscreen'=""></iframe>]]></content>
     <summary type="html">
@@ -306,101 +344,6 @@
       <category term="Api" scheme="http://xxxx.ooo/tags/Api/"/>
     
       <category term="程序设计" scheme="http://xxxx.ooo/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[巧用 OSX 的 Notification]]></title>
-    <link href="http://xxxx.ooo/2015/try-osx-notification/"/>
-    <id>http://xxxx.ooo/2015/try-osx-notification/</id>
-    <published>2015-12-22T05:54:30.000Z</published>
-    <updated>2015-12-28T03:59:09.000Z</updated>
-    <content type="html"><![CDATA[<p>起因：最近兴起一个 App 叫好近，专做 SOHO 附近小食，每日推出 1 分钱抢购或一些特价下午茶之类的活动，很难抢，不是错过就是被秒抢，遂想出个办法来提高抢购率！</p>
-<p>最直接的需求是相对即时通知，让你快人一步。此类工具用 Python 来实现再合适不过了</p>
-<h4 id="提醒方式">提醒方式</h4><p>工作期间不能老盯着手机，考虑通过 OSX 的 Notification 实现，让它带着音乐蹦出来~<br>调用 OSX 接口需要依赖 PyObjC 模块，通过 pip 装之（时间比较长，装一堆 OC 相关的包）：</p>
-<pre><code>pip <span class="keyword">install</span> PyObjC
-</code></pre><p>调用的代码示例（python2.7+适用）:</p>
-<pre><code>import objc
-import Foundation
-
-<span class="comment">//py2.5可以通过 from Foundation import NSUserNotification 方式引入 </span>
-NSUserNotification = objc.<span class="function"><span class="title">lookUpClass</span><span class="params">(<span class="string">'NSUserNotification'</span>)</span></span>
-NSUserNotificationCenter = objc.<span class="function"><span class="title">lookUpClass</span><span class="params">(<span class="string">'NSUserNotificationCenter'</span>)</span></span>
-
-def <span class="function"><span class="title">notify</span><span class="params">(title, subtitle, info_text, delay=<span class="number">0</span>, sound=False, userInfo={})</span></span>:
-    notification = NSUserNotification.<span class="function"><span class="title">alloc</span><span class="params">()</span></span>.<span class="function"><span class="title">init</span><span class="params">()</span></span>
-    notification.<span class="function"><span class="title">setTitle_</span><span class="params">(title)</span></span>
-    notification.<span class="function"><span class="title">setSubtitle_</span><span class="params">(subtitle)</span></span>
-    notification.<span class="function"><span class="title">setInformativeText_</span><span class="params">(info_text)</span></span>
-    notification.<span class="function"><span class="title">setUserInfo_</span><span class="params">(userInfo)</span></span>
-    <span class="keyword">if</span> sound:
-        notification.<span class="function"><span class="title">setSoundName_</span><span class="params">(<span class="string">"NSUserNotificationDefaultSoundName"</span>)</span></span>
-    notification.<span class="function"><span class="title">setDeliveryDate_</span><span class="params">(Foundation.NSDate.dateWithTimeInterval_sinceDate_(delay, Foundation.NSDate.date()</span></span>))
-    NSUserNotificationCenter.<span class="function"><span class="title">defaultUserNotificationCenter</span><span class="params">()</span></span>.<span class="function"><span class="title">scheduleNotification_</span><span class="params">(notification)</span></span>
-</code></pre><h4 id="截获相关_Api">截获相关 Api</h4><p>利用 Charles 可以很方便的抓取，经观察一些优惠信息只有移动端才有，构造相应的 headers，使用 requests 模块（pip 装之）:</p>
-<pre><code><span class="function"><span class="keyword">def</span> <span class="title">queryNotification</span><span class="params">()</span>:</span>
-    url = <span class="string">"http://api.haojin.in/takeout_item_list?atag_id=0&amp;offset=0&amp;pagesize=10&amp;region_id=55b9c9d4c69575999049b2b4"</span>
-    headers = {<span class="string">'content-type'</span>: <span class="string">'application/json'</span>, <span class="string">'User-Agent'</span>:<span class="string">'User-Agent: QMMWD/1.3.6 iPhone/9.1 AFNetwork/1.1'</span>}
-    req = requests.get(url, headers=headers)
-    content = json.loads(req.content)
-    items = content[<span class="string">'data'</span>][<span class="string">'sale_items'</span>]
-    <span class="keyword">for</span> item <span class="keyword">in</span> items:
-        price = item[<span class="string">'price'</span>]
-        title = item[<span class="string">'title'</span>]
-        origin_price = item[<span class="string">'origin_price'</span>]
-        end_time = item[<span class="string">'end_time'</span>]
-        quantity = item[<span class="string">'quantity'</span>]
-        e = datetime.datetime.strptime(end_time, <span class="string">"%Y-%m-%d %H:%M:%S"</span>)
-        <span class="keyword">if</span> float(price) &lt; <span class="number">2</span> <span class="keyword">and</span> e &gt; datetime.datetime.now() <span class="keyword">and</span> quantity &gt; <span class="number">0</span>:
-            notify(<span class="string">u"特价提醒!!"</span>, title, <span class="string">u"原价"</span>+origin_price+<span class="string">u",现价:"</span>+price, sound=<span class="keyword">True</span>)
-
-<span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:
-    <span class="keyword">while</span> <span class="keyword">True</span>:
-        queryHomeNotification()
-        time.sleep(<span class="number">30</span>)
-</code></pre><p>每 30 秒查询一次，没结束的活动中价格低于 2 元且还有库存的优惠信息，一共不到 50 行代码，运行成功。但看起来使用方式并不友好，没办法分享给小伙伴们呢。</p>
-<h4 id="打包">打包</h4><p>想到把代码包装成一个 OSX 的应用，这样就方便任何人用了。使用 py2app 打包（pip 装之）：</p>
-<ol>
-<li><p>新建 setup.py，可以自定义 icon(icns 格式）</p>
-<pre><code><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup
-
-APP = [<span class="string">'nearRemind.py'</span>]
-APP_NAME = <span class="string">"NearRemind"</span>
-DATA_FILES = []
-<span class="keyword">OPTIONS</span> = {<span class="string">'argv_emulation'</span>: <span class="keyword">True</span>, <span class="string">'iconfile'</span>: <span class="string">'ico.icns'</span>}
-
-setup(
-    name=APP_NAME,
-    app=APP,
-    data_files=DATA_FILES,
-    <span class="keyword">options</span>={<span class="string">'py2app'</span>: <span class="keyword">OPTIONS</span>},
-    setup_requires=[<span class="string">'py2app'</span>],
-</code></pre></li>
-<li><p>打包，默认当前路径下 dist 目录：</p>
-<pre><code>Python setup<span class="class">.py</span> py2app
-</code></pre></li>
-</ol>
-<p>可以分享给小伙伴啦，启动就好，效果如下：<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/12/1450763021570.png" alt="notification"></p>
-<h4 id="其他">其他</h4><p>虽然有了提示但还是未必能抢到，所以后面还给自己做了自动下单版本，因为需要 session_id 和 sid 及收货地址之类的个人信息，做公用版比较麻烦些，就当是自己的私人福利了~<br>有兴趣自己玩的话代码在 <a href="https://github.com/zhourongyu/NearNotification" target="_blank" rel="external">Github</a> </p>
-<p>如此简易的 App 缺陷有很多，例如启动后没有合理的关闭方式，只能右键强制退出；无限重复通知等。</p>
-<p>顺便发现「好近」的一些问题：</p>
-<ul>
-<li>接口访问频率似乎没有限制</li>
-<li>重复下单（一秒十单没问题~再快也没试了）</li>
-<li>活动状态好像是根据手机当前时间与接口里 end_time 对比来判断活动是否结束，且所有时间格式如下 “end_time”: “2015-12-21 23:59:00”，这种实现貌似不够好</li>
-</ul>
-<p>Notification 刚移植到 OSX 上时就觉得这东西可以有很多种玩法，比如自己实现类似番茄工作法这样的小工具，这次也算试水成功了</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>起因：最近兴起一个 App 叫好近，专做 SOHO 附近小食，每日推出 1 分钱抢购或一些特价下午茶之类的活动，很难抢，不是错过就是被秒抢，遂想出个办法来提高抢购率！</p>
-<p>最直接的需求是相对即时通知，让你快人一步。此类工具用 Python 来实现再合适不过了</p]]>
-    </summary>
-    
-      <category term="osx" scheme="http://xxxx.ooo/tags/osx/"/>
-    
-      <category term="python" scheme="http://xxxx.ooo/tags/python/"/>
     
       <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
     

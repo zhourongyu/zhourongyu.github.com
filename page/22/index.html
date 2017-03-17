@@ -171,6 +171,90 @@
           
           
             
+              <a class="post-title-link" href="/2011/eclipse's default workspace/" itemprop="url">
+                Eclipse's Default Workspace
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2011-06-12T05:23:00+08:00" content="2011-06-12">
+            2011-06-12
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011/eclipse's default workspace/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/eclipse's default workspace/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>一直忠于eclipse，由于近期项目的环境统一问题，昨天装了Myeclipse 9。无意中让他默认启动不选择workspace，每次都得Switch it.<br>最好的解决办法~ %MyEclipse%下有configuration目录，其中的config.ini中有如下配置：<br>osgi.instance.area.default=@user.home/Workspaces/MyEclipse 9<br>初次启动默认的都是@user.home下.也就是C盘的用户目录下. 直接将它修改成：<br>osgi.instance.area.default=file\:/E\:/DTools/Workspaces<br>这样就OK了…</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011/Mac下常用软件/" itemprop="url">
                 Mac下常用软件
               </a>
@@ -702,7 +786,7 @@ ex.printStackTrace<span class="params">()</span>;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-count">110</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

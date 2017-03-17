@@ -171,6 +171,104 @@
           
           
             
+              <a class="post-title-link" href="/2011/HTTP的状态码/" itemprop="url">
+                HTTP的状态码
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2011-12-07T14:05:00+08:00" content="2011-12-07">
+            2011-12-07
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011/HTTP的状态码/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/HTTP的状态码/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>ps:昨晚服务器出现严重错误，出现504，老大误以为是新上的负载均衡引起的故障，后经排查是因为统计库日志被写满～</p>
+<p>下面是一些常见的状态码：</p>
+<p>200 OK                          一切正常<br>301 Moved Permanently           永久性的转移<br>302 Found                       暂时性的转移<br>400 Bad Request                 请求出现语法错误<br>403 Forbidden                   资源不可用<br>404 Not Found                   无法找到指定的资源<br>500 Internal Server Error       服务器遇到了不可预料的情况<br>501 Not Implemented             服务器不支持实现请求的功能<br>504 Gateway Timeout             不能及时的从服务器获得应答&lt;<br>/pre&gt;<br>500是大家最不想看见的错误～ 因为错误的可能性很广，不易排查。</p>
+<p>说说301 和 302，近日在研究nginx，很多人都说nginx目前不支持.htaccess文件，不支持rewrite。</p>
+<p>其实它是支持的，依赖pcre库。</p>
+<p>301和302的区别主要在于一个是永久跳转，一个是临时跳转。</p>
+<p>为了页面的SEO，应尽量使用301的方式，如果我们把一个地址采用301跳转方式的的话搜索引擎会把老地址的PageRank等信息带到新地址，同时在搜索引擎库中彻底废掉原来的老地址。</p>
+<p>例如在本站中，需要把zhourongyu.me, zhourongyu.me等域名自动跳转到www上。</p>
+<pre><code>server{
+    listen 80<span class="comment">;</span>
+    server_name *.zhourongyu.me<span class="comment">;</span>
+    access_log off<span class="comment">;</span>
+    rewrite ^/(.*)$ http://zhourongyu.me/$1 permanent<span class="comment">;</span>
+}
+</code></pre><p>那302的跳转一般用在哪呢？<br>在一些需要临时的功能上的跳转的时候，例如JS的跳转，http的meta跳转会发送302状态码。<br>另外302一般也会作用与恶意的URL劫持（URL hijacking），～感兴趣可以去研究下！</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011/CentOS安装Python/" itemprop="url">
                 CentOS安装Python
               </a>
@@ -550,90 +648,6 @@ git init
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011/eclipse's default workspace/" itemprop="url">
-                Eclipse's Default Workspace
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2011-06-12T05:23:00+08:00" content="2011-06-12">
-            2011-06-12
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011/eclipse's default workspace/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011/eclipse's default workspace/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>一直忠于eclipse，由于近期项目的环境统一问题，昨天装了Myeclipse 9。无意中让他默认启动不选择workspace，每次都得Switch it.<br>最好的解决办法~ %MyEclipse%下有configuration目录，其中的config.ini中有如下配置：<br>osgi.instance.area.default=@user.home/Workspaces/MyEclipse 9<br>初次启动默认的都是@user.home下.也就是C盘的用户目录下. 直接将它修改成：<br>osgi.instance.area.default=file\:/E\:/DTools/Workspaces<br>这样就OK了…</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -672,7 +686,7 @@ git init
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">109</span>
+              <span class="site-state-item-count">110</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
