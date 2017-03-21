@@ -171,8 +171,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/try-osx-notification/" itemprop="url">
-                巧用 OSX 的 Notification
+              <a class="post-title-link" href="/2016/custom-fitness-plan/" itemprop="url">
+                定制自己的健身计划
               </a>
             
           
@@ -182,8 +182,100 @@
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2015-12-22T13:54:30+08:00" content="2015-12-22">
-            2015-12-22
+          <time itemprop="dateCreated" datetime="2016-07-18T18:05:35+08:00" content="2016-07-18">
+            2016-07-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/custom-fitness-plan/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/custom-fitness-plan/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>刚开始健身不久，根据自己的情况定制一份适合自己的计划是很有必要的。</p>
+<p>健身大多目的有两个，瘦子想变壮与胖子想变瘦（用专业的术语应该说是增肌与减脂）。 多数人都认为减肥更难，长肉还不容易么？多吃多睡呗</p>
+<p>其实靠吃就能增重的人往往处于需要减脂的群体中，都是增加了脂肪，而需要增肌的人群大都是百吃不胖，也许是因为体质或者其他因素。</p>
+<p>很不幸我是属于「吃不胖」群体的，体脂一直都是在10-15之间。最近去健身房测试竟然是7.x，我想这应该是机器有问题，在增重的道路上路漫漫兮…</p>
+<p>这份计划也是在咨询了许多经验人士，并依据自身及场馆情况而制定，考虑场馆因素是因为一些动作是依赖相关器械的。</p>
+<h4 id="计划详情：">计划详情：</h4><p><strong>目标</strong>：体重增重5-7kg，增强上肢三围及力量<br><strong>频率</strong>：3-4次/周</p>
+<h5 id="胸、二头">胸、二头</h5><p>胸：史密斯卧推/哑铃卧推（上斜、水平、下斜）、蝴蝶机<br>二头：杠铃弯举、哑铃弯举、锤式弯举</p>
+<h5 id="背、三头">背、三头</h5><p>背：坐姿下拉、坐姿划船、屈退硬拉<br>三头：拉力器曲臂下压、哑铃屈伸</p>
+<h5 id="肩、腿">肩、腿</h5><p>三角肌：哑铃交替前举、哑铃肩上推举、反式蝴蝶机展肩<br>腿：坐姿水平蹬腿、杠铃深蹲</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/mtm-fs-server-failed/" itemprop="url">
+                MTM-FS-Server-Failed
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2016-06-22T11:36:16+08:00" content="2016-06-22">
+            2016-06-22
           </time>
         </span>
 
@@ -208,8 +300,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/try-osx-notification/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/try-osx-notification/" itemprop="commentsCount"></span>
+              <a href="/2016/mtm-fs-server-failed/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/mtm-fs-server-failed/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -224,581 +316,105 @@
 
       
         
-          <span itemprop="articleBody"><p>起因：最近兴起一个 App 叫好近，专做 SOHO 附近小食，每日推出 1 分钱抢购或一些特价下午茶之类的活动，很难抢，不是错过就是被秒抢，遂想出个办法来提高抢购率！</p>
-<p>最直接的需求是相对即时通知，让你快人一步。此类工具用 Python 来实现再合适不过了</p>
-<h4 id="提醒方式">提醒方式</h4><p>工作期间不能老盯着手机，考虑通过 OSX 的 Notification 实现，让它带着音乐蹦出来~<br>调用 OSX 接口需要依赖 PyObjC 模块，通过 pip 装之（时间比较长，装一堆 OC 相关的包）：</p>
-<pre><code>pip <span class="keyword">install</span> PyObjC
-</code></pre><p>调用的代码示例（python2.7+适用）:</p>
-<pre><code>import objc
-import Foundation
-
-<span class="comment">//py2.5可以通过 from Foundation import NSUserNotification 方式引入 </span>
-NSUserNotification = objc.<span class="function"><span class="title">lookUpClass</span><span class="params">(<span class="string">'NSUserNotification'</span>)</span></span>
-NSUserNotificationCenter = objc.<span class="function"><span class="title">lookUpClass</span><span class="params">(<span class="string">'NSUserNotificationCenter'</span>)</span></span>
-
-def <span class="function"><span class="title">notify</span><span class="params">(title, subtitle, info_text, delay=<span class="number">0</span>, sound=False, userInfo={})</span></span>:
-    notification = NSUserNotification.<span class="function"><span class="title">alloc</span><span class="params">()</span></span>.<span class="function"><span class="title">init</span><span class="params">()</span></span>
-    notification.<span class="function"><span class="title">setTitle_</span><span class="params">(title)</span></span>
-    notification.<span class="function"><span class="title">setSubtitle_</span><span class="params">(subtitle)</span></span>
-    notification.<span class="function"><span class="title">setInformativeText_</span><span class="params">(info_text)</span></span>
-    notification.<span class="function"><span class="title">setUserInfo_</span><span class="params">(userInfo)</span></span>
-    <span class="keyword">if</span> sound:
-        notification.<span class="function"><span class="title">setSoundName_</span><span class="params">(<span class="string">"NSUserNotificationDefaultSoundName"</span>)</span></span>
-    notification.<span class="function"><span class="title">setDeliveryDate_</span><span class="params">(Foundation.NSDate.dateWithTimeInterval_sinceDate_(delay, Foundation.NSDate.date()</span></span>))
-    NSUserNotificationCenter.<span class="function"><span class="title">defaultUserNotificationCenter</span><span class="params">()</span></span>.<span class="function"><span class="title">scheduleNotification_</span><span class="params">(notification)</span></span>
-</code></pre><h4 id="截获相关_Api">截获相关 Api</h4><p>利用 Charles 可以很方便的抓取，经观察一些优惠信息只有移动端才有，构造相应的 headers，使用 requests 模块（pip 装之）:</p>
-<pre><code><span class="function"><span class="keyword">def</span> <span class="title">queryNotification</span><span class="params">()</span>:</span>
-    url = <span class="string">"http://api.haojin.in/takeout_item_list?atag_id=0&amp;offset=0&amp;pagesize=10&amp;region_id=55b9c9d4c69575999049b2b4"</span>
-    headers = {<span class="string">'content-type'</span>: <span class="string">'application/json'</span>, <span class="string">'User-Agent'</span>:<span class="string">'User-Agent: QMMWD/1.3.6 iPhone/9.1 AFNetwork/1.1'</span>}
-    req = requests.get(url, headers=headers)
-    content = json.loads(req.content)
-    items = content[<span class="string">'data'</span>][<span class="string">'sale_items'</span>]
-    <span class="keyword">for</span> item <span class="keyword">in</span> items:
-        price = item[<span class="string">'price'</span>]
-        title = item[<span class="string">'title'</span>]
-        origin_price = item[<span class="string">'origin_price'</span>]
-        end_time = item[<span class="string">'end_time'</span>]
-        quantity = item[<span class="string">'quantity'</span>]
-        e = datetime.datetime.strptime(end_time, <span class="string">"%Y-%m-%d %H:%M:%S"</span>)
-        <span class="keyword">if</span> float(price) &lt; <span class="number">2</span> <span class="keyword">and</span> e &gt; datetime.datetime.now() <span class="keyword">and</span> quantity &gt; <span class="number">0</span>:
-            notify(<span class="string">u"特价提醒!!"</span>, title, <span class="string">u"原价"</span>+origin_price+<span class="string">u",现价:"</span>+price, sound=<span class="keyword">True</span>)
-
-<span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:
-    <span class="keyword">while</span> <span class="keyword">True</span>:
-        queryHomeNotification()
-        time.sleep(<span class="number">30</span>)
-</code></pre><p>每 30 秒查询一次，没结束的活动中价格低于 2 元且还有库存的优惠信息，一共不到 50 行代码，运行成功。但看起来使用方式并不友好，没办法分享给小伙伴们呢。</p>
-<h4 id="打包">打包</h4><p>想到把代码包装成一个 OSX 的应用，这样就方便任何人用了。使用 py2app 打包（pip 装之）：</p>
-<ol>
-<li><p>新建 setup.py，可以自定义 icon(icns 格式）</p>
-<pre><code><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup
-
-APP = [<span class="string">'nearRemind.py'</span>]
-APP_NAME = <span class="string">"NearRemind"</span>
-DATA_FILES = []
-<span class="keyword">OPTIONS</span> = {<span class="string">'argv_emulation'</span>: <span class="keyword">True</span>, <span class="string">'iconfile'</span>: <span class="string">'ico.icns'</span>}
-
-setup(
-    name=APP_NAME,
-    app=APP,
-    data_files=DATA_FILES,
-    <span class="keyword">options</span>={<span class="string">'py2app'</span>: <span class="keyword">OPTIONS</span>},
-    setup_requires=[<span class="string">'py2app'</span>],
-</code></pre></li>
-<li><p>打包，默认当前路径下 dist 目录：</p>
-<pre><code>Python setup<span class="class">.py</span> py2app
-</code></pre></li>
-</ol>
-<p>可以分享给小伙伴啦，启动就好，效果如下：<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/12/1450763021570.png" alt="notification"></p>
-<h4 id="其他">其他</h4><p>虽然有了提示但还是未必能抢到，所以后面还给自己做了自动下单版本，因为需要 session_id 和 sid 及收货地址之类的个人信息，做公用版比较麻烦些，就当是自己的私人福利了~<br>有兴趣自己玩的话代码在 <a href="https://github.com/zhourongyu/NearNotification" target="_blank" rel="external">Github</a> </p>
-<p>如此简易的 App 缺陷有很多，例如启动后没有合理的关闭方式，只能右键强制退出；无限重复通知等。</p>
-<p>顺便发现「好近」的一些问题：</p>
-<ul>
-<li>接口访问频率似乎没有限制</li>
-<li>重复下单（一秒十单没问题~再快也没试了）</li>
-<li>活动状态好像是根据手机当前时间与接口里 end_time 对比来判断活动是否结束，且所有时间格式如下 “end_time”: “2015-12-21 23:59:00”，这种实现貌似不够好</li>
-</ul>
-<p>Notification 刚移植到 OSX 上时就觉得这东西可以有很多种玩法，比如自己实现类似番茄工作法这样的小工具，这次也算试水成功了</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/parallels-desktop-balck-friday/" itemprop="url">
-                Parallels Desktop 黑五购置指南
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2015-11-26T12:48:40+08:00" content="2015-11-26">
-            2015-11-26
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/parallels-desktop-balck-friday/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/parallels-desktop-balck-friday/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Parallels Desktop 是 Mac 端最好用的虚拟机，没有之一，这个不多说了。虽然它的定价一直很坑爹，每年升级「骗钱」，双十一也参加打折但也很贵，但这次黑五新出的 Bundle 非常值</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187294.png" alt="bundle"></p>
-<p>因为这次 Bundle 里所有的 App 都相当的不错  </p>
-<ul>
-<li>1Password ($49.9) 打折时大概也要200+</li>
-<li>Evernote Preminum ($49.9/y)</li>
-<li>Poket Premium (原价$49.9/y)</li>
-</ul>
-<p>含这几个已经很超值啦。其他的虽然没用过，看评价也都算是大作，留作备用也不错。<br>我是 PD10 用户，所以需要的是 Parallels Desktop for Mac Pro Edition Upgrade (1 Year)</p>
-<h3 id="重点来了！">重点来了！</h3><p>虽然性价比高，但 358 的价格还是让人有点犹豫， 那么通过以下操作让价格飞起来吧。</p>
-<ol>
-<li>找一个日本的 VPN， 通过日本 IP 进入网站</li>
-<li>Upgrade Now 进入订单页，你会发现价格变为 ￥5300 <img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187456.png" alt="jp"></li>
-<li>右上角 Currency 切换回 Chinese Yuan，地址选为 China</li>
-</ol>
-<p>你会惊喜的发现价格变为了 ￥216.61，还可以用支付宝支付！有木有感觉不买不行的感觉？</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187681.png" alt="cn"></p>
-<p><strong>PS</strong>: 1Password 我已经买过，￥100 转出去了，还有自己用不着的都可以转给其他朋友</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/草原天路/" itemprop="url">
-                草原天路
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2015-10-06T22:01:30+08:00" content="2015-10-06">
-            2015-10-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/草原天路/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/草原天路/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成景区收费了，真是坑爹。</p>
-<h4 id="北京自驾游方案">北京自驾游方案</h4><p><code>不靠谱方案：周末大清早六七点钟出发，因为节假日八达岭高速太堵，估计中午才能到，开一上午车已经非常累了，况且到达天路还要继续堵（正是景区高峰期）</code><br>建议方案：下午从北京出发到崇礼/张北住宿，第二天一早出发。我俩次都是住在崇礼，从桦皮岭进入天路自东向西游玩，这样人相对少很多，悠然自得。</p>
-<p>住宿可以选择张北县城内或者沿途的农家乐，因为景区化的原因，沿途当地人自办的农家乐都被勒令拆除，日后大概只有正规运营的场所了<br>另一个方案是露营，沿途不少适合的点，这次我背着帐篷准备来尝试一下，夜间非常冷，一定要做好防寒措施。 六七月应该好很多</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612276.jpg" alt="随处可见的风车"></p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612174.jpg" alt="满屏幕都是风车"></p>
-<p>一个好的天气很重要，虽然在北京这很难得~<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612371.jpg" alt="草原上休息的马儿们"></p>
-<p>在草原上住的好处就是可以看看日落/日出/星星，玩摄影的自然不能错过。但是夜间太冷，加上当日月亮非常的亮，导致本次星星没拍上~ 囧！<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612650.jpg" alt="日落夕阳"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/iPhone-6s-上手体验/" itemprop="url">
-                iPhone 6s 上手体验
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2015-09-26T11:23:30+08:00" content="2015-09-26">
-            2015-09-26
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/iPhone-6s-上手体验/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/iPhone-6s-上手体验/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>今年的抢购比往年似乎容易些，但问题还是不少，例如重复支付、无法支付的问题。在多次支付失败的情况下，尝试预约到店成功，随后再使用分期支付成功~<br>共抢获 2 台，一台漂亮的深空灰，一台脑残粉玫瑰金  </p>
-<p><code>其他颜色请不要购买，树立「正确」的审美观人人有责！不做脑残粉，请选择深空灰</code><br>我本想选择优雅，但被迫成为脑残粉~  </p>
-<p>记得去年预约到店取货那天排队就排了一个多小时， 这次又抱着排大队的准备杀过去了，结果十分钟后手机到手。 一是这次苹果的准备比上次做的还要好，分流都分为几段，门口/一层/二层（三里屯店），并动用了大量的员工在帮忙预约客户。二可能是因为毕竟是 S 代升级，买的人没那么多  </p>
-<p>特意问了下店员今天人貌似很少，回答说大部分预约都在下午~<br>预约处摆满了各版本的iPhone，今年的包装盒设计不同，各颜色的iPhone对应的画面不同~  </p>
-<p><img src="http://7lrvut.com1.z0.glb.clouddn.com/2015/09/25100001.jpg" alt="店内预约"></p>
-<p>在线订单的寄送也很准时，为了迎合线下的开售，在线订单之前一直显示为准备发货，在24号终于变为已发货，25日上午十点多就已经送到了，到手时间几乎和预约到店时间一致~  </p>
-<p>回来拍了张对比图：<br><img src="http://7lrvut.com1.z0.glb.clouddn.com/2015/09/25100002.jpg" alt="深空灰 VS 玫瑰金"></p>
-<h3 id="导购意见">导购意见</h3><ul>
-<li>6s 比 6 略重，略厚，略宽（此为优点，握持感更好，妈妈再也不用担心我手机滑落了）</li>
-<li>玫瑰金比我想象的更加「粉嫩」，男性慎买，只有在夜晚或强光下和香槟金看着差不多~</li>
-<li>3D Touch 没什么大卵用（目前看来是这样）， 但反馈很细腻，很好玩~ 咯噔噔~</li>
-<li>后置摄像头的提升目测效果不明显，前置的提升较大，还会有屏幕的补光，更方便姑娘们自拍了</li>
-<li>LIVE Photo 仅限玩一玩，目前还没玩出彩</li>
-<li>不知道是不是 A9 和 2G 内存的原因，速度的提升有点明显</li>
-<li>Touch ID 二代嗷嗷的棒，秒识别，快到解锁的时候几乎看不到锁屏页面了~  </li>
-</ul>
-<p>众多更新，让我惊喜的只有Touch ID 。在 Apple 推出 Touch ID 之后各大厂商都相继有了各自的产品，但是识别速度和Apple相差不是一个等级。随后一两年，各大厂商的性能已经追上来了。二代一出，感觉又秒杀其他厂商了~ 大致可以推算出 Apple 的技术水平还是要领先行业1-2年（股票是不是还可以继续持有~）。  </p>
-<p>综上所述， 购买建议为：仅不建议 6 代用户升级！<br>等 3D Touch 玩法成熟，估计 7 代也该出了~</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/mysql-query-optimizer/" itemprop="url">
-                一个MySQL 查询优化器的疑问
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2015-07-16T13:49:00+08:00" content="2015-07-16">
-            2015-07-16
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/mysql-query-optimizer/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/mysql-query-optimizer/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>有一张很老的数据表，时间戳格式为varchar，字段如下：</p>
-<pre><code>id bigint
-name <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">200</span>)</span></span>
-create_time <span class="function"><span class="title">varchar</span><span class="params">(<span class="number">20</span>)</span></span>
-<span class="comment">//索引</span>
-KEY `IDX_CREATED` (`create_time`),
-</code></pre><p>数据约500多万，现在引出发现的问题，一条sql语句效率非常的低：</p>
-<pre><code><span class="operator"><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time <span class="keyword">limit</span> <span class="number">1000</span>;</span>
-</code></pre><p>本机测试200s，执行计划：</p>
-<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time limit 1000;
-
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type  </span>|<span class="string"> possible_keys </span>|<span class="string"> key           </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows </span>|<span class="string"> Extra       </span>|
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> index </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string">   63    </span>|<span class="string"> NULL </span>|<span class="string"> 1000 </span>|<span class="string"> Using where </span>|
-+----+-------------+-------+-------+---------------+---------------+---------+------+------+-------------+
-1 row in set (0.00 sec)
-</code></pre><p>如果去掉 limit :</p>
-<pre><code><span class="keyword">select</span> name, create_time <span class="keyword">from</span> t <span class="keyword">where</span> create_time &gt; <span class="number">1434115807296</span> <span class="keyword">order</span> <span class="keyword">by</span> create_time
-</code></pre><p>执行时间5s，执行计划：</p>
-<pre><code>&gt; explain select name, create_time from t where create_time &gt; 1434115807296 order by create_time
-
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-|<span class="string"> id </span>|<span class="string"> select_type </span>|<span class="string"> table </span>|<span class="string"> type </span>|<span class="string"> possible_keys </span>|<span class="string"> key  </span>|<span class="string"> key_len </span>|<span class="string"> ref  </span>|<span class="string"> rows    </span>|<span class="string"> Extra                       </span>|
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-|<span class="string">  1 </span>|<span class="string"> SIMPLE      </span>|<span class="string"> User  </span>|<span class="string"> ALL  </span>|<span class="string">  IDX_CREATED  </span>|<span class="string"> NULL </span>|<span class="string">   NULL  </span>|<span class="string"> NULL </span>|<span class="string"> 4858500 </span>|<span class="string"> Using where; Using filesort </span>|
-+----+-------------+-------+------+---------------+------+---------+------+---------+-----------------------------+
-1 row in set (0.00 sec)    
-</code></pre><p>一个 index 查询竟然比 ALL&amp;filesort 查询慢这么多？ 用profiles看下详细信息</p>
-<pre><code>mysql&gt; show profiles;
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-|<span class="string"> Query_ID </span>|<span class="string"> Duration     </span>|<span class="string"> Query                                                                                                      </span>|
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-|<span class="string">        1 </span>|<span class="string">   0.00179100 </span>|<span class="string"> explain select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000  </span>|
-|<span class="string">        2 </span>|<span class="string"> 195.10171300 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at limit 1000          </span>|
-|<span class="string">        3 </span>|<span class="string">   5.28713500 </span>|<span class="string"> select name, created_at from user where created_at &gt; 1434115807296 order by created_at                     </span>|
-+----------+--------------+------------------------------------------------------------------------------------------------------------+
-2 rows in set, 1 warning (0.00 sec)
-
-mysql&gt; show profile for query 2;
-+----------------------+------------+
-|<span class="string"> Status               </span>|<span class="string"> Duration   </span>|
-+----------------------+------------+
-|<span class="string"> starting             </span>|<span class="string">   0.000050 </span>|
-|<span class="string"> checking permissions </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string">   0.000013 </span>|
-|<span class="string"> init                 </span>|<span class="string">   0.000017 </span>|
-|<span class="string"> System lock          </span>|<span class="string">   0.000005 </span>|
-|<span class="string"> optimizing           </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> statistics           </span>|<span class="string">   0.000018 </span>|
-|<span class="string"> preparing            </span>|<span class="string">   0.000011 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string">   0.000002 </span>|
-|<span class="string"> executing            </span>|<span class="string">   0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 195.101362 </span>|
-|<span class="string"> end                  </span>|<span class="string">   0.000011 </span>|
-|<span class="string"> query end            </span>|<span class="string">   0.000009 </span>|
-|<span class="string"> closing tables       </span>|<span class="string">   0.000012 </span>|
-|<span class="string"> freeing items        </span>|<span class="string">   0.000158 </span>|
-|<span class="string"> logging slow query   </span>|<span class="string">   0.000006 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string">   0.000025 </span>|
-+----------------------+------------+
-17 rows in set, 1 warning (0.00 sec)    
-
-mysql&gt; show profile for query 3;
-+----------------------+----------+
-|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
-+----------------------+----------+
-|<span class="string"> starting             </span>|<span class="string"> 0.000063 </span>|
-|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string"> 0.000029 </span>|
-|<span class="string"> init                 </span>|<span class="string"> 0.000024 </span>|
-|<span class="string"> System lock          </span>|<span class="string"> 0.000730 </span>|
-|<span class="string"> optimizing           </span>|<span class="string"> 0.000014 </span>|
-|<span class="string"> statistics           </span>|<span class="string"> 0.000021 </span>|
-|<span class="string"> preparing            </span>|<span class="string"> 0.000010 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
-|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> Creating sort index  </span>|<span class="string"> 5.286166 </span>|
-|<span class="string"> end                  </span>|<span class="string"> 0.000012 </span>|
-|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> closing tables       </span>|<span class="string"> 0.000011 </span>|
-|<span class="string"> freeing items        </span>|<span class="string"> 0.000016 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
-+----------------------+----------+
-17 rows in set, 1 warning (0.00 sec)
-</code></pre><p>查询1 基本所有的耗时都在 Sending Data 时期，查询3 的耗时在创建排序索引的时期，也就是 filesort 的耗时了，Sending Data是什么鬼玩意！</p>
+          <span itemprop="articleBody"><p>今天处理系统问题时，偶然发现 Console 里系统日志一直在打一些奇怪的错误日志，统计了下总数有 10w+ …</p>
+<p> <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F6%2F1466566947114.png" alt="console_log"><br>猜测是哪个软件的流氓进程，直到看到最后这行日志，像是个系统备份服务。<br>mtmfs 是个啥子呢</p>
 <blockquote>
-<p>Sending data</p>
-<p>The thread is reading and processing rows for a SELECT statement, and sending data to the client. Because operations occurring during this this state tend to perform large amounts of disk access (reads), it is often the longest-running state over the lifetime of a given query.</p>
+<p><strong>mtmfs</strong> is the <em>Mobile Time Machine File System</em>, that handles Local snapshots, both making them and managing them (consolidating, deleting, etc).  They’re made on laptops running Lion whenever Time Machine is ON, whether you’re in range of your Time Machine backup destination or not.  These are completely separate from “normal” Time Machine backups to an external HD, Time Capsule, etc.</p>
 </blockquote>
-<p>官方对这个状态解释的是处理查询的数据及返回给客户端，根据查询3能排除返回客户端耗时的原因。<br><code>问题很早就看出来了，create_time是varchar类型，但sql对比的是一个int类型，解决方案就是改为Int/Bigint类型。</code><br>但是慢的原因还未知，随后又增加了其他的测试，例如把name换成主键id，速度立马变成不到5秒</p>
-<pre><code>+----------------------+----------+
-|<span class="string"> Status               </span>|<span class="string"> Duration </span>|
-+----------------------+----------+
-|<span class="string"> starting             </span>|<span class="string"> 0.000061 </span>|
-|<span class="string"> checking permissions </span>|<span class="string"> 0.000007 </span>|
-|<span class="string"> Opening tables       </span>|<span class="string"> 0.000014 </span>|
-|<span class="string"> init                 </span>|<span class="string"> 0.000019 </span>|
-|<span class="string"> System lock          </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> optimizing           </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> statistics           </span>|<span class="string"> 0.000018 </span>|
-|<span class="string"> preparing            </span>|<span class="string"> 0.000013 </span>|
-|<span class="string"> Sorting result       </span>|<span class="string"> 0.000003 </span>|
-|<span class="string"> executing            </span>|<span class="string"> 0.000002 </span>|
-|<span class="string"> Sending data         </span>|<span class="string"> 4.531929 </span>|
-|<span class="string"> end                  </span>|<span class="string"> 0.000009 </span>|
-|<span class="string"> query end            </span>|<span class="string"> 0.000006 </span>|
-|<span class="string"> closing tables       </span>|<span class="string"> 0.000010 </span>|
-|<span class="string"> freeing items        </span>|<span class="string"> 0.000041 </span>|
-|<span class="string"> cleaning up          </span>|<span class="string"> 0.000015 </span>|
-+----------------------+----------+
-16 rows in set, 1 warning (0.00 sec)
-</code></pre><p>可以看到Sending data时间大大降低，是因为<code>id</code>是索引字段？那么我给<code>name</code>也增加一个索引…<br>结果竟然依旧是200多s，这就奇怪了，难道是因为name的长度太大？ 再新增一个sex char(2)，并建好索引，<br>结果依旧一样！</p>
-<pre><code><span class="header">mysql&gt; show profiles;
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-<span class="header">| Query_ID | Duration     | Query                                                                                                      |
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-|        1 |   0.00179100 | explain  select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at limit 1000 |
-|        2 | 195.10171300 | select name, created_</span>at from user where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000          |
-|        3 |   5.28713500 | select name, created<span class="emphasis">_at from user where created_</span>at &gt; 1434115807296 order by created<span class="emphasis">_at                     |
-|        4 |   4.53215900 | select id, created_</span>at from user  where created<span class="emphasis">_at &gt; 1434115807296 order by created_</span>at limit 1000           |
-<span class="header">|        5 | 209.23518600 | select sex, created_at from user  where created_at &gt; 1434115807296 order by created_at limit 1000          |
-+----------+--------------+------------------------------------------------------------------------------------------------------------+</span>
-</code></pre><p>这个问题有待解决！</p>
+<p>Lion 以上的系统，只要打开了 Time Machine 就会启动 mtmfs 进程。查得 mtmfs 进程监听地址是 localhost ，本地 ping 发现不通。查看 /etc/hosts :<br><code>127.0.0.1 test.pay.inter.domian</code><br>原来是自己测试时把 localhost 域给改掉了，改回来即可<br><code>127.0.0.1 localhost</code></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2016/story-of-an-email/" itemprop="url">
+                一封邮件的故事
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2016-02-29T22:28:00+08:00" content="2016-02-29">
+            2016-02-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/story-of-an-email/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/story-of-an-email/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>下午收到封邮件，标题是沉痛哀悼xxxx，差点吓尿… 原来是哀悼之前的项目下线。引发了很多的回忆…<br>两年前加入雪球时写了篇十个字博客，今天就来完成那篇文章吧<br>Snowball 是雪球的「核心」项目（从名字就能看出来），就像歌手出道喜欢发行同名专辑一样。也是因为这个项目，雪球在「互联网金融」领域崭露头角。<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F2%2F1456759177888.png" alt="email"></p>
+<h4 id="第一次上线事故">第一次上线事故</h4><p>记得刚进公司时第一次提交上线代码，是一个技术改造，某个接口虽然已经使用了缓存(redis)，但因为业务较为复杂导致接口速度还是比较慢，最后考虑使用 local-cache 方案替换原有方案。但因为没有仔细了解透业务，导致遗漏一个接口没有替换。上线后，匿名首页出现异常，那时候雪球上线管理非常随意，一天可能上线多次。那次时间正好是下班时后七点左右，我正高兴的和妹纸吃着饭… leader 来电说出问题了，代码回滚，导致饭也没有吃好，以至于至今还记忆犹新。</p>
+<p>之后业务发展越来越好，用户越来越多，单一项目带来的坑也越来越多。随后开始做项目拆分、RPC 改造。别扭着从零开始写 scala ，写到后面越来越顺手。之后换到组合业务、做雪球钱包，全都是 Scala 的项目。</p>
+<h4 id="公司搬家">公司搬家</h4><p>15 年初公司顺利搬迁望京 SOHO, 也从一个小公司转变为100人左右的「中小型企业」，从一两个小破屋变成了有茶水间，健身房，餐厅，多个会议室的让人羡慕的工作环境，终于像一个土豪互联网企业了。 </p>
+<p>公司是大了，但并没有找到自己独有的商业模式。15年开始各种的尝试，当时组合售卖做的风生水起，大家仿佛看到了希望之光，直到某天一位中年秃顶男子来到我司。之前一直都是只闻 「紫金花」其名，不知其厉害。现在亲身体会了…此处省略八百字。</p>
+<p>此路不通后开始转向全力做交易，此前组合业务同事大部分都转到目前我们这个基金业务当中了。小半年后我们的产品终于也即将上市了…尽请期待吧</p>
+<p>雪球目前一百多人，我的工号 3x 也算是个老油条，现在已经有很多新员工不认识了~ 经常吃饭感觉到了一个陌生的公司…虽然人越来越多，但雪球还是那个雪球。</p>
+<h4 id="总结">总结</h4><p>雪球是个好公司，扁平化的管理，宽松的工作环境，管午饭，有年度旅游和各种小福利。产品有自己的逼格，有特有的创新，「组合」上线后已经被多个竞品模仿抄袭。几乎没有办公室斗争，虽然人数过百，还是保持着创业公司的风范。</p>
+<p>当然也有缺点，雪球员工多数个性低调含蓄，从 leader 到员工都如此。整个团队环境是比较内敛的，新员工不容易融入，一些入职不久的新员工因为这个原因也很快就离职了。或许这就是雪球团队特有的一种风格。</p>
+<p>当然以上所有都是我个人作为一个普通员工的看法，嘿</p>
 </span>
         
       
@@ -822,7 +438,7 @@ mysql&gt; show profile for query 3;
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/4/">&raquo;</a>
   </nav>
 
  </div>

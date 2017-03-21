@@ -171,8 +171,8 @@
           
           
             
-              <a class="post-title-link" href="/2013/WordPress的半角全角字符转义/" itemprop="url">
-                WordPress的半角全角字符转义
+              <a class="post-title-link" href="/2014/Filco Minila Air 与 HHKB Pro 2/" itemprop="url">
+                Filco Minila Air 与 HHKB Pro 2
               </a>
             
           
@@ -182,8 +182,8 @@
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2013-07-17T14:52:00+08:00" content="2013-07-17">
-            2013-07-17
+          <time itemprop="dateCreated" datetime="2014-04-01T14:46:00+08:00" content="2014-04-01">
+            2014-04-01
           </time>
         </span>
 
@@ -192,8 +192,8 @@
             &nbsp; | &nbsp; 分類於
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
                 </a>
               </span>
 
@@ -208,8 +208,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/WordPress的半角全角字符转义/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/WordPress的半角全角字符转义/" itemprop="commentsCount"></span>
+              <a href="/2014/Filco Minila Air 与 HHKB Pro 2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/Filco Minila Air 与 HHKB Pro 2/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -224,17 +224,10 @@
 
       
         
-          <span itemprop="articleBody"><p>在WordPress码字中出现了符号中横线”—“ ，页面显示效果却是”—“ 。当你问别人为什么我输入了杠杠却显示了一个大杠呢，相信连专业人士都要思考一会才能明白你的意思。</p>
-<p>这个问题学名是：半角全角字符转义，可以简称代码转义。困扰了我很久，今天终于解决了。</p>
-<p>WordPress 会智能地将源代码中的所有半角符号自动修正为全角符号，以防止外部源代码在网页上执行。这个功能所带来的麻烦就是在输入代码后，显示的不是原始代码，所以有时候网上复制别人代码会发现不好用。</p>
-<p>这个问题应该遇上的不算多，基本只有挨踢的会在博客里写写代码，—这种更多会出现在运维人的博客中～ 既然知道了问题，解决起来就方便多了，方法有多种，这里放出我使用的，并成功的方案（如果你在本文里看到的—是两个的话，说明正确了） 在主题的functions.php 最后添加以下代码：</p>
-<pre><code><span class="comment">//取消内容转义 </span>
-remove_filter(<span class="string">'the_content'</span>, <span class="string">'wptexturize'</span>);
-<span class="comment">//取消摘要转义 </span>
-remove_filter(<span class="string">'the_excerpt'</span>, <span class="string">'wptexturize'</span>);
-<span class="comment">//取消评论转义 </span>
-remove_filter(<span class="string">'comment_text'</span>, <span class="string">'wptexturize'</span>);
-</code></pre><p>保存后问题应该解决了，WordPress的官方介绍请点击<a href="http://codex.wordpress.org/Function_Reference/wptexturize" target="_blank" rel="external">wptexturize</a></p>
+          <span itemprop="articleBody"><p>上周刚入了款新机械键盘 Filco Minila Air 蓝牙版，产地台湾。<br>在机械键盘里无线/蓝牙的非常少，也正是这点吸引了我。先上图</p>
+<p><img src="http://zryblog.qiniudn.com/2014/08/2899409208.jpg" alt="IMG\_0906.jpg"><br><img src="http://zryblog.qiniudn.com/2014/08/3265090577.jpg" alt="IMG\_0907.jpg"><br>我很烦那些缠绕的线，以及庞大的体积，还有那些低劣的灯光/花哨的外表等。Minila Air是67键位，和MacBook键盘大小基本一样。<br>整体的键盘布局较为紧凑，比HHKB略微紧凑，买的青轴，欢快的打字声音还是比较扰民的，所以放在家里使用~<br><img src="http://zryblog.qiniudn.com/2014/08/1111906697.jpg" alt="IMG\_0923.jpg"><br>与HHKB的大小也几乎一致，但高度略高，没有手托的话感觉稍微有一点不舒服。份量也比HHKB稍重，底部防滑效果非常好，胜过HHKB，甚至感觉水平基本移动不了，需要拿起来移动。可惜的是没有无刻的版本，Filco在键盘界是公认的具有上乘质量和手感的，之前我最喜欢的是87键的圣手二代，大小/布局都非常好，但是只有线版本。<br>青轴的声音是「哒哒哒哒哒」，HHKB是电容键盘，声音是「的的的的的」，两者手感完全不一样。有同事认为HHKB的手感更好，我两者都比较喜欢~ 看个人喜好了。</p>
+<p>有人说Minila Air的键位比HHKB好，其实布局基本一样（可以通过DPI和改建设置下达到一致），Minila的优点在于左侧多出Fn键，并且可以通过便捷的方式操作方向键，这也是HHKB的劣势之一。</p>
+<p><strong>总结</strong><br>Filco Minila Air 与 HHKB Pro 2两者不相上下。操作性Minila Air略优，论装B，那还得是HHKB。当然后者的价格也近乎于前者的两倍，充分说明要装B是要付出代价的。<br>总之两者都是不会让你后悔的选择^_^</p>
 </span>
         
       
@@ -265,8 +258,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
           
           
             
-              <a class="post-title-link" href="/2013/雨后的故宫/" itemprop="url">
-                雨后的故宫
+              <a class="post-title-link" href="/2014/性能测试神器Gatling/" itemprop="url">
+                性能测试神器Gatling
               </a>
             
           
@@ -276,8 +269,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2013-07-04T15:54:00+08:00" content="2013-07-04">
-            2013-07-04
+          <time itemprop="dateCreated" datetime="2014-03-28T10:47:00+08:00" content="2014-03-28">
+            2014-03-28
           </time>
         </span>
 
@@ -286,8 +279,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
             &nbsp; | &nbsp; 分類於
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/photo/" itemprop="url" rel="index">
-                  <span itemprop="name">photo</span>
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
                 </a>
               </span>
 
@@ -302,8 +295,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/雨后的故宫/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/雨后的故宫/" itemprop="commentsCount"></span>
+              <a href="/2014/性能测试神器Gatling/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/性能测试神器Gatling/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -318,21 +311,42 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       
         
-          <span itemprop="articleBody"><p>北京经过几天的雨水，这礼拜的天空异常的好，所以我这两天都背着相机，想找时间去拍几张片子。</p>
-<p>昨天下班太晚出门都要天黑了，没得逞。今天下午突然的大雨差点让我以为又泡汤了，幸好雨过天晴，竟然太阳也出来了，下班已经七点了，远地方是去不了了，想了一下决定去景山，因为雨后的天空必然会很美，但要找制高点也不是很好找，市内也就景山还行了。</p>
-<p>到景山已经快八点了，景山顶上各种长枪短炮，好不热闹…… 差点连位置都没有，可惜人懒了点没背脚架。最后只能找缝隙拍了几张…</p>
-<p>有几点遗憾:</p>
+          <span itemprop="articleBody"><p><a href="http://gatling-tool.org/" target="_blank" rel="external">Gatling</a>是一款开源的基于Scala开发的高性能服务器性能测试工具：<a href="https://github.com/excilys/gatling/wiki/Downloads" target="_blank" rel="external">下载地址</a></p>
+<p>Gatling有两个主线版本，一个是最新版本1.5.4;一个是Gatling 2,最新版本是2.0.0-M3a。Gatling 2使用了JDK7进行编译，使用的Scala版本是2.10，它对Gatling的API进行了一些重构和重新设计,目前还处于开发阶段。</p>
+<p>Gatling的目录结构: </p>
 <ul>
-<li><p>没背脚架，天色以暗，为了保证清晰度只能使用高iso，导致噪点还是不少。</p>
-</li>
-<li><p>广角不太够，这火烧云的全貌没有得以展现，效果差不少</p>
-</li>
-<li><p>去的时间还是晚了些，听闻前不久还有彩虹…</p>
-</li>
+<li>bin目录下有2个脚本，gatling和recorder， gatling用来运行测试， recorder用来启动录制脚本的UI的（不推荐使用），</li>
+<li>conf目录是关于Gatling自身的一些配置。</li>
+<li>lib目录是Gatling自身依赖的库文件。</li>
+<li>results目录用来存放测试报告的。</li>
+<li>user-files目录是用来存放测试脚本的。</li>
 </ul>
-<p>最后只能换几个位置拍了几张，拼了幅全景（点击看大图）……</p>
-<p><a href="http://zryblog.qiniudn.com/2014/07/2802488854.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/2802488854.jpg" alt="gugong"></a></p>
-<p>昨天没得逞，只好在路上把看了无数遍的坟包给拍了！！！<br><img src="http://zryblog.qiniudn.com/2014/07/2758677482.jpg" alt="IMG_1224"></p>
+<p>user-files下有basic/advanced目录中提供了几个性能测试脚本的示例。下面是一个我自己写的Gatling 2测试案例：</p>
+<pre><code>val httpProtocol = http
+    .<span class="function"><span class="title">baseURL</span><span class="params">(<span class="string">"http://zhourongyu.me"</span>)</span></span>
+    .<span class="function"><span class="title">acceptCharsetHeader</span><span class="params">(<span class="string">"utf-8;q=0.7,*;q=0.7"</span>)</span></span>
+    .<span class="function"><span class="title">acceptHeader</span><span class="params">(<span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"</span>)</span></span>
+    .<span class="function"><span class="title">acceptEncodingHeader</span><span class="params">(<span class="string">"gzip, deflate"</span>)</span></span>
+    .<span class="function"><span class="title">acceptLanguageHeader</span><span class="params">(<span class="string">"en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4"</span>)</span></span>
+    <span class="class">.disableFollowRedirect</span>
+val <span class="tag">header</span> = Map(
+    <span class="string">"Keep-Alive"</span> -&gt; <span class="string">"115"</span>,
+    <span class="string">"Content-Type"</span> -&gt; <span class="string">"application/json; charset=UTF-8"</span>)
+</code></pre><p>在这个类中定义了一个httpConf,定义了请求头的一些基本信息</p>
+<pre><code>val scn = <span class="function"><span class="title">scenario</span><span class="params">(<span class="string">"home page"</span>)</span></span>
+            .<span class="function"><span class="title">exec</span><span class="params">( http(<span class="string">"request_1"</span>)</span></span>
+                .<span class="function"><span class="title">get</span><span class="params">(<span class="string">"/"</span>)</span></span>
+                .<span class="function"><span class="title">headers</span><span class="params">(header)</span></span>)
+            .<span class="function"><span class="title">pause</span><span class="params">(<span class="number">4</span>, <span class="number">5</span>)</span></span>
+            .<span class="function"><span class="title">exec</span><span class="params">( http(<span class="string">"search "</span>)</span></span>
+                .<span class="function"><span class="title">post</span><span class="params">(<span class="string">"/search"</span>)</span></span>
+                  .<span class="function"><span class="title">param</span><span class="params">(<span class="string">"access_token"</span>, <span class="string">"cZtWF314n9cdmY5HVLhspO"</span>)</span></span>
+                            .<span class="function"><span class="title">param</span><span class="params">(<span class="string">"title"</span>,<span class="string">"gatling"</span>)</span></span>
+                  .<span class="function"><span class="title">check</span><span class="params">(status.is(<span class="number">200</span>)</span></span>))
+</code></pre><p>定义了一个测试场景，用户先访问Github首页，检查http返回状态码是否为200，然后暂停一段时间后再执行一个查询操作，查询关键字是test，检查http返回状态码是否为200</p>
+<pre><code><span class="function"><span class="title">setUp</span><span class="params">(scn.inject(ramp(<span class="number">100</span> users)</span></span> over (<span class="number">10</span> seconds)))
+    .<span class="function"><span class="title">protocols</span><span class="params">(httpProtocol)</span></span>
+</code></pre><p>指定100个用户模拟该测试场景。100个用户以每秒10个递增，持续10秒。<br>注：<br>一个Gatling测试脚本就是一个scala的类，该类必须继承Simulation类。<br>Gatling提供了非常完善的DSL：<a href="http://gatling-tool.org/cheat-sheet/" target="_blank" rel="external">API查询</a> || <a href="https://github.com/excilys/gatling/wiki" target="_blank" rel="external">WIKI</a></p>
 </span>
         
       
@@ -363,8 +377,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
           
           
             
-              <a class="post-title-link" href="/2013/行之天津/" itemprop="url">
-                行之天津
+              <a class="post-title-link" href="/2014/2014开春了/" itemprop="url">
+                2014开春了
               </a>
             
           
@@ -374,8 +388,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2013-06-18T14:42:00+08:00" content="2013-06-18">
-            2013-06-18
+          <time itemprop="dateCreated" datetime="2014-03-19T15:13:00+08:00" content="2014-03-19">
+            2014-03-19
           </time>
         </span>
 
@@ -400,8 +414,8 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2013/行之天津/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/行之天津/" itemprop="commentsCount"></span>
+              <a href="/2014/2014开春了/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/2014开春了/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -416,204 +430,10 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
       
         
-          <span itemprop="articleBody"><p>天津号称北方第二大城市，作为通商口岸，被西方多个国家设立过租界，所以很多天津建筑都是国际范儿的～ 和青岛类似，例如意式风情街。</p>
-<p>天津小吃也是很出名的，著名的是tian天津三绝：狗不理，十八街麻花，耳朵眼炸糕。切记千万不要因为吃来天津……三样我都吃过，除了麻花还行，狗不理是公认的难吃，炸糕也一般。天津并不算好的旅游地区，可玩之处较少，大部分都是人文建筑，此行也是过来休闲摄影的。</p>
-<p>一： 天津之眼。 英国有伦敦之眼，天津也出一个天津之眼。天津真算个山寨之城，不光仿照国外，连国内也不放过。“外滩”正在建设中。放眼过去摊对面高楼大厦还在建设ing……</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/3170721564.jpg" alt="IMG_0985"></p>
-<p>二、天津市东临渤海，内有海河，算半个沿海城市吧，虽然大部分都是港口，只开放了部分游玩区域，在天津大部分旅行团都会带你们去渤海边游玩，其实那边啥也没有，只能看看海，玩一玩海上项目（坐船）之类的。</p>
-<p>还有一处官方名叫东疆湾景区，其实是一个在众多港口中人工填补出一小片海域而建成的。问天津人很多人都不知道，其实是他们都称之为“人工岛”，好土的名字。我们最终选择去了人工岛，从塘沽到人工岛有近30km，打车需要60元左右，门票50/人。 本以为没多少人去，因为去渤海都是10元～，结果到那一看车都停的满满当当，很多北京牌照，大部分都是自驾过来的。 事实证明我们选择没有错， 海滩还是可以玩一玩的～</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/3029396005.jpg" alt="IMG_0783"><br><img src="http://zryblog.qiniudn.com/2014/07/1775213445.jpg" alt="IMG_0894"><br><img src="http://zryblog.qiniudn.com/2014/07/3789894395.jpg" alt="IMG_0857"></p>
-<p>三、人文建筑。 意式风情街，瓷房子，五大道等。两老爷们看着好别扭….囧…</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/204679873.jpg" alt="IMG_4763"></p>
+          <span itemprop="articleBody"><p>春天已经来临，可是北京可以说是基本没有春天的，马上就会迎来夏季~<br>在开春仅有的几天里，周末去了趟奥森~ 结果却没发现春天的痕迹…只有残枝枯叶、雾霾和人。 </p>
+<p>北京有条中轴线，以故宫中线对称，南至永定门，北至鼓楼，再往北延伸就到奥林匹克森林公园。<br>奥森的山顶可以刚好站在中轴线上，下面两张是站在山顶中轴线上拍摄<br><img src="http://zryblog.qiniudn.com/2014/07/2025545208.jpg" alt="雾霾中的奥森"><br><img src="http://zryblog.qiniudn.com/2014/07/4201829084.jpg" alt="拥拥攘攘的人"></p>
+<p>山顶是这样，但在下面却感觉还好…是眼不见心为净么。就算是这样的天气，也挡不住大批的人群出来游玩。<br>最后看见湖中的几块石头和浮漂，感觉挺有意思，就玩起了长曝。因为天色比较亮，湖水也不平静。为了拍张能看的，一等就等了3个小时。<br><img src="http://zryblog.qiniudn.com/2014/07/1223434668.jpg" alt="石头与浮漂"><br>虽然不是很满意，但又冷又饿，只好作罢回家。</p>
 </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/Clear简介/" itemprop="url">
-                Clear简介
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-06-07T12:09:00+08:00" content="2013-06-07">
-            2013-06-07
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/Clear简介/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Clear简介/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p><img src="http://zryblog.qiniudn.com/2014/07/3552376262.png" alt="IMG_0373"><br>Clear刚出世的时候以令人上耳目一新的设计和交互方式迅速爬到了付费排行榜第一，传说只有了不到10小时。</p>
-<p>但发现不少人买了后评分并不高，许多人把它当作todo类的App，和其他gtd软件相比功能差很多，所以不是非常满意。我只觉得它是个备忘录性质的App，所以还是非常满意的。</p>
-<p>Clear主要分三层， 菜单、分类、详细事项</p>
-<p>主要操作如下：</p>
-<p>切换层： 大幅下拉， 详细事项—(下拉)—&gt;分类—(下拉)—&gt;菜单<br>新建事项： 点击空白处/小幅下拉/双指在两条事项上做张开操作<br>完成事项： 在单条事项上右滑使该项目变成完成状态，重新打开只需重复操作(右滑)<br>删除： 左滑<br>打开收起： 双指进行捏/张开的操作可以缩放当前列表<br>菜单里有主题、提醒方式等设置，其中一向设置是否在icon上显示数目提醒，这个对有强迫症的人来说是很实用的~</p>
-<p>ps：貌似有几个隐藏主题可以开启哦，攻略网上有。</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/Array与List的那些事/" itemprop="url">
-                Array与List的那些事
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-06-06T13:42:00+08:00" content="2013-06-06">
-            2013-06-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/Array与List的那些事/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Array与List的那些事/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Java Api中提供了数组对List的转换方法</p>
-<pre><code>String[] tmp = {<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>};
-
-<span class="keyword">List</span>&lt;String&gt; <span class="keyword">list</span> = Arrays.asList(tmp);
-
-<span class="keyword">list</span>.<span class="keyword">clear</span>() <span class="comment">//抛出java.lang.UnsupportedOperationException异常</span>
-</code></pre><p>Arrays的asList实现方式是使用参数引用的数组的大小来new的一个ArrayList，对返回列表的更改会“直写”到数组，而数组没有clear,add,remove等方法。</p>
-<p>可以使用CollectionUtils(org.apache.commons.collections.CollectionUtils)进行深度转换</p>
-<pre><code><span class="built_in">List</span> <span class="built_in">list</span><span class="subst">=</span> <span class="literal">new</span> ArrayList(); CollectionUtils<span class="built_in">.</span>addAll(<span class="built_in">list</span>, tmp);
-</code></pre><p>随后对List进行去重操作，方法有多种，这里使用HashSet来实现</p>
-<pre><code><span class="keyword">public</span> <span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> removeDuplicate(<span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> <span class="built_in">list</span>) {
-    HashSet<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> hs <span class="subst">=</span> <span class="literal">new</span> HashSet<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>(<span class="built_in">list</span>);
-    <span class="built_in">list</span><span class="built_in">.</span>clear();
-    <span class="built_in">list</span><span class="built_in">.</span>addAll(hs);
-    <span class="keyword">return</span> <span class="built_in">list</span>;
-}
-</code></pre></span>
         
       
     </div>
@@ -636,7 +456,7 @@ remove_filter(<span class="string">'comment_text'</span>, <span class="string">'
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/12/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/10/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/12/">&raquo;</a>
   </nav>
 
  </div>

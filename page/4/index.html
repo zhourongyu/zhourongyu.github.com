@@ -171,8 +171,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/Scala 之 JavaConverters 与 JavaConversions/" itemprop="url">
-                Scala 之 JavaConverters 与 JavaConversions
+              <a class="post-title-link" href="/2016/about-api-design/" itemprop="url">
+                浅谈 Api 设计
               </a>
             
           
@@ -182,8 +182,8 @@
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2015-03-15T07:58:00+08:00" content="2015-03-15">
-            2015-03-15
+          <time itemprop="dateCreated" datetime="2016-01-27T22:15:23+08:00" content="2016-01-27">
+            2016-01-27
           </time>
         </span>
 
@@ -208,8 +208,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/Scala 之 JavaConverters 与 JavaConversions/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/Scala 之 JavaConverters 与 JavaConversions/" itemprop="commentsCount"></span>
+              <a href="/2016/about-api-design/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/about-api-design/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -224,239 +224,28 @@
 
       
         
-          <span itemprop="articleBody"><p>在实际使用中经常遇见Scala &lt;=&gt; Java之间的转换。例如要调用某个第三方包的方法需要一个Java的Map，那么可能用到Scala提供的JavaConverters或JavaConversions工具包<br>案例：</p>
-<pre><code><span class="comment">//待转换的Map</span>
-scala&gt; val m = <span class="function"><span class="title">Map</span><span class="params">(<span class="number">1</span>-&gt;<span class="number">2</span>)</span></span>
-m: scala<span class="class">.collection</span><span class="class">.immutable</span><span class="class">.Map</span>[Int,Int] = <span class="function"><span class="title">Map</span><span class="params">(<span class="number">1</span> -&gt; <span class="number">2</span>)</span></span>
-</code></pre><p>JavaConversions示例：</p>
-<pre><code><span class="keyword">import</span> collection.JavaConversions._
-scala&gt; <span class="variable"><span class="keyword">val</span> conversionsMap</span> = mapAsJavaMap(m).asInstanceOf[java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>]]
-conversionsMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-</code></pre><p>JavaConversters示例：</p>
-<pre><code><span class="keyword">import</span> scala.collection.JavaConverters._
-scala&gt; <span class="variable"><span class="keyword">val</span> convertersMap</span> = m.asJava
-convertersMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-</code></pre><p>俩者都转换成功，看似一模一样的效果，为什么共同存在？</p>
-<pre><code>scala&gt; conversionsMap.<span class="function"><span class="title">put</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>
-java<span class="class">.lang</span><span class="class">.UnsupportedOperationException</span>
-  at java<span class="class">.util</span><span class="class">.AbstractMap</span><span class="class">.put</span>(AbstractMap<span class="class">.java</span>:<span class="number">203</span>)
-  ... <span class="number">33</span> elided      
-
-  scala&gt; convertersMap.<span class="function"><span class="title">put</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>
-  java<span class="class">.lang</span><span class="class">.UnsupportedOperationException</span>
-  at java<span class="class">.util</span><span class="class">.AbstractMap</span><span class="class">.put</span>(AbstractMap<span class="class">.java</span>:<span class="number">203</span>)
-  ... <span class="number">33</span> elided 
-</code></pre><p>转换成功后的Map竟然是不可修改的，这好像不符合我的需求，猜测是因为m是immutable类型的原因，那么继续：</p>
-<pre><code><span class="comment">//先转换成mutable</span>
-<span class="variable"><span class="keyword">val</span> m2</span> = collection.mutable.Map(m.toSeq: _*)
-scala&gt; m2.+(<span class="number">3</span>-&gt;<span class="number">4</span>)
-res4: scala.collection.mutable.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = Map(<span class="number">1</span> -&gt; <span class="number">2</span>, <span class="number">3</span> -&gt; <span class="number">4</span>)
-  <span class="comment">//好，现在m2可以修改了</span>
-
-  scala&gt; <span class="variable"><span class="keyword">val</span> conversionsMap</span> = mapAsJavaMap(m2).asInstanceOf[java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>]]
-conversionsMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-scala&gt; conversionsMap.put(<span class="number">3</span>,<span class="number">4</span>)
-java.lang.UnsupportedOperationException
-  at java.util.AbstractMap.put(AbstractMap.java:<span class="number">203</span>)
-  ... <span class="number">33</span> elided
-  <span class="comment">//conversionsMap依旧不能修改，囧</span>
-
-scala&gt; <span class="variable"><span class="keyword">val</span> convertersMap</span> = m2.asJava
-convertersMap: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>}
-scala&gt; convertersMap.put(<span class="number">3</span>,<span class="number">4</span>)
-res5: <span class="typename">Int</span> = <span class="number">0</span>
-scala&gt; convertersMap
-res6: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>, <span class="number">3</span>=<span class="number">4</span>}
-<span class="comment">//convertersMap 可以修改</span>
-</code></pre><p>那么JavaConversions需要转换出可修改的Map该如何操作，搜索一番得到答案，JavaConversions提供的是Java集合之间的隐式转换，如果想让JavaConversions产出可变的Map应该如下操作：</p>
-<pre><code><span class="comment">//JavaConversions直接隐式的转换了</span>
-<span class="variable"><span class="keyword">val</span> conversionsMap2</span>: java.util.Map[<span class="typename">Int</span>, <span class="typename">Int</span>] = m2
-scala&gt; conversionsMap2.put(<span class="number">3</span>,<span class="number">4</span>)
-res7: <span class="typename">Int</span> = <span class="number">0</span>
-scala&gt; conversionsMap2
-res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int</span>] = {<span class="number">1</span>=<span class="number">2</span>, <span class="number">3</span>=<span class="number">4</span>}
-</code></pre><p>JavaConversions出现在V2.8版本，JavaConverters出现于V2.8.1，相比JavaConversions更新，并且显示的转换更易于理解，推荐使用JavaConverters</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/2014年读过的那些书/" itemprop="url">
-                2014年读过的那些书
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2014-12-31T16:00:00+08:00" content="2014-12-31">
-            2014-12-31
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/2014年读过的那些书/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/2014年读过的那些书/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="小说">小说</h3><p>《地球大炮》<br>《殷商玛雅征服史》<br>《时间之墟》<br>《王小波全集》（1-3）  </p>
-<h3 id="计算机">计算机</h3><p>《高性能Linux服务器构建实战》<br>《快学Scala》  </p>
-<h3 id="历史">历史</h3><p>《费马大定理》<br>《战争就是这么回事》（1-3）  </p>
-<h3 id="其他">其他</h3><p>《集装箱改变世界》<br>《时间的形状》<br>《牌局心理学》<br>《男人除了性还在想什么？》  </p>
-<hr>
-<p>很明显14年读书少了，太多的东西让人分心，又到了反思的时刻了。<br>因为14年入市，还看了一些投资相关的书，结论就是：都是放屁。总结起来就一句话：投资有风险，入市需谨慎。大部分讲的都是鸡蛋要分开放的各种道理，这类书还是少看为秒。</p>
-<p>《集装箱改变世界》 这本书挺有意思，看书名完全没什么感觉，看后发现津津有味，似乎看到了世界变化的原理，明白一些世界定律，比如：技术往往不太重要，重要的是如何应用。算是个人年度推荐的唯一书籍了。</p>
-<p>随着信息获取的方式增长，原来看纸质书，后来基本看电子书，现在电子书都缩减了，各种短篇微博&amp;微信都能合集出书，似乎书的价值在越来越低，甚至都不用看书了，微信公众号，微博，社交平台…各种的信息占据了很大一部分时间。如果不使用这些，会丢失很多实时信息，似乎与当前社会有点脱节，很out。如何在这里面来快速获取有效信息越来越重要。 </p>
-<p>新的一年要好好规划，新年快乐！</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/HOW-TO-CLEAN-HHKB/" itemprop="url">
-                HOW-to-CLEAN-HHKB?!
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2014-12-30T15:55:00+08:00" content="2014-12-30">
-            2014-12-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/HOW-TO-CLEAN-HHKB/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/HOW-TO-CLEAN-HHKB/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>小h陪我俩年多了，饱经沧桑与折磨，却依然不离不弃~ 看着身边不少朋友都加入了hhkb阵营，倍感欣慰…hahaha<br>因为是白色版本，易脏，非常不易洗，在2014过去之前给它好好洗个澡吧，这也是它的第二个「澡」</p>
-<ol>
-<li><p>拔键帽，试用过市面上常用的几种拔键器，貌似不太好拔，原因不明。换成原厂的拔键器后则轻松很多，如图：<br><img src="http://zryblog.qiniudn.com/2014/12/1358260270.jpg" alt="hhkb-clean-1.jpg"><br>不要看这个键盘挺干净，其实是洗完后拍的，忘记把它的脏样子留下来了~<br>拆卸的时候注意下每排键帽的高度不同，别到装得时候开始惆怅了。拆卸空格键的时候要小心下面的那颗弹簧，很容易飞出去~</p>
-</li>
-<li><p>拆下的键帽可机洗，可手洗，第一次我试用机洗「扔洗衣机」，效果非常好~ 但总觉得会对键帽造成一定磨损，这次索性就手洗了，目测效果比机洗差一个等级。键帽的材质是pbt，不易出油，但不清楚洗涤液对它的腐蚀性如何。<br>底座的清洗方式只能动用小刷子和Cyber Clean了，效果也不错。<br>洗完拍个全家福，预祝2015年「阖家欢乐」：<br><img src="http://zryblog.qiniudn.com/2014/12/2623668468.jpg" alt="hhkb-clean-2.jpg"></p>
-</li>
+          <span itemprop="articleBody"><p>之前在团队内做了一次 Api 的规范化，决定采用 RESTful Api 的架构。 并统一了 JSON 结构，约定常用属性、字段的命名方式、URL/HTTP Method 的使用规则。<br>这样的好处不用多说，一个方便易懂，易于使用的 Api 能大大的提高开发效率（做开发的有谁没被第三方 Api 坑过？）  </p>
+<h5 id="设计过程">设计过程</h5><p>之前我们有一些设计比较不错的 api 可能是这样的：</p>
+<pre><code><span class="regexp">/user/</span>(add<span class="regexp">/get/</span>cancel)?id=<span class="number">123</span>
+<span class="regexp">/topic/</span>(create<span class="regexp">/destroy/</span>destroy_batch)?id=<span class="number">123</span> 
+</code></pre><p>也算是简单易懂了，那为什么要换成 RESTful 架构？（关于 REST 的特性，设计思想什么的就不说了，网上自取）这样带来最直接的问题就是不统一（规范）。我的 CRUD 叫 add/get/cancel，换一个人可能叫 create/modify/destroy， 甚至可能我的是 adduser 你的是 useradd (瞬间想到了 ubuntu 有木有！)。</p>
+<p><strong>规范这东西小范围没什么大问题， 一但队伍庞大了就是个大坑，所以大公司在规范上都是下了大功夫。</strong></p>
+<p>HTTP 协议就是一个标准的 REST 实现，RESTful Api 是以 HTTP 协议为强烈依托的，最终我们规范后是这样的：</p>
+<pre><code><span class="regexp">/user/</span>{uid} HTTP.GET<span class="regexp">/POST/</span>PUT/DELETE
+<span class="regexp">/topic/</span>{tid} HTTP.GET<span class="regexp">/POST/</span>PUT/DELETE
+</code></pre><p>暂时只使用这四个方法，使用 PUT 替换 PATCH。很多人对部分情景下 PUT / POST 的使用会有疑问:</p>
+<pre><code>解答：根据 HTTP 文档介绍，GET/HEAD/PUT/DELETE 是 Idempotent（重复执行多遍，結果一致）。  
+<span class="keyword">POST</span> 每次执行肯定会新增一条记录，大多数情况下可以根据此原则从 <span class="keyword">POST</span>/PUT 中选择合适的动作。  
+</code></pre><p>/模块/{id} HTTP.Mehod 这种统一的规范能节省出不少的沟通时间~ 刚开始感觉很美好，当场景多起来之后又出现一些新的问题：<br>有一种功能叫「撤单」，使用 /order/{oid} HTTP.DELETE吗? 那删除订单用什么呢？<br>所以有人开始用 /order/undo/{order_id} HTTP.PUT 类似的方式。按 REST 规范每个 URL 都是一个独立资源，其中不应该包含任何动作。<br>也许应该改成 /order/{oid}?action=undo HTTP.PUT，但这样可能会在同一个接口中引入过多的操作。</p>
+<p>类似这样的模糊的场景可能有许多，在 Api 数量随业务庞大的过程中需要反复的对当前 Api 做迭代重构，使它更适合当前的业务场景</p>
+<h5 id="那满足以上设计就是_RESTful_Api_吗？">那满足以上设计就是 RESTful Api 吗？</h5><pre><code><span class="string">eg:</span> <span class="regexp">/topic/</span>fav/{tid} HTTP.POST 收藏某个话题
+</code></pre><p>这个接口需要从 token 中获取登陆用户信息，且所有的用户都是访问同一个地址。<br>这与 REST 架构中的「无状态」和「唯一资源」的概念冲突。<br>按要求可能是这样的：</p>
+<pre><code><span class="regexp">/topic/</span>{uid}<span class="regexp">/fav/</span>{tid} 
+</code></pre><p>当然这些都是 REST 的建议，如何做还是要根据具体的业务情况而定</p>
+<h5 id="总结下来就是以下几点：">总结下来就是以下几点：</h5><ol>
+<li>规范很重要</li>
+<li>保持 Api 的优雅是一件持续的重复迭代的工作</li>
+<li>不要局限于各种规范中，要在设计规范的时候充分考虑业务上的灵活性</li>
 </ol>
 </span>
         
@@ -488,8 +277,8 @@ res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int
           
           
             
-              <a class="post-title-link" href="/2014/实用的Git高级用法 (一)/" itemprop="url">
-                实用的Git高级用法 (一)
+              <a class="post-title-link" href="/2015/try-osx-notification/" itemprop="url">
+                巧用 OSX 的 Notification
               </a>
             
           
@@ -499,8 +288,8 @@ res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2014-12-16T15:31:00+08:00" content="2014-12-16">
-            2014-12-16
+          <time itemprop="dateCreated" datetime="2015-12-22T13:54:30+08:00" content="2015-12-22">
+            2015-12-22
           </time>
         </span>
 
@@ -525,8 +314,8 @@ res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2014/实用的Git高级用法 (一)/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/实用的Git高级用法 (一)/" itemprop="commentsCount"></span>
+              <a href="/2015/try-osx-notification/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/try-osx-notification/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -541,53 +330,82 @@ res8: java.util.Map[<span class="typename">Int</span>,<span class="typename">Int
 
       
         
-          <span itemprop="articleBody"><p>本文大部分内容翻译自一篇Git好文（<a href="http://code.tutsplus.com/tutorials/git-tips-from-the-pros--net-29799" target="_blank" rel="external">原文地址</a>），经过我拙劣的英文加上自定义的删减与修改~ 也作为Git系列的开头篇</p>
-<h3 id="Interactive_stage">Interactive stage</h3><p>你也许经常会遇到在对一个文件的多次不同的修改，并且在提交的时候常犹豫哪一段修改是需要commit，这时你可以使用：  </p>
-<pre><code>git<span class="instruction"> add/commit </span>-p &lt;FILE&gt;
-</code></pre><p>加上 <code>-p</code> 参数之后，git会一块一块的显示出差异，确认当前块是否需要暂存。这样你可以提交文件中的部分修改，还可以使用 <code>-i</code> 参数，更为详细的交互式界面。</p>
-<blockquote>
-<p>ps: 使用交互式的提交不仅能让Commit更加的准确，还可以对代码进行一次很好的review，是值得养成的一个好习惯</p>
-</blockquote>
-<h3 id="Checkout_Your_Last_Branch">Checkout Your Last Branch</h3><p>当你正忙碌的工作在当前分支下，此时有紧急需求需要对之前的主分支做一些修改，<br>这时候常用的操作流：</p>
-<pre><code>git stash
-git checkout develop
-<span class="comment">//修改提交后 ...commit..push..</span>
-git checkout xxx
-git stash <span class="keyword">pop</span>
-</code></pre><p>你可能觉得这样很繁琐乏味，你需要这样的操作：</p>
-<pre><code>git checkout -
-<span class="comment">//切换到develop分支 ...commit...push</span>
-git checkout -
-</code></pre><p>这样可以快速切换分支，只能切换到当前分支的上一级母分支，和*NIX的 <code>cd -</code> 类似。 </p>
-<h3 id="Show_Which_Branches_are_Merged_(or_not)">Show Which Branches are Merged (or not)</h3><p>工作中经常同时工作于多个分支之上，一个项目的feature分支会非常的多，可以通过 <code>branch --list/-l</code> 看到，常遇到情况是，当想清理分支的时候心理还带着一丝犹豫，担心这个分支是否合并到主分支过，或者经常忘记哪些分支合并过，哪些没有。一般情况下都去查看pr记录，或者检查commit信息。<br>那你可能需要是以下的操作：</p>
-<pre><code><span class="title">git</span> branch --<span class="built_in">no</span>-merged
-</code></pre><p>可以查看有哪些分支还没有合并到当前的分支， 当然也可以查看哪些已经合并过：</p>
-<pre><code>git branch <span class="comment">--merged</span>
-</code></pre><p>并且还可以配合一些简单的UNIX工具来执行迅速的删除操作，像这样：</p>
-<pre><code>git branch --merged <span class="string">| xargs git branch -d</span>
-</code></pre><h3 id="Grab_a_File_from_Another_Branch_without_Switching_Branches">Grab a File from Another Branch without Switching Branches</h3><p>当你在做一些类似重构的工作时，你可能需要从多个分支中取出不同的几个修改纳入到当前的分支来。<br>如果没有下面的提示，你可能进行的操作是：  </p>
-<pre><code><span class="keyword">while</span>(<span class="constant">true</span>){
-  stash 当前修改
-  切换分支
-  找出修改的部分，<span class="keyword">copy</span>到临时文件
-  checkout -
-  粘贴到该修改的地方
-}
-</code></pre><p>或者你可以进行简单的文件迁移工作：</p>
-<pre><code>git checkout &lt;BRANCH&gt; -- path/to/file<span class="class">.rb</span>
-eg: 
-#把tmp分支的 <span class="class">.gitignore</span> 修改迁移到本分支
-git checkout tmp -- ./.gitignore
-</code></pre><p>注意，这里是整个文件的覆盖，并不是合并。</p>
-<h3 id="Git_Branches_Sorted_by_Last_Commit">Git Branches Sorted by Last Commit</h3><p>你应该已经看到了本地的一大堆杂乱的分支，并且使用之前的 <code>--merged</code> 清理过其中一些分支了，那对于剩下的分支，该如何确定哪些是有用的，哪些是过时的呢？</p>
-<p><code>for-each-ref</code> 命令会输出每个分支列表，并且显示最后一次的提交信息。重要的是，我们还可以对列表进行日期的排序，以下命令会显示整个分支列表以及最后一次提交信息和提交者，并且按日期降序排序。</p>
-<pre><code>//这是原版
-git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'
-//原版并没有输出commit时的message，以下是我个人使用的改良版
-git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sort=-committerdate --format='%(committerdate:short) %(refname:short) <span class="string">"%(subject)"</span> [%(committername)]'
-</code></pre><p>建议给它取一个别名，方便日后使用。</p>
-<pre><code>git config --<span class="keyword">global</span> <span class="keyword">alias</span>.latest <span class="string">"for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) "</span><span class="variable">%(</span>subject)<span class="string">" [%(committername)]'"</span>
-</code></pre></span>
+          <span itemprop="articleBody"><p>起因：最近兴起一个 App 叫好近，专做 SOHO 附近小食，每日推出 1 分钱抢购或一些特价下午茶之类的活动，很难抢，不是错过就是被秒抢，遂想出个办法来提高抢购率！</p>
+<p>最直接的需求是相对即时通知，让你快人一步。此类工具用 Python 来实现再合适不过了</p>
+<h4 id="提醒方式">提醒方式</h4><p>工作期间不能老盯着手机，考虑通过 OSX 的 Notification 实现，让它带着音乐蹦出来~<br>调用 OSX 接口需要依赖 PyObjC 模块，通过 pip 装之（时间比较长，装一堆 OC 相关的包）：</p>
+<pre><code>pip <span class="keyword">install</span> PyObjC
+</code></pre><p>调用的代码示例（python2.7+适用）:</p>
+<pre><code>import objc
+import Foundation
+
+<span class="comment">//py2.5可以通过 from Foundation import NSUserNotification 方式引入 </span>
+NSUserNotification = objc.<span class="function"><span class="title">lookUpClass</span><span class="params">(<span class="string">'NSUserNotification'</span>)</span></span>
+NSUserNotificationCenter = objc.<span class="function"><span class="title">lookUpClass</span><span class="params">(<span class="string">'NSUserNotificationCenter'</span>)</span></span>
+
+def <span class="function"><span class="title">notify</span><span class="params">(title, subtitle, info_text, delay=<span class="number">0</span>, sound=False, userInfo={})</span></span>:
+    notification = NSUserNotification.<span class="function"><span class="title">alloc</span><span class="params">()</span></span>.<span class="function"><span class="title">init</span><span class="params">()</span></span>
+    notification.<span class="function"><span class="title">setTitle_</span><span class="params">(title)</span></span>
+    notification.<span class="function"><span class="title">setSubtitle_</span><span class="params">(subtitle)</span></span>
+    notification.<span class="function"><span class="title">setInformativeText_</span><span class="params">(info_text)</span></span>
+    notification.<span class="function"><span class="title">setUserInfo_</span><span class="params">(userInfo)</span></span>
+    <span class="keyword">if</span> sound:
+        notification.<span class="function"><span class="title">setSoundName_</span><span class="params">(<span class="string">"NSUserNotificationDefaultSoundName"</span>)</span></span>
+    notification.<span class="function"><span class="title">setDeliveryDate_</span><span class="params">(Foundation.NSDate.dateWithTimeInterval_sinceDate_(delay, Foundation.NSDate.date()</span></span>))
+    NSUserNotificationCenter.<span class="function"><span class="title">defaultUserNotificationCenter</span><span class="params">()</span></span>.<span class="function"><span class="title">scheduleNotification_</span><span class="params">(notification)</span></span>
+</code></pre><h4 id="截获相关_Api">截获相关 Api</h4><p>利用 Charles 可以很方便的抓取，经观察一些优惠信息只有移动端才有，构造相应的 headers，使用 requests 模块（pip 装之）:</p>
+<pre><code><span class="function"><span class="keyword">def</span> <span class="title">queryNotification</span><span class="params">()</span>:</span>
+    url = <span class="string">"http://api.haojin.in/takeout_item_list?atag_id=0&amp;offset=0&amp;pagesize=10&amp;region_id=55b9c9d4c69575999049b2b4"</span>
+    headers = {<span class="string">'content-type'</span>: <span class="string">'application/json'</span>, <span class="string">'User-Agent'</span>:<span class="string">'User-Agent: QMMWD/1.3.6 iPhone/9.1 AFNetwork/1.1'</span>}
+    req = requests.get(url, headers=headers)
+    content = json.loads(req.content)
+    items = content[<span class="string">'data'</span>][<span class="string">'sale_items'</span>]
+    <span class="keyword">for</span> item <span class="keyword">in</span> items:
+        price = item[<span class="string">'price'</span>]
+        title = item[<span class="string">'title'</span>]
+        origin_price = item[<span class="string">'origin_price'</span>]
+        end_time = item[<span class="string">'end_time'</span>]
+        quantity = item[<span class="string">'quantity'</span>]
+        e = datetime.datetime.strptime(end_time, <span class="string">"%Y-%m-%d %H:%M:%S"</span>)
+        <span class="keyword">if</span> float(price) &lt; <span class="number">2</span> <span class="keyword">and</span> e &gt; datetime.datetime.now() <span class="keyword">and</span> quantity &gt; <span class="number">0</span>:
+            notify(<span class="string">u"特价提醒!!"</span>, title, <span class="string">u"原价"</span>+origin_price+<span class="string">u",现价:"</span>+price, sound=<span class="keyword">True</span>)
+
+<span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        queryHomeNotification()
+        time.sleep(<span class="number">30</span>)
+</code></pre><p>每 30 秒查询一次，没结束的活动中价格低于 2 元且还有库存的优惠信息，一共不到 50 行代码，运行成功。但看起来使用方式并不友好，没办法分享给小伙伴们呢。</p>
+<h4 id="打包">打包</h4><p>想到把代码包装成一个 OSX 的应用，这样就方便任何人用了。使用 py2app 打包（pip 装之）：</p>
+<ol>
+<li><p>新建 setup.py，可以自定义 icon(icns 格式）</p>
+<pre><code><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup
+
+APP = [<span class="string">'nearRemind.py'</span>]
+APP_NAME = <span class="string">"NearRemind"</span>
+DATA_FILES = []
+<span class="keyword">OPTIONS</span> = {<span class="string">'argv_emulation'</span>: <span class="keyword">True</span>, <span class="string">'iconfile'</span>: <span class="string">'ico.icns'</span>}
+
+setup(
+    name=APP_NAME,
+    app=APP,
+    data_files=DATA_FILES,
+    <span class="keyword">options</span>={<span class="string">'py2app'</span>: <span class="keyword">OPTIONS</span>},
+    setup_requires=[<span class="string">'py2app'</span>],
+</code></pre></li>
+<li><p>打包，默认当前路径下 dist 目录：</p>
+<pre><code>Python setup<span class="class">.py</span> py2app
+</code></pre></li>
+</ol>
+<p>可以分享给小伙伴啦，启动就好，效果如下：<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/12/1450763021570.png" alt="notification"></p>
+<h4 id="其他">其他</h4><p>虽然有了提示但还是未必能抢到，所以后面还给自己做了自动下单版本，因为需要 session_id 和 sid 及收货地址之类的个人信息，做公用版比较麻烦些，就当是自己的私人福利了~<br>有兴趣自己玩的话代码在 <a href="https://github.com/zhourongyu/NearNotification" target="_blank" rel="external">Github</a> </p>
+<p>如此简易的 App 缺陷有很多，例如启动后没有合理的关闭方式，只能右键强制退出；无限重复通知等。</p>
+<p>顺便发现「好近」的一些问题：</p>
+<ul>
+<li>接口访问频率似乎没有限制</li>
+<li>重复下单（一秒十单没问题~再快也没试了）</li>
+<li>活动状态好像是根据手机当前时间与接口里 end_time 对比来判断活动是否结束，且所有时间格式如下 “end_time”: “2015-12-21 23:59:00”，这种实现貌似不够好</li>
+</ul>
+<p>Notification 刚移植到 OSX 上时就觉得这东西可以有很多种玩法，比如自己实现类似番茄工作法这样的小工具，这次也算试水成功了</p>
+</span>
         
       
     </div>
@@ -617,8 +435,8 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
           
           
             
-              <a class="post-title-link" href="/2014/Comparator vs Comparable/" itemprop="url">
-                Comparator vs Comparable
+              <a class="post-title-link" href="/2015/parallels-desktop-balck-friday/" itemprop="url">
+                Parallels Desktop 黑五购置指南
               </a>
             
           
@@ -628,8 +446,8 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2014-12-03T17:16:00+08:00" content="2014-12-03">
-            2014-12-03
+          <time itemprop="dateCreated" datetime="2015-11-26T12:48:40+08:00" content="2015-11-26">
+            2015-11-26
           </time>
         </span>
 
@@ -638,8 +456,8 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
             &nbsp; | &nbsp; 分類於
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
+                <a href="/categories/life/" itemprop="url" rel="index">
+                  <span itemprop="name">life</span>
                 </a>
               </span>
 
@@ -654,8 +472,8 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2014/Comparator vs Comparable/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/Comparator vs Comparable/" itemprop="commentsCount"></span>
+              <a href="/2015/parallels-desktop-balck-friday/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/parallels-desktop-balck-friday/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -670,141 +488,24 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
 
       
         
-          <span itemprop="articleBody"><p>Java中对对象的集合或数组进行排序时通常有两种方式：Comparator &amp;&amp; Comparable。</p>
-<p>Comparable要求使用对象实现其compareTo方法来实现自定义的排序方式。<br>但在使用的场景中，往往在设计时并没有考虑到比较问题从而没有实现Comparable，这时候再去改造对象本身或许不太合适。</p>
-<p>Comparator更加的灵活，采用的是策略模式，在不改变对象本身的情况下来改变对象的行为<br>举例说明：</p>
-<pre><code><span class="keyword">class</span> <span class="title">User</span> {
-    <span class="comment">//年龄</span>
-    <span class="keyword">private</span> Integer age;
-    <span class="comment">//身高</span>
-    <span class="keyword">private</span> Integer height;
-    <span class="comment">//姓名</span>
-    <span class="keyword">private</span> String name;
-
-    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span>(<span class="params"></span>) </span>{
-        <span class="keyword">return</span> age;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span>(<span class="params">Integer age</span>) </span>{
-        <span class="keyword">this</span>.age = age;
-    }
-
-    <span class="function"><span class="keyword">public</span> Integer <span class="title">getHeight</span>(<span class="params"></span>) </span>{
-        <span class="keyword">return</span> height;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span>(<span class="params">Integer height</span>) </span>{
-        <span class="keyword">this</span>.height = height;
-    }
-
-    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span>(<span class="params"></span>) </span>{
-        <span class="keyword">return</span> name;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span>(<span class="params">String name</span>) </span>{
-        <span class="keyword">this</span>.name = name;
-    }
-}
-</code></pre><p>现在需要给所有的User对象按年龄从小到大排序，如果年龄相同则按身高由高到低来排序。<br>以下是Comparable方式，通过改造User对象来实现自定义compileTo方法：</p>
-<pre><code><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">User</span>&gt;</span>{
-    <span class="comment">//年龄</span>
-    <span class="keyword">private</span> Integer age;
-    <span class="comment">//身高</span>
-    <span class="keyword">private</span> Integer height;
-    <span class="comment">//姓名</span>
-    <span class="keyword">private</span> String name;
-
-    <span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> age;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>{
-        <span class="keyword">this</span>.age = age;
-    }
-
-    <span class="function"><span class="keyword">public</span> Integer <span class="title">getHeight</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> height;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHeight</span><span class="params">(Integer height)</span> </span>{
-        <span class="keyword">this</span>.height = height;
-    }
-
-    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> name;
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>{
-        <span class="keyword">this</span>.name = name;
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(User u)</span> </span>{
-        <span class="keyword">int</span> flag = <span class="keyword">this</span>.age.compareTo(u.getAge());
-        <span class="keyword">if</span> (flag == <span class="number">0</span> ) {
-            <span class="keyword">return</span> (<span class="keyword">this</span>.height.compareTo(u.getHeight())) * -<span class="number">1</span>;
-        } <span class="keyword">else</span> {
-            <span class="keyword">return</span> flag;
-        }
-    }
-}
-</code></pre><p>以下是Comparator的实现方法及测试类：</p>
-<pre><code>public class Test {
-    public static void main<span class="params">(String[] args)</span> {
-
-        User user1 = new User<span class="params">()</span>;
-        user1.setAge<span class="params">(<span class="number">20</span>)</span>;
-        user1.setHeight<span class="params">(<span class="number">180</span>)</span>;
-        user1.setName<span class="params">(<span class="string">"张三"</span>)</span>;
-        User user2 = new User<span class="params">()</span>;
-        user2.setAge<span class="params">(<span class="number">20</span>)</span>;
-        user2.setHeight<span class="params">(<span class="number">176</span>)</span>;
-        user2.setName<span class="params">(<span class="string">"李四"</span>)</span>;
-        User user3 = new User<span class="params">()</span>;
-        user3.setAge<span class="params">(<span class="number">25</span>)</span>;
-        user3.setHeight<span class="params">(<span class="number">155</span>)</span>;
-        user3.setName<span class="params">(<span class="string">"王二"</span>)</span>;
-        User user4 = new User<span class="params">()</span>;
-        user4.setAge<span class="params">(<span class="number">23</span>)</span>;
-        user4.setHeight<span class="params">(<span class="number">155</span>)</span>;
-        user4.setName<span class="params">(<span class="string">"麻子"</span>)</span>;
-        List&lt;User&gt; userList = new ArrayList&lt;User&gt;<span class="params">()</span>;
-        userList.add<span class="params">(user1)</span>;
-        userList.add<span class="params">(user2)</span>;
-        userList.add<span class="params">(user3)</span>;
-        userList.add<span class="params">(user4)</span>;
-
-        <span class="comment">//使用Comparator实现排序</span>
-        Collections.sort<span class="params">(userList, new Comparator&lt;User&gt;<span class="params">()</span> {
-            @Override
-            public int compare<span class="params">(User u1, User u2)</span> {
-                int flag = u1.getAge<span class="params">()</span>.compareTo<span class="params">(u2.getAge<span class="params">()</span>)</span>;
-                if <span class="params">(flag == <span class="number">0</span>)</span> {
-                    //身高降序
-                    return <span class="params">(u1.getHeight<span class="params">()</span>.compareTo<span class="params">(u2.getHeight<span class="params">()</span>)</span>)</span> * -<span class="number">1</span>;
-                } else {
-                    return flag;
-                }
-            }
-
-        })</span>;
-
-        <span class="comment">//如果使用Comparable方式，可直接使用以下方式排序即可</span>
-        Collections.sort<span class="params">(userList)</span>;
-
-        <span class="keyword">for</span> <span class="params">(User u : userList)</span> {
-            System.out.println<span class="params">(<span class="string">"姓名："</span>+u.getName<span class="params">()</span>+<span class="string">"，年龄："</span>+u.getAge<span class="params">()</span>+<span class="string">"，身高："</span>+u.getHeight<span class="params">()</span>)</span>;
-        }
-
-    }
-
-}
-</code></pre><p>结果:</p>
-<pre><code>姓名：张三，年龄：20，身高：180
-姓名：李四，年龄：20，身高：176
-姓名：麻子，年龄：23，身高：155
-姓名：王二，年龄：25，身高：155
-</code></pre><p>达到的效果一致，但是，这并没有结束。<br>在Java规范里，倡导保证equals和compareTo的行为一致，这样可以避免出现一些奇奇怪怪的问题。大致意思就是如果user1.compareTo(user2) == 0 的话，user1.equals(user2) == 1<br>既然重载了equals，那意味着hashcode也得重载了~ 你懂的</p>
+          <span itemprop="articleBody"><p>Parallels Desktop 是 Mac 端最好用的虚拟机，没有之一，这个不多说了。虽然它的定价一直很坑爹，每年升级「骗钱」，双十一也参加打折但也很贵，但这次黑五新出的 Bundle 非常值</p>
+<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187294.png" alt="bundle"></p>
+<p>因为这次 Bundle 里所有的 App 都相当的不错  </p>
+<ul>
+<li>1Password ($49.9) 打折时大概也要200+</li>
+<li>Evernote Preminum ($49.9/y)</li>
+<li>Poket Premium (原价$49.9/y)</li>
+</ul>
+<p>含这几个已经很超值啦。其他的虽然没用过，看评价也都算是大作，留作备用也不错。<br>我是 PD10 用户，所以需要的是 Parallels Desktop for Mac Pro Edition Upgrade (1 Year)</p>
+<h3 id="重点来了！">重点来了！</h3><p>虽然性价比高，但 358 的价格还是让人有点犹豫， 那么通过以下操作让价格飞起来吧。</p>
+<ol>
+<li>找一个日本的 VPN， 通过日本 IP 进入网站</li>
+<li>Upgrade Now 进入订单页，你会发现价格变为 ￥5300 <img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187456.png" alt="jp"></li>
+<li>右上角 Currency 切换回 Chinese Yuan，地址选为 China</li>
+</ol>
+<p>你会惊喜的发现价格变为了 ￥216.61，还可以用支付宝支付！有木有感觉不买不行的感觉？</p>
+<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/11/1448509187681.png" alt="cn"></p>
+<p><strong>PS</strong>: 1Password 我已经买过，￥100 转出去了，还有自己用不着的都可以转给其他朋友</p>
 </span>
         
       
@@ -828,7 +529,7 @@ git <span class="keyword">for</span>-each-<span class="keyword">ref</span> --sor
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/5/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/5/">&raquo;</a>
   </nav>
 
  </div>

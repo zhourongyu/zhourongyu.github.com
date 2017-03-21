@@ -171,8 +171,8 @@
           
           
             
-              <a class="post-title-link" href="/2012/The Zen of Python/" itemprop="url">
-                The Zen of Python
+              <a class="post-title-link" href="/2013/Wordpress迁移流程/" itemprop="url">
+                Wordpress迁移流程
               </a>
             
           
@@ -182,8 +182,8 @@
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2012-02-09T14:22:00+08:00" content="2012-02-09">
-            2012-02-09
+          <time itemprop="dateCreated" datetime="2013-03-13T04:07:00+08:00" content="2013-03-13">
+            2013-03-13
           </time>
         </span>
 
@@ -208,8 +208,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2012/The Zen of Python/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/The Zen of Python/" itemprop="commentsCount"></span>
+              <a href="/2013/Wordpress迁移流程/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Wordpress迁移流程/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -224,34 +224,31 @@
 
       
         
-          <span itemprop="articleBody"><p>从《Programming Python》中有一段有意思的内容，在Python中使用import  this可以看到Python哲学</p>
-<pre><code>&gt;&gt;&gt; import this
-The Zen <span class="keyword">of</span> Python, <span class="keyword">by</span> Tim Peters
-
-Beautiful <span class="keyword">is</span> better than ugly.
-<span class="keyword">Explicit</span> <span class="keyword">is</span> better than implicit.
-Simple <span class="keyword">is</span> better than complex.
-Complex <span class="keyword">is</span> better than complicated.
-Flat <span class="keyword">is</span> better than nested.
-Sparse <span class="keyword">is</span> better than dense.
-Readability counts.
-Special cases aren<span class="comment">'t special enough to break the rules.</span>
-Although practicality beats purity.
-Errors should never pass silently.
-Unless explicitly silenced.
-<span class="keyword">In</span> the face <span class="keyword">of</span> ambiguity, refuse the temptation <span class="keyword">to</span> guess.
-There should be one-- <span class="keyword">and</span> preferably only one --obvious way <span class="keyword">to</span> <span class="keyword">do</span> it.
-Although that way may <span class="keyword">not</span> be obvious at first unless you<span class="comment">'re Dutch.</span>
-Now <span class="keyword">is</span> better than never.
-Although never <span class="keyword">is</span> often better than *right* now.
-<span class="keyword">If</span> the implementation <span class="keyword">is</span> hard <span class="keyword">to</span> explain, it<span class="comment">'s a bad idea.</span>
-<span class="keyword">If</span> the implementation <span class="keyword">is</span> easy <span class="keyword">to</span> explain, it may be a good idea.
-Namespaces are one honking great idea -- <span class="keyword">let</span><span class="comment">'s do more of those!</span>
-</code></pre><p>给出对应的中文翻译，还是挺给力的～</p>
-<h2 id="Python之禅">Python之禅</h2><p>美比丑好<br>直言不讳比心照不宣好<br>简单比复杂好<br>复杂比难以理解好</p>
-<p>平面的比嵌套的好<br>错落有致比密密匝匝的好<br>可读性很重要</p>
-<p>虽然实用比纯粹更重要<br>但特殊情况不能特殊到打破规律<br>永远别让错误悄悄地溜走<br>除非是你故意的<br>碰到模棱两可的地方，绝对不要去作猜测<br>什么事情都应该有一个，而且最好只有一个显而易见的解决办法<br>虽然刚开始的时候，这个办法可能不是那么的显而易见，但谁叫你不是荷兰人<br>有些事情不理不睬可能会比过一会解决要好<br>但最好是现在就解决</p>
-<p>如果一个想法实现起来很困难，那它本身就不是一个好想法<br>如果一个想法实现起来很容易，那它或许就是一个好想法<br>命名空间是一个很了不起的想法,让我们多多使用吧</p>
+          <span itemprop="articleBody"><p>对Wordpress做一次迁移，<br>现有服务器A ,B 两台，zhourongyu.me运行在A上，现在需要转移到B之上。<br>流程如下：<br>一，首先导出A之上的mysql数据。进入phpmyadmin里选导出即可，需要通过ftp传到B之上。<br>另一种方法使用命令</p>
+<pre><code>mysqldump -u root -<span class="tag">p</span> wpblog &gt; zdata.sql
+</code></pre><p>二，打包A之上的wp目录，可以选择通过ftp拷到本地，再打包上传到B。<br>另一种使用tar打包</p>
+<pre><code><span class="tag">tar</span> <span class="tag">-cvf</span> <span class="tag">zwp</span><span class="class">.tar</span> <span class="tag">zhourongyu</span><span class="class">.me</span>
+</code></pre><p>三，把sql文件tar目录文件转移到zhourongyu.me WEB目录之下<br>四，在B服务器上通过wget把两个文件下载过来</p>
+<pre><code>wget <span class="symbol">http:</span>/<span class="regexp">/zhourongyu.me/zwp</span>.tar <span class="symbol">http:</span>/<span class="regexp">/zhourongyu.me/zdata</span>.sql
+</code></pre><p>五，进入B的mysql 创建同名数据库,并通过sql文件导入数据</p>
+<pre><code>&gt;create database wpblog
+&gt;<span class="literal">use</span> wpblog
+&gt;<span class="literal">source</span> /<span class="literal">home</span>/zhourongyu/zdata.sql
+</code></pre><p>这样数据库就成功导<br>六，解压tar文件到wwwroot目录</p>
+<pre><code><span class="tag">tar</span> <span class="tag">xvf</span> <span class="tag">zwp</span><span class="class">.tar</span> <span class="tag">zhourongyu</span><span class="class">.me</span>
+</code></pre><p>修改nginx配置文件修改对应路径。<br>如果想配置成A一样，同理可以把A上的nginx配置文件wget过来。</p>
+<p>最后，修改域名A记录，指向新的IP。<br>至此基本已经完成了数据的迁移。</p>
+<p>如果需要更换新域名则需要在之上的步骤里多做一些操作：<br>一，需要修改nginx配置文件替换域名<br>二，修改数据库中对应的URL，<br>最笨的办法是进入phpmyadmin中修改相应URL 主要是wp_options表级wp_posts表<br>可以直接修改sql文件替换文件中对应的URL全部换成新的域名。<br>还可以用sql替换命令来替换相应的路径<br>UPDATE 表名 SET 字段 = REPLACE(字段,’替换内容’,’替换值’);</p>
+<p>示例(切换到新域名：<a href="http://ooxx.me)如下：" target="_blank" rel="external">http://ooxx.me)如下：</a></p>
+<pre><code>&gt; UPDATE wp<span class="number">_</span>options SET option<span class="number">_</span><span class="keyword">value</span> = REPLACE(option<span class="number">_</span><span class="keyword">value</span>,<span class="string">'zhourongyu.me'</span>,<span class="string">'ooxx.me'</span>);
+</code></pre><p>注意上面的标点要都要用英文半角。其中wp_options就是表名，option_value就是表wp_options里的一个字段，wp_options里有siteurl和home的值。</p>
+<p>修改option_value里的站点url和主页地址：</p>
+<pre><code><span class="subst">&gt;</span> update wp_options <span class="built_in">set</span> option_value <span class="subst">=</span> replace(option_value, <span class="string">'http://zhourongyu.me'</span>,<span class="string">'http://ooxx.me'</span>) <span class="keyword">where</span> option_name<span class="subst">=</span><span class="string">'home'</span> <span class="literal">or</span> option_name<span class="subst">=</span><span class="string">'siteurl'</span>
+</code></pre><p>更正文章中内部链接及附件的地址：</p>
+<pre><code>&gt; UPDATE wp_posts SET post_content = replace<span class="list">(<span class="keyword">post_content</span>, <span class="quoted">'http</span><span class="keyword">://zhourongyu</span>.me', <span class="quoted">'http</span><span class="keyword">://ooxx</span>.me')</span><span class="comment">;</span>
+</code></pre><p>更正wordpress文章默认的永久链接：</p>
+<pre><code>&gt; UPDATE wp_posts SET guid = replace<span class="list">(<span class="keyword">guid</span>, <span class="quoted">'http</span><span class="keyword">://zhourongyu</span>.me',<span class="quoted">'http</span><span class="keyword">://ooxx</span>.me')</span><span class="comment">;</span>
+</code></pre><p>最后进入B的wp后台修改wordpress地址为新域名</p>
 </span>
         
       
@@ -282,8 +279,8 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
           
           
             
-              <a class="post-title-link" href="/2012/MBP的启动速度改进方案/" itemprop="url">
-                MBP的启动速度改进方案
+              <a class="post-title-link" href="/2013/Jinja2与Flask的HTML自动转义/" itemprop="url">
+                Jinja2与Flask的HTML自动转义
               </a>
             
           
@@ -293,8 +290,8 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2012-01-13T07:14:00+08:00" content="2012-01-13">
-            2012-01-13
+          <time itemprop="dateCreated" datetime="2013-01-30T10:22:00+08:00" content="2013-01-30">
+            2013-01-30
           </time>
         </span>
 
@@ -319,8 +316,8 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2012/MBP的启动速度改进方案/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/MBP的启动速度改进方案/" itemprop="commentsCount"></span>
+              <a href="/2013/Jinja2与Flask的HTML自动转义/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Jinja2与Flask的HTML自动转义/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -335,16 +332,25 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
 
       
         
-          <span itemprop="articleBody"><p>今天自己的MBP启动速度很慢呢，最初的时候30+秒，如今已经到1分钟了。</p>
-<p>有几种可以提升下速度的方案:<br>1.最直接的方案，更换SSD，效果一流，速度在10-15秒左右，当然价格比较昂贵。</p>
-<p>2.修复磁盘权限，这个方法较实用，效果也还比较明显</p>
-<p>3.重置 PRAM 和 NVRAM </p>
-<p>因为没舍得整块换SSD,而好的支架也不好买，所以1方案还不在考虑范围内。<br>用了2，3测试后，现在到45秒左右，效果还算满意。<br>有遇到相似问题的朋友不妨试一下这个方法,这个操作基本是无伤害的，详情可以查看官方介绍：何时需要重置 PRAM 和 NVRAM</p>
-<p>重置 PRAM 和 NVRAM</p>
-<p>关闭电脑。<br>在键盘上找到以下按键：Command、Option、P 和 R。您需要在步骤 4 中同时按下这些键。<br>启动电脑。<br>按住 Command-Option-P-R 键。必须在出现灰屏前按下此组合键。<br>按住上述键，直到电脑重新启动，您会再次听到启动声。<br>松开这些键。</p>
-<p>另附上一些的常用提速技巧</p>
-<p>MAC OS在每次启动都会为桌面文件做索引，所以尽量少在桌面上放文件，可放置快速链接</p>
-<p>在User&amp;Groups 里面把Login items筛选一下</p>
+          <span itemprop="articleBody"><p>今天写一个页面的时候发现代码竟然原封不动的出现了，怀疑是Jinja的自动转义。结果发现Jinja2的Escaping是自动关闭的，下面是Jinja官方文档中描述的，默认自动转义是关闭的，可以手动转义或者开启自动转义。</p>
+<blockquote>
+<p>HTML Escaping</p>
+<p>When generating HTML from templates, there’s always a risk that a<br>variable will include characters that affect the resulting HTML. There<br>are two approaches: manually escaping each variable or automatically<br>escaping everything by default.</p>
+<p>Jinja supports both, but what is used depends on the application<br>configuration. The default configuaration is no automatic escaping for<br>various reasons:</p>
+<p>escaping everything except of safe values will also mean that Jinja is<br>escaping variables known to not include HTML such as numbers which is<br>a huge performance hit. The information about the safety of a variable<br>is very fragile. It could happen that by coercing safe and unsafe<br>values the return value is double escaped HTML.</p>
+</blockquote>
+<p>转而搜索发现是Flask的原因，Flask的自动转义是默认开启的，如需要关闭需要以下操作（来自官方文档）：</p>
+<p>自动转义就是自动帮你将特殊的字符替换成转义符号。HTML（或者XML， XHTML）的特殊字符有 &amp;, &gt;, &lt;, “, ‘ 。因为这些字符在文档中有它自己特殊的含义，所以如果你想在文章中使用这些符号，必须将它替换成转义符号。如果不这样做，不仅用户使用不了这些符号，还会导致安全问题。(更多 :ref:<code>xss</code>)</p>
+<p>但是有时候你需要在模版中禁用自动转义。如果你想直接将HTML插入页面，比如将markdown语言转换成HTML，那么你就需要这样做了。</p>
+<p>有3种方法可以关闭自动转义：</p>
+<ul>
+<li>在Python文件中进行转义。先在 :class:<code>~flask.Markup</code> 对象中进行转义，然后将它传送给模版。一般推荐使用这个方式。</li>
+<li>在模版文件中进行转义。通过 |safe 过滤器来表示字符串是安全的()</li>
+<li>暂时禁用全局的自动转义功能。  </li>
+</ul>
+<p>要想在模版中禁用全局自动转义功能，可以用  语句块:<br>    {\% codeblock lang:python \%}<br>    {\% autoescaping false \%}<br>    autoescaping is disableed here<br>    {\% endautoescape \%}<br>    {\% endcodeblock \%}</p>
+<p>在这么做的时候，要语句块中使用到的变量非常小心。</p>
+<p>自动开始转义也是不错的，这方面的安全就可以少考虑了，关闭也很简单。我直接使用第二种方式，在需要禁止转义的部分加上safe标记，很方便。其他的两种目前还没用上~</p>
 </span>
         
       
@@ -375,8 +381,8 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
           
           
             
-              <a class="post-title-link" href="/2012/No module named yum/" itemprop="url">
-                No Module Named Yum
+              <a class="post-title-link" href="/2013/呼吸防护标准/" itemprop="url">
+                呼吸防护标准
               </a>
             
           
@@ -386,139 +392,8 @@ Namespaces are one honking great idea -- <span class="keyword">let</span><span c
       <div class="post-meta">
         <span class="post-time">
           發表於
-          <time itemprop="dateCreated" datetime="2012-01-10T03:07:00+08:00" content="2012-01-10">
-            2012-01-10
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2012/No module named yum/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/No module named yum/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>今早运行Yum报错：</p>
-<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># yum</span>
-
-There was a problem importing one <span class="keyword">of</span> the Python modules
-required <span class="keyword">to</span> run yum. The error leading <span class="keyword">to</span> <span class="keyword">this</span> problem <span class="attribute">was</span>:
-
-   No <span class="built_in">module</span> named yum
-
-Please install a package which provides <span class="keyword">this</span> <span class="built_in">module</span>, <span class="keyword">or</span>
-verify <span class="literal">that</span> the <span class="built_in">module</span> <span class="keyword">is</span> installed correctly.
-
-It<span class="string">'s possible that the above module doesn'</span>t match the
-current version <span class="keyword">of</span> Python, which <span class="attribute">is</span>:
-<span class="number">2.7</span>.<span class="number">2</span> (<span class="keyword">default</span>, Dec  <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
-[GCC <span class="number">4.1</span>.<span class="number">2</span> <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.<span class="number">2</span>-<span class="number">51</span>)]
-
-If you cannot solve <span class="keyword">this</span> problem yourself, please go <span class="keyword">to</span>
-the yum faq <span class="attribute">at</span>:
-  <span class="attribute">http</span>:<span class="pi">//wiki.linux.duke.edu/YumFaq</span>
-</code></pre><p>错误原因：错误信息描述为 yum 所依赖的python 不相符</p>
-<p>查看yum版本</p>
-<pre><code>[root@Rony ~]# rpm -qa | grep yum
-yum-<span class="number">3.2.22-37</span>.el5.centos
-yum-metadata-parser-<span class="number">1.1.2-3</span>.el5.centos
-yum-fastestmirror-<span class="number">1.1.16-16</span>.el5.centos
-</code></pre><p>查看python版本</p>
-<pre><code><span class="comment">[root@Rony ~]</span># whereis python
-
-python: /usr/bin/python2.4 /usr/bin/python /usr/lib/python2.4 /usr/local/python2.7 /usr/share/<span class="keyword">man</span>/man1/python.1.gz
-</code></pre><p>装了两个版本python，因为上次的更新版本到python2.7</p>
-<p>执行python，默认使用的是2.7.2的版本</p>
-<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># python</span>
-Python <span class="number">2.7</span>.2 (<span class="reserved">default</span>, Dec <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
-
-[GCC <span class="number">4.1</span>.2 <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.2-<span class="number">51</span>)] <span class="literal">on</span> linux2
-Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.
-&gt;&gt;&gt;
-</code></pre><p>yum调用了高版本的python，而yum使用的是python2.4。</p>
-<p>查找yum文件,并编辑此py文件</p>
-<pre><code>[root<span class="keyword">@Rony</span> ~]# which yum
-/usr/bin/yum
-[root<span class="keyword">@develop</span> local]# vi /usr/bin/yum
-
-将
-<span class="shebang">#!/usr/bin/python</span>
-改为:
-<span class="shebang">#!/usr/bin/python2.4</span>
-</code></pre><p>然后保存OK.</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011/对于CSDN帐号资料泄漏的感悟/" itemprop="url">
-                对于CSDN帐号资料泄漏的感悟
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2011-12-22T06:24:00+08:00" content="2011-12-22">
-            2011-12-22
+          <time itemprop="dateCreated" datetime="2013-01-29T03:58:00+08:00" content="2013-01-29">
+            2013-01-29
           </time>
         </span>
 
@@ -543,8 +418,8 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2011/对于CSDN帐号资料泄漏的感悟/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011/对于CSDN帐号资料泄漏的感悟/" itemprop="commentsCount"></span>
+              <a href="/2013/呼吸防护标准/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/呼吸防护标准/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -559,133 +434,36 @@ Type <span class="string">"help"</span>, <span class="string">"copyright"</span>
 
       
         
-          <span itemprop="articleBody"><p>昨日CSDN多达600余万用户资料被黑客公布，瞬间这600万资料被众多网友下载，有拿来做查询是否有自己帐号的应用，有拿来做各种统计图表，估计最多的是被拿去做发垃圾邮件~</p>
-<p>和网友讨论过，这个库在几个月前已经被人拿到手，只是没有放出来，所以里面一些有价值的帐号估计大部分都被发掘光了，剩下的也就只能娱乐娱乐了。</p>
-<p>下面是传说中的我最喜爱的CSDN密码评选top100~</p>
-<p>第 1 名: 123456789 - 235033 次<br>第 2 名: 12345678 - 212751 次<br>第 3 名: 11111111 - 76346 次<br>第 4 名: dearbook - 46054 次<br>第 5 名: 00000000 - 34952 次<br>第 6 名: 123123123 - 19986 次<br>第 7 名: 1234567890 - 17791 次<br>第 8 名: 88888888 - 15033 次<br>第 9 名: 111111111 - 6995 次<br>第 10 名: 147258369 - 5966 次<br>第 11 名: aaaaaaaa - 5890 次<br>第 12 名: 987654321 - 5553 次<br>第 13 名: 1111111111 - 5145 次<br>第 14 名: 66666666 - 5025 次<br>第 15 名: a123456789 - 4686 次<br>第 16 名: 11223344 - 4096 次<br>第 17 名: 1qaz2wsx - 3962 次<br>第 18 名: xiazhili - 3649 次<br>第 19 名: password - 3647 次<br>第 20 名: 789456123 - 3610 次<br>第 21 名: qwertyuiop - 3504 次<br>第 22 名: qqqqqqqq - 3491 次<br>第 23 名: iloveyou - 3294 次<br>第 24 名: qq123456 - 3287 次<br>第 25 名: 87654321 - 3281 次<br>第 26 名: 000000000 - 3175 次<br>第 27 名: asdfghjkl - 3100 次<br>第 28 名: 31415926 - 3061 次<br>第 29 名: 12344321 - 2985 次<br>第 30 名: 1q2w3e4r - 2943 次<br>第 31 名: 0000000000 - 2886 次<br>第 32 名: qazwsxedc - 2770 次<br>第 33 名: 123456abc - 2751 次<br>第 34 名: abcd1234 - 2612 次<br>第 35 名: 0123456789 - 2578 次<br>第 36 名: 123654789 - 2573 次<br>第 37 名: 12121212 - 2540 次<br>第 38 名: asdasdasd - 2437 次<br>第 39 名: 12341234 - 2380 次<br>第 40 名: 110110110 - 2348 次<br>第 41 名: abc123456 - 2338 次<br>第 42 名: aa123456 - 2298 次<br>第 43 名: a12345678 - 2245 次<br>第 44 名: 22222222 - 2243 次<br>第 45 名: 1234qwer - 2218 次<br>第 46 名: a1234567 - 2216 次<br>第 47 名: 123321123 - 2166 次<br>第 48 名: qwertyui - 2165 次<br>第 49 名: 123456 - 2141 次<br>第 50 名: 123456123 - 2113 次<br>第 51 名: 123456789a - 2110 次<br>第 52 名: 123456aa - 2058 次<br>第 53 名: asdfasdf - 2023 次<br>第 54 名: 99999999 - 1891 次<br>第 55 名: 999999999 - 1859 次<br>第 56 名: 123456123456 - 1854 次<br>第 57 名: 520520520 - 1699 次<br>第 58 名: 963852741 - 1656 次<br>第 59 名: 55555555 - 1652 次<br>第 60 名: 741852963 - 1652 次<br>第 61 名: 33333333 - 1589 次<br>第 62 名: qwer1234 - 1573 次<br>第 63 名: asd123456 - 1464 次<br>第 64 名: qweasdzxc - 1413 次<br>第 65 名: zzzzzzzz - 1343 次<br>第 66 名: 77777777 - 1339 次<br>第 67 名: code8925 - 1286 次<br>第 68 名: 11112222 - 1273 次<br>第 69 名: ms0083jxj - 1268 次<br>第 70 名: 123456qq - 1267 次<br>第 71 名: qweqweqwe - 1263 次<br>第 72 名: 111222333 - 1214 次<br>第 73 名: asdf1234 - 1203 次<br>第 74 名: 3.1415926 - 1200 次<br>第 75 名: asdfghjk - 1159 次<br>第 76 名: 147852369 - 1148 次<br>第 77 名: q1w2e3r4 - 1140 次<br>第 78 名: 521521521 - 1136 次<br>第 79 名: 12345678A - 1121 次<br>第 80 名: 123qweasd - 1116 次<br>第 81 名: 123698745 - 1111 次<br>第 82 名: 1123581321 - 1109 次<br>第 83 名: 1234abcd - 1085 次<br>第 84 名: WOAINI1314 - 1067 次<br>第 85 名: 1qazxsw2 - 1036 次<br>第 86 名: woaiwojia - 1016 次<br>第 87 名: zxcvbnm123 - 952 次<br>第 88 名: 321321321 - 920 次<br>第 89 名: 05962514787 - 910 次<br>第 90 名: wwwwwwww - 907 次<br>第 91 名: 123456987 - 894 次<br>第 92 名: kingcom5 - 892 次<br>第 93 名: 5845201314 - 882 次<br>第 94 名: 0987654321 - 853 次<br>第 95 名: 11111111111111111111 - 835 次<br>第 96 名: 123456asd - 829 次<br>第 97 名: 1q2w3e4r5t - 819 次<br>第 98 名: 12345600 - 805 次<br>第 99 名: lilylily - 784 次<br>第 100 名: 11235813 - 783 次</p>
-<p>其中最让人有疑问的地方在于泄漏的资料中用户的密码及邮箱都是明文，也就是别人看见就能直接使用，这是被黑客解密后的数据还是CSDN的存储方式就是明文的？对此，Robbin也发了博客说明这个问题（博文不知何原因已经被删除，猜测是迫于领导的压力，试想他们怎么会承认自己用了这种2B青年的行为呢），文中提出了2009年10月以前网站的用户资料都是明文存储的，在10月之后注册的用户则采用了加密，是比较安全的。 因这个问题CSDN也是被广大群主批的一无是处，”身为做技术的论坛怎么能这样？里面的工程师都是吃干饭的？”</p>
-<p>且不说为什么CSDN的那些程序员是多么多么的劣质，从上面的数据也可以看出一些更为严重的问题，首当其冲的就是国内网民对帐号密码的态度，值得一提的是CSDN的用户群大多数都应该是IT行业的工程师，设计师，技术人员。都是具备专业技能的IT人士，对电脑和网络的认识应该也是很强的，这样的用户都能让123456789成为top1，纵观top100中，全都是安全性极低的密码，使用单纯的穷举法想窃取资料都相当的简单。由此可想几亿的普通网名对网络的安全性的认识低到了哪个地步，也就侧面的反映了为什么老百姓抵御不了那些网络诈骗的原因。</p>
-<p>抱着娱乐心情，我从泄漏的数据中抽取了一些做了测试，大多数的帐号竟还可以登陆，据Robbin文中表明，这些数据是2009年的备份数据，也就是说2009年到现在三年多时间这些用户密码不曾改变过，按理说也没有太大问题，但具备强安全意识的人都知道密码应该定期的变换是最好的。 还有更严重的问题，那就是从数据中抽取的用户的邮箱密码竟然也是一样，从而顺利的进入了该用户的邮箱，最严重的是在他的邮箱中发现了支付宝的邮件，抱着试一试的态度，惊喜的发现支付宝也能正常登陆~ 里面还绑定了银行卡，最后一步就是支付密码~当然这种违法的事情是不能做的，这里就没有进行测试……  我相信绝对有不良份子去利用这些数据生产利益。</p>
-<p>随着CSDN的资料泄漏，这两天各种的数据都流露出来，多玩，人人，7k7k，178，猫扑……等等等等，虽然数据不是最新的，但要知道这些“挖掘者”是一直在工作的，为了他们的生活！这次事件应该会为大家的安全性意识带来一定的提升，在这个互联网与真实生活越来越紧密的年代，互联网的安全性就像家里的锁一样，一把好锁，能让你更加的安心！</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011/Linux Shell 内存监控技巧/" itemprop="url">
-                Linux Shell 内存监控技巧
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2011-12-21T15:49:00+08:00" content="2011-12-21">
-            2011-12-21
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011/Linux Shell 内存监控技巧/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011/Linux Shell 内存监控技巧/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>1.查看当前系统内存使用状况(free)：</p>
-<p>free命令有以下几个常用选项：<br>-b 以字节为单位显示数据。<br>-k 以千字节(KB)为单位显示数据(缺省值)。<br>-m 以兆(MB)为单位显示数据。<br>-s delay 该选项将使free持续不断的刷新，每次刷新之间的间隔为delay指定的秒数，如果含有小数点，将精确到毫秒，如0.5为500毫秒，1为一秒。</p>
-<p>free命令输出的表格中包含以下几列：<br>total： 总计物理内存的大小。<br>used： 已使用的内存数量。<br>free： 可用的内存数量。<br>Shared： 多个进程共享的内存总额。<br>Buffers/cached：磁盘缓存的大小。</p>
-<p>见以下具体示例和输出说明：</p>
-<pre><code><span class="comment">[root@Rony ~]</span>$ free -k
-total used free shared buffers cached 
-Mem: 262328 242000 20328 0 17336 42488
--/+ buffers/cache: 182176 80152
-Swap: 786416 36 786380
-</code></pre><p>对于free命令的输出，我们只需关注红色高亮的输出行和绿色高亮的输出行，见如下具体解释：</p>
-<p>红色输出行：该行使从操作系统的角度来看待输出数据的，used(242000)表示内核(Kernel)+Applications+buffers+cached。free(20382)表示系统还有多少内存可供使用。<br>绿色输出行：该行则是从应用程序的角度来看输出数据的。其free = 操作系统used + buffers + cached，既：<br>80152 = 20328 + 17336 + 42488</p>
-<pre><code>[root<span class="variable">@Rony</span> ~]<span class="variable">$ </span>free -m
- total used free shared buffers cached
- <span class="constant">Mem:</span> <span class="number">256</span> <span class="number">236</span> <span class="number">19</span> <span class="number">0</span> <span class="number">16</span> <span class="number">41</span>
- -<span class="regexp">/+ buffers/cache</span><span class="symbol">:</span> <span class="number">178</span> <span class="number">78</span>
- <span class="constant">Swap:</span> <span class="number">199</span> <span class="number">0</span> <span class="number">199</span>
-</code></pre><ol>
-<li><p>虚拟内存的实时监控工具(vmstat)：<br>vmstat命令用来获得UNIX系统有关进程、虚存、页面交换空间及CPU活动的信息。这些信息反映了系统的负载情况。vmstat首次运行时显示自系统启动开始的各项统计信息，之后运行vmstat将显示自上次运行该命令以后的统计信息。用户可以通过指定统计的次数和时间来获得所需的统计信息。</p>
-<p> [root@Rony ~]$ vmstat 1 3 #这是vmstat最为常用的方式，其含义为每隔1秒输出一条，一共输出3条后程序退出。<br> procs —————-memory————— —-swap— ——-io—— —system— ——-cpu———<br> r b swpd free buff cache si so bi bo in cs us sy id wa st<br> 0 0 36 20740 16888 42212 0 0 0 1 7 1 0 0 100 0 0<br> 0 0 36 20740 16888 42212 0 0 0 0 41 38 0 0 100 0 0<br> 0 0 36 20740 16888 42212 0 0 0 0 29 42 0 0 100 0 0<br> [root@Rony ~]$vmstat 1 #其含义为每隔1秒输出一条，直到按CTRL+C后退出。</p>
-</li>
-</ol>
-<p>下面将给出输出表格中每一列的含义说明：<br>有关进程的信息有：(procs)<br>r: 在就绪状态等待的进程数。<br>b: 在等待状态等待的进程数。</p>
-<p>有关内存的信息有：(memory)<br>swpd: 正在使用的swap大小，单位为KB。<br>free: 空闲的内存空间。<br>buff: 已使用的buff大小，对块设备的读写进行缓冲。<br>cache: 已使用的cache大小，文件系统的cache。</p>
-<p>有关页面交换空间的信息有：(swap)<br>si: 交换内存使用，由磁盘调入内存。<br>so: 交换内存使用，由内存调入磁盘。</p>
-<p>有关IO块设备的信息有：(io)<br>bi: 从块设备读入的数据总量(读磁盘) (KB/s)<br>bo: 写入到块设备的数据总理(写磁盘) (KB/s)</p>
-<p>有关故障的信息有：(system)<br>in: 在指定时间内的每秒中断次数。<br>sy: 在指定时间内每秒系统调用次数。<br>cs: 在指定时间内每秒上下文切换的次数。</p>
-<p>有关CPU的信息有：(cpu)<br>us: 在指定时间间隔内CPU在用户态的利用率。<br>sy: 在指定时间间隔内CPU在核心态的利用率。<br>id: 在指定时间间隔内CPU空闲时间比。<br>wa: 在指定时间间隔内CPU因为等待I/O而空闲的时间比。</p>
-<p>vmstat 可以用来确定一个系统的工作是受限于CPU还是受限于内存：如果CPU的sy和us值相加的百分比接近100%，或者运行队列(r)中等待的进程数总是不等于0，且经常大于4，同时id也经常小于40，则该系统受限于CPU；如果bi、bo的值总是不等于0，则该系统受限于内存。</p>
-<ol>
-<li><p>输出当前系统中占用内存最多的5条命令:</p>
-<h1 id="1)_通过ps命令列出当前主机正在运行的所有进程。">1) 通过ps命令列出当前主机正在运行的所有进程。</h1><h1 id="2)_按照第五个字段基于数值的形式进行正常排序(由小到大)。">2) 按照第五个字段基于数值的形式进行正常排序(由小到大)。</h1><h1 id="3)_仅显示最后5条输出。">3) 仅显示最后5条输出。</h1><p> [root@Rony ~]$ ps aux | sort -k 5n | tail -5<br> mysql 25492 0.0 3.3 39860 8680 ? Sl Dec13 0:01 /usr/local/mysql/libexec/mysqld —basedir=/usr/local/mysql —datadir=/usr/local/mysql/var —user=mysql —log-error=/usr/local/mysql/var/Rony.err —pid-file=/usr/local/mysql/var/Rony.pid —socket=/tmp/mysql.sock —port=3306<br> www 25379 0.0 10.3 40212 27216 ? S Dec13 1:20 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf<br> www 25375 0.0 11.0 42016 29052 ? S Dec13 1:17 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf<br> www 25376 0.0 11.2 42260 29416 ? S Dec13 1:20 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf<br> www 25381 0.0 12.6 45884 33156 ? S Dec13 1:19 /usr/local/php/bin/php-cgi —fpm —fpm-config /usr/local/php/etc/php-fpm.conf</p>
-</li>
-<li><p>获取当前系统物理内存的总大小:</p>
-<h1 id="1)_以兆(MB)为单位输出系统当前的内存使用状况。">1) 以兆(MB)为单位输出系统当前的内存使用状况。</h1><h1 id="2)_通过grep定位到Mem行，该行是以操作系统为视角统计数据的。">2) 通过grep定位到Mem行，该行是以操作系统为视角统计数据的。</h1><h1 id="3)_通过awk打印出该行的第二列，即total列。">3) 通过awk打印出该行的第二列，即total列。</h1><p> [root@Rony ~]$ free -m | grep “Mem” | awk ‘{print $2, “MB”}’<br>  256 MB</p>
-</li>
-</ol>
+          <span itemprop="articleBody"><p>北京近短时间空气实属差到极点，已经到了无法忍受的状态。能看见满大街各式各样的口罩出现，有医用的，有装饰的~孰不知他们都是带的完全没有防护效果，甚至还对呼吸造成了阻碍，只有保温和防风的功能。有人说医院那个不错，医院那个蓝色的口罩的防护标准只限于空气中的细菌防护。</p>
+<p>懂一些的朋友都知道要买N95。PS:这不是诺基亚手机。N95是美国CDC下属的职业安全与健康研究所(NIOSH)制定的标准，不是特定的产品名称。针对不适合油性的颗粒过滤效率达到95%，并且通过NIOSH审查的产品就可以称为“N95型口罩”。</p>
+<p>3M是安全防护产品的全球顶尖品牌，当然防护口罩的种类也是非常多。普通人刚开始有可能接受不了这种造型~ 因为这类型的口罩只有在美国各类病毒片里面才能看见，例如《生化危机》。所以带这个出门回头率还是很高的，在我看来造型还是很酷的！最主要的是它管用。<br>因为种类繁多， 8210、8821、8511、8599、9322、9332… 很多人确实也不知道怎么选，当然一般后面会标注该产品的防护类别。例如 8210(带呼吸阀/防PM2.5/工业级防粉尘 /防流感/防二手烟)</p>
+<p>关于防护标准也分FFP标准和N标准，下面是收集来的资料以供参考：</p>
+<p>各国防尘口罩的国家标准不同，对比起来各有侧重。在防病毒方面，我国疾控中心在流行病职业暴露工作人员防护级别二级中要求，口罩过滤标准要达到FFP2或N95标准。鉴于国内现在对FFP标准尚认识不足，现对二者做简要的对比：</p>
+<p>(1)、FFP标准：即呼吸防护的欧洲标准。以下是标准的具体参数：<br>CE149：2001测试：测试机型：TS18130<br>测试物质：NaCl&amp;DOP     粒径：0.3μm        测试流速：95L/Min</p>
+<p><table border="1"></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td><em>等级</em></td></p>
+<p><td><em>Penetration 渗透率</em></td></p>
+<p><td><em>捕集率</em></td></p>
+<p><td><em>Resistant 阻抗</em></td><br></p>
+<p><tr><td> FFP1 </td><td>20%</td><td> 80% </td><td>21mm H2O</td></tr></p>
+<p><tr><td> FFP2 </td><td>6%</td><td> &gt;94% </td><td>24mm H2O</td></tr></p>
+<p><tr><td> FFP3 </td><td>1%</td><td> &gt;99% </td><td>30mm H2O</td></tr><br><br><br>(2)、N标准：是呼吸防护的美国标准。以下是标准的具体参数：<br>NIOSH标准， 测试机型：TS18130<br>测试物质：NaCl   粒径：0.3μm 测试流速：85L/Min</p>
+<p><table border="1"></table></p>
+<p><tbody></tbody></p>
+<p><tr></tr></p>
+<p><td><em>等级</em></td></p>
+<p><td><em>Penetration 渗透率</em></td></p>
+<p><td><em>捕集率</em></td></p>
+<p><td><em>Resistant 阻抗</em></td><br></p>
+<p><tr><td> N95 </td><td>5%</td><td> ≥95% </td><td>35mm H2O</td></tr></p>
+<p><tr><td> N99 </td><td>1%</td><td> ≥99% </td><td>35mm H2O</td></tr></p>
+<p><tr><td> N100 </td><td>0.03%</td><td> ≥99.97% </td><td>35mm H2O</td></tr><br><br><br>备注：NaCl： 氯化钠（食盐）；DOP：石蜡油</p>
+<p>两者的测试使用的是一样的机器，使用NaCl做测试用的污染物，混合DOP代表可以防护油性的粉尘。FFP2标准中，口罩对灰尘的捕集率为大于等于94％，小于N95捕集率一个百分点，然而测试时每分钟通过的气流量是不同的，欧标为95升/分钟，美标为85升/分钟。同时，阻抗值高低代表着使用口罩时，口罩对呼吸的阻碍程度，值越大则呼吸越受阻碍，二者的舒适程度不同。</p>
+<p>在口罩的选购上可以参考下这个标准，至于我们有必要使用FFP3和N100这么好的吗？ 这个问题请参考自己的经济能力。 就像“我们需要喝进口牛奶吗”这个问题一样，当然没有唯一答案，问题是国内的牛奶你还敢喝吗~ 有人说何必讲究这么多呢，在北京这么多年，喝三鹿这么多年不照样活的好好的吗。 随你呢，各人有各人的活法… 自求多福吧。</p>
+<p>有人说这样太矫情，要知道这个年代不是你身体好就能活的好。随便给你来一下，能让你至少少活十年或者痛苦十年。</p>
+<p>最后个人推荐一下：经济能力好的朋友推荐买FFP3标准，防护能力好，功能全面。 性价比高的比如8210，便宜好用。还有8210v，这是带呼吸阀的，口罩对呼吸的阻碍还是很大的，“N95″口罩密闭较严，透气性差，心肺负担很大。戴上后会有胸闷、不舒服的感觉，老人、孩子、孕妇，以及已经患有呼吸道疾病的患者应减少佩戴时间。呼吸阀除了让呼吸更顺畅并且较适合带眼镜的朋友，因为没有呼吸阀呼气中的水蒸气可能会使眼镜模糊，所以带眼镜的朋友尤其是骑行的朋友优先考虑此类型。有人推荐8233佩戴很舒适~ 仅供参考 o(︶︿︶)o</p>
 </span>
         
       
@@ -709,7 +487,7 @@ Swap: 786416 36 786380
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/21/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/19/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/21/">&raquo;</a>
   </nav>
 
  </div>
