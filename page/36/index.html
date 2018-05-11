@@ -171,6 +171,119 @@
           
           
             
+              <a class="post-title-link" href="/2011/Git入门/" itemprop="url">
+                Git入门
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2011-10-05T05:51:00+08:00" content="2011-10-05">
+            2011-10-05
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2011/Git入门/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2011/Git入门/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>mac下自带了Git，而Windows下需要自己安装……</p>
+<p>第一，<br>目前windows版本的git有几种实现，但我们选择msysgit发行版，这是目前做得兼容性最好的。<a href="http://code.google.com/p/msysgit/downloads/list" target="_blank" rel="external">下载地址</a></p>
+<p>首先，git要求使用者必须提供自己的身份标识，为此我们需要在git bash中执行以下命令：</p>
+<pre><code>git config --global user<span class="class">.name</span> <span class="string">'zuroyu'</span>
+git config --global user<span class="class">.email</span> zuroyu@xxxxx.com
+</code></pre><p>其次，选择git仓库目录</p>
+<p>我们假设将git仓库目录放在D盘的OPENSource目录下，可以通过在git bash中执行以下命令完成：</p>
+<pre><code><span class="keyword">cd</span> /<span class="literal">d</span>
+<span class="keyword">mkdir</span> OPENSource
+</code></pre><p>注：git bash支持大多linux bash终端命令，你可以自己尝试更多终端操作。</p>
+<p>第二，建立项目并初始化git仓库</p>
+<p>我们的第一个项目是ZWeb通过执行以下命令完成此步骤：</p>
+<pre><code><span class="built_in">mkdir</span> ZWeb
+<span class="built_in">cd</span> ZWeb
+git init
+</code></pre><p>执行此操作后，git将在ZWeb目录下创建一个隐藏目录（.git），这个目录就是git用来管理软件版本的仓库。</p>
+<p>第三，使用git管理项目<br>git commit -m “这是我们第一次初始化项目”</p>
+<p>git add命令可以将参数指定的文件添加到git仓库索引中，如果你一次添加太多文件可以使用：git add . 命令全部添加。</p>
+<p>git commit命令才是真正的将文件添加到git仓库中去，-m选项允许在命令行后直接给出每次添加的简短说明（PS：我们强烈推荐你再每次提交时都给出一个说明，以便项目版本的查阅等），如果没有给出此命令将调用默认文本编辑器以便你添加说明。</p>
+<p>第四，将项目提交到github管理</p>
+<p>要想将本地的git项目提交到github我们需要先在github添加此项目，登入github主页点击“create a new one”根据提示完成项目创建。刚创建好的项目不包含任何文件，我们需要稍作设置后方可使用。</p>
+<p>1，在git bash中执行以下命令创建密钥：</p>
+<pre><code>ssh-keygen -<span class="keyword">C</span> <span class="string">'zuroyu@xxxxx.com'</span> -t rsa
+</code></pre><p>一路按Enter键即可，当然如果你想选择使用密码功能，那么在提示输入密码是选择你自己的密码。</p>
+<p>2，找到刚才生成的密钥（id_rsa.pub）文件并用文本编辑器打开，然后复制里面的内容。接着转到github站点项目编辑（edit），找到”Deploy keys“选项后点击”add another deploy key“并将刚才复制的内容黏贴保存。</p>
+<p>3，测试SSH连接。在git bash中执行以下命令：</p>
+<pre><code><span class="title">SSH</span> -v git<span class="variable">@github</span>.com
+</code></pre><p>如果提示你的密钥不正确，那么你需要重新确认上一步的操作是否完整无误。</p>
+<p>4，如果上一步测试无错，那么现在就可以将本地的文件提交到github仓库了。在git bash中执行以下命令：</p>
+<pre><code><span class="label">git</span> <span class="keyword">push </span>origin master
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011/eclipse's default workspace/" itemprop="url">
                 Eclipse's Default Workspace
               </a>
@@ -328,101 +441,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011/Diskpart做U启/" itemprop="url">
-                Diskpart做U启
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2011-06-09T07:18:00+08:00" content="2011-06-09">
-            2011-06-09
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011/Diskpart做U启/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011/Diskpart做U启/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>还记得为了能够迅速稳定安装XP的时代么，做PE，GHOST等，当时还乐在其中，非常有成就感，知道NT 6.0以后，似乎一切变得简单了，因为有DISKPART。</p>
-<p>从Windows NT开始，Windows已经彻底从曾经的MS-DOS中分离出来了，但是直到现在，仍然有很多人在使用MS-DOS下的FDISKS工具来对磁盘进行分区，接下来，我就介绍一下Windows NT的磁盘分区工具DISKPART。</p>
-<p>DISKPART 可以做的事情太多了，下面只是对一个U盘做了U启方便了日后为自己或他人安装WIN　NT6.0以上都系统（vista，win７）。</p>
-<p>在命令提示符下输入diskpart即可启动，注意：你必须拥有管理员权限。<br>接下来的例子中，我对一个新的U盘做U启，将其格式化成NTFS格式。</p>
-<pre><code>list disk
-<span class="operator"><span class="keyword">select</span> disk <span class="number">1</span>　（注意看disk大小，千万不要选中自己电脑的硬盘，一般从０开始）
-<span class="keyword">create</span> <span class="keyword">partition</span> <span class="keyword">primary</span>
-<span class="keyword">select</span> <span class="keyword">partition</span> <span class="number">1</span>
-<span class="keyword">format</span> fs=ntfs <span class="keyword">quick</span>
-active
-exit</span>
-</code></pre><p>够简单了吧，不必再去网上找各种制作U盘启动都工具了！</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -461,7 +479,7 @@ exit</span>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">110</span>
+              <span class="site-state-item-count">111</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -475,7 +493,7 @@ exit</span>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">118</span>
+              <span class="site-state-item-count">119</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -536,7 +554,7 @@ exit</span>
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

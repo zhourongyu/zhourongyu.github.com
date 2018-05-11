@@ -171,6 +171,133 @@
           
           
             
+              <a class="post-title-link" href="/2012/facebox 弹层插件/" itemprop="url">
+                Facebox 弹层插件
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2012-06-07T04:32:00+08:00" content="2012-06-07">
+            2012-06-07
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2012/facebox 弹层插件/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/facebox 弹层插件/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><a href="http://defunkt.io/facebox/" target="_blank" rel="external">facebox</a>是一个开源的弹出层插件，基于jQuery.  可显示图像， divs ，或者远程页面。目前存放在Github上 </p>
+<p>使用简单，文件少，例子也浅显易懂，个人比较喜欢 。</p>
+<p>项目中用到了比较多的弹层操作，facebox还是比较适合。具体如下:</p>
+<p>首先需要引入css,js文件 及 一个隐藏的DIV</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"js/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"facebox/facebox.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span> <span class="attribute">href</span>=<span class="value">"facebox/facebox.css"</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"dnote"</span> <span class="attribute">style</span>=<span class="value">"display:none"</span>&gt;</span> <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><p>一个弹层的方法：</p>
+<pre><code><span class="tag">function</span> <span class="tag">popup</span>(el) {
+        <span class="tag">jQuery</span><span class="class">.facebox</span>({<span class="attribute">div</span>:el,
+            <span class="attribute">loadingImage</span>:<span class="string">'facebox/loading.gif'</span>,
+            <span class="attribute">closeImage</span>:<span class="string">'facebox/closelabel.png'</span>
+        });
+}
+</code></pre><p>调用就比较简单了，在ajax中：</p>
+<pre><code>jQuery.ajax({
+    url:<span class="string">"marketing,ShowNotes.vm"</span>,
+    <span class="built_in">type</span>:<span class="string">"POST"</span>,
+    data:<span class="string">"messId="</span>+id,
+    success:<span class="function"><span class="keyword">function</span><span class="params">(response)</span></span>{
+        jQuery(<span class="string">"#dnotes"</span>).html(response);
+        popup(<span class="string">"#dnotes"</span>)
+    },
+    <span class="built_in">error</span>:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    }
+});
+</code></pre><p>  遇到个小问题 就是关于loading及closelabel图片的路径问题，文件没存放在项目的根路径下。而上面指定的路径似乎也不好用，最后到源码facebox.js里修改为正确的路径，最终正确显示，不知道这是我使用问题还是什么原因~~</p>
+<pre><code>settings: {
+     opacity      : <span class="number">0.2</span>,
+     overlay      : <span class="literal">true</span>,
+     loadingImage : <span class="symbol">'facebox</span>/loading.gif',       <span class="comment">//此处</span>
+     closeImage   : <span class="symbol">'facebox</span>/closelabel.png',  <span class="comment">//此处</span>
+     imageTypes   : [ <span class="symbol">'pn</span>g', <span class="symbol">'jp</span>g', <span class="symbol">'jpe</span>g', <span class="symbol">'gi</span>f' ],
+     faceboxHtml  : '\
+   &lt;div id=<span class="string">"facebox"</span> style=<span class="string">"display:none;"</span>&gt; \
+     &lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"popup"</span>&gt; \
+       &lt;div <span class="class"><span class="keyword">class</span>=</span><span class="string">"content"</span>&gt; \
+       &lt;/div&gt; \
+       &lt;a href=<span class="string">"#"</span> <span class="class"><span class="keyword">class</span>=</span><span class="string">"close"</span>&gt;&lt;img src=<span class="string">"facebox/closelabel.png //此处"</span> title=<span class="string">"close"</span> <span class="class"><span class="keyword">class</span>=</span><span class="string">"close_image"</span> /&gt;&lt;/a&gt; \
+     &lt;/div&gt; \
+   &lt;/div&gt;'
+   },
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2012/Python-优酷视频空间数据抓取(Dota)/" itemprop="url">
                 Python-优酷视频空间数据抓取(Dota)
               </a>
@@ -473,101 +600,6 @@ videos.printInfo()
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2012/免费增加Dropbox 23G空间/" itemprop="url">
-                免费增加Dropbox 23G空间
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2012-03-28T04:22:00+08:00" content="2012-03-28">
-            2012-03-28
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2012/免费增加Dropbox 23G空间/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/免费增加Dropbox 23G空间/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>前段时间Android手机可以免费增加23G Dropbox容量，可以使用2年。<br>很简单，直接删除目前android手机上的dropbox程序，<br>下载 <a href="http://dl.dropbox.com/u/25054669/Dropbox.apk" target="_blank" rel="external">http://dl.dropbox.com/u/25054669/Dropbox.apk</a> 程序到手机，安装，用dropbox帐号登录即可。</p>
-<p>由于自己是iPhone，只能羡慕嫉妒恨，现在有一个新方法来扩容（亲测有效）：</p>
-<p>下载BlueStacks App Player<br>下载地址： <a href="http://www.bluestacks.com/" target="_blank" rel="external">http://www.bluestacks.com/</a></p>
-<p>下载Dropbox.apk<br>下载地址： <a href="http://dl.dropbox.com/u/25054669/Dropbox.apk" target="_blank" rel="external">http://dl.dropbox.com/u/25054669/Dropbox.apk</a></p>
-<p>安装BlueStacks App Player，双击Dropbox-23GB.apk安装，安装完成后，打开Dropbox程序，登录你的帐号。<br>过一会会收到dropbox发来的邮件：</p>
-<p>Hi Zhou,</p>
-<p>Congrats on becoming a Dropbox Guru! We’ve awarded you 23 GB of bonus space for the next 24 months! You now have 25.75 GB on Dropbox. To get even more space, check out our upgrade options.</p>
-<p>Thanks again for supercharging your HTC device with Dropbox!</p>
-<p>Enjoy,</p>
-<ul>
-<li>The Dropbox Team</li>
-</ul>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -606,7 +638,7 @@ videos.printInfo()
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">110</span>
+              <span class="site-state-item-count">111</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -620,7 +652,7 @@ videos.printInfo()
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">118</span>
+              <span class="site-state-item-count">119</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -681,7 +713,7 @@ videos.printInfo()
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

@@ -171,6 +171,106 @@
           
           
             
+              <a class="post-title-link" href="/2012/WordPress的邮件发送问题/" itemprop="url">
+                WordPress的邮件发送问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2012-12-06T03:31:00+08:00" content="2012-12-06">
+            2012-12-06
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2012/WordPress的邮件发送问题/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/WordPress的邮件发送问题/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>在刚把博客搬到Linode的时候自己也遇上了WordPress的邮件发送问题，查了下资料，发现大部分人都遇上了这个问题，因为与自己的主机商有关系。解决方案有多种不同的版本。</p>
+<p>主要原因有：<br>1.主机不支持mai()函数<br>2.PHP的fsockopen()被禁用<br>因为不支持mail()函数，一般都使用给WordPress装对应的smtp插件（eg: wp-mail-smtp插件）来实现邮件发送功能，从而又遇上了fsockopen的问题。<br>使用wp-mail-smtp发送测试邮件给出的错误提示为: SMTP -&gt; ERROR: Failed to connect to server:()<br>一般搜到的方案都是这样：</p>
+<p>找到wp-includes/class.smtp.php，用pfsockopen()函数直接替换掉 fsockopen() :<br>$this-&gt;smtp_conn = @fsockopen&nbsp;&nbsp; —&gt; $this-&gt;smtp_conn = @pfsockopen<br>不知道是不是版本问题（或者大家都是copy的？），我使用的是最新版本3.4.2，在wp-includes中并没有发现名为class.smtp.php的文件，正确的文件名为class-smtp.php。并且发现在此目录下所有class.xxx.php的格式都变为class-xxx.php，不知网络上class.xxx.php是哪个版本中的。</p>
+<p>在class-smtp.php中改用pfsockopen()方法后也并没有好用。通过phpinfo()上检查了一番，发现不只fsockopen()被禁用，连pfsockopen()也一起禁用了。<br>正确的解决办法：</p>
+<p>在服务器安装的php目录下找到php.ini文件，如果你是lnmp安装的，那么应该在/usr/local/php/etc/下，<br>查找allow_url_fopen</p>
+<pre><code><span class="setting">allow_url_fopen = <span class="value"><span class="keyword">On</span></span></span>
+</code></pre><p>配置是指允许访问网络文件，如果是Off，请改为On<br>接着找disable_functions</p>
+<pre><code>disable_functions = passthru,<span class="keyword">exec</span>,<span class="keyword">system</span>,<span class="keyword">chroot</span>,scandir,chgrp,<span class="keyword">chown</span>,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,<span class="keyword">readlink</span>,<span class="keyword">symlink</span>,popepassthru,stream_socket_server,fsocket,fsockopent_status,pfsockopen,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,<span class="keyword">readlink</span>,<span class="keyword">symlink</span>,popepassthru,stream_socket_server,fsocket,fsockopen
+</code></pre><p>里面都是被禁用的方法，从中可以发现含有pfsockopen与fsockopen，想解禁哪一个就看你自己了。因为前面已经改用pfsockopen()了，所以我解禁了它。改完后重启php服务再到phpinfo()中去看如果被禁函数里没有了pfsockopen那么说明成功了。然后再去测试SMTP插件，显示成功！</p>
+<p>另外看到有人提示还可以使用stream_socket_client方法来替代，但是stream_socket_client参数是不同的，需要做如下修改：</p>
+<p>修改前：</p>
+<pre><code><span class="variable">$fp</span> = fsockopen(<span class="variable">$host</span>, <span class="number">80</span>, <span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="number">30</span>);
+</code></pre><p>修改后</p>
+<pre><code><span class="variable">$fp</span> = stream_socket_client(<span class="variable">$host</span>.<span class="string">"80"</span>, <span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="number">30</span>);
+</code></pre><p>我没有测试这个方案，但发现是有问题的，我的参数格式为:</p>
+<pre><code><span class="variable">$this</span>-&gt;smtp_conn = <span class="variable">@pfsockopen</span>(<span class="variable">$host</span>, <span class="variable">$port</span>, <span class="variable">$errno</span>, <span class="variable">$errstr</span>, <span class="variable">$tval</span>);
+</code></pre><p>和所示的不同。所以如何改就不得而知了~欢迎大家给出最新的方案。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2012/Lightroom与Aperture的选择/" itemprop="url">
                 Lightroom与Aperture的选择
               </a>
@@ -341,97 +441,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2012/水花四溅的瞬间/" itemprop="url">
-                水花四溅的瞬间
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2012-11-03T06:47:00+08:00" content="2012-11-03">
-            2012-11-03
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/photo/" itemprop="url" rel="index">
-                  <span itemprop="name">photo</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2012/水花四溅的瞬间/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2012/水花四溅的瞬间/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>今天北京降温… 暖气已经提前开了。 周末也彻底不想出门了…</p>
-<p>在家无趣随即用我的小绿杯拍了几张趣味照片…</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/27460550.jpg" alt="水花"><br><img src="http://zryblog.qiniudn.com/2014/07/643498825.jpg" alt="水花2"><br><img src="http://zryblog.qiniudn.com/2014/07/1169216688.jpg" alt="水花3"></p>
-<p>定格于水花溅起的一瞬间，由于夜晚又在室内，背景不太好～另外把水换成牛奶或咖啡效果也会更好。</p>
-<p>来张网上的美图</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/841892749.jpg" alt="水花4"></p>
-<p>拍摄时注意点：</p>
-<p>对焦点放在杯子上，定点对焦或者改为手动对焦。<br>光圈不能太大，依据景深来决定，大光圈容易让水花变模糊。<br>快门速度达到1/200以上，否则水花会成雾状。<br>下落物体不能太轻，太小，通常用硬币、冰块或曲奇饼。<br>使用连拍模式。<br>光线暗需要闪光灯。</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -470,7 +479,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">110</span>
+              <span class="site-state-item-count">111</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -484,7 +493,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">118</span>
+              <span class="site-state-item-count">119</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -545,7 +554,7 @@
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
