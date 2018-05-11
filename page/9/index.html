@@ -171,6 +171,142 @@
           
           
             
+              <a class="post-title-link" href="/2014/jvm的时区问题/" itemprop="url">
+                Jvm的时区问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2014-09-02T15:30:00+08:00" content="2014-09-02">
+            2014-09-02
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/jvm的时区问题/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/jvm的时区问题/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>最近发现在一台开发机上java程序启动后时间不对，比系统时间慢八小时，检查系统时间却发现是正确的…</p>
+<p>有俩种解决方案，方案一:</p>
+<pre><code><span class="comment">//程序内设置TimeZone</span>
+<span class="keyword">import</span> java.text.SimpleDateFormat;
+<span class="keyword">import</span> java.util.Date;
+<span class="keyword">import</span> java.util.TimeZone;
+<span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>{
+    public static <span class="keyword">void</span> main(<span class="built_in">String</span>[] args){
+        SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);
+        TimeZone tz = TimeZone.getTimeZone(<span class="string">"Asia/Shanghai"</span>);
+        df.setTimeZone(tz);
+        System.out.println(df.format(<span class="keyword">new</span> <span class="built_in">Date</span>()));
+        System.out.println(<span class="keyword">new</span> <span class="built_in">Date</span>().toString());
+    }
+}
+</code></pre><p>result：</p>
+<pre><code>2014<span class="tag">-09-02</span> 23<span class="pseudo">:03</span><span class="pseudo">:25</span>
+<span class="tag">Tue</span> <span class="tag">Sep</span> 02 15<span class="pseudo">:03</span><span class="pseudo">:25</span> <span class="tag">UTC</span> 2014
+</code></pre><p>方案二：</p>
+<pre><code>在程序的启动脚本里加上时区参数
+<span class="deletion">-Duser.timezone=Asia/Shanghai</span>
+</code></pre><p>打印结果可以看出是时区不正确，jvm获取到的时区为UTC，而正确的时间应为CST（北京时间），方案二显然更加灵活但也治标不治本。<br>接下来检查当前系统属性</p>
+<pre><code><span class="comment">//遍历当前系统属性</span>
+<span class="keyword">final</span> Properties p = System.getProperties();
+<span class="keyword">final</span> Enumeration e = p.keys();
+<span class="keyword">while</span> (e.hasMoreElements()) {
+    <span class="keyword">final</span> <span class="keyword">String</span> prt = (<span class="keyword">String</span>) e.nextElement();
+    <span class="keyword">final</span> <span class="keyword">String</span> prtvalue = System.getProperty(prt);
+    System.out.<span class="built_in">println</span>(prt + <span class="string">":"</span> + prtvalue);
+}
+</code></pre><p>可以发现如下参数：</p>
+<pre><code>...
+java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.vendor</span>:Oracle Corporation
+os<span class="class">.name</span>:Linux
+sun<span class="class">.jnu</span><span class="class">.encoding</span>:UTF-<span class="number">8</span>
+java<span class="class">.library</span><span class="class">.path</span>:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib
+java<span class="class">.specification</span><span class="class">.name</span>:Java Platform API Specification
+java<span class="class">.class</span><span class="class">.version</span>:<span class="number">51.0</span>
+sun<span class="class">.management</span><span class="class">.compiler</span>:HotSpot <span class="number">64</span>-Bit Tiered Compilers
+os<span class="class">.version</span>:<span class="number">3.11</span>.<span class="number">0</span>-<span class="number">15</span>-generic
+user<span class="class">.home</span>:/root
+user<span class="class">.timezone</span>:Etc/UTC
+java<span class="class">.awt</span><span class="class">.printerjob</span>:sun<span class="class">.print</span><span class="class">.PSPrinterJob</span>
+file<span class="class">.encoding</span>:UTF-<span class="number">8</span>
+java<span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
+java<span class="class">.class</span><span class="class">.path</span>:/home/app/jdk1.<span class="number">7.0</span>_67/lib:.
+user<span class="class">.name</span>:root
+java<span class="class">.vm</span><span class="class">.specification</span><span class="class">.version</span>:<span class="number">1.7</span>
+sun<span class="class">.java</span><span class="class">.command</span>:Test
+java<span class="class">.home</span>:/home/app/jdk1.<span class="number">7.0</span>_67/jre
+...
+</code></pre><p>本地使用的jdk环境是64-Bit jdk7U67，系统环境64Bit Ubuntu 12.04。<br><strong><em>终极方案</em></strong>：修改系统的时区为「Asia/Shanghai」。</p>
+<pre><code>cp <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai /</span>etc<span class="regexp">/localtime</span>
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2014/为毛怪萨利文拍写真/" itemprop="url">
                 为毛怪萨利文拍写真
               </a>
@@ -358,127 +494,11 @@ configure <span class="attribute">arguments</span>: --user=www --group=www --pre
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/Scala学习-模式匹配/" itemprop="url">
-                Scala学习-模式匹配
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2014-06-11T15:46:00+08:00" content="2014-06-11">
-            2014-06-11
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/Scala学习-模式匹配/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/Scala学习-模式匹配/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h4 id="模式匹配">模式匹配</h4><p>模式匹配是scala的一大特性，有点像增加版的switch-case。<br>在Scala代码中无处不在：用于合并条件执行、解构(destructuring) 、在构造中造型。  </p>
-<pre><code>def getSex(name:Any){
-    name match {
-        <span class="comment">//匹配字符串</span>
-          <span class="keyword">case</span> <span class="string">"rony"</span> =&gt; println(“male”)
-          <span class="keyword">case</span> <span class="string">"lina"</span> =&gt; println(“female”)
-          <span class="comment">//匹配元组</span>
-          <span class="keyword">case</span> (<span class="string">"rony"</span>,<span class="string">"lina"</span>) =&gt; println(name)
-          <span class="comment">//匹配列表</span>
-          <span class="keyword">case</span> <span class="built_in">List</span>(<span class="string">"rony"</span>,<span class="string">"lina"</span>) =&gt; println(name)
-          <span class="comment">//匹配自定义类</span>
-          <span class="keyword">case</span> User(u) =&gt; println(u.name)
-          <span class="comment">//匹配通配符</span>
-          <span class="keyword">case</span> _ =&gt;
-    }
-  }
-</code></pre><p>《Effective Scala》中建议匹配通配符时改为 <code>case other =&gt;</code> 可读性更高</p>
-<h4 id="Options">Options</h4><p>写多了java得同学都见多了NullPointerException，一不小心就会出现这种低级错误，Scala中有一种Option类型，是一个表示有可能包含值的容器。空(None)或满(Some(value))二选一。  </p>
-<p>《Effective Scala》中提出Option提供了使用null的另一种安全选择，应该尽可能的替代null。它是一个集合(最多只有一个元素)并用集合操所修饰，尽量用Option。<br>但它也提示了不要过度使用Option： 如果有一个明确的缺省值——一个Null对象——直接用Null而不必用Option</p>
-<pre><code><span class="function"><span class="keyword">def</span> <span class="title">getUser</span><span class="params">(user_id: Long)</span>:</span>User = {
-    //userDao.getUser()返回Option[User]类型
-    val user = userDao.getUser(user_id)
-    user match {
-        case Some(u) =&gt; u
-        case <span class="keyword">None</span> =&gt; //不存在用户
-    }
-}
-</code></pre><p>有人说这不和if判断null一样么，根本没有什么优势，个人认为这只是更像一种警示，当习惯后，看到方法的返回值是Option时，心里应该明白这个可能是要做空处理的。<br>Option里面还有一些的好用方法，例如getOrElse()，如果没有取到则给一个默认值，</p>
-<pre><code><span class="function"><span class="keyword">def</span> <span class="title">getUserName</span><span class="params">(user_id: Long)</span>:</span>String = {
-    //userDao.getUserName()返回Option[String]类型
-    val user = userDao.getUserName(user_id)
-    user.getOrElse(<span class="string">"rony"</span>)
-}
-</code></pre></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/10/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/8/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/10/">&raquo;</a>
   </nav>
 
  </div>
@@ -512,7 +532,7 @@ configure <span class="attribute">arguments</span>: --user=www --group=www --pre
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">111</span>
+              <span class="site-state-item-count">112</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -526,7 +546,7 @@ configure <span class="attribute">arguments</span>: --user=www --group=www --pre
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">119</span>
+              <span class="site-state-item-count">120</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

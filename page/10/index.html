@@ -171,6 +171,122 @@
           
           
             
+              <a class="post-title-link" href="/2014/Scala学习-模式匹配/" itemprop="url">
+                Scala学习-模式匹配
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2014-06-11T15:46:00+08:00" content="2014-06-11">
+            2014-06-11
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/Scala学习-模式匹配/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/Scala学习-模式匹配/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h4 id="模式匹配">模式匹配</h4><p>模式匹配是scala的一大特性，有点像增加版的switch-case。<br>在Scala代码中无处不在：用于合并条件执行、解构(destructuring) 、在构造中造型。  </p>
+<pre><code>def getSex(name:Any){
+    name match {
+        <span class="comment">//匹配字符串</span>
+          <span class="keyword">case</span> <span class="string">"rony"</span> =&gt; println(“male”)
+          <span class="keyword">case</span> <span class="string">"lina"</span> =&gt; println(“female”)
+          <span class="comment">//匹配元组</span>
+          <span class="keyword">case</span> (<span class="string">"rony"</span>,<span class="string">"lina"</span>) =&gt; println(name)
+          <span class="comment">//匹配列表</span>
+          <span class="keyword">case</span> <span class="built_in">List</span>(<span class="string">"rony"</span>,<span class="string">"lina"</span>) =&gt; println(name)
+          <span class="comment">//匹配自定义类</span>
+          <span class="keyword">case</span> User(u) =&gt; println(u.name)
+          <span class="comment">//匹配通配符</span>
+          <span class="keyword">case</span> _ =&gt;
+    }
+  }
+</code></pre><p>《Effective Scala》中建议匹配通配符时改为 <code>case other =&gt;</code> 可读性更高</p>
+<h4 id="Options">Options</h4><p>写多了java得同学都见多了NullPointerException，一不小心就会出现这种低级错误，Scala中有一种Option类型，是一个表示有可能包含值的容器。空(None)或满(Some(value))二选一。  </p>
+<p>《Effective Scala》中提出Option提供了使用null的另一种安全选择，应该尽可能的替代null。它是一个集合(最多只有一个元素)并用集合操所修饰，尽量用Option。<br>但它也提示了不要过度使用Option： 如果有一个明确的缺省值——一个Null对象——直接用Null而不必用Option</p>
+<pre><code><span class="function"><span class="keyword">def</span> <span class="title">getUser</span><span class="params">(user_id: Long)</span>:</span>User = {
+    //userDao.getUser()返回Option[User]类型
+    val user = userDao.getUser(user_id)
+    user match {
+        case Some(u) =&gt; u
+        case <span class="keyword">None</span> =&gt; //不存在用户
+    }
+}
+</code></pre><p>有人说这不和if判断null一样么，根本没有什么优势，个人认为这只是更像一种警示，当习惯后，看到方法的返回值是Option时，心里应该明白这个可能是要做空处理的。<br>Option里面还有一些的好用方法，例如getOrElse()，如果没有取到则给一个默认值，</p>
+<pre><code><span class="function"><span class="keyword">def</span> <span class="title">getUserName</span><span class="params">(user_id: Long)</span>:</span>String = {
+    //userDao.getUserName()返回Option[String]类型
+    val user = userDao.getUserName(user_id)
+    user.getOrElse(<span class="string">"rony"</span>)
+}
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2014/2014大连徒步大会/" itemprop="url">
                 2014大连徒步大会
               </a>
@@ -337,98 +453,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/武汉新映像/" itemprop="url">
-                武汉新映像
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2014-04-10T15:59:00+08:00" content="2014-04-10">
-            2014-04-10
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/photo/" itemprop="url" rel="index">
-                  <span itemprop="name">photo</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/武汉新映像/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/武汉新映像/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>清明我从一座雾霾城市「北京」来到了另一座雾霾城市「武汉」，真是一担两桶，半斤八两，霾的厉害。<br>几年前我第一次去武汉，给我的映像非常差，可用脏乱差来形容。<br>窄小的马路和低矮的楼房。<br>装修还不如我家县城的统一两元的豪华空调公交，毫无秩序的乘车人。</p>
-<p>凭借这样的映像来到武汉也是意外，本打算去长白山拍“水怪”去，种种原因却来了武汉。既来之则安之，不过这次的映像好很多，起码两元坐上了干净舒适的公交~不变的依旧是那乘车的人，似乎从来没见过排队的景象。<br>武汉什么好吃，周黑鸭？No，是烤虾… 武汉本地一朋友带我们吃了「水水烤虾」，确实很好吃。类似北京的麻小（麻辣小龙虾），不过比北京的好吃实惠的多。烧烤味道都很不错，火锅味道也还行，比较出名的「三国英雄」。三天里我们共吃了三顿烧烤，一顿火锅。</p>
-<p>因为雾霾天，挺影响拍片的。以至于在东湖里竟然一张风景片没出，每晚坚持去了趟长江大桥，而且还去晚了~~ 不过还是出了张能看的<br><a href="http://zryblog.qiniudn.com/2014/07/937242091.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/937242091.jpg" alt="武汉长江大桥"></a><br>上面这张是拍摄的经典位置，位于桥下岸边。下面这张站于露台上。 这次没有拍上二桥的景色，长江二桥也很漂亮，虽然没有大桥这样宏伟壮观。<br><a href="http://zryblog.qiniudn.com/2014/07/3435308295.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/3435308295.jpg" alt="长江大桥二"></a><br>拍摄注意事项: 桥上观景灯关闭时间为九点半…<br>旅游假日竟然这么早关灯，幸好去的不是太晚，不然毛都没有了！</p>
-<p>在武汉游玩景点相当集中，都集中在长江大桥两侧，西边汉口区的江汉路/龟北路/江滩，东边的户部巷/黄鹤楼/昙华林… 只是东湖稍远，磨山景区里有滑道，比索道有意思多了，可以想象为一个人坐在一个盆里冲下山底…乐趣十足。</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/9/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/11/">&raquo;</a>
   </nav>
 
  </div>
@@ -462,7 +491,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">111</span>
+              <span class="site-state-item-count">112</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -476,7 +505,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">119</span>
+              <span class="site-state-item-count">120</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

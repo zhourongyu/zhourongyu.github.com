@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2018-05-11T15:44:38.605Z</updated>
+  <updated>2018-05-11T15:56:22.922Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://xxxx.ooo/2018/the-product-manager/"/>
     <id>http://xxxx.ooo/2018/the-product-manager/</id>
     <published>2018-03-19T14:43:08.000Z</published>
-    <updated>2018-05-11T15:44:38.605Z</updated>
+    <updated>2018-05-11T15:56:22.922Z</updated>
     <content type="html"><![CDATA[<p>小李是一枚资深产品汪，工作五年多，过着平凡充实的生活，偶尔也反思一下，什么时候能财务自由，迎娶白富美，走向人生巅峰呢？</p>
 <p>有一天领导找来了小李…</p>
 <p>领导：你看某某公司这个功能不错，吸了很多新用户，我们可以考虑做一下</p>
@@ -84,6 +84,62 @@
     </summary>
     
       <category term="产品经理" scheme="http://xxxx.ooo/tags/%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86/"/>
+    
+      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[多卡多机的解决方案]]></title>
+    <link href="http://xxxx.ooo/2017/how-to-manage-multi-phone/"/>
+    <id>http://xxxx.ooo/2017/how-to-manage-multi-phone/</id>
+    <published>2017-11-06T15:50:52.000Z</published>
+    <updated>2018-05-11T15:57:29.082Z</updated>
+    <content type="html"><![CDATA[<p>随着移动互联网的迅猛发展，对手机流量的需求越来越强。联通近两年推出了各种互联网套餐，吞噬了大批的用户。我作为一个资深移动老用户也办了张「大王卡」。 在联通刚推出3G业务，而移动由于自身原因只能使用2G的时期我都忍住没有迁移至联通，但现在我几乎要离开移动了。日常使用全部大王卡，移动只有接收银行等重要信息、验证码等功能。姑且还称移动为主卡，联通为副卡吧。</p>
+<p>如果手机不支持双卡双待，多卡带来的问题就是得多备一个手机，多花钱不说还得天天带着。对于我这种 iPhone党简直是噩梦，势必要解决它</p>
+<p>需要解决的有俩部分</p>
+<p>1.电话：主卡电话呼叫转移到副卡</p>
+<p>2.短信： 希望把主卡短信全部转发到副卡上</p>
+<h5 id="呼叫转移">呼叫转移</h5><p>目前大部分智能手机已系统支持呼叫转移，注意的是，这部分是需要另付资费哦例如A/B俩卡都是免费接听，但如果 A 转接到 B 需要收取 A 的呼叫费用</p>
+<h5 id="使用_IFTTT_解决短信转发">使用 IFTTT 解决短信转发</h5><p>要解决短信的转移前提是能获取到本机短信的权限，iOS 因为隐私保护暂时做不到，所以<strong>需要一台Android 手机</strong>供主卡使用，如果是小米还需要在安全中心里给 IFTTT 开启读取服务类短信，不然无法收到银行验证码等。</p>
+<p><strong>建议使用 Google Play 版本的 IFTTT</strong>（需翻墙）</p>
+<p>下面表格列出邮件、Telegram、微信三种方案各自优缺点。<strong>个人推荐使用微信</strong>，毕竟每天都使用，更加习惯。</p>
+<table>
+<thead>
+<tr>
+<th>转发方案</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>邮件</td>
+<td>配置简单，稳定</td>
+<td>响应稍慢</td>
+</tr>
+<tr>
+<td>Telegram</td>
+<td>安全，及时</td>
+<td>俩个手机都需要翻墙</td>
+</tr>
+<tr>
+<td>微信</td>
+<td>习惯，及时</td>
+<td>需要第三方推送服务</td>
+</tr>
+</tbody>
+</table>
+<p>具体配置方法都很简单，就不详述了。推送到微信要配置成 Webhooks 的方式，推荐 <a href="http://sc.ftqq.com/" target="_blank" rel="external">Server酱</a> 服务，绑定下微信就可以收到推送啦。</p>
+<h5 id="其他">其他</h5><p>其实还有个更简单的方案，就是使用 IFTTT 自身APP。俩部手机都下载 IFTTT 并用同一个账号登录，打开 Applets 的推送即可~</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>随着移动互联网的迅猛发展，对手机流量的需求越来越强。联通近两年推出了各种互联网套餐，吞噬了大批的用户。我作为一个资深移动老用户也办了张「大王卡」。 在联通刚推出3G业务，而移动由于自身原因只能使用2G的时期我都忍住没有迁移至联通，但现在我几乎要离开移动了。日常使用全部大王卡]]>
+    </summary>
+    
+      <category term="IFTTT" scheme="http://xxxx.ooo/tags/IFTTT/"/>
+    
+      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
     
   </entry>
   
@@ -354,33 +410,6 @@
       <category term="osx" scheme="http://xxxx.ooo/tags/osx/"/>
     
       <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[一封邮件的故事]]></title>
-    <link href="http://xxxx.ooo/2016/story-of-an-email/"/>
-    <id>http://xxxx.ooo/2016/story-of-an-email/</id>
-    <published>2016-02-29T14:28:00.000Z</published>
-    <updated>2016-03-20T14:42:04.000Z</updated>
-    <content type="html"><![CDATA[<p>下午收到封邮件，标题是沉痛哀悼xxxx，差点吓尿… 原来是哀悼之前的项目下线。引发了很多的回忆…<br>两年前加入雪球时写了篇十个字博客，今天就来完成那篇文章吧<br>Snowball 是雪球的「核心」项目（从名字就能看出来），就像歌手出道喜欢发行同名专辑一样。也是因为这个项目，雪球在「互联网金融」领域崭露头角。<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F2%2F1456759177888.png" alt="email"></p>
-<h4 id="第一次上线事故">第一次上线事故</h4><p>记得刚进公司时第一次提交上线代码，是一个技术改造，某个接口虽然已经使用了缓存(redis)，但因为业务较为复杂导致接口速度还是比较慢，最后考虑使用 local-cache 方案替换原有方案。但因为没有仔细了解透业务，导致遗漏一个接口没有替换。上线后，匿名首页出现异常，那时候雪球上线管理非常随意，一天可能上线多次。那次时间正好是下班时后七点左右，我正高兴的和妹纸吃着饭… leader 来电说出问题了，代码回滚，导致饭也没有吃好，以至于至今还记忆犹新。</p>
-<p>之后业务发展越来越好，用户越来越多，单一项目带来的坑也越来越多。随后开始做项目拆分、RPC 改造。别扭着从零开始写 scala ，写到后面越来越顺手。之后换到组合业务、做雪球钱包，全都是 Scala 的项目。</p>
-<h4 id="公司搬家">公司搬家</h4><p>15 年初公司顺利搬迁望京 SOHO, 也从一个小公司转变为100人左右的「中小型企业」，从一两个小破屋变成了有茶水间，健身房，餐厅，多个会议室的让人羡慕的工作环境，终于像一个土豪互联网企业了。 </p>
-<p>公司是大了，但并没有找到自己独有的商业模式。15年开始各种的尝试，当时组合售卖做的风生水起，大家仿佛看到了希望之光，直到某天一位中年秃顶男子来到我司。之前一直都是只闻 「紫金花」其名，不知其厉害。现在亲身体会了…此处省略八百字。</p>
-<p>此路不通后开始转向全力做交易，此前组合业务同事大部分都转到目前我们这个基金业务当中了。小半年后我们的产品终于也即将上市了…尽请期待吧</p>
-<p>雪球目前一百多人，我的工号 3x 也算是个老油条，现在已经有很多新员工不认识了~ 经常吃饭感觉到了一个陌生的公司…虽然人越来越多，但雪球还是那个雪球。</p>
-<h4 id="总结">总结</h4><p>雪球是个好公司，扁平化的管理，宽松的工作环境，管午饭，有年度旅游和各种小福利。产品有自己的逼格，有特有的创新，「组合」上线后已经被多个竞品模仿抄袭。几乎没有办公室斗争，虽然人数过百，还是保持着创业公司的风范。</p>
-<p>当然也有缺点，雪球员工多数个性低调含蓄，从 leader 到员工都如此。整个团队环境是比较内敛的，新员工不容易融入，一些入职不久的新员工因为这个原因也很快就离职了。或许这就是雪球团队特有的一种风格。</p>
-<p>当然以上所有都是我个人作为一个普通员工的看法，嘿</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>下午收到封邮件，标题是沉痛哀悼xxxx，差点吓尿… 原来是哀悼之前的项目下线。引发了很多的回忆…<br>两年前加入雪球时写了篇十个字博客，今天就来完成那篇文章吧<br>Snowball 是雪球的「核心」项目（从名字就能看出来），就像歌手出道喜欢发行同名专辑一样。也是因为这个]]>
-    </summary>
-    
-      <category term="雪球" scheme="http://xxxx.ooo/tags/%E9%9B%AA%E7%90%83/"/>
-    
-      <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
     
   </entry>
   

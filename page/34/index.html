@@ -171,6 +171,137 @@
           
           
             
+              <a class="post-title-link" href="/2012/No module named yum/" itemprop="url">
+                No Module Named Yum
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2012-01-10T03:07:00+08:00" content="2012-01-10">
+            2012-01-10
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2012/No module named yum/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2012/No module named yum/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>今早运行Yum报错：</p>
+<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># yum</span>
+
+There was a problem importing one <span class="keyword">of</span> the Python modules
+required <span class="keyword">to</span> run yum. The error leading <span class="keyword">to</span> <span class="keyword">this</span> problem <span class="attribute">was</span>:
+
+   No <span class="built_in">module</span> named yum
+
+Please install a package which provides <span class="keyword">this</span> <span class="built_in">module</span>, <span class="keyword">or</span>
+verify <span class="literal">that</span> the <span class="built_in">module</span> <span class="keyword">is</span> installed correctly.
+
+It<span class="string">'s possible that the above module doesn'</span>t match the
+current version <span class="keyword">of</span> Python, which <span class="attribute">is</span>:
+<span class="number">2.7</span>.<span class="number">2</span> (<span class="keyword">default</span>, Dec  <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
+[GCC <span class="number">4.1</span>.<span class="number">2</span> <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.<span class="number">2</span>-<span class="number">51</span>)]
+
+If you cannot solve <span class="keyword">this</span> problem yourself, please go <span class="keyword">to</span>
+the yum faq <span class="attribute">at</span>:
+  <span class="attribute">http</span>:<span class="pi">//wiki.linux.duke.edu/YumFaq</span>
+</code></pre><p>错误原因：错误信息描述为 yum 所依赖的python 不相符</p>
+<p>查看yum版本</p>
+<pre><code>[root@Rony ~]# rpm -qa | grep yum
+yum-<span class="number">3.2.22-37</span>.el5.centos
+yum-metadata-parser-<span class="number">1.1.2-3</span>.el5.centos
+yum-fastestmirror-<span class="number">1.1.16-16</span>.el5.centos
+</code></pre><p>查看python版本</p>
+<pre><code><span class="comment">[root@Rony ~]</span># whereis python
+
+python: /usr/bin/python2.4 /usr/bin/python /usr/lib/python2.4 /usr/local/python2.7 /usr/share/<span class="keyword">man</span>/man1/python.1.gz
+</code></pre><p>装了两个版本python，因为上次的更新版本到python2.7</p>
+<p>执行python，默认使用的是2.7.2的版本</p>
+<pre><code>[root<span class="property">@Rony</span> ~]<span class="comment"># python</span>
+Python <span class="number">2.7</span>.2 (<span class="reserved">default</span>, Dec <span class="number">5</span> <span class="number">2011</span>, <span class="number">21</span>:<span class="number">15</span>:<span class="number">46</span>)
+
+[GCC <span class="number">4.1</span>.2 <span class="number">20080704</span> (Red Hat <span class="number">4.1</span>.2-<span class="number">51</span>)] <span class="literal">on</span> linux2
+Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.
+&gt;&gt;&gt;
+</code></pre><p>yum调用了高版本的python，而yum使用的是python2.4。</p>
+<p>查找yum文件,并编辑此py文件</p>
+<pre><code>[root<span class="keyword">@Rony</span> ~]# which yum
+/usr/bin/yum
+[root<span class="keyword">@develop</span> local]# vi /usr/bin/yum
+
+将
+<span class="shebang">#!/usr/bin/python</span>
+改为:
+<span class="shebang">#!/usr/bin/python2.4</span>
+</code></pre><p>然后保存OK.</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2011/对于CSDN帐号资料泄漏的感悟/" itemprop="url">
                 对于CSDN帐号资料泄漏的感悟
               </a>
@@ -370,109 +501,11 @@ Swap: 786416 36 786380
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2011/HTTP的状态码/" itemprop="url">
-                HTTP的状态码
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2011-12-07T14:05:00+08:00" content="2011-12-07">
-            2011-12-07
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2011/HTTP的状态码/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2011/HTTP的状态码/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>ps:昨晚服务器出现严重错误，出现504，老大误以为是新上的负载均衡引起的故障，后经排查是因为统计库日志被写满～</p>
-<p>下面是一些常见的状态码：</p>
-<p>200 OK                          一切正常<br>301 Moved Permanently           永久性的转移<br>302 Found                       暂时性的转移<br>400 Bad Request                 请求出现语法错误<br>403 Forbidden                   资源不可用<br>404 Not Found                   无法找到指定的资源<br>500 Internal Server Error       服务器遇到了不可预料的情况<br>501 Not Implemented             服务器不支持实现请求的功能<br>504 Gateway Timeout             不能及时的从服务器获得应答&lt;<br>/pre&gt;<br>500是大家最不想看见的错误～ 因为错误的可能性很广，不易排查。</p>
-<p>说说301 和 302，近日在研究nginx，很多人都说nginx目前不支持.htaccess文件，不支持rewrite。</p>
-<p>其实它是支持的，依赖pcre库。</p>
-<p>301和302的区别主要在于一个是永久跳转，一个是临时跳转。</p>
-<p>为了页面的SEO，应尽量使用301的方式，如果我们把一个地址采用301跳转方式的的话搜索引擎会把老地址的PageRank等信息带到新地址，同时在搜索引擎库中彻底废掉原来的老地址。</p>
-<p>例如在本站中，需要把zhourongyu.me, zhourongyu.me等域名自动跳转到www上。</p>
-<pre><code>server{
-    listen 80<span class="comment">;</span>
-    server_name *.zhourongyu.me<span class="comment">;</span>
-    access_log off<span class="comment">;</span>
-    rewrite ^/(.*)$ http://zhourongyu.me/$1 permanent<span class="comment">;</span>
-}
-</code></pre><p>那302的跳转一般用在哪呢？<br>在一些需要临时的功能上的跳转的时候，例如JS的跳转，http的meta跳转会发送302状态码。<br>另外302一般也会作用与恶意的URL劫持（URL hijacking），～感兴趣可以去研究下！</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/33/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/35/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/33/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/35/">&raquo;</a>
   </nav>
 
  </div>
@@ -506,7 +539,7 @@ Swap: 786416 36 786380
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">111</span>
+              <span class="site-state-item-count">112</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -520,7 +553,7 @@ Swap: 786416 36 786380
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">119</span>
+              <span class="site-state-item-count">120</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

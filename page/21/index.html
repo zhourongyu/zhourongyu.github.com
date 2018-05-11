@@ -171,6 +171,108 @@
           
           
             
+              <a class="post-title-link" href="/2013/Jinja2与Flask的HTML自动转义/" itemprop="url">
+                Jinja2与Flask的HTML自动转义
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2013-01-30T10:22:00+08:00" content="2013-01-30">
+            2013-01-30
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/Jinja2与Flask的HTML自动转义/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Jinja2与Flask的HTML自动转义/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>今天写一个页面的时候发现代码竟然原封不动的出现了，怀疑是Jinja的自动转义。结果发现Jinja2的Escaping是自动关闭的，下面是Jinja官方文档中描述的，默认自动转义是关闭的，可以手动转义或者开启自动转义。</p>
+<blockquote>
+<p>HTML Escaping</p>
+<p>When generating HTML from templates, there’s always a risk that a<br>variable will include characters that affect the resulting HTML. There<br>are two approaches: manually escaping each variable or automatically<br>escaping everything by default.</p>
+<p>Jinja supports both, but what is used depends on the application<br>configuration. The default configuaration is no automatic escaping for<br>various reasons:</p>
+<p>escaping everything except of safe values will also mean that Jinja is<br>escaping variables known to not include HTML such as numbers which is<br>a huge performance hit. The information about the safety of a variable<br>is very fragile. It could happen that by coercing safe and unsafe<br>values the return value is double escaped HTML.</p>
+</blockquote>
+<p>转而搜索发现是Flask的原因，Flask的自动转义是默认开启的，如需要关闭需要以下操作（来自官方文档）：</p>
+<p>自动转义就是自动帮你将特殊的字符替换成转义符号。HTML（或者XML， XHTML）的特殊字符有 &amp;, &gt;, &lt;, “, ‘ 。因为这些字符在文档中有它自己特殊的含义，所以如果你想在文章中使用这些符号，必须将它替换成转义符号。如果不这样做，不仅用户使用不了这些符号，还会导致安全问题。(更多 :ref:<code>xss</code>)</p>
+<p>但是有时候你需要在模版中禁用自动转义。如果你想直接将HTML插入页面，比如将markdown语言转换成HTML，那么你就需要这样做了。</p>
+<p>有3种方法可以关闭自动转义：</p>
+<ul>
+<li>在Python文件中进行转义。先在 :class:<code>~flask.Markup</code> 对象中进行转义，然后将它传送给模版。一般推荐使用这个方式。</li>
+<li>在模版文件中进行转义。通过 |safe 过滤器来表示字符串是安全的()</li>
+<li>暂时禁用全局的自动转义功能。  </li>
+</ul>
+<p>要想在模版中禁用全局自动转义功能，可以用  语句块:<br>    {\% codeblock lang:python \%}<br>    {\% autoescaping false \%}<br>    autoescaping is disableed here<br>    {\% endautoescape \%}<br>    {\% endcodeblock \%}</p>
+<p>在这么做的时候，要语句块中使用到的变量非常小心。</p>
+<p>自动开始转义也是不错的，这方面的安全就可以少考虑了，关闭也很简单。我直接使用第二种方式，在需要禁止转义的部分加上safe标记，很方便。其他的两种目前还没用上~</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/呼吸防护标准/" itemprop="url">
                 呼吸防护标准
               </a>
@@ -360,100 +462,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/西安西安/" itemprop="url">
-                西安西安
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-01-14T16:16:00+08:00" content="2013-01-14">
-            2013-01-14
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/photo/" itemprop="url" rel="index">
-                  <span itemprop="name">photo</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/西安西安/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/西安西安/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>夜已深，不想在碰电脑，试着用ipad来完成。<br>从西安回来十多天了，选择在这个不合时宜的时间去西安也是随意之旅，恰好有便宜机票。<br>中学历史学的并不好，西安给我的印象除了古都就剩下兵马俑，当然还有西岳华山。<br>这次西安的行程很随意，完全随心情。<br>说不合时宜是有依据的，元旦温度很低，零下十度左右，导致很多地方也没开发，例如华山著名的鹞子翻身与长空栈道。也是最遗憾的地方！好在顶着寒风硬是看完了日出。体会了僵硬的状态。<br><img src="http://zryblog.qiniudn.com/2014/07/1366326586.jpg" alt="华山"></p>
-<p>站在城墙上还是有古都的感觉，加上冬天天气一般，人烟稀少。在寒风中漫步在城墙上有种风萧萧兮易水寒，壮士一去兮不复返的感觉〜偶尔身边会冲出几辆自行车，有赶时间回去还车的〜超时要加钱了〜<br><img src="http://zryblog.qiniudn.com/2014/07/3739295031.jpg" alt="城楼"><br><img src="http://zryblog.qiniudn.com/2014/07/3824602309.jpg" alt="城墙"><br>站在城墙上我想起电视剧中那些攻城用的云梯，在现场看来得非常高，光爬这么高且陡得梯子也非一般人敢为。何况搬运的人有多苦。<br><img src="http://zryblog.qiniudn.com/2014/07/114151958.jpg" alt="城墙Style"><br><img src="http://zryblog.qiniudn.com/2014/07/4159531252.jpg" alt="cao"><br>到哪都有潮流，看我们的城墙Style！模特都是好基友Cao来担任。</p>
-<p>城墙很长13km左右。步行可以费很长时间，我们就等到了夕阳，只可惜现在城墙周围楼高房大，不然可以看到很美的落日景象<br><img src="http://zryblog.qiniudn.com/2014/07/2791369512.jpg" alt="落日"><br>城墙的夜景也相当漂亮，可惜再最后走的时候才发现，大包小包的没法拍了。<br>不论是兵马俑还是博物馆都是去学知识的，如果历史课都是这样现场来讲，相信所有人都能学的倍儿棒。</p>
-<p>来西安不吃小吃是不可能的，不过现在全国小吃一条街都类似，什么都有。既然在西安那就多吃羊肉泡馍，BiangBIang面，肉夹馍等类似食物，在我看来不太符合我的口味习惯，因为每天都在愁吃什么〜我还是更偏向北方的面食。<br>重点提下羊肉泡馍，真的要自己撕，不熟练的我们撕了二十分钟有，手指都疼了一天。。。吃个泡馍不容易</p>
-<p>关于华山也要说几句，华山在大家眼里是险字，实际上只是坡度稍大一些，对于其他山来说确实较险，不过也没有危险。真正的险也许是那条古老的真正的智取华山路线，景点内开放的那条是假的〜<br>华山的观景台在东峰，也许是因为高度不够，位置并不是太好，有山峦挡住了地平线，不不算最好的看日出位置，相比泰山、峨眉还是有点差距的。不过也是另一种感觉。<br><img src="http://zryblog.qiniudn.com/2014/07/539457072.jpg" alt="华山之巅"><br>最后可以看看冻僵硬后还没完全恢复的我。此时已经接近中午了，地处南峰，华山之巅。身后这块石头上面应该就是华山的最高点了。<br>一个身穿一件T恤、一件卫衣加一件普通防风帽衫在夜爬之后扛着脚架，背着相机顶着零下十多度寒风等日出的不要命的孩子</p>
-<p>好了，用pad打这么多字，手都酸了。下次还是电脑吧…………</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/22/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/20/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/22/">&raquo;</a>
   </nav>
 
  </div>
@@ -487,7 +500,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">111</span>
+              <span class="site-state-item-count">112</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -501,7 +514,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">119</span>
+              <span class="site-state-item-count">120</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
