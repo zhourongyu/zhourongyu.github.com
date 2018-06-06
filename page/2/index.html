@@ -171,6 +171,112 @@
           
           
             
+              <a class="post-title-link" href="/2017/using-lombok/" itemprop="url">
+                使用 Lombok 遇到的坑
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2017-03-16T18:39:03+08:00" content="2017-03-16">
+            2017-03-16
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2017/using-lombok/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2017/using-lombok/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Lombok的主旨是提高开发效率，消除冗长的 JAVA 代码，尤其是 POJO 类型。在开发初期 POJO 经常修改，随之涉及到改动 getter/setter/toString 等一系列方法。虽然现在 IDE 都能自动生成对应代码，但还是需要手动删除重新生成。</p>
+<p>它的原理是在编译期操作 AST(抽象语法树) 去改变字节码，根据注解生成对应的代码。因为在静态编译期做的，相对可控，使用也简单。</p>
+<blockquote>
+<p>Google 开源的 AutoValue 也是用来解决这个问题，功能很全面，还可以定制化。但有一些的问题</p>
+<ol>
+<li>代码侵入重，所有定义的对象是抽象类，使用都是封装后的 AutoValue_XXX </li>
+<li>生成的 POJO 都是 immutable 的，需要频繁操作的类会很麻烦。</li>
+</ol>
+</blockquote>
+<h6 id="在使用_Lombok_期间遇到一个坑">在使用 Lombok 期间遇到一个坑</h6><p>当你的 POJO 中出现单字母驼峰名称时，例如：iType，Lombok生成出来的 getter/setter 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> String iType;</div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getIType</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> iType;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIType</span><span class="params">(String iType)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.iType = iType;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>乍一看没啥问题，但是影响很严重，首先 Spring 是不认此方法的，其次也影响到 Jackson 的解析，直接导致无法使用</p>
+<p>一般来说，代码规范和 API 规范有所区别，参考之前的文章「<a href="/2016/about-api-design/">浅谈 Api 设计</a>」。从后端输出 Api 时会做一些转换，例如驼峰转小写+下划线格式，这个 Jackson 有对应支持</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Jackson2ObjectMapperBuilder.propertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES)</div><div class="line"><span class="comment">//Jackson 也是通过 get 方法来获取属性</span></div><div class="line"><span class="comment">//我们的预期是 </span></div><div class="line">iType -&gt; i_type</div><div class="line"><span class="comment">//而结果是 </span></div><div class="line">IType -&gt; itype</div></pre></td></tr></table></figure>
+<p>开始我觉得这是 Lombok 的 bug，随后我下载了 Lombok 的源码来验证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//HandlerUtil 类统一处理方法名</span></div><div class="line"><span class="comment">//可以看到规则是如果首字母小写，长度大于2并且第二个字母是大写或者是 titlecase 的话，则把首字母变大写。</span></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> prefix Something like &#123;<span class="doctag">@code</span> get&#125; or &#123;<span class="doctag">@code</span> set&#125; or &#123;<span class="doctag">@code</span> is&#125;.</div><div class="line">     * <span class="doctag">@param</span> suffix Something like &#123;<span class="doctag">@code</span> running&#125;.</div><div class="line">     * <span class="doctag">@return</span> prefix + smartly title-cased suffix. For example, &#123;<span class="doctag">@code</span> setRunning&#125;.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">buildAccessorName</span><span class="params">(String prefix, String suffix)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (suffix.length() == <span class="number">0</span>) <span class="keyword">return</span> prefix;</div><div class="line">        <span class="keyword">if</span> (prefix.length() == <span class="number">0</span>) <span class="keyword">return</span> suffix;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> first = suffix.charAt(<span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span> (Character.isLowerCase(first)) &#123;</div><div class="line">            <span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp;</div><div class="line">                (Character.isTitleCase(suffix.charAt(<span class="number">1</span>)) || Character.isUpperCase(suffix.charAt(<span class="number">1</span>)));</div><div class="line">            suffix = String.format(<span class="string">"%s%s"</span>,</div><div class="line">                    useUpperCase ? Character.toUpperCase(first) : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> String.format(<span class="string">"%s%s"</span>, prefix, suffix);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>显然这是特意而为之，随后我上官方 issue 中看了下，在15年已经有人提出了这个问题，而官方的答复是 Java Bean 的规范就是如此，且不应该使用首字母小写第二个字符大写的命名规则，Spring 的处理方式是自己发明的，我们不能跟着 Spring 乱搞，如果 Oracle 官方推荐如此或者所有人都是这么处理的话我们才改~</p>
+<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/x2jea.png" alt=""></p>
+<p>虽然我没有仔细的看过 Bean 规范，但如果 Spring 这么大厂都不支持的话会很难推广，在我刚和同事推荐的时候大家都非常激动，一听有这么个坑几乎都放弃了，也许是 xXxx 这种命名非常常见吧，比如 iPhone……</p>
+<p>不光 Spring，Jackson，编译器（ IDEA）自动生成的也是如此，只能说 Lombok 性格真是倔。既然如此只好自己修改下源码了…</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//好在改动也非常小， 规则改为：长度大于2，并且第二个字母是大写则不转换大写</span></div><div class="line"><span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp; Character.isUpperCase(suffix.charAt(<span class="number">1</span>));</div><div class="line"></div><div class="line">suffix = String.format(<span class="string">"%s%s"</span>, useUpperCase ? first : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div></pre></td></tr></table></figure>
+<p>PS：据官方说从 JAVA 讨论组数据统计，半数多人支持 getxXxx() 的做法。但他们大多数人的选择未必是正确的做法~</p>
+<p>啊呸…</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2017/ski-in-hokkaido/" itemprop="url">
                 北海道滑雪不完全指南
               </a>
@@ -375,96 +481,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/what-is-coder/" itemprop="url">
-                程序员认知
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2016-09-06T23:21:12+08:00" content="2016-09-06">
-            2016-09-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/what-is-coder/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/what-is-coder/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>目前市面上对程序员有几种认知<br>普遍认知：格子衬衫、牛仔裤、运动鞋、黑色双肩包<br>偏见认知：闷骚、宅男、不会聊天<br>深度认知：聪明、上进、有信仰和情怀<br>极度认知：钱多话少死得早，当老公不二人选</p>
-<p>有一次我跟长辈们出去吃饭，桌上一位做 IT 周边行业的叔叔问我，说你们赚多少钱一个月啊。我说没多少，万八千的。叔叔说那肯定得天天加班到半夜吧。<br>我：o(︶︿︶)o ……</p>
-<blockquote>
-<p>我司虽然是互联网公司，但很少加班，还享受互联网公司各种福利待遇… 有兴趣的同学可以联系（<a href="https://xueqiu.com/about/jobs" target="_blank" rel="external">相关职位信息</a>）</p>
-</blockquote>
-<p><strong>福利</strong><br>我司码农日常工作图！拖拉板、大裤衩、Macbook Pro、iPhone、机械键盘，不拘一格，不修边幅。</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/IMG_2124.JPG" alt="码农日常"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -503,7 +519,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -517,7 +533,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">120</span>
+              <span class="site-state-item-count">121</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

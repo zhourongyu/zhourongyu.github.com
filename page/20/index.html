@@ -171,6 +171,105 @@
           
           
             
+              <a class="post-title-link" href="/2013/Array与List的那些事/" itemprop="url">
+                Array与List的那些事
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2013-06-06T13:42:00+08:00" content="2013-06-06">
+            2013-06-06
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/Array与List的那些事/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Array与List的那些事/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>Java Api中提供了数组对List的转换方法</p>
+<pre><code>String[] tmp = {<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>,<span class="string">"d"</span>};
+
+<span class="keyword">List</span>&lt;String&gt; <span class="keyword">list</span> = Arrays.asList(tmp);
+
+<span class="keyword">list</span>.<span class="keyword">clear</span>() <span class="comment">//抛出java.lang.UnsupportedOperationException异常</span>
+</code></pre><p>Arrays的asList实现方式是使用参数引用的数组的大小来new的一个ArrayList，对返回列表的更改会“直写”到数组，而数组没有clear,add,remove等方法。</p>
+<p>可以使用CollectionUtils(org.apache.commons.collections.CollectionUtils)进行深度转换</p>
+<pre><code><span class="built_in">List</span> <span class="built_in">list</span><span class="subst">=</span> <span class="literal">new</span> ArrayList(); CollectionUtils<span class="built_in">.</span>addAll(<span class="built_in">list</span>, tmp);
+</code></pre><p>随后对List进行去重操作，方法有多种，这里使用HashSet来实现</p>
+<pre><code><span class="keyword">public</span> <span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> removeDuplicate(<span class="built_in">List</span><span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> <span class="built_in">list</span>) {
+    HashSet<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span> hs <span class="subst">=</span> <span class="literal">new</span> HashSet<span class="subst">&lt;</span><span class="built_in">String</span><span class="subst">&gt;</span>(<span class="built_in">list</span>);
+    <span class="built_in">list</span><span class="built_in">.</span>clear();
+    <span class="built_in">list</span><span class="built_in">.</span>addAll(hs);
+    <span class="keyword">return</span> <span class="built_in">list</span>;
+}
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/北海公园的春天/" itemprop="url">
                 北海公园的春天
               </a>
@@ -357,114 +456,6 @@ default-character-set=utf8
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/Wordpress迁移流程/" itemprop="url">
-                Wordpress迁移流程
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-03-13T04:07:00+08:00" content="2013-03-13">
-            2013-03-13
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/Wordpress迁移流程/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Wordpress迁移流程/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>对Wordpress做一次迁移，<br>现有服务器A ,B 两台，zhourongyu.me运行在A上，现在需要转移到B之上。<br>流程如下：<br>一，首先导出A之上的mysql数据。进入phpmyadmin里选导出即可，需要通过ftp传到B之上。<br>另一种方法使用命令</p>
-<pre><code>mysqldump -u root -<span class="tag">p</span> wpblog &gt; zdata.sql
-</code></pre><p>二，打包A之上的wp目录，可以选择通过ftp拷到本地，再打包上传到B。<br>另一种使用tar打包</p>
-<pre><code><span class="tag">tar</span> <span class="tag">-cvf</span> <span class="tag">zwp</span><span class="class">.tar</span> <span class="tag">zhourongyu</span><span class="class">.me</span>
-</code></pre><p>三，把sql文件tar目录文件转移到zhourongyu.me WEB目录之下<br>四，在B服务器上通过wget把两个文件下载过来</p>
-<pre><code>wget <span class="symbol">http:</span>/<span class="regexp">/zhourongyu.me/zwp</span>.tar <span class="symbol">http:</span>/<span class="regexp">/zhourongyu.me/zdata</span>.sql
-</code></pre><p>五，进入B的mysql 创建同名数据库,并通过sql文件导入数据</p>
-<pre><code>&gt;create database wpblog
-&gt;<span class="literal">use</span> wpblog
-&gt;<span class="literal">source</span> /<span class="literal">home</span>/zhourongyu/zdata.sql
-</code></pre><p>这样数据库就成功导<br>六，解压tar文件到wwwroot目录</p>
-<pre><code><span class="tag">tar</span> <span class="tag">xvf</span> <span class="tag">zwp</span><span class="class">.tar</span> <span class="tag">zhourongyu</span><span class="class">.me</span>
-</code></pre><p>修改nginx配置文件修改对应路径。<br>如果想配置成A一样，同理可以把A上的nginx配置文件wget过来。</p>
-<p>最后，修改域名A记录，指向新的IP。<br>至此基本已经完成了数据的迁移。</p>
-<p>如果需要更换新域名则需要在之上的步骤里多做一些操作：<br>一，需要修改nginx配置文件替换域名<br>二，修改数据库中对应的URL，<br>最笨的办法是进入phpmyadmin中修改相应URL 主要是wp_options表级wp_posts表<br>可以直接修改sql文件替换文件中对应的URL全部换成新的域名。<br>还可以用sql替换命令来替换相应的路径<br>UPDATE 表名 SET 字段 = REPLACE(字段,’替换内容’,’替换值’);</p>
-<p>示例(切换到新域名：<a href="http://ooxx.me)如下：" target="_blank" rel="external">http://ooxx.me)如下：</a></p>
-<pre><code>&gt; UPDATE wp<span class="number">_</span>options SET option<span class="number">_</span><span class="keyword">value</span> = REPLACE(option<span class="number">_</span><span class="keyword">value</span>,<span class="string">'zhourongyu.me'</span>,<span class="string">'ooxx.me'</span>);
-</code></pre><p>注意上面的标点要都要用英文半角。其中wp_options就是表名，option_value就是表wp_options里的一个字段，wp_options里有siteurl和home的值。</p>
-<p>修改option_value里的站点url和主页地址：</p>
-<pre><code><span class="subst">&gt;</span> update wp_options <span class="built_in">set</span> option_value <span class="subst">=</span> replace(option_value, <span class="string">'http://zhourongyu.me'</span>,<span class="string">'http://ooxx.me'</span>) <span class="keyword">where</span> option_name<span class="subst">=</span><span class="string">'home'</span> <span class="literal">or</span> option_name<span class="subst">=</span><span class="string">'siteurl'</span>
-</code></pre><p>更正文章中内部链接及附件的地址：</p>
-<pre><code>&gt; UPDATE wp_posts SET post_content = replace<span class="list">(<span class="keyword">post_content</span>, <span class="quoted">'http</span><span class="keyword">://zhourongyu</span>.me', <span class="quoted">'http</span><span class="keyword">://ooxx</span>.me')</span><span class="comment">;</span>
-</code></pre><p>更正wordpress文章默认的永久链接：</p>
-<pre><code>&gt; UPDATE wp_posts SET guid = replace<span class="list">(<span class="keyword">guid</span>, <span class="quoted">'http</span><span class="keyword">://zhourongyu</span>.me',<span class="quoted">'http</span><span class="keyword">://ooxx</span>.me')</span><span class="comment">;</span>
-</code></pre><p>最后进入B的wp后台修改wordpress地址为新域名</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -503,7 +494,7 @@ default-character-set=utf8
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -517,7 +508,7 @@ default-character-set=utf8
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">120</span>
+              <span class="site-state-item-count">121</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

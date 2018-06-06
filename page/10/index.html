@@ -171,6 +171,111 @@
           
           
             
+              <a class="post-title-link" href="/2014/Nginx的模块安装/" itemprop="url">
+                Nginx的模块安装
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2014-08-04T12:47:00+08:00" content="2014-08-04">
+            2014-08-04
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2014/Nginx的模块安装/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2014/Nginx的模块安装/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>在给nginx增加反代的时候抛出如下错误：<br><strong><code>nginx: [emerg] unknown directive &quot;sub_filter&quot;</code></strong><br>检查后发现是没有安装http_sub_module 模块，此模板用于过滤/替换响应及一些内容<br>nginx模块的增加方式比较便捷，首先，nginx -V 查看当前nginx的编译参数</p>
+<pre><code>[root@something ~]<span class="comment"># /usr/local/nginx/sbin/nginx -V</span>
+nginx version: nginx/<span class="number">1.6</span>.<span class="number">0</span>
+built by gcc <span class="number">4.8</span>.<span class="number">2</span> <span class="number">20140120</span> (Red Hat <span class="number">4.8</span>.<span class="number">2</span>-<span class="number">16</span>) (GCC)
+TLS SNI support enabled
+configure arguments: <span class="variable">--user=</span>www <span class="variable">--group=</span>www <span class="variable">--prefix=</span>/usr/local/nginx --<span class="keyword">with</span>-http_stub_status_module         
+--<span class="keyword">with</span>-http_ssl_module --<span class="keyword">with</span>-http_gzip_static_module --<span class="keyword">with</span>-ipv6 
+</code></pre><p>进到nginx安装源码目录，在老的编译参数中增加http_sub_module模块，并编译。<br>如果是第三方模块，则需要添加「—add-module=模块的源码路径」，这里以openresty的echo模板为样例（echo模块可以让nginx输出一些简单信息，方便调试）</p>
+<pre><code><span class="title">[</span><span class="comment">root@something</span> <span class="comment">nginx</span><span class="literal">-</span><span class="comment">1</span><span class="string">.</span><span class="comment">6</span><span class="string">.</span><span class="comment">0</span><span class="title">]</span><span class="comment">#</span> <span class="string">.</span><span class="comment">/configure</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">user=www</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">group=www</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix=/usr/local/nginx</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">http_stub_status_module</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">http_sub_module</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">http_ssl_module</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">http_gzip_static_module</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">ipv6</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">add</span><span class="literal">-</span><span class="comment">module=/home/z/ngx_openresty</span><span class="literal">-</span><span class="comment">1</span><span class="string">.</span><span class="comment">7</span><span class="string">.</span><span class="comment">2</span><span class="string">.</span><span class="comment">1/build/echo</span><span class="literal">-</span><span class="comment">nginx</span><span class="literal">-</span><span class="comment">module</span><span class="literal">-</span><span class="comment">0</span><span class="string">.</span><span class="comment">54</span>
+<span class="title">[</span><span class="comment">root@something</span> <span class="comment">nginx</span><span class="literal">-</span><span class="comment">1</span><span class="string">.</span><span class="comment">6</span><span class="string">.</span><span class="comment">0</span><span class="title">]</span><span class="comment">#</span> <span class="comment">make</span>
+</code></pre><p>只进行make，如果make install则所有文件被覆盖，导致conf丢失。<br>停止服务，备份老的nginx脚本，并用objs目下新的脚本替换掉老版本。</p>
+<pre><code>[root<span class="annotation">@something</span> nginx-<span class="number">1.6</span>.0]# cp <span class="regexp">/usr/</span>local<span class="regexp">/nginx/</span>sbin<span class="regexp">/nginx /</span>usr<span class="regexp">/local/</span>nginx<span class="regexp">/sbin/</span>nginx.bak
+[root<span class="annotation">@something</span> nginx-<span class="number">1.6</span>.0]# cp .<span class="regexp">/objs/</span>nginx <span class="regexp">/usr/</span>local<span class="regexp">/nginx/</span>sbin/nginx
+</code></pre><p>启动服务… 查看新的编译参数</p>
+<pre><code>[root<span class="property">@something</span> nginx-<span class="number">1.6</span>.0]<span class="comment"># /usr/local/nginx/sbin/nginx -V</span>
+nginx <span class="attribute">version</span>: nginx/<span class="number">1.6</span>.0
+built <span class="keyword">by</span> gcc <span class="number">4.8</span>.2 <span class="number">20140120</span> (Red Hat <span class="number">4.8</span>.2-<span class="number">16</span>) (GCC)
+TLS SNI support enabled
+configure <span class="attribute">arguments</span>: --user=www --group=www --prefix=/usr/local/nginx --<span class="reserved">with</span>-http_stub_status_module 
+--<span class="reserved">with</span>-http_sub_module --<span class="reserved">with</span>-http_ssl_module --<span class="reserved">with</span>-http_gzip_static_module 
+--<span class="reserved">with</span>-ipv6 --add-<span class="built_in">module</span>=/home/z/ngx_openresty-<span class="number">1.7</span>.2.1/build/echo-nginx-<span class="built_in">module</span>-<span class="number">0.54</span>
+</code></pre><p>大功告成！</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2014/Scala学习-模式匹配/" itemprop="url">
                 Scala学习-模式匹配
               </a>
@@ -364,95 +469,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2014/五月飞雪长白山/" itemprop="url">
-                五月飞雪长白山
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2014-05-05T15:41:00+08:00" content="2014-05-05">
-            2014-05-05
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/photo/" itemprop="url" rel="index">
-                  <span itemprop="name">photo</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2014/五月飞雪长白山/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2014/五月飞雪长白山/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>长白山大约有半年时间处于冰雪期，这次五一来这里也算赶上了末班车。据当地居民了解，前几天刚好下了大雪，虽然劳累一天奔波在路上，但因为第一天天气特别好，并且天气预报明日有雨，随即放弃吃饭休息，直奔景区（14：30停止进山）。</p>
-<p>长白山景区分西坡/南坡/北坡三大块，北坡最早开发，设施也很齐全。第一天我们去的是西坡，这边人比较少，为了省时间直奔天池。山顶白茫茫的雪，天池也处于大冰块状态，上面浮着大片雪花。<br><a href="http://zryblog.qiniudn.com/2014/07/3514330239.jpg" target="_blank" rel="external"><img src="http://zryblog.qiniudn.com/2014/07/3514330239.jpg" alt="1234.jpg"></a></p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/1466751501.jpg" alt="IMG\_4468.jpg"></p>
-<p>西坡景点比较少，但可以看到天池全景。第二日我们再去往北坡，遗憾的是从五一开始门票只限当日进山了，只能再多花125门票！<br>而北坡最坑爹的是不只需要买门票和摆渡车，上天池需要另付一趟越野车费。以至于我们放弃再登顶，去长白山瀑布/地下森林等景点游玩了<br><img src="http://zryblog.qiniudn.com/2014/07/775729599.jpg" alt="IMG\_4502.jpg"></p>
-<p>总体来说天池确实很有特色，至于其他的什么大峡谷/森林都不太值得一去。<br>这次由于是自驾游，悠闲随意，让我们惊喜的是整个旅途非常顺畅，甚至高速上没见到几辆车，完全没有国内假期旅游的景象，也许我们真选对了地方，如果每次都这样那就太好了。</p>
-<p>因为自驾的原因，路途中遇见美丽的地方都会下来游玩一下。印象深刻的除了沈吉/抚长高速上那些个性特色的服务站，还有整个途中大片的白桦林，在景区附近的省道/国道/小道路边全是。加上经常一俩车都看不到，感觉像是来到了国外，令人心旷神怡。</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -491,7 +507,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -505,7 +521,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">120</span>
+              <span class="site-state-item-count">121</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

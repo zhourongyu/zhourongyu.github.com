@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://xxxx.ooo//"/>
-  <updated>2018-05-11T15:56:22.922Z</updated>
+  <updated>2018-06-06T11:54:03.067Z</updated>
   <id>http://xxxx.ooo//</id>
   
   <author>
@@ -16,11 +16,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Spring Boot 2.0 升级指北]]></title>
+    <link href="http://xxxx.ooo/2018/spring-boot-2-0-upgrade/"/>
+    <id>http://xxxx.ooo/2018/spring-boot-2-0-upgrade/</id>
+    <published>2018-06-05T16:46:39.000Z</published>
+    <updated>2018-06-06T11:54:03.067Z</updated>
+    <content type="html"><![CDATA[<p>雪球内部很早就开始尝试使用 Spring Boot，我们团队是第一批吃螃蟹的人（使用的版本是 v1.2.4，发布于 2015 年中）。到目前 Spring Boot 已经成为公司内普及的基础底层框架，但各个团队之间使用上并不统一，1.2、1.3、1.5版本都有在使用，也引发了一些例如中间件的版本依赖问题。</p>
+<p>我们的版本是其中最古老的，已经偏离了4个大版本。其实很早就有升级的规划，在 1.5 版本期间有尝试过一次，因为涉及的改动很多加上当时业务繁忙所以停滞了。Spring Boot 2.0 release 版本在三月份发布，四月正好空余出较大块的时间，趁这个天时地利机会把整个后端模块全部升级到了 2.0 基准。</p>
+<p>这次会分享一些升级过程中的一些经验及遇到问题、踩过的坑，旨在帮助大家能更顺畅的升级，顺便推动大家在合适的机会把版本升级到统一基准下。</p>
+<h5 id="简单介绍下新特性">简单介绍下新特性</h5><p>Spinrg Boot 2.0 带来最大的新特性是 Reactive Spring &amp; WebFlux，准确的说是因为引入了 Spring 5.0。</p>
+<p>Reactive Programing（响应式编程，以下简称RP）核心思想是利用异步和消息驱动构建一个流畅的高弹性的系统。 RP 不是什么新鲜的技术，这里就不展开介绍了。WebFlux 是基于Reactive Streams 构建的一整套新的响应式编程模型，并提供像 WebClient 响应式的客户端，对标的是 Spring MVC 模块。</p>
+<p>在 RP 模型下，务必要保证整个流程的异步性，如果一个 Callback 堵塞会直接影响到整系统，但目前大多数的 JAVA 库都是阻塞模型的，虽然 Spring 这次带来了一整套的响应式技术栈，但 JDBC 这种阻塞模型还没有得到支持（阿里内部通过 JVM 的 Wisp 协程技术解决此类问题，并基于 RX Java 也实现了一整套的 RP 模型框架），希望 Spring Data Reactive 也可以早日解决。</p>
+<p>还有其他一些特性例如 HTTP/2 的支持、Actuator 模块的增强、Quartz 模块的支持等更多特性大家可以查阅官方文档。</p>
+<p>除了新特性还有其他一些有意思的改动，或许算是技术方向的指引？</p>
+<ul>
+<li><strong>Lettuce 替代 Jedis</strong></li>
+<li><strong>Caffeine 替代 Guava</strong></li>
+<li><strong>HikariCP 替代 Tomcat Pool</strong></li>
+</ul>
+<p>市面上常用的 Redis Client 除了Jedis 还有 Lettuce 和 Redisson，两者都是基于 Netty 实现，并也都支持了响应式的 API，Spring 选择 Lettuce 的原因我猜测或许是因为它相对 Redisson 来说足够简单~</p>
+<p>Guava Cache 是非常常用的组件，Caffeine 采用了更高效的 LRU 算法，并优化了内存使用。官方性能评测优于 Guava 10倍左右，这应该是 Spring 放弃 Guava 的原因，目前我们团队也逐步替换中。</p>
+<p>HikariCP 一直号称是最快的连接池组件，这次变为 Spring Boot 默认组件算是官方对它的认可了。雪球团队一直使用 Druid 连接池，主要是因为它在监控方面做的很全面，插件很多，还经过了国内诸多大厂的全面‘测试’，使用起来较顺手。</p>
+<h5 id="升级过程">升级过程</h5><p>对于过于老旧的版本，官方建议的是先升级到1.5作为跳板再升级到2.0。但我们的做法比较激进, 也导致涉及依赖包的升级，配置的变动，及代码层面的改动非常之多，在提交上线的 PR 时改动文件有250+，看到还挺惊讶。</p>
+<p>这里推荐几个组件，利用好 starters 可以有效减少依赖包的管理难度。</p>
+<ul>
+<li>spring-boot-starter-json</li>
+<li>spring-boot-starter-test</li>
+<li>spring-boot-starter-cache</li>
+</ul>
+<p>这几个官方组件支持了一些常用的模块，例如 jackson，测试的 JUnit、mockito 及常用的 cache manager 支持等</p>
+<p>配置层面也有许多变化，官方也提供了 spring-boot-properties-migrator 模块来协助迁移。</p>
+<p>以上这些改动虽然非常多但较容易发现，或是编译失败或无法启动。整个升级过程中最可怕的是一些隐性的风险，非常容易忽略</p>
+<h6 id="Path_Matching_默认关闭后缀匹配">Path Matching 默认关闭后缀匹配</h6><p>在以前你可以任意修改路径后缀名都能得到正确的解析，例如 /fund/000961.xyz 也能正确解析到 /fund/000961。但是 2.0 默认禁止了后缀匹配模式，这也是 Spring 的官方建议。</p>
+<p>其实在做升级的过程中已经知道有这个改动，但我们团队一直使用的 REST 风格不带后缀的形式，所以没太在意。但万万没想到，其他一个团队的使用了我们的开放接口，但却采用了他们自己的路径规则，加上了 .json 后缀，在以前一直稳定运行，但现在这部分接口全部挂掉。这也是整个升级过程造成的唯一线上事故，幸好及时发现修复，没有产生大的影响。</p>
+<p>解决方案就是把后缀匹配打开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.mvc.pathmatch.use-suffix-pattern=true</div></pre></td></tr></table></figure>
+<h6 id="HTTP_Method_Filter">HTTP Method Filter</h6><p>在升级后的测试过程中发现部分接口明明参数正确却一直提示失败，经排查发现 PUT 类型的参数出现了数据重叠</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/invest/<span class="number">501021</span>?<span class="keyword">pwd</span>=<span class="keyword">abc</span> -&gt; <span class="keyword">pwd</span>=<span class="keyword">abc</span>,<span class="keyword">abc</span>(后端拿到的值)</div></pre></td></tr></table></figure>
+<p>随后跟踪源码 debug 发现新增了几个 Filter，其中 HttpPutFormContentFilter 用来处理PUT 及 PATCH 的 body 传参问题（这个补丁在1.5版本后就已经引入并默认开启）。</p>
+<p>因为浏览器 form 表单只支持 GET 与 POST 请求，所以早期的 Spring 不支持 PUT 请求使用 body 传参，正确的解决方案应该是在后端做 Method 的隐式转换。但之前并没有使用此方案，而是客户端同学把参数改成以 param 传递，这本身没有太大问题，但却忘记了把 body 里参数去掉，在新版本就变成了重名参数，以字符数组接收（数值类的不受影响）</p>
+<p>解决方案是暂时关闭这个 Filter，待客户端修复后，在未来不再支持这些有问题的老版本客户端时再打开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.mvc.formcontent.putfilter.enabled=false</div></pre></td></tr></table></figure>
+<h6 id="Swagger_官方不支持_Spring_Boot_2-0">Swagger 官方不支持 Spring Boot 2.0</h6><p>在做完了所有的升级后发现 Swagger 无法使用，去官方 repo 寻求方案，发现有人已经问过了，官方回应暂不支持 2.0 版本😱。幸好在其他帖子内发现有人说使用成功，但没有给出清晰的解决方案，只好自己一点点摸索了，好在最终还是解决了。</p>
+<p>方案是去除老的 security 配置以及添加部分资源的映射</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</div><div class="line">        registry.addResourceHandler(<span class="string">"swagger-ui.html"</span>)</div><div class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="总结">总结</h5><p>本次升级涉及十多个子系统模块，从开发-&gt;测试-&gt;灰度-&gt;上线大概3周多时间，除了上面引发的小事故外整个升级过程比预期要顺利很多，总结下来有以下几点</p>
+<ul>
+<li><strong>对系统代码及方案足够的熟悉</strong></li>
+<li><strong>不要只看升级指南，详读官方文档</strong></li>
+<li><strong>足够细心及较大块的时间</strong></li>
+</ul>
+<p>有些人因为担心风险而不愿意升级，觉得够用就行。但在我看来合理的升级是必要的，收益也是显而易见的，只要使用了正确的升级方法，大部分风险还是可控的。对于升级这件事来说，时间越久，版本差异越大意味着风险也越高，合适的升级周期也能有效的降低风险。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>雪球内部很早就开始尝试使用 Spring Boot，我们团队是第一批吃螃蟹的人（使用的版本是 v1.2.4，发布于 2015 年中）。到目前 Spring Boot 已经成为公司内普及的基础底层框架，但各个团队之间使用上并不统一，1.2、1.3、1.5版本都有在使用，也引发]]>
+    </summary>
+    
+      <category term="spring-boot" scheme="http://xxxx.ooo/tags/spring-boot/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[产品汪忙碌的一天]]></title>
     <link href="http://xxxx.ooo/2018/the-product-manager/"/>
     <id>http://xxxx.ooo/2018/the-product-manager/</id>
     <published>2018-03-19T14:43:08.000Z</published>
-    <updated>2018-05-11T15:56:22.922Z</updated>
+    <updated>2018-06-06T11:53:51.177Z</updated>
     <content type="html"><![CDATA[<p>小李是一枚资深产品汪，工作五年多，过着平凡充实的生活，偶尔也反思一下，什么时候能财务自由，迎娶白富美，走向人生巅峰呢？</p>
 <p>有一天领导找来了小李…</p>
 <p>领导：你看某某公司这个功能不错，吸了很多新用户，我们可以考虑做一下</p>
@@ -33,7 +94,7 @@
 <p>F：我建议引入 H5，这样更加的容易扩展和维护，这样APP的代码也不会太臃肿。</p>
 <p>C：引入需谨慎啊，这样会影响测试的便利性</p>
 <p>O：其实我觉得这个功能应该换一个方式可能更好…（此处省略500字），这样用户更容易理解，运营也更容易出效果</p>
-<p>F：我觉得 E 的提议不错，这样前端目前的模块已经可以支持了</p>
+<p>F：我觉得 O 的提议不错，这样前端目前的模块已经可以支持了</p>
 <p>B：都可以，反正我们后端设计上都兼容，至于效果好坏可能还得调研下，可以做个 A/B Test</p>
 <p>D：对了，这个输入的地方情况很多，如何给用户提示要仔细设计，不然体验非常不好</p>
 <p>小李：是的，应该是弹框提醒吧</p>
@@ -94,7 +155,7 @@
     <link href="http://xxxx.ooo/2017/how-to-manage-multi-phone/"/>
     <id>http://xxxx.ooo/2017/how-to-manage-multi-phone/</id>
     <published>2017-11-06T15:50:52.000Z</published>
-    <updated>2018-05-11T16:03:29.710Z</updated>
+    <updated>2018-06-06T08:17:27.297Z</updated>
     <content type="html"><![CDATA[<p>随着移动互联网的迅猛发展，对手机流量的需求越来越强。联通近两年推出了各种互联网套餐，吞噬了大批的用户。我作为一个资深移动老用户也办了张「大王卡」。 在联通刚推出3G业务，而移动由于自身原因只能使用2G的时期我都忍住没有迁移至联通，但现在我几乎要离开移动了。日常使用全部大王卡，移动只有接收银行等重要信息、验证码等功能。姑且还称移动为主卡，联通为副卡吧。</p>
 <p>如果手机不支持双卡双待，多卡带来的问题就是得多备一个手机，多花钱不说还得天天带着。对于我这种 iPhone党简直是噩梦，势必要解决它</p>
 <p>需要解决的有俩部分</p>
@@ -191,7 +252,7 @@
     <link href="http://xxxx.ooo/2017/ski-in-hokkaido/"/>
     <id>http://xxxx.ooo/2017/ski-in-hokkaido/</id>
     <published>2017-01-16T12:41:12.000Z</published>
-    <updated>2018-05-11T16:02:52.061Z</updated>
+    <updated>2018-05-11T16:02:52.000Z</updated>
     <content type="html"><![CDATA[<p>北海道雪场非常多，二世谷、留寿都、札幌国际等诸多著名雪场，前年公司年会去的时候傻逼的被导游带去玩雪橇错过了留寿都的体验，据同事反馈也是相当的好。后面去了札幌国际玩了一天，体验也还不错。今年首次自带装备去滑雪，前期做了不少功课。</p>
 <p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/k9vtb.png" alt=""></p>
 <h5 id="自带板的一些注意事项">自带板的一些注意事项</h5><ul>
@@ -386,30 +447,6 @@
       <category term="健康" scheme="http://xxxx.ooo/tags/%E5%81%A5%E5%BA%B7/"/>
     
       <category term="life" scheme="http://xxxx.ooo/categories/life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[MTM-FS-Server-Failed]]></title>
-    <link href="http://xxxx.ooo/2016/mtm-fs-server-failed/"/>
-    <id>http://xxxx.ooo/2016/mtm-fs-server-failed/</id>
-    <published>2016-06-22T03:36:16.000Z</published>
-    <updated>2016-06-22T05:09:49.000Z</updated>
-    <content type="html"><![CDATA[<p>今天处理系统问题时，偶然发现 Console 里系统日志一直在打一些奇怪的错误日志，统计了下总数有 10w+ …</p>
-<p> <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F6%2F1466566947114.png" alt="console_log"><br>猜测是哪个软件的流氓进程，直到看到最后这行日志，像是个系统备份服务。<br>mtmfs 是个啥子呢</p>
-<blockquote>
-<p><strong>mtmfs</strong> is the <em>Mobile Time Machine File System</em>, that handles Local snapshots, both making them and managing them (consolidating, deleting, etc).  They’re made on laptops running Lion whenever Time Machine is ON, whether you’re in range of your Time Machine backup destination or not.  These are completely separate from “normal” Time Machine backups to an external HD, Time Capsule, etc.</p>
-</blockquote>
-<p>Lion 以上的系统，只要打开了 Time Machine 就会启动 mtmfs 进程。查得 mtmfs 进程监听地址是 localhost ，本地 ping 发现不通。查看 /etc/hosts :<br><code>127.0.0.1 test.pay.inter.domian</code><br>原来是自己测试时把 localhost 域给改掉了，改回来即可<br><code>127.0.0.1 localhost</code></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>今天处理系统问题时，偶然发现 Console 里系统日志一直在打一些奇怪的错误日志，统计了下总数有 10w+ …</p>
-<p> <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F6%2F1466566947114]]>
-    </summary>
-    
-      <category term="osx" scheme="http://xxxx.ooo/tags/osx/"/>
-    
-      <category term="tech" scheme="http://xxxx.ooo/categories/tech/"/>
     
   </entry>
   

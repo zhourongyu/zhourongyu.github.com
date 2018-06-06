@@ -171,6 +171,102 @@
           
           
             
+              <a class="post-title-link" href="/2013/Nginx反向代理获取真实IP/" itemprop="url">
+                Nginx反向代理获取真实IP
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2013-11-27T15:50:00+08:00" content="2013-11-27">
+            2013-11-27
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2013/Nginx反向代理获取真实IP/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2013/Nginx反向代理获取真实IP/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>今天面试官的一个问题让我有点疑惑：如何配置 Nginx 能让程序在后台获取真实的用户IP，当时我没理解这个问题意思，获取请求IP不是很简单的事情么？例如：request.getRemoteAddr()</p>
+<p>回来查询了资料. 此问题是指使用了 Nginx 反向代理获取不到真实用户的 IP ，当使用了反向代理后 getRemoteAddr() 返回的是反向服务器的 IP。</p>
+<p>什么是反向代理，曾经写了一个聊天小应用并部署再服务器上，端口为8888，本地访问也就是127.0.0.1:8888</p>
+<p>我想让 t.imim.me 访问到我的这个应用上（应用已撤除），配置如下</p>
+<p><img src="http://zryblog.qiniudn.com/2014/07/617923233.jpg" alt="t.imim.me">  </p>
+<pre><code>proxy_pass <span class="string">http:</span><span class="comment">//chat</span>
+</code></pre><p>这就是反向代理，将来自这个域名的请求转发到了一个名为 chat 的 upstream，也是真实的应用地址（127.0.0.1:8888）</p>
+<p>再看这两行配置:</p>
+<pre><code>proxy_<span class="built_in">set</span>_header X-real-ip <span class="variable">$remote_addr</span>
+proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;
+</code></pre><p>配置 X-real-ip 就可以在 web 服务器端通过 request.getAttribute(“X-real-ip”) 获得用户的真实 ip。</p>
+<p>X-Forwarded-For 是一个 proxy 转发记录,每次经过转发都会有记录，以 client,proxy1,proxy2 格式保存。如果没有2配置的话，后端通过 request.getAttribute(“X-Forwarded-For”) 获取值为Null。</p>
+<p>当一个应用经过 N(N&gt;1) 次 Nginx 转发时，X-real-ip 中保存的是 N-1 的服务器地址，也就是说当第二次代理的时候 X-real-ip 的值为第一台 Nginx 服务器 IP，X-Forwarded-For 的值则变为”用户真实 IP , 第一台 Nginx 服务器 IP”</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2013/三清山之行/" itemprop="url">
                 三清山之行
               </a>
@@ -346,100 +442,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2013/2013月圆之夜/" itemprop="url">
-                2013月圆之夜
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2013-09-26T04:05:00+08:00" content="2013-09-26">
-            2013-09-26
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/photo/" itemprop="url" rel="index">
-                  <span itemprop="name">photo</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2013/2013月圆之夜/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2013/2013月圆之夜/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>这次拍摄计划准备了一段时间，包括上次的热身～ 在出行的当天还有朋友好心提醒今年中秋月亮最圆的时候是九月十九日晚十九点十三分。</p>
-<p>和我计划不同，俗语十五月亮十六圆，所以我是准备十六上泰山顶望月（顺便看看会不会因为海拔距离近了一千多米而月亮大一些，弥补下焦段的缺陷，事实证明基本没啥影响～）</p>
-<p>十五这天在济南，白天去了几个地方踩点，例如泉城广场，前景多，还有高点可以开视野。最后选定大明湖，环境视野也很好，虽然没遇见夏雨荷。</p>
-<p>大明湖踩点还遇见志同道合者，上来询问我是不是来拍摄月亮，有没有好的位置～（兄弟是认为当天背个长焦都是去‘射月’的嘛）</p>
-<p>行至傍晚，最后位置选在了兰青桥（如果没记错的话）, 正好前方是超然楼。但是当日是多云，等到六点多遇见两位过路的摄友，顺便聊两句说今天估计够呛了，月亮可能出不来，边聊边收起脚架和设备。 收完还聊了一会突然旁边有人喊：快看，出来一点了！……三人又慌乱的架起设备，这时据最美的情景已经过了一会了～</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/372489248.jpg" alt="IMG_2367"></p>
-<p>玩摄影的都知道，景色最美的时刻往往就几分钟或者几十秒，尤其是日出日落十分，时机非常重要。暗红色的月亮，蓝色的天空，这时候由于月亮的亮度很低，可以获得和云，天空差不多的曝光。位置也很低，可以充分配合前景，实属完美。</p>
-<p>在那几分钟却由于慌乱最后造成了莫大的遗憾，成片只有这张多曝的比较满意。当时我为什么要听那哥们的说试试多曝啊啊啊啊…… 当时刚好飘来一朵云，云遮月… 绝无PS… 唯一一张满意的，可是由于没把握好使得月亮离的太近了！</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/4072325480.jpg" alt="IMG_2378"><br>十六竟然是阴天（还不如多云），连上山的心情都大打折扣，慢慢悠悠的上去发现月亮已经出来了，虽然云比较厚，等了半天趁云飘散的一小会还是拍了几张比较清晰的照片，到凌晨就开始起雾，持续到上午，日出也报废，只能看到淡淡的霞光……</p>
-<p>最后只能带着遗憾和不甘踏上了返京的路途！</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/1870746022.jpg" alt="IMG_2443"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -478,7 +480,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -492,7 +494,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">120</span>
+              <span class="site-state-item-count">121</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

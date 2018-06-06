@@ -171,6 +171,112 @@
           
           
             
+              <a class="post-title-link" href="/2016/about-api-design/" itemprop="url">
+                浅谈 Api 设计
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2016-01-27T22:15:23+08:00" content="2016-01-27">
+            2016-01-27
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/about-api-design/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/about-api-design/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>之前在团队内做了一次 Api 的规范化，决定采用 RESTful Api 的架构。 并统一了 JSON 结构，约定常用属性、字段的命名方式、URL/HTTP Method 的使用规则。<br>这样的好处不用多说，一个方便易懂，易于使用的 Api 能大大的提高开发效率（做开发的有谁没被第三方 Api 坑过？）  </p>
+<h5 id="设计过程">设计过程</h5><p>之前我们有一些设计比较不错的 api 可能是这样的：</p>
+<pre><code><span class="regexp">/user/</span>(add<span class="regexp">/get/</span>cancel)?id=<span class="number">123</span>
+<span class="regexp">/topic/</span>(create<span class="regexp">/destroy/</span>destroy_batch)?id=<span class="number">123</span> 
+</code></pre><p>也算是简单易懂了，那为什么要换成 RESTful 架构？（关于 REST 的特性，设计思想什么的就不说了，网上自取）这样带来最直接的问题就是不统一（规范）。我的 CRUD 叫 add/get/cancel，换一个人可能叫 create/modify/destroy， 甚至可能我的是 adduser 你的是 useradd (瞬间想到了 ubuntu 有木有！)。</p>
+<p><strong>规范这东西小范围没什么大问题， 一但队伍庞大了就是个大坑，所以大公司在规范上都是下了大功夫。</strong></p>
+<p>HTTP 协议就是一个标准的 REST 实现，RESTful Api 是以 HTTP 协议为强烈依托的，最终我们规范后是这样的：</p>
+<pre><code><span class="regexp">/user/</span>{uid} HTTP.GET<span class="regexp">/POST/</span>PUT/DELETE
+<span class="regexp">/topic/</span>{tid} HTTP.GET<span class="regexp">/POST/</span>PUT/DELETE
+</code></pre><p>暂时只使用这四个方法，使用 PUT 替换 PATCH。很多人对部分情景下 PUT / POST 的使用会有疑问:</p>
+<pre><code>解答：根据 HTTP 文档介绍，GET/HEAD/PUT/DELETE 是 Idempotent（重复执行多遍，結果一致）。  
+<span class="keyword">POST</span> 每次执行肯定会新增一条记录，大多数情况下可以根据此原则从 <span class="keyword">POST</span>/PUT 中选择合适的动作。  
+</code></pre><p>/模块/{id} HTTP.Mehod 这种统一的规范能节省出不少的沟通时间~ 刚开始感觉很美好，当场景多起来之后又出现一些新的问题：<br>有一种功能叫「撤单」，使用 /order/{oid} HTTP.DELETE吗? 那删除订单用什么呢？<br>所以有人开始用 /order/undo/{order_id} HTTP.PUT 类似的方式。按 REST 规范每个 URL 都是一个独立资源，其中不应该包含任何动作。<br>也许应该改成 /order/{oid}?action=undo HTTP.PUT，但这样可能会在同一个接口中引入过多的操作。</p>
+<p>类似这样的模糊的场景可能有许多，在 Api 数量随业务庞大的过程中需要反复的对当前 Api 做迭代重构，使它更适合当前的业务场景</p>
+<h5 id="那满足以上设计就是_RESTful_Api_吗？">那满足以上设计就是 RESTful Api 吗？</h5><pre><code><span class="string">eg:</span> <span class="regexp">/topic/</span>fav/{tid} HTTP.POST 收藏某个话题
+</code></pre><p>这个接口需要从 token 中获取登陆用户信息，且所有的用户都是访问同一个地址。<br>这与 REST 架构中的「无状态」和「唯一资源」的概念冲突。<br>按要求可能是这样的：</p>
+<pre><code><span class="regexp">/topic/</span>{uid}<span class="regexp">/fav/</span>{tid} 
+</code></pre><p>当然这些都是 REST 的建议，如何做还是要根据具体的业务情况而定</p>
+<h5 id="总结下来就是以下几点：">总结下来就是以下几点：</h5><ol>
+<li>规范很重要</li>
+<li>保持 Api 的优雅是一件持续的重复迭代的工作</li>
+<li>不要局限于各种规范中，要在设计规范的时候充分考虑业务上的灵活性</li>
+</ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/try-osx-notification/" itemprop="url">
                 巧用 OSX 的 Notification
               </a>
@@ -419,96 +525,6 @@ setup(
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/草原天路/" itemprop="url">
-                草原天路
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2015-10-06T22:01:30+08:00" content="2015-10-06">
-            2015-10-06
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/草原天路/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/草原天路/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h4 id="简介">简介</h4><p>「天路」是京郊最美风景之一，东西横跨沽源、崇礼、张北等地儿， 故游玩路线也是双向。<br>最佳游玩时间是六七月份，绿草茵茵，在广阔的大草原上吹吹风，骑骑马，好生惬意。<br>这样一条普通的公路在内蒙随处可见。在北京附近的它却要准备开发成景区收费了，真是坑爹。</p>
-<h4 id="北京自驾游方案">北京自驾游方案</h4><p><code>不靠谱方案：周末大清早六七点钟出发，因为节假日八达岭高速太堵，估计中午才能到，开一上午车已经非常累了，况且到达天路还要继续堵（正是景区高峰期）</code><br>建议方案：下午从北京出发到崇礼/张北住宿，第二天一早出发。我俩次都是住在崇礼，从桦皮岭进入天路自东向西游玩，这样人相对少很多，悠然自得。</p>
-<p>住宿可以选择张北县城内或者沿途的农家乐，因为景区化的原因，沿途当地人自办的农家乐都被勒令拆除，日后大概只有正规运营的场所了<br>另一个方案是露营，沿途不少适合的点，这次我背着帐篷准备来尝试一下，夜间非常冷，一定要做好防寒措施。 六七月应该好很多</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612276.jpg" alt="随处可见的风车"></p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612174.jpg" alt="满屏幕都是风车"></p>
-<p>一个好的天气很重要，虽然在北京这很难得~<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612371.jpg" alt="草原上休息的马儿们"></p>
-<p>在草原上住的好处就是可以看看日落/日出/星星，玩摄影的自然不能错过。但是夜间太冷，加上当日月亮非常的亮，导致本次星星没拍上~ 囧！<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2015/10/1444138612650.jpg" alt="日落夕阳"></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -547,7 +563,7 @@ setup(
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -561,7 +577,7 @@ setup(
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">120</span>
+              <span class="site-state-item-count">121</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>

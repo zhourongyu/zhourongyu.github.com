@@ -171,6 +171,120 @@
           
           
             
+              <a class="post-title-link" href="/2018/spring-boot-2-0-upgrade/" itemprop="url">
+                Spring Boot 2.0 升级指北
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2018-06-06T00:46:39+08:00" content="2018-06-06">
+            2018-06-06
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/spring-boot-2-0-upgrade/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2018/spring-boot-2-0-upgrade/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>雪球内部很早就开始尝试使用 Spring Boot，我们团队是第一批吃螃蟹的人（使用的版本是 v1.2.4，发布于 2015 年中）。到目前 Spring Boot 已经成为公司内普及的基础底层框架，但各个团队之间使用上并不统一，1.2、1.3、1.5版本都有在使用，也引发了一些例如中间件的版本依赖问题。</p>
+<p>我们的版本是其中最古老的，已经偏离了4个大版本。其实很早就有升级的规划，在 1.5 版本期间有尝试过一次，因为涉及的改动很多加上当时业务繁忙所以停滞了。Spring Boot 2.0 release 版本在三月份发布，四月正好空余出较大块的时间，趁这个天时地利机会把整个后端模块全部升级到了 2.0 基准。</p>
+<p>这次会分享一些升级过程中的一些经验及遇到问题、踩过的坑，旨在帮助大家能更顺畅的升级，顺便推动大家在合适的机会把版本升级到统一基准下。</p>
+<h5 id="简单介绍下新特性">简单介绍下新特性</h5><p>Spinrg Boot 2.0 带来最大的新特性是 Reactive Spring &amp; WebFlux，准确的说是因为引入了 Spring 5.0。</p>
+<p>Reactive Programing（响应式编程，以下简称RP）核心思想是利用异步和消息驱动构建一个流畅的高弹性的系统。 RP 不是什么新鲜的技术，这里就不展开介绍了。WebFlux 是基于Reactive Streams 构建的一整套新的响应式编程模型，并提供像 WebClient 响应式的客户端，对标的是 Spring MVC 模块。</p>
+<p>在 RP 模型下，务必要保证整个流程的异步性，如果一个 Callback 堵塞会直接影响到整系统，但目前大多数的 JAVA 库都是阻塞模型的，虽然 Spring 这次带来了一整套的响应式技术栈，但 JDBC 这种阻塞模型还没有得到支持（阿里内部通过 JVM 的 Wisp 协程技术解决此类问题，并基于 RX Java 也实现了一整套的 RP 模型框架），希望 Spring Data Reactive 也可以早日解决。</p>
+<p>还有其他一些特性例如 HTTP/2 的支持、Actuator 模块的增强、Quartz 模块的支持等更多特性大家可以查阅官方文档。</p>
+<p>除了新特性还有其他一些有意思的改动，或许算是技术方向的指引？</p>
+<ul>
+<li><strong>Lettuce 替代 Jedis</strong></li>
+<li><strong>Caffeine 替代 Guava</strong></li>
+<li><strong>HikariCP 替代 Tomcat Pool</strong></li>
+</ul>
+<p>市面上常用的 Redis Client 除了Jedis 还有 Lettuce 和 Redisson，两者都是基于 Netty 实现，并也都支持了响应式的 API，Spring 选择 Lettuce 的原因我猜测或许是因为它相对 Redisson 来说足够简单~</p>
+<p>Guava Cache 是非常常用的组件，Caffeine 采用了更高效的 LRU 算法，并优化了内存使用。官方性能评测优于 Guava 10倍左右，这应该是 Spring 放弃 Guava 的原因，目前我们团队也逐步替换中。</p>
+<p>HikariCP 一直号称是最快的连接池组件，这次变为 Spring Boot 默认组件算是官方对它的认可了。雪球团队一直使用 Druid 连接池，主要是因为它在监控方面做的很全面，插件很多，还经过了国内诸多大厂的全面‘测试’，使用起来较顺手。</p>
+<h5 id="升级过程">升级过程</h5><p>对于过于老旧的版本，官方建议的是先升级到1.5作为跳板再升级到2.0。但我们的做法比较激进, 也导致涉及依赖包的升级，配置的变动，及代码层面的改动非常之多，在提交上线的 PR 时改动文件有250+，看到还挺惊讶。</p>
+<p>这里推荐几个组件，利用好 starters 可以有效减少依赖包的管理难度。</p>
+<ul>
+<li>spring-boot-starter-json</li>
+<li>spring-boot-starter-test</li>
+<li>spring-boot-starter-cache</li>
+</ul>
+<p>这几个官方组件支持了一些常用的模块，例如 jackson，测试的 JUnit、mockito 及常用的 cache manager 支持等</p>
+<p>配置层面也有许多变化，官方也提供了 spring-boot-properties-migrator 模块来协助迁移。</p>
+<p>以上这些改动虽然非常多但较容易发现，或是编译失败或无法启动。整个升级过程中最可怕的是一些隐性的风险，非常容易忽略</p>
+<h6 id="Path_Matching_默认关闭后缀匹配">Path Matching 默认关闭后缀匹配</h6><p>在以前你可以任意修改路径后缀名都能得到正确的解析，例如 /fund/000961.xyz 也能正确解析到 /fund/000961。但是 2.0 默认禁止了后缀匹配模式，这也是 Spring 的官方建议。</p>
+<p>其实在做升级的过程中已经知道有这个改动，但我们团队一直使用的 REST 风格不带后缀的形式，所以没太在意。但万万没想到，其他一个团队的使用了我们的开放接口，但却采用了他们自己的路径规则，加上了 .json 后缀，在以前一直稳定运行，但现在这部分接口全部挂掉。这也是整个升级过程造成的唯一线上事故，幸好及时发现修复，没有产生大的影响。</p>
+<p>解决方案就是把后缀匹配打开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.mvc.pathmatch.use-suffix-pattern=true</div></pre></td></tr></table></figure>
+<h6 id="HTTP_Method_Filter">HTTP Method Filter</h6><p>在升级后的测试过程中发现部分接口明明参数正确却一直提示失败，经排查发现 PUT 类型的参数出现了数据重叠</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/invest/<span class="number">501021</span>?<span class="keyword">pwd</span>=<span class="keyword">abc</span> -&gt; <span class="keyword">pwd</span>=<span class="keyword">abc</span>,<span class="keyword">abc</span>(后端拿到的值)</div></pre></td></tr></table></figure>
+<p>随后跟踪源码 debug 发现新增了几个 Filter，其中 HttpPutFormContentFilter 用来处理PUT 及 PATCH 的 body 传参问题（这个补丁在1.5版本后就已经引入并默认开启）。</p>
+<p>因为浏览器 form 表单只支持 GET 与 POST 请求，所以早期的 Spring 不支持 PUT 请求使用 body 传参，正确的解决方案应该是在后端做 Method 的隐式转换。但之前并没有使用此方案，而是客户端同学把参数改成以 param 传递，这本身没有太大问题，但却忘记了把 body 里参数去掉，在新版本就变成了重名参数，以字符数组接收（数值类的不受影响）</p>
+<p>解决方案是暂时关闭这个 Filter，待客户端修复后，在未来不再支持这些有问题的老版本客户端时再打开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring.mvc.formcontent.putfilter.enabled=false</div></pre></td></tr></table></figure>
+<h6 id="Swagger_官方不支持_Spring_Boot_2-0">Swagger 官方不支持 Spring Boot 2.0</h6><p>在做完了所有的升级后发现 Swagger 无法使用，去官方 repo 寻求方案，发现有人已经问过了，官方回应暂不支持 2.0 版本😱。幸好在其他帖子内发现有人说使用成功，但没有给出清晰的解决方案，只好自己一点点摸索了，好在最终还是解决了。</p>
+<p>方案是去除老的 security 配置以及添加部分资源的映射</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</div><div class="line">        registry.addResourceHandler(<span class="string">"swagger-ui.html"</span>)</div><div class="line">                .addResourceLocations(<span class="string">"classpath:/META-INF/resources/"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="总结">总结</h5><p>本次升级涉及十多个子系统模块，从开发-&gt;测试-&gt;灰度-&gt;上线大概3周多时间，除了上面引发的小事故外整个升级过程比预期要顺利很多，总结下来有以下几点</p>
+<ul>
+<li><strong>对系统代码及方案足够的熟悉</strong></li>
+<li><strong>不要只看升级指南，详读官方文档</strong></li>
+<li><strong>足够细心及较大块的时间</strong></li>
+</ul>
+<p>有些人因为担心风险而不愿意升级，觉得够用就行。但在我看来合理的升级是必要的，收益也是显而易见的，只要使用了正确的升级方法，大部分风险还是可控的。对于升级这件事来说，时间越久，版本差异越大意味着风险也越高，合适的升级周期也能有效的降低风险。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2018/the-product-manager/" itemprop="url">
                 产品汪忙碌的一天
               </a>
@@ -236,7 +350,7 @@
 <p>F：我建议引入 H5，这样更加的容易扩展和维护，这样APP的代码也不会太臃肿。</p>
 <p>C：引入需谨慎啊，这样会影响测试的便利性</p>
 <p>O：其实我觉得这个功能应该换一个方式可能更好…（此处省略500字），这样用户更容易理解，运营也更容易出效果</p>
-<p>F：我觉得 E 的提议不错，这样前端目前的模块已经可以支持了</p>
+<p>F：我觉得 O 的提议不错，这样前端目前的模块已经可以支持了</p>
 <p>B：都可以，反正我们后端设计上都兼容，至于效果好坏可能还得调研下，可以做个 A/B Test</p>
 <p>D：对了，这个输入的地方情况很多，如何给用户提示要仔细设计，不然体验非常不好</p>
 <p>小李：是的，应该是弹框提醒吧</p>
@@ -417,112 +531,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2017/using-lombok/" itemprop="url">
-                使用 Lombok 遇到的坑
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2017-03-16T18:39:03+08:00" content="2017-03-16">
-            2017-03-16
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/tech/" itemprop="url" rel="index">
-                  <span itemprop="name">tech</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2017/using-lombok/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2017/using-lombok/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>Lombok的主旨是提高开发效率，消除冗长的 JAVA 代码，尤其是 POJO 类型。在开发初期 POJO 经常修改，随之涉及到改动 getter/setter/toString 等一系列方法。虽然现在 IDE 都能自动生成对应代码，但还是需要手动删除重新生成。</p>
-<p>它的原理是在编译期操作 AST(抽象语法树) 去改变字节码，根据注解生成对应的代码。因为在静态编译期做的，相对可控，使用也简单。</p>
-<blockquote>
-<p>Google 开源的 AutoValue 也是用来解决这个问题，功能很全面，还可以定制化。但有一些的问题</p>
-<ol>
-<li>代码侵入重，所有定义的对象是抽象类，使用都是封装后的 AutoValue_XXX </li>
-<li>生成的 POJO 都是 immutable 的，需要频繁操作的类会很麻烦。</li>
-</ol>
-</blockquote>
-<h6 id="在使用_Lombok_期间遇到一个坑">在使用 Lombok 期间遇到一个坑</h6><p>当你的 POJO 中出现单字母驼峰名称时，例如：iType，Lombok生成出来的 getter/setter 方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> String iType;</div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getIType</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> iType;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIType</span><span class="params">(String iType)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.iType = iType;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>乍一看没啥问题，但是影响很严重，首先 Spring 是不认此方法的，其次也影响到 Jackson 的解析，直接导致无法使用</p>
-<p>一般来说，代码规范和 API 规范有所区别，参考之前的文章「<a href="/2016/about-api-design/">浅谈 Api 设计</a>」。从后端输出 Api 时会做一些转换，例如驼峰转小写+下划线格式，这个 Jackson 有对应支持</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Jackson2ObjectMapperBuilder.propertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES)</div><div class="line"><span class="comment">//Jackson 也是通过 get 方法来获取属性</span></div><div class="line"><span class="comment">//我们的预期是 </span></div><div class="line">iType -&gt; i_type</div><div class="line"><span class="comment">//而结果是 </span></div><div class="line">IType -&gt; itype</div></pre></td></tr></table></figure>
-<p>开始我觉得这是 Lombok 的 bug，随后我下载了 Lombok 的源码来验证</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//HandlerUtil 类统一处理方法名</span></div><div class="line"><span class="comment">//可以看到规则是如果首字母小写，长度大于2并且第二个字母是大写或者是 titlecase 的话，则把首字母变大写。</span></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> prefix Something like &#123;<span class="doctag">@code</span> get&#125; or &#123;<span class="doctag">@code</span> set&#125; or &#123;<span class="doctag">@code</span> is&#125;.</div><div class="line">     * <span class="doctag">@param</span> suffix Something like &#123;<span class="doctag">@code</span> running&#125;.</div><div class="line">     * <span class="doctag">@return</span> prefix + smartly title-cased suffix. For example, &#123;<span class="doctag">@code</span> setRunning&#125;.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">buildAccessorName</span><span class="params">(String prefix, String suffix)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (suffix.length() == <span class="number">0</span>) <span class="keyword">return</span> prefix;</div><div class="line">        <span class="keyword">if</span> (prefix.length() == <span class="number">0</span>) <span class="keyword">return</span> suffix;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> first = suffix.charAt(<span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span> (Character.isLowerCase(first)) &#123;</div><div class="line">            <span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp;</div><div class="line">                (Character.isTitleCase(suffix.charAt(<span class="number">1</span>)) || Character.isUpperCase(suffix.charAt(<span class="number">1</span>)));</div><div class="line">            suffix = String.format(<span class="string">"%s%s"</span>,</div><div class="line">                    useUpperCase ? Character.toUpperCase(first) : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> String.format(<span class="string">"%s%s"</span>, prefix, suffix);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>显然这是特意而为之，随后我上官方 issue 中看了下，在15年已经有人提出了这个问题，而官方的答复是 Java Bean 的规范就是如此，且不应该使用首字母小写第二个字符大写的命名规则，Spring 的处理方式是自己发明的，我们不能跟着 Spring 乱搞，如果 Oracle 官方推荐如此或者所有人都是这么处理的话我们才改~</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/x2jea.png" alt=""></p>
-<p>虽然我没有仔细的看过 Bean 规范，但如果 Spring 这么大厂都不支持的话会很难推广，在我刚和同事推荐的时候大家都非常激动，一听有这么个坑几乎都放弃了，也许是 xXxx 这种命名非常常见吧，比如 iPhone……</p>
-<p>不光 Spring，Jackson，编译器（ IDEA）自动生成的也是如此，只能说 Lombok 性格真是倔。既然如此只好自己修改下源码了…</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//好在改动也非常小， 规则改为：长度大于2，并且第二个字母是大写则不转换大写</span></div><div class="line"><span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp; Character.isUpperCase(suffix.charAt(<span class="number">1</span>));</div><div class="line"></div><div class="line">suffix = String.format(<span class="string">"%s%s"</span>, useUpperCase ? first : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div></pre></td></tr></table></figure>
-<p>PS：据官方说从 JAVA 讨论组数据统计，半数多人支持 getxXxx() 的做法。但他们大多数人的选择未必是正确的做法~</p>
-<p>啊呸…</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -561,7 +569,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">112</span>
+              <span class="site-state-item-count">113</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -575,7 +583,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">120</span>
+              <span class="site-state-item-count">121</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
