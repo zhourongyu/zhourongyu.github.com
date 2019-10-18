@@ -1,0 +1,687 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="别怕，我不是什么好人！" />
+
+
+
+  <meta name="keywords" content="jvm," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="某某某某" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="背景最近线上某个服务出现了 JVM Crash 现象，并且每次都发生在比较相近的时间段里，下面是某一次的日志
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一次离奇的JVM Crash">
+<meta property="og:url" content="http://xxxx.ooo/2019/一次离奇的JVM-Crash/index.html">
+<meta property="og:site_name" content="某某某某">
+<meta property="og:description" content="背景最近线上某个服务出现了 JVM Crash 现象，并且每次都发生在比较相近的时间段里，下面是某一次的日志
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677">
+<meta property="og:updated_time" content="2019-03-20T03:45:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一次离奇的JVM Crash">
+<meta name="twitter:description" content="背景最近线上某个服务出现了 JVM Crash 现象，并且每次都发生在比较相近的时间段里，下面是某一次的日志
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'always'
+  };
+</script>
+
+  <title> 一次离奇的JVM Crash | 某某某某 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw,en,default">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-68669626-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">某某某某</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            標籤
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              一次离奇的JVM Crash
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2019-03-18T21:31:18+08:00" content="2019-03-18">
+            2019-03-18
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/一次离奇的JVM-Crash/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2019/一次离奇的JVM-Crash/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h4 id="背景">背景</h4><p>最近线上某个服务出现了 JVM Crash 现象，并且每次都发生在比较相近的时间段里，下面是某一次的日志</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line">#</div><div class="line"># A fatal error has been detected by the Java Runtime Environment:</div><div class="line">#</div><div class="line">#  SIGSEGV (<span class="number">0xb</span>) <span class="meta">at</span> pc=<span class="number">0x00007ff3ed5c1811</span>, pid=<span class="number">192</span>, tid=<span class="number">140655176587008</span> </div><div class="line">#</div><div class="line"># JRE version: Java(TM) SE Runtime Environment (<span class="number">8.0_45</span>-b14) (build <span class="number">1.8</span><span class="meta">.0_45</span>-b14)</div><div class="line"># Java VM: Java HotSpot(TM) <span class="number">64</span>-Bit Server VM (<span class="number">25.45</span>-b02 mixed mode linux-amd64 compressed oops)</div><div class="line"># Problematic frame:</div><div class="line"># J <span class="number">9931</span> C2 java.util.ArrayList.contains(Ljava/lang/Object<span class="comment">;)Z (14 bytes) @ 0x00007ff3ed5c1811 [0x00007ff3ed5c17c0+0x51]</span></div><div class="line"># Failed to write core dump. Core dumps have been disabled. To enable core dumping, try <span class="string">"ulimit -c unlimited"</span> before starting Java again</div><div class="line"></div><div class="line">---------------  T H R E A D  ---------------</div><div class="line"></div><div class="line">Current thread (<span class="number">0x00007ff36c20f000</span>):  JavaThread <span class="string">"ForkJoinPool-55-worker-0"</span> daemon [_thread_in_Java, id=<span class="number">84902</span>, stack(<span class="number">0x00007fecd5c61000</span>,<span class="number">0x00007fecd5d62000</span>)]</div><div class="line"><span class="symbol"></span></div><div class="line">siginfo: si_signo: <span class="number">11</span> (SIGSEGV), si_code: <span class="number">1</span> (SEGV_MAPERR), si_addr: <span class="number">0x0000000000000009</span> </div><div class="line"><span class="symbol"></span></div><div class="line">Registers:</div><div class="line"><span class="built_in">RAX</span>=<span class="number">0x00000007c001b6c0</span>, <span class="built_in">RBX</span>=<span class="number">0x0000000000000002</span>, <span class="built_in">RCX</span>=<span class="number">0x00000000ebfedc3e</span>, <span class="built_in">RDX</span>=<span class="number">0x0000000000000001</span></div><div class="line"><span class="built_in">RSP</span>=<span class="number">0x00007fecd5d5fb10</span>, <span class="built_in">RBP</span>=<span class="number">0x0000000000000000</span>, <span class="built_in">RSI</span>=<span class="number">0x000000075ff6e108</span>, <span class="built_in">RDI</span>=<span class="number">0x0000000000000002</span></div><div class="line"><span class="built_in">R8</span> =<span class="number">0x0000000000000002</span>, <span class="built_in">R9</span> =<span class="number">0x00000000ebfedc32</span>, <span class="built_in">R10</span>=<span class="number">0x00000007c001b6c0</span>, <span class="built_in">R11</span>=<span class="number">0x0000000000000000</span></div><div class="line"><span class="built_in">R12</span>=<span class="number">0x0000000000000000</span>, <span class="built_in">R13</span>=<span class="number">0x0000000000000002</span>, <span class="built_in">R14</span>=<span class="number">0x000000075ff6e1d8</span>, <span class="built_in">R15</span>=<span class="number">0x00007ff36c20f000</span></div><div class="line"><span class="built_in">RIP</span>=<span class="number">0x00007ff3ed5c1811</span>, EFLAGS=<span class="number">0x0000000000010202</span>, CSGSFS=<span class="number">0x0000000000000033</span>, ERR=<span class="number">0x0000000000000004</span></div><div class="line">  TRAPNO=<span class="number">0x000000000000000e</span></div><div class="line">  </div><div class="line">Top of Stack: (<span class="built_in">sp</span>=<span class="number">0x00007fecd5d5fb10</span>)</div><div class="line"><span class="number">0x00007fecd5d5fb10</span>:   000000000000003f <span class="number">0000000000000000</span></div><div class="line"><span class="number">0x00007fecd5d5fb20</span>:   00000005c5a0b488 00000007c0412700</div><div class="line"><span class="number">0x00007fecd5d5fb30</span>:   00000000ebfe7804 000000075fecbe70</div><div class="line"><span class="number">0x00007fecd5d5fb40</span>:   00000000b8ca514c 00007ff3f2b5e2ec</div><div class="line"><span class="number">0x00007fecd5d5fb50</span>:   00007fecd5d5fb90 00007fecd5d5fb80</div><div class="line"><span class="number">0x00007fecd5d5fb60</span>:   00007ff248698ec0 000000001e61f9cd</div><div class="line">...</div><div class="line"><span class="symbol"></span></div><div class="line">Instructions: (pc=<span class="number">0x00007ff3ed5c1811</span>)</div><div class="line"><span class="number">0x00007ff3ed5c17f1</span>:   c4 e1 f9 6e ce 8b 4e <span class="number">14</span> <span class="number">44</span> 8b <span class="number">46</span> <span class="number">10</span> <span class="number">33</span> ed <span class="number">48</span> <span class="number">85</span></div><div class="line"><span class="number">0x00007ff3ed5c1801</span>:   d2 0f <span class="number">84</span> <span class="number">95</span> <span class="number">04</span> <span class="number">00</span> <span class="number">00</span> <span class="number">45</span> <span class="number">85</span> c0 0f 8e <span class="number">65</span> <span class="number">03</span> <span class="number">00</span> <span class="number">00</span></div><div class="line"><span class="number">0x00007ff3ed5c1811</span>:   <span class="number">44</span> 8b <span class="number">52</span> <span class="number">08</span> <span class="number">41</span> <span class="number">81</span> fa da <span class="number">02</span> <span class="number">00</span> f8 0f <span class="number">85</span> a8 <span class="number">05</span> <span class="number">00</span></div><div class="line"><span class="number">0x00007ff3ed5c1821</span>:   <span class="number">00</span> <span class="number">45</span> 8b 6c cc 0c <span class="number">49</span> <span class="number">8d</span> 2c cc <span class="number">45</span> <span class="number">85</span> ed 0f <span class="number">86</span> <span class="number">48</span> </div><div class="line"></div><div class="line">Register to memory mapping:</div><div class="line"></div><div class="line"><span class="built_in">RAX</span>=<span class="number">0x00000007c001b6c0</span> is pointing <span class="keyword">into</span> metadata</div><div class="line"><span class="built_in">RBX</span>=<span class="number">0x0000000000000002</span> is an unknown value</div><div class="line"><span class="built_in">RCX</span>=<span class="number">0x00000000ebfedc3e</span> is an unknown value</div><div class="line"><span class="built_in">RDX</span>=<span class="number">0x0000000000000001</span> is an unknown value</div><div class="line"><span class="built_in">RSP</span>=<span class="number">0x00007fecd5d5fb10</span> is pointing <span class="keyword">into</span> the stack for thread: <span class="number">0x00007ff36c20f000</span></div><div class="line"><span class="built_in">RBP</span>=<span class="number">0x0000000000000000</span> is an unknown value</div><div class="line"><span class="built_in">RSI</span>=</div><div class="line">[error occurred during error reporting (printing register info), id <span class="number">0xb</span>]</div><div class="line"><span class="symbol"></span></div><div class="line">Stack: [<span class="number">0x00007fecd5c61000</span>,<span class="number">0x00007fecd5d62000</span>],  <span class="built_in">sp</span>=<span class="number">0x00007fecd5d5fb10</span>,  free space=1018k</div><div class="line">Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)</div><div class="line">J <span class="number">9931</span> C2 java.util.ArrayList.contains(Ljava/lang/Object<span class="comment">;)Z (14 bytes) @ 0x00007ff3ed5c1811 [0x00007ff3ed5c17c0+0x51]</span></div><div class="line"></div><div class="line"></div><div class="line">---------------  P R O C E S S  ---------------</div><div class="line"></div><div class="line">Java Threads: ( =&gt; current thread )</div><div class="line">  <span class="number">0x00007fee48009800</span> JavaThread <span class="string">"hystrix-fuiou_default-10"</span> daemon [_thread_in_native, id=<span class="number">84913</span>, stack(<span class="number">0x00007fecd6a6f000</span>,<span class="number">0x00007fecd6b70000</span>)]</div><div class="line">=&gt;<span class="number">0x00007ff36c20f000</span> JavaThread <span class="string">"ForkJoinPool-55-worker-0"</span> daemon [_thread_in_Java, id=<span class="number">84902</span>, stack(<span class="number">0x00007fecd5c61000</span>,<span class="number">0x00007fecd5d62000</span>)]</div><div class="line">  <span class="number">0x00007fee4400a000</span> JavaThread <span class="string">"ForkJoinPool-55-worker-3"</span> daemon [_thread_blocked, id=<span class="number">84901</span>, stack(<span class="number">0x00007fecd5d62000</span>,<span class="number">0x00007fecd5e63000</span>)]</div><div class="line">  ...</div><div class="line">  </div><div class="line">  Internal exceptions (<span class="number">10</span> events):</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.006</span> Thread <span class="number">0x00007fee6c014800</span> Exception &lt;a <span class="string">'java/lang/ClassNotFoundException'</span>: com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer&gt; (<span class="number">0x000000077aad98c0</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/classfile/systemDictionary.cpp</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.007</span> Thread <span class="number">0x00007fee6c014800</span> Exception &lt;a <span class="string">'java/lang/ClassNotFoundException'</span>: com/xueqiu/fundx/market/domain/FundDataStockDetailPercentBeanInfo&gt; (<span class="number">0x000000077ab42100</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/classfile/systemDictionary.cpp, </div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.008</span> Thread <span class="number">0x00007fee6c014800</span> Exception &lt;a <span class="string">'java/lang/ClassNotFoundException'</span>: com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer&gt; (<span class="number">0x000000077aba3a70</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/classfile/systemDictionary.cpp</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> Thread <span class="number">0x00007fee6c014800</span> Exception &lt;a <span class="string">'java/lang/ClassNotFoundException'</span>: com/xueqiu/fundx/market/domain/FundDataStockDetailPercentBeanInfo&gt; (<span class="number">0x000000077a40c330</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/classfile/systemDictionary.cpp, </div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> Thread <span class="number">0x00007fee6c014800</span> Exception &lt;a <span class="string">'java/lang/ClassNotFoundException'</span>: com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer&gt; (<span class="number">0x000000077a46dca0</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/classfile/systemDictionary.cpp</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.192</span> Thread <span class="number">0x00007ff154083000</span> Exception &lt;a <span class="string">'java/net/SocketTimeoutException'</span>: Read timed <span class="keyword">out</span>&gt; (<span class="number">0x0000000779e96098</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/prims/jni.cpp, line <span class="number">735</span>]</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.817</span> Thread <span class="number">0x00007ff154265800</span> Exception &lt;a <span class="string">'java/net/SocketTimeoutException'</span>: Read timed <span class="keyword">out</span>&gt; (<span class="number">0x000000077743dc38</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/prims/jni.cpp, line <span class="number">735</span>]</div><div class="line"><span class="symbol">Event:</span> <span class="number">42113.412</span> Thread <span class="number">0x00007ff15427e000</span> Exception &lt;a <span class="string">'java/net/SocketTimeoutException'</span>: Read timed <span class="keyword">out</span>&gt; (<span class="number">0x00000007747e4f80</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/prims/jni.cpp, line <span class="number">735</span>]</div><div class="line"><span class="symbol">Event:</span> <span class="number">42114.344</span> Thread <span class="number">0x00007ff154351000</span> Exception &lt;a <span class="string">'java/net/SocketTimeoutException'</span>: Read timed <span class="keyword">out</span>&gt; (<span class="number">0x000000076d9d3658</span>) thrown <span class="meta">at</span> [/RE-WORK/workspace/<span class="number">8</span>-<span class="number">2</span>-build-linux-amd64/jdk8u45/<span class="number">3457</span>/hotspot/src/share/vm/prims/jni.cpp, line <span class="number">735</span>]</div><div class="line"><span class="symbol">Event:</span> <span class="number">42115.538</span> Thread <span class="number">0x00007ff36c20f000</span> Implicit null exception <span class="meta">at</span> <span class="number">0x00007ff3ed5c1811</span> to <span class="number">0x0000000000000000</span></div><div class="line"></div><div class="line">Events (<span class="number">10</span> events):</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> loading class com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> loading class com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer done</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> loading class com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> loading class com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer done</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> loading class com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.009</span> loading class com/xueqiu/fundx/market/domain/FundDataStockDetailPercentCustomizer done</div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.284</span> Thread <span class="number">0x00007ff3fce22000</span> flushing nmethod <span class="number">0x00007ff3f5a26250</span></div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.284</span> Thread <span class="number">0x00007ff3fce22000</span> flushing nmethod <span class="number">0x00007ff3f5a43390</span></div><div class="line"><span class="symbol">Event:</span> <span class="number">42112.288</span> Thread <span class="number">0x00007ff3fce22000</span> flushing nmethod <span class="number">0x00007ff3f63395d0</span></div><div class="line"><span class="symbol">Event:</span> <span class="number">42114.505</span> Thread <span class="number">0x00007ff0cc017800</span> Thread added: <span class="number">0x00007ff0cc017800</span></div></pre></td></tr></table></figure>
+<h4 id="分析错误日志">分析错误日志</h4><p>从日志中能获取到的重要信息</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">siginfo</span>: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x0000000000000009 </div><div class="line"></div><div class="line"><span class="livecodeserver">SIGSEGV: A segmentation fault occurs when <span class="keyword">a</span> program attempts <span class="built_in">to</span> access <span class="keyword">a</span> memory location that <span class="keyword">it</span> is <span class="keyword">not</span> allowed <span class="built_in">to</span> access, <span class="keyword">or</span> attempts <span class="built_in">to</span> access <span class="keyword">a</span> memory location <span class="keyword">in</span> <span class="keyword">a</span> way that is <span class="keyword">not</span> allowed (<span class="keyword">for</span> example, attempting <span class="built_in">to</span> <span class="built_in">write</span> <span class="built_in">to</span> <span class="keyword">a</span> <span class="built_in">read</span>-only location, <span class="keyword">or</span> <span class="built_in">to</span> overwrite part <span class="keyword">of</span> <span class="keyword">the</span> operating <span class="keyword">system</span>).</span></div><div class="line"></div><div class="line">访问了一个无效的内存引用(可能是不允许访问的内存地址，或者是禁止的访问方式)</div><div class="line"></div><div class="line">SEGV_MAPERR ：地址没有映射到对象</div><div class="line"></div><div class="line">siaddr: <span class="number">0x0000000000000009</span> </div><div class="line">这个就是访问的地址，<span class="number">0x00000000</span><span class="number">-0x0000FFFF</span> 是进程<span class="literal">NULL</span>区的保留地址，禁止访问</div><div class="line"></div><div class="line">Event: Thread <span class="number">0x00007ff36c20f000</span> Implicit <span class="literal">null</span> exception <span class="keyword">at</span> <span class="number">0x00007ff3ed5c1811</span> <span class="built_in">to</span> <span class="number">0x0000000000000000</span></div><div class="line">提示了这是一个隐式空指针问题</div></pre></td></tr></table></figure>
+<p>从线程名中找到对应的代码逻辑块，并没有发现对 ArrayList.contains 的调用，随后通过使用 udcli 转译指令成汇编，貌似也没有找到匹配的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜  ~ echo &apos;44 8b 52 08 41 81 fa da 02 00 f8 0f 85 a8 05 00&apos; |udcli -intel -x -64 -o 0x00007ff3ed5c1811</div><div class="line">00007ff3ed5c1811 448b5208         mov r10d, [rdx+0x8] //转移 rdx+8 (也就是出问题的地址)</div><div class="line">00007ff3ed5c1815 4181fada0200f8   cmp r10d, 0xf80002da //比较俩个值(相减)，应该是个比大小的操作</div><div class="line">00007ff3ed5c181c 0f85a80500       invalid</div></pre></td></tr></table></figure>
+<p>暂时没有什么头绪，想借助 core dump 来进行更深入的分析，但因为我们应用跑在 Docker 里，core dump 默认没有打开。</p>
+<p>首先找 SRE 团队配合改一下 Docker 的配置，另外在应用内加上了更多的定位日志，希望能定位到具体行。</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>. docker <span class="keyword">run</span><span class="bash"> 参数里的加上 --ulimit core=-1 </span></div><div class="line"><span class="number">2</span>. 在 /etc/sysctl.conf 里可以配置文件生成路径</div><div class="line">kernel.core_pattern = /persist/core_%e_%p</div></pre></td></tr></table></figure>
+<h4 id="尝试定位修复">尝试定位修复</h4><p>等待下一次 crash 期间也做了几件事</p>
+<ul>
+<li><p>猜测是否是使用了 forkjoin 框架本身的问题，随后替换成标准的线程池，无用</p>
+</li>
+<li><p>根据日志定位到了大概的代码块，是一个普通是 foreach 中，仔细分析后似乎没有发现问题</p>
+</li>
+<li><p>再次仔细的分析了下crash 日志，发现每次都会有相应的 jni 调用及某个类的异常，如下</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">Event:</span> <span class="number">42112.009</span> Thread <span class="number">0x00007fee6c014800</span> Exception &lt;a <span class="string">'java/lang/ClassNotFoundException'</span>: com<span class="regexp">/xueqiu/</span>fundx<span class="regexp">/market/</span>domain<span class="regexp">/FundDataStockDetailPercentCustomizer&gt; (0x000000077a46dca0) thrown at [/</span>RE-WORK<span class="regexp">/workspace/</span><span class="number">8</span><span class="number">-2</span>-build-linux-amd64<span class="regexp">/jdk8u45/</span><span class="number">3457</span><span class="regexp">/hotspot/</span>src<span class="regexp">/share/</span>vm<span class="regexp">/classfile/</span>systemDictionary.cpp</div><div class="line"><span class="string">Event:</span> <span class="number">42112.192</span> Thread <span class="number">0x00007ff154083000</span> Exception &lt;a <span class="string">'java/net/SocketTimeoutException'</span>: Read timed out&gt; (<span class="number">0x0000000779e96098</span>) thrown at [<span class="regexp">/RE-WORK/</span>workspace<span class="regexp">/8-2-build-linux-amd64/</span>jdk8u45<span class="regexp">/3457/</span>hotspot<span class="regexp">/src/</span>share<span class="regexp">/vm/</span>prims/jni.cpp, line <span class="number">735</span>]</div></pre></td></tr></table></figure>
+<p>根据线程分析，这是一个MQ的触发事件，<strong>但如果是JNI导致的错误，为什么是另外一个线程的异常 Crash，这里没有想通</strong></p>
+</li>
+</ul>
+<h4 id="分析_core_dump">分析 core dump</h4><p>拿到 core dump 后，首先想通过 jstack 获取到具体的异常栈信息，栈信息已丢失</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Thread <span class="number">84902</span>: (<span class="keyword">state</span> = IN_JAVA) //线程正在执行编译后的Java代码</div></pre></td></tr></table></figure>
+<p>尝试使用 jmap 导出内存 dump，失败</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">app@bjxg-vd-<span class="number">9</span>-<span class="number">201</span>:~$ jmap -dump:format=<span class="selector-tag">b</span>,file=heap<span class="selector-class">.hprof</span> /usr/bin/java core_java_192</div><div class="line">Picked up _JAVA_OPTIONS: -Djava<span class="selector-class">.net</span><span class="selector-class">.preferIPv4Stack</span>=true -Dfile.encoding=UTF-<span class="number">8</span></div><div class="line">Attaching to core core_java_192 from executable /usr/bin/java, please wait...</div><div class="line">Debugger attached successfully.</div><div class="line">Server compiler detected.</div><div class="line">JVM version is <span class="number">25.45</span>-b02</div><div class="line">Dumping heap to heap2<span class="selector-class">.hprof</span> ...</div><div class="line">Exception <span class="keyword">in</span> thread <span class="string">"main"</span> java<span class="selector-class">.lang</span><span class="selector-class">.reflect</span><span class="selector-class">.InvocationTargetException</span></div><div class="line"> at sun<span class="selector-class">.reflect</span><span class="selector-class">.NativeMethodAccessorImpl</span><span class="selector-class">.invoke0</span>(Native Method)</div><div class="line"> at sun<span class="selector-class">.reflect</span><span class="selector-class">.NativeMethodAccessorImpl</span><span class="selector-class">.invoke</span>(NativeMethodAccessorImpl<span class="selector-class">.java</span>:<span class="number">62</span>)</div><div class="line"> at sun<span class="selector-class">.reflect</span><span class="selector-class">.DelegatingMethodAccessorImpl</span><span class="selector-class">.invoke</span>(DelegatingMethodAccessorImpl<span class="selector-class">.java</span>:<span class="number">43</span>)</div><div class="line"> at java<span class="selector-class">.lang</span><span class="selector-class">.reflect</span><span class="selector-class">.Method</span><span class="selector-class">.invoke</span>(Method<span class="selector-class">.java</span>:<span class="number">497</span>)</div><div class="line"> at sun<span class="selector-class">.tools</span><span class="selector-class">.jmap</span><span class="selector-class">.JMap</span><span class="selector-class">.runTool</span>(JMap<span class="selector-class">.java</span>:<span class="number">201</span>)</div><div class="line"> at sun<span class="selector-class">.tools</span><span class="selector-class">.jmap</span><span class="selector-class">.JMap</span><span class="selector-class">.main</span>(JMap<span class="selector-class">.java</span>:<span class="number">130</span>)</div><div class="line">Caused by: sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.utilities</span><span class="selector-class">.AssertionFailure</span>: can not get class data <span class="keyword">for</span> java/util/stream/FindOps$<span class="variable">$Lambda</span>$<span class="number">210</span>x00000007c019bc28</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.utilities</span><span class="selector-class">.Assert</span><span class="selector-class">.that</span>(Assert<span class="selector-class">.java</span>:<span class="number">32</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.utilities</span><span class="selector-class">.HeapHprofBinWriter</span><span class="selector-class">.writeInstance</span>(HeapHprofBinWriter<span class="selector-class">.java</span>:<span class="number">803</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.utilities</span><span class="selector-class">.AbstractHeapGraphWriter</span>$<span class="number">1</span>.doObj(AbstractHeapGraphWriter<span class="selector-class">.java</span>:<span class="number">95</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.oops</span><span class="selector-class">.ObjectHeap</span><span class="selector-class">.iterateLiveRegions</span>(ObjectHeap<span class="selector-class">.java</span>:<span class="number">353</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.oops</span><span class="selector-class">.ObjectHeap</span><span class="selector-class">.iterate</span>(ObjectHeap<span class="selector-class">.java</span>:<span class="number">171</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.utilities</span><span class="selector-class">.AbstractHeapGraphWriter</span><span class="selector-class">.write</span>(AbstractHeapGraphWriter<span class="selector-class">.java</span>:<span class="number">51</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.utilities</span><span class="selector-class">.HeapHprofBinWriter</span><span class="selector-class">.write</span>(HeapHprofBinWriter<span class="selector-class">.java</span>:<span class="number">433</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.tools</span><span class="selector-class">.HeapDumper</span><span class="selector-class">.run</span>(HeapDumper<span class="selector-class">.java</span>:<span class="number">62</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.tools</span><span class="selector-class">.Tool</span><span class="selector-class">.startInternal</span>(Tool<span class="selector-class">.java</span>:<span class="number">260</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.tools</span><span class="selector-class">.Tool</span><span class="selector-class">.start</span>(Tool<span class="selector-class">.java</span>:<span class="number">223</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.tools</span><span class="selector-class">.Tool</span><span class="selector-class">.execute</span>(Tool<span class="selector-class">.java</span>:<span class="number">118</span>)</div><div class="line"> at sun<span class="selector-class">.jvm</span><span class="selector-class">.hotspot</span><span class="selector-class">.tools</span><span class="selector-class">.HeapDumper</span><span class="selector-class">.main</span>(HeapDumper<span class="selector-class">.java</span>:<span class="number">83</span>)</div><div class="line"> ... <span class="number">6</span> more</div></pre></td></tr></table></figure>
+<p>随后尝试使用 gdb 加载分析</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(gdb) <span class="keyword">bt</span></div><div class="line">#<span class="number">0</span>  <span class="number">0x00007ff40130ecc9</span> <span class="keyword">in</span> _quicksort (pbase=<span class="number">0x0</span>, total_elems=&lt;optimized <span class="keyword">out</span>&gt;, size=<span class="number">32</span>, <span class="keyword">cmp</span>=<span class="number">0x7fecd5d5d420</span>, arg=<span class="number">0x7ff401269640</span> &lt;OnError&gt;) <span class="meta">at</span> qsort.c:<span class="number">128</span></div><div class="line">#<span class="number">1</span>  <span class="number">0x0000000000010206</span> <span class="keyword">in</span> ?? ()</div><div class="line">#<span class="number">2</span>  <span class="number">0x0000000000000033</span> <span class="keyword">in</span> ?? ()</div><div class="line">#<span class="number">3</span>  <span class="number">0x0000000000000004</span> <span class="keyword">in</span> ?? ()</div><div class="line">#<span class="number">4</span>  <span class="number">0x000000000000000e</span> <span class="keyword">in</span> ?? ()</div><div class="line">#<span class="number">5</span>  <span class="number">0xfffffffe7ffbfaff</span> <span class="keyword">in</span> ?? ()</div><div class="line">#<span class="number">6</span>  <span class="number">0x0000000000000030</span> <span class="keyword">in</span> ?? ()</div><div class="line">#<span class="number">7</span>  <span class="number">0x00007fecd5d5d880</span> <span class="keyword">in</span> ?? ()</div><div class="line">#<span class="number">8</span>  <span class="number">0x00007ff4009ee156</span> <span class="keyword">in</span> jni_GetObjectField () from /data/jdk1<span class="meta">.8</span><span class="meta">.0_45</span>/jre/lib/amd64/server/libjvm.so</div><div class="line">Backtrace stopped: previous frame inner to this frame (corrupt stack?)</div></pre></td></tr></table></figure>
+<p>Backtrace 最后一帧是一个qsort 函数，这里和之前汇编 cmp 操作能对应上</p>
+<p>至此大概猜测是某种原因破坏了堆内存，例如 JNI 调用使用了错误的参数触发了空指针等</p>
+<p>最后尝试一下更新 JDK 版本，1.8.0_45 -&gt; 1.8.0_201，尝试之后至今还未再次发生Crash 事件，难道真的是一个JDK 的bug 吗？</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jvm/" rel="tag">#jvm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/spring-boot-2-0-upgrade/" rel="next">Spring Boot 2.0 升级指北</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2019/一次离奇的JVM-Crash/"
+                   data-title="一次离奇的JVM Crash" data-url="http://xxxx.ooo/2019/一次离奇的JVM-Crash/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/499661?v=3&s=460" alt="山荣" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">山荣</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">别怕，我不是什么好人！</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">111</span>
+              <span class="site-state-item-name">文章</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分類</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">121</span>
+              <span class="site-state-item-name">標籤</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://imim.me" target="_blank">Home</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/zhourongyu" target="_blank">Instagram</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/zhourongyu" target="_blank">Twitter</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-nd.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析错误日志"><span class="nav-number">2.</span> <span class="nav-text">分析错误日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#尝试定位修复"><span class="nav-number">3.</span> <span class="nav-text">尝试定位修复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析_core_dump"><span class="nav-number">4.</span> <span class="nav-text">分析 core dump</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp;  2015 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">山荣</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hexoxxxx"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

@@ -171,6 +171,104 @@
           
           
             
+              <a class="post-title-link" href="/2016/murphy-law/" itemprop="url">
+                墨菲定律
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2016-07-26T23:21:12+08:00" content="2016-07-26">
+            2016-07-26
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2016/murphy-law/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/murphy-law/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><blockquote>
+<p>墨菲定律：可能会出错的地方一定会出错，如果有多个可能，必定朝最坏的情况发展。大俗话：明明之前没有错，偏偏关键时刻就是出错了  —wikipedia</p>
+</blockquote>
+<p>这是这两天遇到线上事故的总结</p>
+<h5 id="事故过程：">事故过程：</h5><p>早前做了一个系统维护的解决方案，目的阻挡一些涉及维护系统的请求，避免造成数据上的错误。但因业务的扩展，并且多次升级维护都比较顺利，此方案并没有更新覆盖到一些新业务。</p>
+<p><strong>升级的过程为：停服务-&gt; 备份数据库 -&gt; 升级服务 -&gt; 重启服务</strong></p>
+<p>升级后上线测试业务失败，经过半小时检测未找到原因（事后查出是三方升级包BUG，部分用户可以成功）。随后进行回滚操作，回滚后出现系统数据同步异常，检测发现在维护期间有部分新数据写入，回滚导致部分数据丢失。</p>
+<p>好在没有对用户造成经济上的损失，但修数据耗费了大家一整天时间。</p>
+<h5 id="主要原因：">主要原因：</h5><ol>
+<li>维护方案不是最新，但每次维护都在使用</li>
+<li>升级后未经过灰度直接上线测试</li>
+<li>线上测试发现问题后未检测是否有新数据就进行回滚</li>
+<li>三方提供的升级包质检不合格</li>
+</ol>
+<p>又一次用血泪印证了墨菲定律。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2016/custom-fitness-plan/" itemprop="url">
                 定制自己的健身计划
               </a>
@@ -317,7 +415,7 @@
       
         
           <span itemprop="articleBody"><p>今天处理系统问题时，偶然发现 Console 里系统日志一直在打一些奇怪的错误日志，统计了下总数有 10w+ …</p>
-<p> <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F6%2F1466566947114.png" alt="console_log"><br>猜测是哪个软件的流氓进程，直到看到最后这行日志，像是个系统备份服务。<br>mtmfs 是个啥子呢</p>
+<p> <img src="http://img.imim.me/2016%2F6%2F1466566947114.png" alt="console_log"><br>猜测是哪个软件的流氓进程，直到看到最后这行日志，像是个系统备份服务。<br>mtmfs 是个啥子呢</p>
 <blockquote>
 <p><strong>mtmfs</strong> is the <em>Mobile Time Machine File System</em>, that handles Local snapshots, both making them and managing them (consolidating, deleting, etc).  They’re made on laptops running Lion whenever Time Machine is ON, whether you’re in range of your Time Machine backup destination or not.  These are completely separate from “normal” Time Machine backups to an external HD, Time Capsule, etc.</p>
 </blockquote>
@@ -341,104 +439,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/story-of-an-email/" itemprop="url">
-                一封邮件的故事
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2016-02-29T22:28:00+08:00" content="2016-02-29">
-            2016-02-29
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/story-of-an-email/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/story-of-an-email/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>下午收到封邮件，标题是沉痛哀悼xxxx，差点吓尿… 原来是哀悼之前的项目下线。引发了很多的回忆…<br>两年前加入雪球时写了篇十个字博客，今天就来完成那篇文章吧<br>Snowball 是雪球的「核心」项目（从名字就能看出来），就像歌手出道喜欢发行同名专辑一样。也是因为这个项目，雪球在「互联网金融」领域崭露头角。<br><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016%2F2%2F1456759177888.png" alt="email"></p>
-<h4 id="第一次上线事故">第一次上线事故</h4><p>记得刚进公司时第一次提交上线代码，是一个技术改造，某个接口虽然已经使用了缓存(redis)，但因为业务较为复杂导致接口速度还是比较慢，最后考虑使用 local-cache 方案替换原有方案。但因为没有仔细了解透业务，导致遗漏一个接口没有替换。上线后，匿名首页出现异常，那时候雪球上线管理非常随意，一天可能上线多次。那次时间正好是下班时后七点左右，我正高兴的和妹纸吃着饭… leader 来电说出问题了，代码回滚，导致饭也没有吃好，以至于至今还记忆犹新。</p>
-<p>之后业务发展越来越好，用户越来越多，单一项目带来的坑也越来越多。随后开始做项目拆分、RPC 改造。别扭着从零开始写 scala ，写到后面越来越顺手。之后换到组合业务、做雪球钱包，全都是 Scala 的项目。</p>
-<h4 id="公司搬家">公司搬家</h4><p>15 年初公司顺利搬迁望京 SOHO, 也从一个小公司转变为100人左右的「中小型企业」，从一两个小破屋变成了有茶水间，健身房，餐厅，多个会议室的让人羡慕的工作环境，终于像一个土豪互联网企业了。 </p>
-<p>公司是大了，但并没有找到自己独有的商业模式。15年开始各种的尝试，当时组合售卖做的风生水起，大家仿佛看到了希望之光，直到某天一位中年秃顶男子来到我司。之前一直都是只闻 「紫金花」其名，不知其厉害。现在亲身体会了…此处省略八百字。</p>
-<p>此路不通后开始转向全力做交易，此前组合业务同事大部分都转到目前我们这个基金业务当中了。小半年后我们的产品终于也即将上市了…尽请期待吧</p>
-<p>雪球目前一百多人，我的工号 3x 也算是个老油条，现在已经有很多新员工不认识了~ 经常吃饭感觉到了一个陌生的公司…虽然人越来越多，但雪球还是那个雪球。</p>
-<h4 id="总结">总结</h4><p>雪球是个好公司，扁平化的管理，宽松的工作环境，管午饭，有年度旅游和各种小福利。产品有自己的逼格，有特有的创新，「组合」上线后已经被多个竞品模仿抄袭。几乎没有办公室斗争，虽然人数过百，还是保持着创业公司的风范。</p>
-<p>当然也有缺点，雪球员工多数个性低调含蓄，从 leader 到员工都如此。整个团队环境是比较内敛的，新员工不容易融入，一些入职不久的新员工因为这个原因也很快就离职了。或许这就是雪球团队特有的一种风格。</p>
-<p>当然以上所有都是我个人作为一个普通员工的看法，嘿</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/5/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/5/">&raquo;</a>
   </nav>
 
  </div>
@@ -472,7 +477,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">113</span>
+              <span class="site-state-item-count">111</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -547,7 +552,7 @@
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

@@ -55,15 +55,15 @@ Go">
 它的原理是在编译期操作 AST(抽象语法树) 去改变字节码，根据注解生成对应的代码。因为在静态编译期做的，相对可控，使用也简单。
 
 Go">
-<meta property="og:image" content="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/x2jea.png">
-<meta property="og:updated_time" content="2017-03-17T10:59:09.000Z">
+<meta property="og:image" content="http://img.imim.me/2016/9/x2jea.png">
+<meta property="og:updated_time" content="2019-10-18T00:55:31.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Lombok 遇到的坑">
 <meta name="twitter:description" content="Lombok的主旨是提高开发效率，消除冗长的 JAVA 代码，尤其是 POJO 类型。在开发初期 POJO 经常修改，随之涉及到改动 getter/setter/toString 等一系列方法。虽然现在 IDE 都能自动生成对应代码，但还是需要手动删除重新生成。
 它的原理是在编译期操作 AST(抽象语法树) 去改变字节码，根据注解生成对应的代码。因为在静态编译期做的，相对可控，使用也简单。
 
 Go">
-<meta name="twitter:image" content="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/x2jea.png">
+<meta name="twitter:image" content="http://img.imim.me/2016/9/x2jea.png">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -248,7 +248,7 @@ Go">
 <p>开始我觉得这是 Lombok 的 bug，随后我下载了 Lombok 的源码来验证</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//HandlerUtil 类统一处理方法名</span></div><div class="line"><span class="comment">//可以看到规则是如果首字母小写，长度大于2并且第二个字母是大写或者是 titlecase 的话，则把首字母变大写。</span></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> prefix Something like &#123;<span class="doctag">@code</span> get&#125; or &#123;<span class="doctag">@code</span> set&#125; or &#123;<span class="doctag">@code</span> is&#125;.</div><div class="line">     * <span class="doctag">@param</span> suffix Something like &#123;<span class="doctag">@code</span> running&#125;.</div><div class="line">     * <span class="doctag">@return</span> prefix + smartly title-cased suffix. For example, &#123;<span class="doctag">@code</span> setRunning&#125;.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">buildAccessorName</span><span class="params">(String prefix, String suffix)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (suffix.length() == <span class="number">0</span>) <span class="keyword">return</span> prefix;</div><div class="line">        <span class="keyword">if</span> (prefix.length() == <span class="number">0</span>) <span class="keyword">return</span> suffix;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> first = suffix.charAt(<span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span> (Character.isLowerCase(first)) &#123;</div><div class="line">            <span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp;</div><div class="line">                (Character.isTitleCase(suffix.charAt(<span class="number">1</span>)) || Character.isUpperCase(suffix.charAt(<span class="number">1</span>)));</div><div class="line">            suffix = String.format(<span class="string">"%s%s"</span>,</div><div class="line">                    useUpperCase ? Character.toUpperCase(first) : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> String.format(<span class="string">"%s%s"</span>, prefix, suffix);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>显然这是特意而为之，随后我上官方 issue 中看了下，在15年已经有人提出了这个问题，而官方的答复是 Java Bean 的规范就是如此，且不应该使用首字母小写第二个字符大写的命名规则，Spring 的处理方式是自己发明的，我们不能跟着 Spring 乱搞，如果 Oracle 官方推荐如此或者所有人都是这么处理的话我们才改~</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/x2jea.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/x2jea.png" alt=""></p>
 <p>虽然我没有仔细的看过 Bean 规范，但如果 Spring 这么大厂都不支持的话会很难推广，在我刚和同事推荐的时候大家都非常激动，一听有这么个坑几乎都放弃了，也许是 xXxx 这种命名非常常见吧，比如 iPhone……</p>
 <p>不光 Spring，Jackson，编译器（ IDEA）自动生成的也是如此，只能说 Lombok 性格真是倔。既然如此只好自己修改下源码了…</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//好在改动也非常小， 规则改为：长度大于2，并且第二个字母是大写则不转换大写</span></div><div class="line"><span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp; Character.isUpperCase(suffix.charAt(<span class="number">1</span>));</div><div class="line"></div><div class="line">suffix = String.format(<span class="string">"%s%s"</span>, useUpperCase ? first : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div></pre></td></tr></table></figure>
@@ -345,7 +345,7 @@ Go">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">113</span>
+              <span class="site-state-item-count">111</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -431,7 +431,7 @@ Go">
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

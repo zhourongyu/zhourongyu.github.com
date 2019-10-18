@@ -53,14 +53,14 @@
 <meta property="og:description" content="今天面试官的一个问题让我有点疑惑：如何配置 Nginx 能让程序在后台获取真实的用户IP，当时我没理解这个问题意思，获取请求IP不是很简单的事情么？例如：request.getRemoteAddr()
 回来查询了资料. 此问题是指使用了 Nginx 反向代理获取不到真实用户的 IP ，当使用了反向代理后 getRemoteAddr() 返回的是反向服务器的 IP。
 什么是反向代理，曾经写了一个聊天">
-<meta property="og:image" content="http://zryblog.qiniudn.com/2014/07/617923233.jpg">
-<meta property="og:updated_time" content="2015-07-19T13:00:49.000Z">
+<meta property="og:image" content="http://img.imim.me/2014/07/617923233.jpg">
+<meta property="og:updated_time" content="2019-10-18T00:59:22.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx反向代理获取真实IP">
 <meta name="twitter:description" content="今天面试官的一个问题让我有点疑惑：如何配置 Nginx 能让程序在后台获取真实的用户IP，当时我没理解这个问题意思，获取请求IP不是很简单的事情么？例如：request.getRemoteAddr()
 回来查询了资料. 此问题是指使用了 Nginx 反向代理获取不到真实用户的 IP ，当使用了反向代理后 getRemoteAddr() 返回的是反向服务器的 IP。
 什么是反向代理，曾经写了一个聊天">
-<meta name="twitter:image" content="http://zryblog.qiniudn.com/2014/07/617923233.jpg">
+<meta name="twitter:image" content="http://img.imim.me/2014/07/617923233.jpg">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -232,7 +232,7 @@
 <p>回来查询了资料. 此问题是指使用了 Nginx 反向代理获取不到真实用户的 IP ，当使用了反向代理后 getRemoteAddr() 返回的是反向服务器的 IP。</p>
 <p>什么是反向代理，曾经写了一个聊天小应用并部署再服务器上，端口为8888，本地访问也就是127.0.0.1:8888</p>
 <p>我想让 t.imim.me 访问到我的这个应用上（应用已撤除），配置如下</p>
-<p><img src="http://zryblog.qiniudn.com/2014/07/617923233.jpg" alt="t.imim.me">  </p>
+<p><img src="http://img.imim.me/2014/07/617923233.jpg" alt="t.imim.me">  </p>
 <pre><code>proxy_pass <span class="string">http:</span><span class="comment">//chat</span>
 </code></pre><p>这就是反向代理，将来自这个域名的请求转发到了一个名为 chat 的 upstream，也是真实的应用地址（127.0.0.1:8888）</p>
 <p>再看这两行配置:</p>
@@ -330,7 +330,7 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">113</span>
+              <span class="site-state-item-count">111</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -416,7 +416,7 @@ proxy_<span class="built_in">set</span>_header X-Forwarded-For <span class="vari
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>

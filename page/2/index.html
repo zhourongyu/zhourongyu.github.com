@@ -171,6 +171,126 @@
           
           
             
+              <a class="post-title-link" href="/2017/how-to-manage-multi-phone/" itemprop="url">
+                利用 IFTTT 解决多卡多机
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2017-11-06T23:50:52+08:00" content="2017-11-06">
+            2017-11-06
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分類於
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/tech/" itemprop="url" rel="index">
+                  <span itemprop="name">tech</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2017/how-to-manage-multi-phone/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2017/how-to-manage-multi-phone/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>随着移动互联网的迅猛发展，对手机流量的需求越来越强。联通近两年推出了各种互联网套餐，吞噬了大批的用户。我作为一个资深移动老用户也办了张「大王卡」。 在联通刚推出3G业务，而移动由于自身原因只能使用2G的时期我都忍住没有迁移至联通，但现在我几乎要离开移动了。日常使用全部大王卡，移动只有接收银行等重要信息、验证码等功能。姑且还称移动为主卡，联通为副卡吧。</p>
+<p>如果手机不支持双卡双待，多卡带来的问题就是得多备一个手机，多花钱不说还得天天带着。对于我这种 iPhone党简直是噩梦，势必要解决它</p>
+<p>需要解决的有俩部分</p>
+<p>1.电话：主卡电话呼叫转移到副卡</p>
+<p>2.短信： 希望把主卡短信全部转发到副卡上</p>
+<h5 id="呼叫转移">呼叫转移</h5><p>目前大部分智能手机已系统支持呼叫转移，注意的是，这部分是需要另付资费哦例如A/B俩卡都是免费接听，但如果 A 转接到 B 需要收取 A 的呼叫费用</p>
+<h5 id="使用_IFTTT_解决短信转发">使用 IFTTT 解决短信转发</h5><p>要解决短信的转移前提是能获取到本机短信的权限，iOS 因为隐私保护暂时做不到，所以<strong>需要一台Android 手机</strong>供主卡使用，如果是小米还需要在安全中心里给 IFTTT 开启读取服务类短信，不然无法收到银行验证码等。</p>
+<p><strong>建议使用 Google Play 版本的 IFTTT</strong>（需翻墙）</p>
+<p>下面表格列出邮件、Telegram、微信三种方案各自优缺点。<strong>个人推荐使用微信</strong>，毕竟每天都使用，更加习惯。</p>
+<table>
+<thead>
+<tr>
+<th>转发方案</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>邮件</td>
+<td>配置简单，稳定</td>
+<td>响应稍慢</td>
+</tr>
+<tr>
+<td>Telegram</td>
+<td>安全，及时</td>
+<td>俩个手机都需要翻墙</td>
+</tr>
+<tr>
+<td>微信</td>
+<td>习惯，及时</td>
+<td>需要第三方推送服务</td>
+</tr>
+</tbody>
+</table>
+<p>具体配置方法都很简单，就不详述了。推送到微信要配置成 Webhooks 的方式，推荐 <a href="http://sc.ftqq.com/" target="_blank" rel="external">Server酱</a> 服务，绑定下微信就可以收到推送啦。</p>
+<h5 id="其他">其他</h5><p>其实还有个更简单的方案，就是使用 IFTTT 自身APP。俩部手机都下载 IFTTT 并用同一个账号登录，打开 Applets 的推送即可~</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2017/using-lombok/" itemprop="url">
                 使用 Lombok 遇到的坑
               </a>
@@ -241,7 +361,7 @@
 <p>开始我觉得这是 Lombok 的 bug，随后我下载了 Lombok 的源码来验证</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//HandlerUtil 类统一处理方法名</span></div><div class="line"><span class="comment">//可以看到规则是如果首字母小写，长度大于2并且第二个字母是大写或者是 titlecase 的话，则把首字母变大写。</span></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> prefix Something like &#123;<span class="doctag">@code</span> get&#125; or &#123;<span class="doctag">@code</span> set&#125; or &#123;<span class="doctag">@code</span> is&#125;.</div><div class="line">     * <span class="doctag">@param</span> suffix Something like &#123;<span class="doctag">@code</span> running&#125;.</div><div class="line">     * <span class="doctag">@return</span> prefix + smartly title-cased suffix. For example, &#123;<span class="doctag">@code</span> setRunning&#125;.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">buildAccessorName</span><span class="params">(String prefix, String suffix)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (suffix.length() == <span class="number">0</span>) <span class="keyword">return</span> prefix;</div><div class="line">        <span class="keyword">if</span> (prefix.length() == <span class="number">0</span>) <span class="keyword">return</span> suffix;</div><div class="line">        </div><div class="line">        <span class="keyword">char</span> first = suffix.charAt(<span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span> (Character.isLowerCase(first)) &#123;</div><div class="line">            <span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp;</div><div class="line">                (Character.isTitleCase(suffix.charAt(<span class="number">1</span>)) || Character.isUpperCase(suffix.charAt(<span class="number">1</span>)));</div><div class="line">            suffix = String.format(<span class="string">"%s%s"</span>,</div><div class="line">                    useUpperCase ? Character.toUpperCase(first) : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> String.format(<span class="string">"%s%s"</span>, prefix, suffix);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>显然这是特意而为之，随后我上官方 issue 中看了下，在15年已经有人提出了这个问题，而官方的答复是 Java Bean 的规范就是如此，且不应该使用首字母小写第二个字符大写的命名规则，Spring 的处理方式是自己发明的，我们不能跟着 Spring 乱搞，如果 Oracle 官方推荐如此或者所有人都是这么处理的话我们才改~</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/x2jea.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/x2jea.png" alt=""></p>
 <p>虽然我没有仔细的看过 Bean 规范，但如果 Spring 这么大厂都不支持的话会很难推广，在我刚和同事推荐的时候大家都非常激动，一听有这么个坑几乎都放弃了，也许是 xXxx 这种命名非常常见吧，比如 iPhone……</p>
 <p>不光 Spring，Jackson，编译器（ IDEA）自动生成的也是如此，只能说 Lombok 性格真是倔。既然如此只好自己修改下源码了…</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//好在改动也非常小， 规则改为：长度大于2，并且第二个字母是大写则不转换大写</span></div><div class="line"><span class="keyword">boolean</span> useUpperCase = suffix.length() &gt; <span class="number">2</span> &amp;&amp; Character.isUpperCase(suffix.charAt(<span class="number">1</span>));</div><div class="line"></div><div class="line">suffix = String.format(<span class="string">"%s%s"</span>, useUpperCase ? first : Character.toTitleCase(first),</div><div class="line">                    suffix.subSequence(<span class="number">1</span>, suffix.length()));</div></pre></td></tr></table></figure>
@@ -331,7 +451,7 @@
       
         
           <span itemprop="articleBody"><p>北海道雪场非常多，二世谷、留寿都、札幌国际等诸多著名雪场，前年公司年会去的时候傻逼的被导游带去玩雪橇错过了留寿都的体验，据同事反馈也是相当的好。后面去了札幌国际玩了一天，体验也还不错。今年首次自带装备去滑雪，前期做了不少功课。</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/k9vtb.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/k9vtb.png" alt=""></p>
 <h5 id="自带板的一些注意事项">自带板的一些注意事项</h5><ul>
 <li>装备托运：滑雪板属于超规行李，需要特殊办理托运。事先了解航空公司对运动类大件物件的处理方式，国内航空一般把重量算在了普通行李中，部分国际航空公司有免费的政策</li>
 </ul>
@@ -344,22 +464,22 @@
 <p>这次雪场的选择在 <strong>Kiroro</strong> 和 <strong>二世谷</strong>中犹豫，由于没有订上雪场内的酒店，只能选择住在较近的小樽，这里去 Kiroro 大巴约50分钟。去二世谷要坐 JR 一个多小时。最终选择了较近的 Kiroro</p>
 <p>这里必须要推荐下我选择的这家酒店，Dormy Inn Premium Otaru（小樽豪华多米酒店），就在 JR 小樽站对面，下车步行约1min。旁边是大巴站，隔壁是小樽最大的商场。 店内提供洗衣房及公共温泉，重点晚上还有免费拉面吃，哈哈。（偶然发现在札幌狸小路旁边也有一家）</p>
 <h5 id="KIRORO滑雪_（8_-_16点）">KIRORO滑雪 （8 - 16点）</h5><p>​    Kiroro雪场巴士有两种，一种免费的巴士到小樽驻港站，一种收费到达JR小樽站，都需要预约，因为座位有限，但基本坐不满。有一天我们只约到一个人，经过沟通也让我们上车了。小樽大巴早上八点十分出发，每日一班，不要迟到，不会等人。</p>
-<p>​    <img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/idito.png" alt="Kiroro"></p>
+<p>​    <img src="http://img.imim.me/2016/9/idito.png" alt="Kiroro"></p>
 <p>​    </p>
 <p>​    正逢圣诞节，雪场也搞了一些活动。在日本没有滑雪票的概念， 只有Lift price(缆车费) 和Rental price（租赁费用）。自带装备的话只需购买缆车费，根据年龄和时长价格不一，这次我们买的是3天联票（含夜场），折合人民币850左右，是不是比国内还便宜？</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/owc9d.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/owc9d.png" alt=""></p>
 <p>会发一张实名卡乘缆车用，印有你的个人信息，遇到问题能迅速找到你的资料，理论上只限本人使用。</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/34g4h.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/34g4h.png" alt=""></p>
 <p>Kiroro 雪场由两座山头组成，最长的雪道(Asari Dynamic) 4km 左右，覆盖初中高级雪道，也是人最多的雪道，缺点就是中午后雪就不粉了。我更爱的是最右侧的 Asari Course ，人烟稀少，大粉雪。</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/1gqtz.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/1gqtz.png" alt=""></p>
 <p>Asari 山顶雪季非常的美，像这样。</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/1j71q.JPG" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/1j71q.JPG" alt=""></p>
 <p>也可以这样</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/bcdpk.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/bcdpk.png" alt=""></p>
 <p>第一天下午四点左右暴风雪就开始来了，山顶雪雾大到戴着雪镜只能看到一片白茫茫，当时在高级道的我吓的不太敢滑，害怕冲到树林里的深雪堆里爬不出来。加上只穿了一件保暖内衣和软壳，感觉异常的冷~ 下山就收包返程了</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/tb8i9.png" alt="Asari Course"></p>
+<p><img src="http://img.imim.me/2016/9/tb8i9.png" alt="Asari Course"></p>
 <h5 id="吃饭逛街（18-21点）">吃饭逛街（18-21点）</h5><p>​    在小樽基本没有夜生活。六点多我们去觅食已经很多店关门了，有些出名的店还要预定，真是难死我们了~ 饭后就开启了买买买节奏</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/gpik8.png" alt=""></p>
+<p><img src="http://img.imim.me/2016/9/gpik8.png" alt=""></p>
 <h5 id="温泉&amp;拉面（21-23点）">温泉&amp;拉面（21-23点）</h5><p>​    运动一天后泡个温泉简直不能再爽，泡饿了再干它两碗免费拉面（拉面23点截止，千万别泡过头了）温泉图片就不放了….</p>
 <p>​     提示：女汤需要凭密码进入哦，密码每天都更换，记得找前台要。</p>
 <h5 id="最后遗憾">最后遗憾</h5><p>恰好那几天北海道遭遇大暴雪，缺点就是天气不好，也比较冷，好处是雪真是松软到不行，雪场下午都放弃压雪了，雪道内和野雪一样棉花糖似得脚感，趁最后一天天气晴朗拍了个视频，可惜已经没有棉花糖的雪了~</p>
@@ -385,107 +505,11 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2016/cost-for-faith/" itemprop="url">
-                充值信仰
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          發表於
-          <time itemprop="dateCreated" datetime="2016-10-11T22:48:54+08:00" content="2016-10-11">
-            2016-10-11
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分類於
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/life/" itemprop="url" rel="index">
-                  <span itemprop="name">life</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/cost-for-faith/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/cost-for-faith/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><blockquote>
-<p><strong>信仰</strong>（英语：Faith）是指對一個人（同樣的對他的能力）、事物、神、宗教的教條或教導、沒有經驗證據的觀點（例如擁有強烈的政治信仰）抱有信心和信任    —wikipedia</p>
-</blockquote>
-<p>如今「信仰」在网络上也被大家用来形容自己对某件事物的热爱，例如信仰是 Google，必须使用 Google 的全套服务，不论是否好用。手机要用亲儿子Nexus（即将变为 Pixel）。锤子的情怀、Apple 的果粉，都算是一种信仰。</p>
-<p>今天收到了「信仰之盾」，其实是 Dota2 内的一款纪念品，每逢大比赛前会推出小本子供玩家购买，本子等级越高可以收获更多的饰品，不乏有一些极其珍惜的物品。当然想要本子等级高可以花更多的钱，今年的<strong>第六届国际邀请赛</strong>（最大的一场比赛，简称 Ti6）出了新的花样，达到 1000 级的玩家可以收获实体冠军盾一枚，这手段无非就是促使玩家买买买。</p>
-<p>尽管知道是在「骗钱」，还是跳下了火坑，充值信仰。庆幸的是今年在大家心灰意冷的时候，一匹中国黑马拿到了久违的冠军，拿到史上最高奖励 $912w 约 6000 多万人民币，也算自己出了一份力。</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/8d5vm.png" alt="Wings"></p>
-<p>实物上手图，我这批应该是九月第一批发货的。做工也还不错，比较精致但边缘有点瑕疵</p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/53eor.JPG" alt="正面"></p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/kxsn9.JPG" alt="背面"></p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/zqucb.JPG" alt="透明隔层"></p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/5hwd7.JPG" alt=""></p>
-<p><img src="http://7xn47h.com1.z0.glb.clouddn.com/2016/9/b174o.JPG" alt=""></p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/3/">&raquo;</a>
   </nav>
 
  </div>
@@ -519,7 +543,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">113</span>
+              <span class="site-state-item-count">111</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -594,7 +618,7 @@
       <div class="footer-inner"> <div class="copyright" >
   
   &copy; &nbsp;  2015 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="icon-next-heart"></i>
   </span>
